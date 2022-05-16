@@ -192,7 +192,11 @@ $data=$_SESSION['userdata'];
             </div>
             <button type="submit" class="btn">Submit</button>
             <p class=" text-center"><a href="refer_earn_TC.html">terms & conditions</a></p>
+          
           </form>
+          <br>
+          
+          <?php print_r( $_SESSION['msg'][0]); ?>
         </div>
       </div>
     </div>

@@ -96,7 +96,8 @@ if (isset($_GET['counseler'])) {
         header('location:refer.php');
     } else {
         $_SESSION['msg'] = $user['errors'];
-        header('location:counseler.php');
+        echo "error";
+        header('location:counselerForm.php');
     }
 
 }
@@ -118,7 +119,7 @@ if (isset($_GET['scholership'])) {
         header('location:index.php');
     } else {
         $_SESSION['msg'] = $user['errors'];
-        header('location:scholorship.php');
+       header('location:scholorship.php');
     }
 
 
@@ -756,10 +757,15 @@ function scholership($data)
     }
    
     if (!checkStudent($data)) {
+       
         $user['errors'][] = "Invalid emailid or password";
     
     }
-   
+    if (checkscholership($email_id)){
+     
+        $user['errors'][] = "scholership form already submitted";
+    }
+  
     if(count($user['errors'])<1){
        
         $query="INSERT INTO Scholorship
@@ -780,7 +786,23 @@ function scholership($data)
    
     
 }
+function checkscholership($data)
+{
+    $db = $GLOBALS['db'];
+    $email_id = $data;
+    // $password = md5(mysqli_real_escape_string($db, $data['password']));
+    $query = "SELECT * FROM Scholorship WHERE email='$email_id'";
+    $runQuery = mysqli_query($db, $query);
+    $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($runQuery);
 
+    if ($count > 0) {
+        return true;
+    } else {
+
+        return false;
+    }
+}
 function scholershipparent($data)
 {
     $db = $GLOBALS['db'];
@@ -957,11 +979,19 @@ function addcounseler($data)
     $code =  genUserCode();
     if ($name == '' || $email == '' || $dateofbirth == ''
      || $gender == '' ||
-     $laguage == '' || $Preferred == '' || $workSchedule == '' || $salary == '') {
+     $laguage == '' || $Preferred == '' || $workSchedule == '' || $salary == '')
+     
+     {
         $user['errors'][] = "all fields are required !";
-    }
-    
-    
+   }
+   
+     if (checkcounsler($email))
+    {
+
+        echo "counsler already added";
+        $user['errors'][]="counsler already added";
+   }
+    else{
     $query="INSERT INTO counsler(fullname,email,dob,gender,
     	language,preferedlanguage,workschedule,created,salary,refercode) ";
     $query.="VALUES('$name','$email','$dateofbirth','$gender','$laguage',
@@ -982,10 +1012,28 @@ function addcounseler($data)
     }else{
         $user['errors'][]="Something went wrong !";
     }
-   
+}
    return $user;
-   
+
     
+}
+
+function checkcounsler($data)
+{
+    $db = $GLOBALS['db'];
+    $email_id = $data;
+    // $password = md5(mysqli_real_escape_string($db, $data['password']));
+    $query = "SELECT * FROM counsler WHERE email='$email_id'";
+    $runQuery = mysqli_query($db, $query);
+    $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($runQuery);
+
+    if ($count > 0) {
+        return true;
+    } else {
+
+        return false;
+    }
 }
   //New User registration
   function contactform($data)
@@ -1078,60 +1126,65 @@ function getCollegelist($data){
 }
 
 
-function searchcollegebyfilter(){
+// function searchcollegebyfilter(){
     
-    $db=$GLOBALS['db'];
-   $state=$_COOKIE["state"];
-   $city =$_COOKIE["city"];
-   $mode=$_COOKIE["study"];
-   $type=$_COOKIE["type"];
-echo $state;
-echo $city;
-echo $mode;
-echo $type;
-   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.course_name,s.state_name,ct.type FROM college c 
-   join affiliation af on af.id=c.affiliated_id
-   join   Approval ap on ap.id= c.approvel_id 
-   join   Courses co on co.id= c.course_id
-   join   State s on s.id=c.state_id 
-   join   Collage_type ct on ct.id=c.collage_type_id 
-   join City cy on cy.id = c.city_id
-   where  " ;
-if($state && !$city && !$type){
+//     $db=$GLOBALS['db'];
+//    $state=$_COOKIE["state"];
+//    $city =$_COOKIE["city"];
+//    $mode=$_COOKIE["study"];
+//    $type=$_COOKIE["type"];
+//    $degree=$_COOKIE["degree"];
+//    $spacialization = $_COOKIE["spacialization"];
+//    $hostels = $_COOKIE["hostels"];
+//    $freerange = $_COOKIE["freerange"];
+//    $facilities =$_COOKIE["facilities"];
    
-    $query.="s.state_name='$state'";
-}
-if(!$state && $city  && !$type){
-    
-    $query.="cy.city_name='$city'";
-}
 
-if(!$state && !$city  && $type){
+
+
+//    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.course_name,s.state_name,ct.type ,
+//    co.course_name,sst.sub_stream_name,ss.stream_name
    
-    $query.="ct.type='$type'";
-}
-if($state && $city  && !$type){
+//    FROM college c 
    
-    $query.="s.state_name='$state' and cy.city_name='$city'";
-}
-if($state && !$city  && $type){
-   
-    $query.="s.state_name='$state' and ct.type='$type'";
-}
-if(!$state && $city  && $type){
- 
-    $query.="cy.city_name='$city' and ct.type='$type'";
-}
-if($state && $city  && $type){
- 
-    $query.="cy.city_name='$city' and ct.type='$type' and s.state_name='$state'";
-}
+//    join affiliation af on af.id=c.affiliated_id
+//    join Approval ap on ap.id= c.approvel_id 
+//    join Courses co on co.id= c.course_id
+//    join State s on s.id=c.state_id 
+//    join Collage_type ct on ct.id=c.collage_type_id 
+//    join City cy on cy.id = c.city_id
+//    join sub_stream sst on sst.id=co.sub_stream_id
+//    join Stream ss on ss.id = sst.stream_id
+//    join Country cty on cty.id = s.country_id
+//    join collage_mode cm on cm.collage_id = c.id
+//    join study_mode sm on sm.id = cm.study_mode_id
+//    join collage_hostel ch on ch.collage_id= c.id
+//    join hostels h on h.id = ch.hostel_id
+//    join collage_facilities cf on cf.collage_id = c.id
+//    join facilities fa on fa.id = cf.facility_id
+//    join spacialization sp on sp.id = co.specilization_id
 
-echo $query;
-    $runQuery=mysqli_query($db,$query);
+//    where  cty.country_name='India'" ;
 
-    $row =mysqli_fetch_all($runQuery,MYSQLI_ASSOC);
+//     if($state){ $query.=" and s.state_name='$state'"; }
+//     if($city){ $query.=" and cy.city_name='$city'"; } 
+//     if($type){ $query.=" and ct.type='$type'"; }
+//     if($degree){ $query.=" and co.course_name='$degree'"; }
+//     if($mode){ $query.=" and sm.mode='$mode'"; }
+//     if($hostels){ $query.=" and h.type='$hostels'"; }
+//     if($freerange){ $query.=" and co.course_name='$freerange'"; }
 
-print_r( $row );
-}
+//     if($facilities){ $query.=" and fa.facility='$facilities'"; }
+//     if($spacialization){ $query.=" and sp.type='$spacialization'"; }
+
+
+//     echo $query;
+//     $runQuery=mysqli_query($db,$query);F
+
+//     $row =mysqli_fetch_all($runQuery,MYSQLI_ASSOC);
+
+//     print_r( $row );
+//     }
+//this is for checking the user
+
   ?>

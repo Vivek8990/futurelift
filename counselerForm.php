@@ -147,6 +147,9 @@ require_once('functions.php');?>
                                 </select>
                             </div>
                             <button class="btn" value="submit">submit</button>
+                            <br>
+                            <br>
+                            <?php print_r( $_SESSION['msg'][0]);?>
                         </form>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 form-counseler">
@@ -162,7 +165,7 @@ require_once('functions.php');?>
     <section class="kycPart" id="identification">
         <div class="container">
             <div class="row">
-                <h1 class="heading text-center">complete your KYC</h1>
+                <h1 class="heading text-center">complete your KYC  </h1>
                 <div class="kyc_form">
                     <div class="kycImg p-4">
                         <figure>
