@@ -164,7 +164,6 @@ require_once('functions.php');?>
     </section>
     <section class="kycPart" id="identification">
         <div class="container">
-            <div class="row">
                 <h1 class="heading text-center">complete your KYC</h1>
                 <div class="kyc_form">
                     <div class="kycImg p-4">
