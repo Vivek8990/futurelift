@@ -56,8 +56,8 @@
         </ul>
       </div>
       <div class="btnGroup">
-        <a href="log-in.html" class="btn btn-sign">log in</a>
-        <a href="sign-up.html" class="btn">sign up</a>
+        <a href="log-in.php" class="btn btn-sign">log in</a>
+        <a href="sign-up.php" class="btn">sign up</a>
       </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>

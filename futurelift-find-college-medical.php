@@ -980,7 +980,7 @@ function searchcollegebyfilter(){
           state.push(event.target.value)
           console.log(state);
           document.cookie = "state="+state;
-          window.location.href = "futurelift-find-college-medical.php?gtstate";
+          window.location.href = "college-filter-management.php?gtstate";
         }
       })
     })
@@ -993,7 +993,7 @@ function searchcollegebyfilter(){
           city.push(event.target.value)
           console.log(city);
           document.cookie = "city="+city;
-          window.location.href = "futurelift-find-college-medical.php?gtcity";
+          window.location.href = "college-filter-management.php?gtcity";
         }
       })
     })
@@ -1006,7 +1006,7 @@ function searchcollegebyfilter(){
             study.push(event.target.value)
             console.log(study);
             document.cookie = "study="+study;
-          window.location.href = "futurelift-find-college-medical.php?gtmode";
+          window.location.href = "college-filter-management.php?gtmode";
         }
       })
     })
@@ -1019,7 +1019,7 @@ function searchcollegebyfilter(){
             type.push(event.target.value)
             console.log(type);
             document.cookie = "type="+type;
-          window.location.href = "futurelift-find-college-medical.php?institutetype";
+          window.location.href = "college-filter-management.php?institutetype";
         }
       })
     }) 
@@ -1033,7 +1033,7 @@ function searchcollegebyfilter(){
             facilities.push(event.target.value)
           console.log(facilities);
           document.cookie = "facilities="+facilities;
-          window.location.href = "futurelift-find-college-medical.php?gtfacilities";
+          window.location.href = "college-filter-management.php?gtfacilities";
         }
       })
     })
@@ -1046,7 +1046,7 @@ function searchcollegebyfilter(){
             freerange.push(event.target.value)
           console.log(freerange);
           document.cookie = "freerange="+freerange;
-          window.location.href = "futurelift-find-college-medical.php?gtfreerange";
+          window.location.href = "college-filter-management.php?gtfreerange";
         }
       })
     })
@@ -1058,7 +1058,7 @@ function searchcollegebyfilter(){
             hostels.push(event.target.value)
           console.log(hostels);
           document.cookie = "hostels="+hostels;
-          window.location.href = "futurelift-find-college-medical.php?gthostels";
+          window.location.href = "college-filter-management.php?gthostels";
         }
       })
     })
@@ -1070,7 +1070,7 @@ function searchcollegebyfilter(){
             spacialization.push(event.target.value)
           console.log(spacialization);
           document.cookie = "spacialization="+spacialization;
-          window.location.href = "futurelift-find-college-medical.php?gtspacialization";
+          window.location.href = "college-filter-management.php?gtspacialization";
         }
       })
     })
@@ -1083,7 +1083,7 @@ function searchcollegebyfilter(){
             degree.push(event.target.value)
           console.log(degree);
           document.cookie = "degree="+degree;
-          window.location.href = "futurelift-find-college-medical.php?gtdegree";
+          window.location.href = "college-filter-management.php?gtdegree";
         }
       })
     })

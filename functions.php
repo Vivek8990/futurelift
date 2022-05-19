@@ -3,68 +3,6 @@
 require_once 'connection.php';
 
 
-if (isset($_GET['gtstate'])) {
-      
-   
-    searchcollegebyfilter();
-  
-  }
-  
-  if (isset($_GET['gtcity'])) {
-         
-  
-    searchcollegebyfilter();
-  
-  }
-  
-  if (isset($_GET['gtfreerange'])) {
-          
-    searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['gthostels'])) {
-      echo "34342424"; 
-    searchcollegebyfilter();
-  }
-
-  if (isset($_GET['gtspacialization'])) {
-          
-    searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['gtdegree'])) {
-          
-    searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['gtmode'])) {
-          
-    searchcollegebyfilter();
-  
-  
-  }
-
-
-  
-  if (isset($_GET['gtfacilities'])) {
-          
-    searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['institutetype'])) {
-          
-    searchcollegebyfilter();
-  
-  
-  }
   
   
   
@@ -406,6 +344,73 @@ function getcollege($id){
    
     return $user;   
 }
+function getcity(){
+   $db=$GLOBALS['db'];
+   
+   $query="SELECT * FROM City ";
+  
+  $runQuery=mysqli_query($db,$query);
+  
+   
+    return $runQuery;   
+}
+
+function getstate(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM State ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
+
+function getstudymode(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM study_mode ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
+
+function getinstutiontype(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM Collage_type ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
+
+
+function gethostel(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM hostels ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
+
+
+function getfacility(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM facilities ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
 function countrylist(){
 
     $db=$GLOBALS['db'];

@@ -98,7 +98,7 @@ menu.onclick = () => {
 var swiper = new Swiper(".cardDetails", {
         slidesPerView: 10,
         spaceBetween: 30,
-        slidesPerGroup: 1,
+        slidesPerGroup: 3,
         loop: false,
         centeredSlides: true,
         loopFillGroupWithBlank: true,
