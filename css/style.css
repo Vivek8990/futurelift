@@ -3245,7 +3245,7 @@ width: 100%;
 
 
 .cunslForm{
-    /* background: var(--primary-bg-color); */
+    background: var(--primary-bg-color);
     padding: 1.5rem;
 }
 .cunslForm .form-group .form-label{
@@ -3259,7 +3259,7 @@ width: 100%;
     padding: 1rem;
     font-size: 1.3rem;
     background-color: rgb(0, 0, 0,.1);
-    /* color: rgb(255, 255, 255,.5); */
+    color: rgb(255, 255, 255,.5);
    
 }
 .cunslForm .form-group .form-control::placeholder{
@@ -3275,7 +3275,7 @@ text-transform: capitalize;
     padding: 1rem;
     background-color: rgb(0, 0, 0,.1);
     border: none;
-    /* color: rgb(255, 255, 255,.5); */
+    color: rgb(255, 255, 255,.5);
     font-size: 1.3rem;
     text-transform: capitalize;
     border-bottom: 0.1rem solid #fff;

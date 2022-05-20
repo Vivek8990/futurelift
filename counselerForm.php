@@ -57,7 +57,7 @@ require_once('functions.php');?>
             </div>
             <div class="btnGroup">
                 <a href="log-in.html" class="btn btn-sign">log in</a>
-                <a href="sign-up.html" class="btn">sign up</a>
+                <a href="sign-up.php" class="btn">sign up</a>
             </div>
         </nav>
         <i class="fas fa-bars" id="manu-bars"></i>
@@ -71,7 +71,7 @@ require_once('functions.php');?>
                         <form action="functions.php?counseler" method="post" class="cunslForm">
                             <div class="form-group">
                                 <label for="name" class="form-label">full name</label>
-                                <input type="text" placeholder="full name" name="name" class="form-control" style="color:black !important;" required>
+                                <input type="text" placeholder="full name" name="name" class="form-control"  required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">email</label>

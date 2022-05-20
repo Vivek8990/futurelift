@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+
+<?php 
+session_start();
+$login = $_SESSION['userIsLoggedIn'];
+$data=$_SESSION['userdata'];
+
+?>
+
+
 <html lang="en">
 
 <head>
@@ -60,7 +68,7 @@
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
   </header>
-
+ 
   <section class="kycPart" id="identification">
     <div class="container">
         <div class="row">
@@ -69,30 +77,41 @@
                 <div class="kycImg p-4">
                     <figure>
                         <img src="images/kyc-01.png" alt="" class="img-fluid" style="width: 300px;">
+                        
                     </figure>
                 </div>
-                <form action="referandearnsharecode.html" class="kycForm" >
-                    <fieldset>
+                <form action="functions.php?kyc" class="kycForm" method="post" enctype="multipart/form-data">
+                    
+                  
+                  
+                  <fieldset>
+                    <legend>email</legend>
+                    <div class="input-group">
+                        <input type="text" class="form-control"name = "email" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        
+                      </div>
+                </fieldset>
+                  <fieldset>
                         <legend>upload your aadhar</legend>
                         <div class="input-group">
-                            <input type="file" class="form-control" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                            <input type="file" class="form-control" name="adhar" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                           </div>
                     </fieldset>
                     <fieldset>
                       <legend>your pan card</legend>
                       <div class="input-group">
-                          <input type="file" class="form-control" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                          <input type="file" class="form-control" name="pan" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                           
                         </div>
                   </fieldset>
                   <fieldset>
                     <legend>your pan number</legend>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <input type="number" class="form-control" name="pannumber" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                         
                       </div>
                 </fieldset>
-                  <button class="btn btn-outline-secondary mt-3" type="submit" id="inputGroupFileAddon04">submit</button>
+                  <button class="btn btn-outline-secondary mt-3" type="submit" id="inputGroupFileAddon04" >submit</button>
                 </form>
                 
             </div>
