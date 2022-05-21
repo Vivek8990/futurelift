@@ -3,16 +3,17 @@ require_once('functions.php');
 $id='';
 if (isset($_GET['id']))
 {
-    $id=$_GET['id'];
+    $collegeid=$_GET['id'];
    
-}
-$course=Courseslist();
+}$course=Courseslist();
 $affiliationlist=affiliationlist();
 $Approvallist=Approvallist();
 $Agenceylist=Agenceylist();
 $getCollegetype=getCollegetype();
 $statelist=statelist();
-$college= getcollege($id);
+$citylist=citylist();
+$college= getcollege($collegeid);
+
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
 ?>
@@ -89,10 +90,10 @@ body {
       <div >
         
         <div >
-          <h1>Add College</h1>
+          <h1>Update College</h1>
           <form action="functions.php?updatecollege" class="text-center" method="post">
             <div class="form-group ">
-            <input type="text" hidden name="id" value="<?php echo $college[0]['id']; ?>" >
+            <input type="text" hidden name="id" value="<?php echo $collegeid; ?>" >
 
               <div class="row ">
                 <div class="col-2">
@@ -127,6 +128,32 @@ body {
               </div>
 
             </div>
+
+            <div class="form-group">
+              <div class="row">
+              <select name="city_id" id="cars">
+              
+             
+                                <?php
+                    while($row =mysqli_fetch_array($citylist,MYSQLI_ASSOC))
+                    if($row['id']==$college[0]['city_id'])
+                    {
+                      echo "<option value='".$row['id'] ."' selected>".$row['city_name'] ."</option>";
+                    }
+                    
+                    
+                   else
+                    { 
+                    echo "<option value='".$row['id'] ."'>".$row['city_name'] ."</option>";
+
+                    }
+
+                    ?>
+                </select>
+              </div>
+
+            </div>
+
             <div class="form-group">
               <div class="row">
               <select name="Collage_type" id="cars">
@@ -243,6 +270,18 @@ body {
                     ?>
               </select>
               </div>
+            </div>
+
+            <div class="form-group">
+            <div class="row ">
+                <div class="col-2">
+                  <label for="" class="form-label"><i class="fa fa-user"></i></label>
+                </div>
+                <div class="col-10">
+                  <input type="text" name="rank" value="<?php echo $college[0]['rank']; ?>" class="form-control" required placeholder="College rank"autocomplete="off">
+                </div>
+              </div>
+
             </div>
             <button type="submit" class="btn">Submit</button>
             

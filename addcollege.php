@@ -6,6 +6,7 @@ $Approvallist=Approvallist();
 $Agenceylist=Agenceylist();
 $getCollegetype=getCollegetype();
 $statelist=statelist();
+$citylist=citylist();
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
 ?>
@@ -85,7 +86,7 @@ body {
         
         <div >
           <h1>Add College</h1>
-          <form action="functions.php?addcollege" class="text-center" method="post">
+          <form action="functions.php?addcollege" class="text-center" method="post" enctype="multipart/form-data">
             <div class="form-group ">
               <div class="row ">
                 <div class="col-2">
@@ -105,6 +106,23 @@ body {
 
                     {
                     echo "<option value='".$row['id'] ."'>".$row['state_name'] ."</option>";
+
+                    }
+
+                    ?>
+                </select>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="row">
+              <select name="city_id" id="cars">
+              <option value="">Select City</option>
+                                <?php
+                    while($row =mysqli_fetch_array($citylist,MYSQLI_ASSOC))
+
+                    {
+                    echo "<option value='".$row['id'] ."'>".$row['city_name'] ."</option>";
 
                     }
 
@@ -188,6 +206,39 @@ body {
               </select>
               </div>
             </div>
+            
+
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <span>Upload Bruchre</span>
+                </div>
+                <div class="col-10">
+                  <input type="file" name="brucher" class="form-control" required >
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <span>Upload logo</span>
+                </div>
+                <div class="col-10">
+                  <input type="file" name="logo" class="form-control" required >
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <label for="" class="form-label"></label>
+                </div>
+                <div class="col-10">
+                  <input type="text" name="rank" class="form-control" placeholder="College rank" required >
+                </div>
+              </div>
+            </div>
+
             <button type="submit" class="btn">Submit</button>
             
           </form>

@@ -58,6 +58,7 @@ if (isset($_GET['counseler'])) {
 }
 if (isset($_GET['updatecollege'])) {
     unset($_SESSION['msg']);
+    echo "00000";
     $user = updatecollegedetails($_POST);
     if (isset($user['success'])) {
         $_SESSION['msg'][] = $user['success'];
@@ -84,7 +85,7 @@ if (isset($_GET['scholership'])) {
 
 if (isset($_GET['addcollege'])) {
     unset($_SESSION['msg']);
-    $user = addnewCollege($_POST);
+    $user = addnewCollege($_POST,$_FILES);
     if (isset($user['success'])) {
         $_SESSION['msg'][] = $user['success'];
         header('location:addcollege.php');
@@ -356,11 +357,13 @@ function totaluser(){
 function getcollege($id){
    $db=$GLOBALS['db'];
    
-   $query="SELECT c.*,af.*,ap.*,co.*,s.*,ct.* FROM college c join affiliation af on af.id=c.affiliated_id
- join   Approval ap on ap.id= c.approvel_id 
- join   Courses co on co.id= c.course_id
- join State s on s.id=c.state_id 
- join   Collage_type ct on ct.id=c.collage_type_id  ";
+  
+$query ="SELECT c.*
+FROM college c
+
+
+where c.id=$id";
+
   
   $runQuery=mysqli_query($db,$query);
    $user = mysqli_fetch_all($runQuery,MYSQLI_ASSOC) ;
@@ -461,8 +464,11 @@ function citylist(){
     $query="SELECT * FROM City ";
     $runQuery=mysqli_query($db,$query);
     
-    return  $runQuery;  
+   
+   
+    return $runQuery;  
 }
+
 function getCollegetype(){
 
     $db=$GLOBALS['db'];
@@ -574,7 +580,50 @@ function getCollegeByCategoury($data){
     return $runQuery;
 }
 
+function getCollegeBystate($data){
+    $db=$GLOBALS['db'];
+    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    af.affiliation_name,ap.approval_name,cty.type,ct.city_name
+    FROM college c
+    join Courses cs on cs.id = c.course_id
+    join sub_stream ss on ss.id = cs.sub_stream_id
+    join State st on st.id = c.state_id
+    join Stream s on s.id = ss.stream_id
+    join affiliation af on af.id= c.affiliated_id
+    join Approval ap on ap.id = c.approvel_id
+    join Collage_type cty on cty.id = c.collage_type_id
+    join City ct on ct.id = c.city_id
+   
+    where  st.state_name ='$data' ";
 
+   $runQuery = mysqli_query($db,$query);
+   
+   
+    return $runQuery;
+}
+
+
+function getCollegeBycity($data){
+    $db=$GLOBALS['db'];
+    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    af.affiliation_name,ap.approval_name,cty.type,ct.city_name
+    FROM college c
+    join Courses cs on cs.id = c.course_id
+    join sub_stream ss on ss.id = cs.sub_stream_id
+    join State st on st.id = c.state_id
+    join Stream s on s.id = ss.stream_id
+    join affiliation af on af.id= c.affiliated_id
+    join Approval ap on ap.id = c.approvel_id
+    join Collage_type cty on cty.id = c.collage_type_id
+    join City ct on ct.id = c.city_id
+   
+    where  ct.city_name ='$data' ";
+
+   $runQuery = mysqli_query($db,$query);
+   
+   
+    return $runQuery;
+}
 function searchcollege($data){
     
     $db=$GLOBALS['db'];
@@ -900,7 +949,7 @@ function checkStudent($data)
 }
 
 //New college addition
-function addnewCollege($data)
+function addnewCollege($data,$files)
 {
     $db = $GLOBALS['db'];
     $user = array();
@@ -908,23 +957,30 @@ function addnewCollege($data)
     $created = date("Y-m-d h:i:s");
     $collage_name = mysqli_real_escape_string($db, $data['collage_name']);
     $state_id = mysqli_real_escape_string($db, $data['state_id']);
+    $city_id = mysqli_real_escape_string($db, $data['city_id']);
     $Collage_type = mysqli_real_escape_string($db, $data['Collage_type']);
     $approvel_id = mysqli_real_escape_string($db, $data['approvel_id']);
     $affiliated_id = mysqli_real_escape_string($db, $data['affiliated_id']);
     $course_id = mysqli_real_escape_string($db, $data['course_id']);
     $gender = mysqli_real_escape_string($db, $data['gender']);
+    $rank = mysqli_real_escape_string($db, $data['rank']);
+    $logo =$files['logo']['tmp_name'];
+    $bruchre = $files['brucher']['tmp_name'];
+    $logoupload = base64_encode(file_get_contents(addslashes($logo)));
+    $brucherupload = base64_encode(file_get_contents(addslashes($bruchre)));
+  
     
     if ($collage_name == '' || $state_id == '' || $Collage_type == '' || $approvel_id == '' ||
-     $affiliated_id == '' || $course_id == '' || $gender == '') {
+     $affiliated_id == '' || $course_id == '' || $gender == '' || $logo || $bruchre) {
         $user['errors'][] = "all fields are required !";
     }
     
     
     $query="INSERT INTO college(collage_name,state_id,collage_type_id,approvel_id,
-    affiliated_id,course_id,gender,created,updated) ";
+    affiliated_id,course_id,gender,created,updated,city_id,rank,logo,bruchre) ";
     $query.="VALUES('$collage_name','$state_id','$Collage_type','$approvel_id',
-    '$affiliated_id','$course_id','$gender','$created','$created')";
-    echo $query;
+    '$affiliated_id','$course_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload')";
+  
     $runQuery = mysqli_query($db,$query);
     
     
@@ -947,6 +1003,8 @@ function addnewCollege($data)
 //updatecollege 
 function updatecollegedetails($data)
 {
+
+  //  print_r($data);
     $db = $GLOBALS['db'];
     $user = array();
     $user['errors'] = array();
@@ -959,16 +1017,18 @@ function updatecollegedetails($data)
     $course_id = mysqli_real_escape_string($db, $data['course_id']);
     $gender = mysqli_real_escape_string($db, $data['gender']);
     $id = mysqli_real_escape_string($db, $data['id']);
-    
+    $city_id = mysqli_real_escape_string($db, $data['city_id']);
+    $rank = mysqli_real_escape_string($db, $data['rank']);
+    echo $id;
+   
     if ($collage_name == '' || $state_id == '' || $Collage_type == '' || $approvel_id == '' ||
      $affiliated_id == '' || $course_id == '' || $gender == '') {
         $user['errors'][] = "all fields are required !";
     }
-    
-    
+   
     $query="update  college set
     collage_name='$collage_name',state_id='$state_id',collage_type_id='$Collage_type',approvel_id='$approvel_id',
-    affiliated_id='$affiliated_id',course_id='$course_id',gender='$gender',updated='$created' Where id='$id'";
+    affiliated_id='$affiliated_id',course_id='$course_id',gender='$gender',updated='$created',rank='$rank',city_id='$city_id' Where id='$id'";
     
     echo $query;
     $runQuery = mysqli_query($db,$query);
@@ -1163,11 +1223,11 @@ function addkyc($data,$files)
   
 
     $email_id = mysqli_real_escape_string($db, $data['email']);
-    $adhar =$files['adhar']['tmp_name'];
-    $pan = $files['pan']['tmp_name'];
+    
     $pannumber = mysqli_real_escape_string($db, $data['pannumber']);
 
-   
+    $adhar =$files['adhar']['tmp_name'];
+    $pan = $files['pan']['tmp_name'];
     $panupload = base64_encode(file_get_contents(addslashes($pan)));
     $adharupload = base64_encode(file_get_contents(addslashes($adhar)));
   
@@ -1205,6 +1265,30 @@ function addkyc($data,$files)
    return $user;
    
     
+}
+
+function getCollegeByRank(){
+    $db=$GLOBALS['db'];
+    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    af.affiliation_name,ap.approval_name,cty.type,ct.city_name,rt.rating,count(rv.id) as rv
+    FROM college c
+    join Courses cs on cs.id = c.course_id
+    join sub_stream ss on ss.id = cs.sub_stream_id
+    join State st on st.id = c.state_id
+    join Stream s on s.id = ss.stream_id
+    join affiliation af on af.id= c.affiliated_id
+    join Approval ap on ap.id = c.approvel_id
+    join Collage_type cty on cty.id = c.collage_type_id
+    join City ct on ct.id = c.city_id
+    join rating rt on rt.collage_id= c.id
+   join Reviews rv on rv.collage_id = c.id
+   group by c.id
+    order by c.rank limit 8";
+
+   $runQuery = mysqli_query($db,$query);
+   
+   
+    return $runQuery;
 }
 
   ?>
