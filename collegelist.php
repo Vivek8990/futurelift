@@ -119,7 +119,7 @@ body {
   echo "<td>" . $row['affiliation_name'] . "</td>";
   echo "<td>" . $row['approval_name'] . "</td>";
   echo "<td>" . $row['gender'] . "</td>";
-  echo "<td>" . $row['course_name'] . "</td>";
+  echo "<td>" . $row['degree_name'] . "</td>";
   echo "<td>" . $row['created'] . "</td>";
   if($admin == 'superadmin') {
   echo "<td> <a href='update.php?id=" . $row['id'] . "'>Update ". $row['id'] ."</a></td>";

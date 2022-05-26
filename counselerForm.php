@@ -55,10 +55,19 @@ require_once('functions.php');?>
                     <li><a class="dropdown-item" href="#">news</a></li>
                 </ul>
             </div>
-            <div class="btnGroup">
-                <a href="log-in.html" class="btn btn-sign">log in</a>
-                <a href="sign-up.php" class="btn">sign up</a>
-            </div>
+            <?php if($login){?>
+       
+       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+       <a class="active" href="functions.php?logout">Signout</a><?php }
+      ?>
+      <div class="btnGroup">
+        <?php if(!$login){ ?>
+        <a href="log-in.php" class="btn btn-sign">log in</a>
+        <a href="sign-up.php" class="btn">sign up</a>
+        <?php    
+        } 
+        ?>
+      </div>
         </nav>
         <i class="fas fa-bars" id="manu-bars"></i>
     </header>
@@ -92,7 +101,7 @@ require_once('functions.php');?>
                             </div>
                             <div class="form-group">
                                 <label for="laguage" class="form-label">select language</label>
-                                <select name="laguage" id="" class="form-select">
+                                <select name="laguage" id="" class="form-select" >
                                     <option value="select">select language</option>
                                     <option value="english">english</option>
                                     <option value="Hindi">Hindi</option>
@@ -132,18 +141,22 @@ require_once('functions.php');?>
                                 <label for="schedule" class="form-label">work schedule</label>
                                 <select name="workSchedule" id="" class="form-select">
                                     <option value="select">select work schedule</option>
-                                    <option value="morning">morning</option>
-                                    <option value="day">day</option>
-                                    <option value="night">night</option>
+                                    <option value="Full Time">Full Time</option>
+                                    <option value="Part Time">Part Time</option>
+                                    <option value="Any Time I Want">Any Time I Want</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="salary preference" class="form-label">slary preference <span>(optional)</span></label>
                                 <select name="salary" id="" class="form-select">
                                     <option value="select">select</option>
-                                    <option value="100000">100000</option>
-                                    <option value="200000">200000</option>
-                                    <option value="300000">300000</option>
+                                    <option value="UPI">UPI</option>
+                                    <option value="Bank Accoumt">Bank Account</option>
+                                    <option value="cheque">cheque</option>
+                                    <option
+                                    value="NEFT">NEFT</option>
+                                    <option
+                                    value="Demand Draft">Demand Draft</option>
                                 </select>
                             </div>
                             <button class="btn" value="submit">submit</button>
@@ -164,14 +177,14 @@ require_once('functions.php');?>
     </section>
     <section class="kycPart" id="identification">
         <div class="container">
-                <h1 class="heading text-center">complete your KYC</h1>
+               <!-- <h1 class="heading text-center">complete your KYC</h1> -->
                 <div class="kyc_form">
-                    <div class="kycImg p-4">
-                        <figure>
+                     <div class="kycImg p-4">
+                        <!-- <figure>
                             <img src="images/kyc-01.png" alt="" class="img-fluid" style="width: 300px;">
-                        </figure>
+                        </figure> -->
                     </div>
-                    <form action="referandearnsharecode.html" class="kycForm" >
+                 <!--   <form action="referandearnsharecode.html" class="kycForm" >
                         <fieldset>
                             <legend>upload your aadhar</legend>
                             <div class="input-group">
@@ -180,9 +193,10 @@ require_once('functions.php');?>
                               </div>
                         </fieldset>
                     </form>
-                    
+                     -->
                 </div>
-            </div>
+                
+            </div> 
         </div>
       </section>
 

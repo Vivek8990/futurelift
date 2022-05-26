@@ -42,13 +42,13 @@ $data=$_SESSION['userdata'];
 <body>
      <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.html" class="active">Career Solutions</a>
-      <a href="explore-colleges.html" class="active">explore colleges</a>
+      <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
       <a href="admission.html" class="active">admission</a>
       <div class="dropdown">
@@ -61,9 +61,18 @@ $data=$_SESSION['userdata'];
           <li><a class="dropdown-item" href="#">news</a></li>
         </ul>
       </div>
+      <?php if($login){?>
+       
+       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+       <a class="active" href="functions.php?logout">Signout</a><?php }
+      ?>
       <div class="btnGroup">
+        <?php if(!$login){ ?>
         <a href="log-in.php" class="btn btn-sign">log in</a>
         <a href="sign-up.php" class="btn">sign up</a>
+        <?php    
+        } 
+        ?>
       </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
@@ -92,10 +101,10 @@ $data=$_SESSION['userdata'];
                       </div>
                 </fieldset>
                   <fieldset>
-                        <legend>upload your aadhar</legend>
+                        <!-- <legend>upload your aadhar</legend>
                         <div class="input-group">
                             <input type="file" class="form-control" name="adhar" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          </div>
+                          </div> -->
                     </fieldset>
                     <fieldset>
                       <legend>your pan card</legend>
@@ -107,7 +116,7 @@ $data=$_SESSION['userdata'];
                   <fieldset>
                     <legend>your pan number</legend>
                     <div class="input-group">
-                        <input type="number" class="form-control" name="pannumber" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <input type="text" class="form-control" name="pannumber" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                         
                       </div>
                 </fieldset>
@@ -122,7 +131,7 @@ $data=$_SESSION['userdata'];
     <div class="row">
         <div class="main-first d-flex flex-wrap align-items-center">
             <div class="main1 col-3">
-                <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+                <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
             </div>
             <div class="footerHead">
                 <h4 class="text-light ">quick links</h4>

@@ -59,9 +59,18 @@ session_start();?>
           <li><a class="dropdown-item" href="#">news</a></li>
         </ul>
       </div>
+      <?php if($login){?>
+       
+       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+       <a class="active" href="functions.php?logout">Signout</a><?php }
+      ?>
       <div class="btnGroup">
+        <?php if(!$login){ ?>
         <a href="log-in.php" class="btn btn-sign">log in</a>
         <a href="sign-up.php" class="btn">sign up</a>
+        <?php    
+        } 
+        ?>
       </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>

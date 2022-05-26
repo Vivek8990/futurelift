@@ -112,13 +112,13 @@ $collage = getCollegeByRank();
 
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.html" class="active">Career Solutions</a>
-      <a href="explore-colleges.html" class="active">explore colleges</a>
+      <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
       <a href="admission.html" class="active">admission</a>
       <div class="dropdown">
@@ -198,7 +198,7 @@ $collage = getCollegeByRank();
     <!-- <h1 class="heading">select your best</h1> -->
     <div class="container" data-aos="fade-up" data-aos-delay="100">
       <div class="box-container">
-        <a href="examate.html">
+        <a href="examate.php">
           <div class="corsBox">
             <i>
               <img src="images/examate-02.png" alt="">
@@ -207,7 +207,7 @@ $collage = getCollegeByRank();
             <p class="dailog">examet</p>
           </div>
         </a>
-        <a href="career.html">
+        <a href="career.php">
           <div class="corsBox">
             <i>
               <img src="images/icons-02.png" alt="">
@@ -216,7 +216,7 @@ $collage = getCollegeByRank();
             <p class="dailog">carear crown</p>
           </div>
         </a>
-        <a href="explore-colleges.html">
+        <a href="explore-colleges.php">
           <div class="corsBox">
             <i>
               <img src="images/explore-02.png" alt="">
@@ -225,7 +225,7 @@ $collage = getCollegeByRank();
             <p class="dailog">explore colleges,exams & more</p>
           </div>
         </a>
-        <a href="scholership.html">
+        <a href="scholership.php">
           <div class="corsBox">
             <i>
               <img src="images/eduloan-02.png" alt="">
@@ -915,7 +915,7 @@ $collage = getCollegeByRank();
               </ul>
               <button class="btn django-button-config button django-form-submit apply_now_det_cd gtm-lead-click home-btn"
               data-gsp-ripple="" data-toggle="modal" data-button_id="27" data-cta_id="206"
-              onclick="ga('send', 'event', 'enquiry', 'show', 'enquiry-brochure');"><a href="career.html"
+              onclick="ga('send', 'event', 'enquiry', 'show', 'enquiry-brochure');"><a href="career.php"
                 class="creBtn">Talk to our Experts</a> </button>
             </div>
           </div>
@@ -948,7 +948,7 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
               </div>
               <div class='reviweRating'>
                 <div class='courseDitail'>
-                  <h4>".$row['course_name']."</h4>
+                  <h4>".$row['degree_name']."</h4>
                   <p>2.5 lakhs <span>for 1st year</span> </p>
                 </div>
                 <div class='reting'>
@@ -2097,7 +2097,7 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
     <div class="row">
       <div class="main-first d-flex flex-wrap align-items-center">
         <div class="main1 col-3">
-            <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt="" ></a>
+            <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt="" ></a>
         </div>
         <div class="footerHead">
             <h4 class="text-light ">quick links</h4>

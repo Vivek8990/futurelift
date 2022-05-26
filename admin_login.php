@@ -82,7 +82,7 @@
                 </div>
               </div>
               
-              <p class=" text-center"> have not an account?<a href="sign-up.php">sign up</a></p>
+              <p class=" text-center"> have not an account?<a href="admin_sign_up.php">sign up</a></p>
               <button type="submit" class="btn text-center">Submit</button>
               <a href="" class="linkForgt">forgot password?</a>
             </form>

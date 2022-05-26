@@ -13,6 +13,8 @@ $studymode= getstudymode();
 $getinstutiontype= getinstutiontype();
 $hostel = gethostel();
 $facility = getfacility();
+$degreelist = getdegreelist();
+$specilizationlist = getspecilizationlist();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,13 +53,13 @@ $facility = getfacility();
 
 <body>
 	<header class="header">
-		<a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+		<a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
 		<nav class="navbar">
 			<div class="user">
 				<i class="fas fa-user"></i>
 			</div>
-			<a href="career.html" class="active">Career Solutions</a>
-			<a href="explore-colleges.html" class="active">explore colleges</a>
+			<a href="career.php" class="active">Career Solutions</a>
+			<a href="explore-colleges.php" class="active">explore colleges</a>
 			<a href="" class="active"> partner</a>
 			<a href="admission.html" class="active">admission</a>
 			<div class="dropdown">
@@ -70,10 +72,19 @@ $facility = getfacility();
 					<li><a class="dropdown-item" href="#">news</a></li>
 				</ul>
 			</div>
-			<div class="btnGroup">
-				<a href="log-in.php" class="btn btn-sign">log in</a>
-				<a href="sign-up.php" class="btn">sign up</a>
-			</div>
+			<?php if($login){?>
+       
+       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+       <a class="active" href="functions.php?logout">Signout</a><?php }
+      ?>
+      <div class="btnGroup">
+        <?php if(!$login){ ?>
+        <a href="log-in.php" class="btn btn-sign">log in</a>
+        <a href="sign-up.php" class="btn">sign up</a>
+        <?php    
+        } 
+        ?>
+      </div>
 		</nav>
 		<i class="fas fa-bars" id="manu-bars"></i>
 	</header>
@@ -98,143 +109,63 @@ $facility = getfacility();
 									<input type="text" class="form-control">
 								</div>
 								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree"  class="form-check-input degree" id="degree" value="management of business administration(MBA)">
-											<label for="" class="form-label">management of business administration(MBA)</label>
+								<?php
+								while($row =mysqli_fetch_array($degreelist,MYSQLI_ASSOC))
+
+{
+		echo "			
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input degree' name='degree' value='".$row['degree_name']."'>
+											<label for='' class='form-label'>".$row['degree_name']."</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="B.B.A (Bachelor of Business Administration)">
-											<label for="" class="form-label">B.B.A (Bachelor of Business Administration)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="P.G.D.M (Post Graduate Diploma In Management)">
-											<label for="" class="form-label">P.G.D.M (Post Graduate Diploma In Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="M.Phil. (Master of Philosophy)">
-											<label for="" class="form-label">M.Phil. (Master of Philosophy)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="M.M.S. (Master of Management Studies)">
-											<label for="" class="form-label">M.M.S. (Master of Management Studies)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="MHRDM (Master in Human Resources Development Management)">
-											<label for="" class="form-label">MHRDM (Master in Human Resources Development Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="B.B.A + M.B.A">
-											<label for="" class="form-label">B.B.A + M.B.A</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="B.M.S (Bachelor of Management Studies)">
-											<label for="" class="form-label">B.M.S (Bachelor of Management Studies)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="Executive M.B.A.">
-											<label for="" class="form-label">Executive M.B.A.</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="Ph.D. (Doctor of Philosophy)">
-											<label for="" class="form-label">Ph.D. (Doctor of Philosophy)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="B.B.M (Bachelor of Business Management)">
-											<label for="" class="form-label">B.B.M (Bachelor of Business Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="Certificate">
-											<label for="" class="form-label">Certificate</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="Post Graduate Diploma">
-											<label for="" class="form-label">Post Graduate Diploma</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="P.G.P.M (Post Graduate Program in Management)">
-											<label for="" class="form-label">P.G.P.M (Post Graduate Program in Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="M.M.M (Master of Applied Management)">
-											<label for="" class="form-label">M.M.M (Master of Applied Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="M.I.B (Master of International Business)">
-											<label for="" class="form-label">M.I.B (Master of International Business) </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="Executive P.G.D.M">
-											<label for="" class="form-label">Executive P.G.D.M</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="M.M.M (Master of Marketing Management)">
-											<label for="" class="form-label">M.M.M (Master of Marketing Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" name="degree" class="form-check-input degree"  value="M.P.M (Master of Personal Management)">
-											<label for="" class="form-label">M.P.M (Master of Personal Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									</div>";
+
+}
+
+?>
 								</div>
 							</div>
 						</div>
 					</div>
+						<div class="filter-item  shadow">
+						<div class="toggle-heade clearfix">
+							<h2 class="filter_info-header float-start" id="spacialization-filterOpen">spacialization</h2>
+							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
+								data-bs-target="#spacializationFilter-filterShow" aria-expanded="true"
+								aria-controls="spacializationFilter-filterShow" style="width: 20%;">
+								
+							</button>
+						</div>
+						<div id="spacializationFilter-filterShow" class="filter-collapse collapse"
+							aria-labelledby="spacialization-filterOpen">
+							<div class="filter-body shadow">
+								<div class="searchFilter mt-3">
+									<input type="text" class="form-control">
+								</div>
+								<div class="filterItems ">
+								<?php
+								while($row =mysqli_fetch_array($specilizationlist,MYSQLI_ASSOC))
+
+{
+		echo "			
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input spacialization' name='spacialization' value='".$row['specialization_name']."'>
+											<label for='' class='form-label'>".$row['specialization_name']."</label>
+											<span>(1004)</span>
+										</div>
+									</div>";
+
+}
+
+?>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
 							<h2 class="filter_info-header float-start" id="state-filterOpen">state</h2>
@@ -510,159 +441,7 @@ $facility = getfacility();
 							</div>
 						</div>
 					</div>
-					<div class="filter-item  shadow">
-						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="spacialization-filterOpen">spacialization</h2>
-							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
-								data-bs-target="#spacializationFilter-filterShow" aria-expanded="true"
-								aria-controls="spacializationFilter-filterShow" style="width: 20%;">
-								
-							</button>
-						</div>
-						<div id="spacializationFilter-filterShow" class="filter-collapse collapse"
-							aria-labelledby="spacialization-filterOpen">
-							<div class="filter-body shadow">
-								<div class="searchFilter mt-3">
-									<input type="text" class="form-control">
-								</div>
-								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Business Administration</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">General Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Human Resources Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Finance</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Marketing</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">International Business</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Business Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Operational Management </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Business Analytics</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Information Technology</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Retail Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Logistics & Supply Chain Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Digital Marketing</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Entrepreneurship/Family Business</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Executive MBA</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Systems</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Supply Chain Management</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Accounting</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				
 				</div>
 				<!-- college information -->
 				<div class="col-lg-9 col-md-12 right_side">
@@ -675,7 +454,7 @@ $facility = getfacility();
 					<div class='boxfilterDitails  shadow p-3 my-3'>
 						<div class='logowithDitail'>
 							<div class='col-logo'>
-								<img src='images/partner/images (9).png' alt='' >
+							<img src='data:image;base64,".$row['logo']."' alt='' class='img-fluid'>
 							</div>
 							<div class='col-name'>
 								<h3><a href=''>".$row['collage_name']."</a></h3>
@@ -697,7 +476,7 @@ $facility = getfacility();
 								<a href='' class='downBtn'>structure</a>
 							</div>
 							<div class='getBrochure float-end'>
-								<a href='' class='downBtn'><i class='fa fa-download'></i> brochure</a>
+							<a href='data:image;base64,".$row['bruchre']."' class='downBtn' download><i class='fa fa-download'></i> brochure</a>
 							</div>
 						</div>
 					</div>
@@ -717,7 +496,7 @@ $facility = getfacility();
 		<div class="row">
 		  <div class="main-first d-flex flex-wrap align-items-center">
 			<div class="main1 col-3">
-				<a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt="" ></a>
+				<a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt="" ></a>
 			</div>
 			<div class="footerHead">
 				<h4 class="text-light ">quick links</h4>

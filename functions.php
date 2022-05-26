@@ -48,7 +48,7 @@ if (isset($_GET['counseler'])) {
     if (isset($user['success'])) {
         $_SESSION['msg'][] = $user['success'];
         $_SESSION['counseler']=$user['counseler'];
-        header('location:refer.php');
+        header('location:kyc.php');
     } else {
         $_SESSION['msg'] = $user['errors'];
         echo "error";
@@ -438,6 +438,26 @@ function getfacility(){
     
      return $runQuery;   
  }
+ function getdegreelist(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM Degree ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
+ function getspecilizationlist(){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM Spacialization ";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+    
+     return $runQuery;   
+ }
 function countrylist(){
 
     $db=$GLOBALS['db'];
@@ -461,7 +481,7 @@ function statelist(){
 function citylist(){
 
     $db=$GLOBALS['db'];
-    $query="SELECT * FROM City ";
+    $query="SELECT * FROM City order by city_name";
     $runQuery=mysqli_query($db,$query);
     
    
@@ -504,7 +524,15 @@ function affiliationlist(){
 function Courseslist(){
 
     $db=$GLOBALS['db'];
-    $query="SELECT * FROM Courses ";
+    $query="SELECT * FROM Degree ";
+    $runQuery=mysqli_query($db,$query);
+    
+    return $runQuery;  
+}
+function specilizationlist(){
+
+    $db=$GLOBALS['db'];
+    $query="SELECT * FROM Spacialization ";
     $runQuery=mysqli_query($db,$query);
     
     return $runQuery;  
@@ -534,9 +562,9 @@ function scholershiplist(){
 function collegelist(){
 
     $db=$GLOBALS['db'];
-    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.course_name,s.state_name,ct.type FROM college c join affiliation af on af.id=c.affiliated_id
+    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.degree_name,s.state_name,ct.type FROM college c join affiliation af on af.id=c.affiliated_id
   join   Approval ap on ap.id= c.approvel_id 
-  join   Courses co on co.id= c.course_id
+  join   Degree co on co.id= c.degree_id
   join State s on s.id=c.state_id 
   join   Collage_type ct on ct.id=c.collage_type_id order by c.id";
   
@@ -547,12 +575,11 @@ function collegelist(){
 
 function getCollegeGroupByCategoury(){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, COUNT(c.id) as count
+    $query ="SELECT s.specialization_name, COUNT(c.id) as count
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
-    join Stream s on s.id = ss.stream_id
-    GROUP BY s.stream_name";
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
+    GROUP BY s.specialization_name";
 
     $runQuery = mysqli_query($db,$query);
     $user = mysqli_fetch_all($runQuery,MYSQLI_ASSOC) ;
@@ -560,19 +587,18 @@ function getCollegeGroupByCategoury(){
 }
 function getCollegeByCategoury($data){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
     join State st on st.id = c.state_id
-    join Stream s on s.id = ss.stream_id
     join affiliation af on af.id= c.affiliated_id
     join Approval ap on ap.id = c.approvel_id
     join Collage_type cty on cty.id = c.collage_type_id
     join City ct on ct.id = c.city_id
    
-    where  s.stream_name ='$data' ";
+    where  s.specialization_name ='$data' ";
 
    $runQuery = mysqli_query($db,$query);
    
@@ -582,13 +608,13 @@ function getCollegeByCategoury($data){
 
 function getCollegeBystate($data){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
     join State st on st.id = c.state_id
-    join Stream s on s.id = ss.stream_id
+    
     join affiliation af on af.id= c.affiliated_id
     join Approval ap on ap.id = c.approvel_id
     join Collage_type cty on cty.id = c.collage_type_id
@@ -605,13 +631,13 @@ function getCollegeBystate($data){
 
 function getCollegeBycity($data){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
     join State st on st.id = c.state_id
-    join Stream s on s.id = ss.stream_id
+    
     join affiliation af on af.id= c.affiliated_id
     join Approval ap on ap.id = c.approvel_id
     join Collage_type cty on cty.id = c.collage_type_id
@@ -630,7 +656,7 @@ function searchcollege($data){
     $q= mysqli_real_escape_string($db, $data['term']);
     
     
-    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.course_name,s.state_name,ct.type FROM college c 
+    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.degree_name,s.state_name,ct.type FROM college c 
     join   Collage_type ct on ct.id=c.collage_type_id 
     where c.collage_name ='$q' or af.affiliation_name ='$q' or ap.approval_name ='$q' or co.course_name='$q' or s.state_name='$q' or ct.type='$q' ";
 
@@ -977,7 +1003,7 @@ function addnewCollege($data,$files)
     
     
     $query="INSERT INTO college(collage_name,state_id,collage_type_id,approvel_id,
-    affiliated_id,course_id,gender,created,updated,city_id,rank,logo,bruchre) ";
+    affiliated_id,degree_id,gender,created,updated,city_id,rank,logo,bruchre) ";
     $query.="VALUES('$collage_name','$state_id','$Collage_type','$approvel_id',
     '$affiliated_id','$course_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload')";
   
@@ -1028,7 +1054,7 @@ function updatecollegedetails($data)
    
     $query="update  college set
     collage_name='$collage_name',state_id='$state_id',collage_type_id='$Collage_type',approvel_id='$approvel_id',
-    affiliated_id='$affiliated_id',course_id='$course_id',gender='$gender',updated='$created',rank='$rank',city_id='$city_id' Where id='$id'";
+    affiliated_id='$affiliated_id',degree_id='$course_id',gender='$gender',updated='$created',rank='$rank',city_id='$city_id' Where id='$id'";
     
     echo $query;
     $runQuery = mysqli_query($db,$query);
@@ -1169,13 +1195,13 @@ function checkcounsler($data)
 
   function getTopCollege($data){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,ct.city_name,a.agencey_name,re.review,r.rating
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
     join State st on st.id = c.state_id
-    join Stream s on s.id = ss.stream_id
+    
     join affiliation af on af.id= c.affiliated_id
     join Approval ap on ap.id = c.approvel_id
     join City ct on ct.id = c.city_id
@@ -1194,19 +1220,19 @@ function checkcounsler($data)
 
 function getCollegelist($data){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,ct.city_name
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
     join State st on st.id = c.state_id
-    join Stream s on s.id = ss.stream_id
+    
     join affiliation af on af.id= c.affiliated_id
     join Approval ap on ap.id = c.approvel_id
     join City ct on ct.id = c.city_id
 
    
-    where  s.stream_name ='$data' ";
+    where  s.specialization_name ='$data' ";
 
    $runQuery = mysqli_query($db,$query);
    
@@ -1226,10 +1252,10 @@ function addkyc($data,$files)
     
     $pannumber = mysqli_real_escape_string($db, $data['pannumber']);
 
-    $adhar =$files['adhar']['tmp_name'];
+    // $adhar =$files['adhar']['tmp_name'];
     $pan = $files['pan']['tmp_name'];
     $panupload = base64_encode(file_get_contents(addslashes($pan)));
-    $adharupload = base64_encode(file_get_contents(addslashes($adhar)));
+    // $adharupload = base64_encode(file_get_contents(addslashes($adhar)));
   
     if ($email_id == '' || $pannumber == ''  ) {
         $user['errors'][] = "all fields are required !";
@@ -1250,8 +1276,8 @@ function addkyc($data,$files)
     
     
    
-    $query="INSERT INTO counsler_kyc(adhar,pan,pannumber,counslerid,created) ";
-    $query.="VALUES('$adharupload','$panupload','$pannumber',' $cou','$created')";
+    $query="INSERT INTO counsler_kyc(pan,pannumber,counslerid,created) ";
+    $query.="VALUES('$panupload','$pannumber',' $cou','$created')";
     $runQuery = mysqli_query($db,$query);
 
     if($runQuery){
@@ -1269,13 +1295,13 @@ function addkyc($data,$files)
 
 function getCollegeByRank(){
     $db=$GLOBALS['db'];
-    $query ="SELECT s.stream_name, c.*,ss.sub_stream_name,cs.course_name,st.state_name,
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name,rt.rating,count(rv.id) as rv
     FROM college c
-    join Courses cs on cs.id = c.course_id
-    join sub_stream ss on ss.id = cs.sub_stream_id
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
     join State st on st.id = c.state_id
-    join Stream s on s.id = ss.stream_id
+   
     join affiliation af on af.id= c.affiliated_id
     join Approval ap on ap.id = c.approvel_id
     join Collage_type cty on cty.id = c.collage_type_id

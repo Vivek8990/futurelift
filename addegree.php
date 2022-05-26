@@ -1,19 +1,12 @@
 <?php
 require_once('functions.php');
-$id='';
-if (isset($_GET['id']))
-{
-    $collegeid=$_GET['id'];
-   
-}$course=Courseslist();
+$course=Courseslist();
 $affiliationlist=affiliationlist();
 $Approvallist=Approvallist();
 $Agenceylist=Agenceylist();
 $getCollegetype=getCollegetype();
 $statelist=statelist();
 $citylist=citylist();
-$college= getcollege($collegeid);
-
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
 ?>
@@ -70,6 +63,7 @@ body {
 </style>
 </head>
 <body>
+
 <div class="sidenav">
   <a href="admin_dashboard.php">Dashboard</a>
   <a href="collegelist.php">collegelist</a>
@@ -83,42 +77,34 @@ body {
   <?php } ?>
   <a href="functions.php?adminlogout">Signout</a>
 </div>
+
   <!-- college addition form start -->
-  <div class="main"> 
+  <div class="main">
   <section class="form-section" id="form-section">
     <div >
       <div >
         
         <div >
-          <h1>Update College</h1>
-          <form action="functions.php?updatecollege" class="text-center" method="post">
+          <h1>Add College</h1>
+          <form action="functions.php?addcollege" class="text-center" method="post" enctype="multipart/form-data">
             <div class="form-group ">
-            <input type="text" hidden name="id" value="<?php echo $collegeid; ?>" >
-
               <div class="row ">
                 <div class="col-2">
                   <label for="" class="form-label"><i class="fa fa-user"></i></label>
                 </div>
                 <div class="col-10">
-                  <input type="text" name="collage_name" value="<?php echo $college[0]['collage_name']; ?>" class="form-control" required placeholder="College name"autocomplete="off">
+                  <input type="text" name="collage_name" class="form-control" required placeholder="College name"autocomplete="off">
                 </div>
               </div>
             </div>
             <div class="form-group">
               <div class="row">
               <select name="state_id" id="cars">
-              
-             
+              <option value="">Select State</option>
                                 <?php
                     while($row =mysqli_fetch_array($statelist,MYSQLI_ASSOC))
-                    if($row['id']==$college[0]['state_id'])
+
                     {
-                      echo "<option value='".$row['id'] ."' selected>".$row['state_name'] ."</option>";
-                    }
-                    
-                    
-                   else
-                    { 
                     echo "<option value='".$row['id'] ."'>".$row['state_name'] ."</option>";
 
                     }
@@ -128,22 +114,14 @@ body {
               </div>
 
             </div>
-
             <div class="form-group">
               <div class="row">
               <select name="city_id" id="cars">
-              
-             
+              <option value="">Select City</option>
                                 <?php
                     while($row =mysqli_fetch_array($citylist,MYSQLI_ASSOC))
-                    if($row['id']==$college[0]['city_id'])
+
                     {
-                      echo "<option value='".$row['id'] ."' selected>".$row['city_name'] ."</option>";
-                    }
-                    
-                    
-                   else
-                    { 
                     echo "<option value='".$row['id'] ."'>".$row['city_name'] ."</option>";
 
                     }
@@ -153,21 +131,13 @@ body {
               </div>
 
             </div>
-
             <div class="form-group">
               <div class="row">
               <select name="Collage_type" id="cars">
-             
+              <option value="">Select College Type</option>
                                 <?php
                     while($row =mysqli_fetch_array($getCollegetype,MYSQLI_ASSOC))
-                    if($row['id']==$college[0]['collage_type_id'])
-                    {
-                      echo "<option value='".$row['id'] ."' selected>".$row['type'] ."</option>";
-                    }
-                    
-                    
-                   else
-                    
+
                     {
                     echo "<option value='".$row['id'] ."'>".$row['type'] ."</option>";
 
@@ -180,17 +150,10 @@ body {
             <div class="form-group">
               <div class="row">
               <select name="approvel_id" id="cars">
-              
+              <option value="">Select Approval</option>
                                 <?php
                     while($row =mysqli_fetch_array($Approvallist,MYSQLI_ASSOC))
-                    if($row['id']==$college[0]['approvel_id'])
-                    {
-                      echo "<option value='".$row['id'] ."' selected>".$row['approval_name'] ."</option>";
-                    }
-                    
-                    
-                   else
-                    
+
                     {
                     echo "<option value='".$row['id'] ."'>".$row['approval_name'] ."</option>";
 
@@ -206,14 +169,7 @@ body {
               <option value="">Select Affiliation</option>
                                 <?php
                     while($row =mysqli_fetch_array($affiliationlist,MYSQLI_ASSOC))
-                    if($row['id']==$college[0]['affiliated_id'])
-                    {
-                      echo "<option value='".$row['id'] ."' selected>".$row['affiliation_name'] ."</option>";
-                    }
-                    
-                    
-                   else
-                    
+
                     {
                     echo "<option value='".$row['id'] ."'>".$row['affiliation_name'] ."</option>";
 
@@ -229,16 +185,9 @@ body {
               <option value="">Select Course</option>
                                 <?php
                     while($row =mysqli_fetch_array($course,MYSQLI_ASSOC))
-                    if($row['id']==$college[0]['course_id'])
+
                     {
-                      echo "<option value='".$row['id'] ."' selected>".$row['degree_name'] ."</option>";
-                    }
-                    
-                    
-                   else
-                    
-                    {
-                    echo "<option value='".$row['id'] ."'>".$row['degree_name'] ."</option>";
+                    echo "<option value='".$row['id'] ."'>".$row['course_name'] ."</option>";
 
                     }
 
@@ -250,39 +199,46 @@ body {
             <div class="form-group">
               <div class="row ">
               <select name="gender" id="cars">
-              <?php
-              if($row['gender']=="Coed")
-                    {
-                      echo "<option value='Coed' selected>Coed</option>";
-                    }
-                    
-                    
-                   else  if($row['gender']=="Girls")
-                    
-                    {
-                    echo "<option value='Girls' selected>Girls</option>";
-
-                    }
-                   
-                        echo "<option value='Coed' >Coed</option>";
-                        echo "<option value='Girls' >Girls</option>";
-                    
-                    ?>
+                <option value="">Gender accepted</option>
+                <option value="Coed">Co-ed</option>
+                <option value="girls">Girls</option>
+               
               </select>
               </div>
             </div>
+            
 
-            <div class="form-group">
-            <div class="row ">
+            <div class="form-group ">
+              <div class="row ">
                 <div class="col-2">
-                  <label for="" class="form-label"><i class="fa fa-user"></i></label>
+                  <span>Upload Bruchre</span>
                 </div>
                 <div class="col-10">
-                  <input type="text" name="rank" value="<?php echo $college[0]['rank']; ?>" class="form-control" required placeholder="College rank"autocomplete="off">
+                  <input type="file" name="brucher" class="form-control" required >
                 </div>
               </div>
-
             </div>
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <span>Upload logo</span>
+                </div>
+                <div class="col-10">
+                  <input type="file" name="logo" class="form-control" required >
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <label for="" class="form-label"></label>
+                </div>
+                <div class="col-10">
+                  <input type="text" name="rank" class="form-control" placeholder="College rank" required >
+                </div>
+              </div>
+            </div>
+
             <button type="submit" class="btn">Submit</button>
             
           </form>

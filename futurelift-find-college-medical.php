@@ -87,17 +87,17 @@ function searchcollegebyfilter(){
 
 
 
-   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.course_name,s.state_name,ct.type ,
-   co.course_name,sst.sub_stream_name,ss.stream_name 
+   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,s.state_name,ct.type ,
+   co.degree_name,ss.specialization_name 
    FROM college c 
    join affiliation af on af.id=c.affiliated_id
    join Approval ap on ap.id= c.approvel_id 
-   join Courses co on co.id= c.course_id
+   join Degree co on co.id= c.degree_id
    join State s on s.id=c.state_id 
    join Collage_type ct on ct.id=c.collage_type_id 
    join City cy on cy.id = c.city_id
-   join sub_stream sst on sst.id=co.sub_stream_id
-   join Stream ss on ss.id = sst.stream_id
+   
+   join Spacialization ss on ss.id = co.specialization_id
    join Country cty on cty.id = s.country_id
    join collage_mode cm on cm.collage_id = c.id
    join study_mode sm on sm.id = cm.study_mode_id
@@ -105,16 +105,16 @@ function searchcollegebyfilter(){
    join hostels h on h.id = ch.hostel_id
    join collage_facilities cf on cf.collage_id = c.id
    join facilities fa on fa.id = cf.facility_id
-   join spacialization sp on sp.id = co.specilization_id 
+  
    where  cty.country_name='India'" ;
 
     if($state){ $query.=" and s.state_name='$state'"; }
     if($city){ $query.=" and cy.city_name='$city'"; } 
     if($type){ $query.=" and ct.type='$type'"; }
-    if($degree){ $query.=" and co.course_name='$degree'"; }
+    if($degree){ $query.=" and co.degree_name='$degree'"; }
     if($mode){ $query.=" and sm.mode='$mode'"; }
     if($hostels){ $query.=" and h.type='$hostels'"; }
-    if($freerange){ $query.=" and co.course_name='$freerange'"; }
+    // if($freerange){ $query.=" and co.course_name='$freerange'"; }    
 
     if($facilities){ $query.=" and fa.facility='$facilities'"; }
     if($spacialization){ $query.=" and sp.type='$spacialization'"; }
@@ -163,13 +163,13 @@ function searchcollegebyfilter(){
 <body>
     <!-- Header Section Start -->
     <header class="header">
-        <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+        <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
         <nav class="navbar">
             <div class="user">
                 <i class="fas fa-user"></i>
             </div>
-            <a href="career.html" class="active">Career Solutions</a>
-            <a href="explore-colleges.html" class="active">explore colleges</a>
+            <a href="career.php" class="active">Career Solutions</a>
+            <a href="explore-colleges.php" class="active">explore colleges</a>
             <a href="" class="active"> partner</a>
             <a href="#" class="active">admission</a>
             <div class="dropdown">
@@ -899,7 +899,8 @@ function searchcollegebyfilter(){
       <div class='d-flex justify-content-space-between align-items-center'>
           <div class='collegLogo'>
               <figure>
-                  <img src='images/patners/".$row['logo']."' alt='' class='img-fluid'>
+                  <img src='data:image;base64,".$row['logo']."' alt='' class='img-fluid'>
+                  
               </figure>
           </div> 
 

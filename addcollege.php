@@ -1,6 +1,7 @@
 <?php
 require_once('functions.php');
 $course=Courseslist();
+$specilization=specilizationlist();
 $affiliationlist=affiliationlist();
 $Approvallist=Approvallist();
 $Agenceylist=Agenceylist();
@@ -182,12 +183,12 @@ body {
             <div class="form-group">
               <div class="row">
               <select name="course_id" id="cars">
-              <option value="">Select Course</option>
+              <option value="">Select Degree</option>
                                 <?php
                     while($row =mysqli_fetch_array($course,MYSQLI_ASSOC))
 
                     {
-                    echo "<option value='".$row['id'] ."'>".$row['course_name'] ."</option>";
+                    echo "<option value='".$row['id'] ."'>".$row['degree_name'] ."</option>";
 
                     }
 
@@ -195,7 +196,7 @@ body {
                 </select>
               </div>
             </div>
-           
+            
             <div class="form-group">
               <div class="row ">
               <select name="gender" id="cars">
