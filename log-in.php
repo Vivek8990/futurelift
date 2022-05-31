@@ -1,7 +1,10 @@
-
 <?php
   
 session_start();?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,15 +43,15 @@ session_start();?>
 <body>
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.php" class="active">Career Solutions</a>
-      <a href="explore-colleges.php" class="active">explore colleges</a>
+      <a href="career.html" class="active">Career Solutions</a>
+      <a href="explore-colleges.html" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
-      <a href="admission.php" class="active">admission</a>
+      <a href="admission.html" class="active">admission</a>
       <div class="dropdown">
         <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
           more
@@ -61,16 +64,22 @@ session_start();?>
       </div>
       <?php if($login){?>
        
-       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
-       <a class="active" href="functions.php?logout">Signout</a><?php }
-      ?>
+        <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+        <a class="active" href="functions.php?logout">Signout</a><?php }
+       ?>
+       <div class="btnGroup">
+         <?php if(!$login){ ?>
+         <a href="log-in.php" class="btn btn-sign">log in</a>
+         <a href="sign-up.php" class="btn">sign up</a>
+         <?php    
+         } 
+         ?>
+
+
+
       <div class="btnGroup">
-        <?php if(!$login){ ?>
-        <a href="log-in.php" class="btn btn-sign">log in</a>
-        <a href="sign-up.php" class="btn">sign up</a>
-        <?php    
-        } 
-        ?>
+        <a href="log-in.html" class="btn btn-sign">log in</a>
+        <a href="sign-up.html" class="btn">sign up</a>
       </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
@@ -92,8 +101,17 @@ session_start();?>
         </div>
         <div class="signBox">
           <h1>sign in</h1>
-          <form action="functions.php?login" class="text-center" method="post">
-            
+          <form action="sign-up.html" class="text-center">
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <label for="" class="form-label"><i class="fa fa-user"></i></label>
+                </div>
+                <div class="col-10">
+                  <input type="text" name="name" class="form-control" placeholder="name" id="user" autocomplete="off">
+                </div>
+              </div>
+            </div>
             <div class="form-group">
               <div class="row">
                 <div class="col-2">
@@ -117,64 +135,79 @@ session_start();?>
               </div>
             </div>
             
-            <p class=" text-center"> have not an account?<a href="sign-up.php">sign up</a></p>
+            <p class=" text-center"> have not an account?<a href="sign-up.html">sign up</a></p>
             <button type="submit" class="btn text-center">Submit</button>
             <a href="" class="linkForgt">forgot password?</a>
           </form>
           <?php
-if(isset($_SESSION['msg'])){
-    foreach($_SESSION['msg'] as $message){
-        ?>
-<div class="alert alert-danger" role="alert">
-<?=$message?>
-</div>
-        <?php
-    }
-}
-    ?>
+          if(isset($_SESSION['msg'])){
+              foreach($_SESSION['msg'] as $message){
+                  ?>
+          <div class="alert alert-danger" role="alert">
+          <?=$message?>
+          </div>
+                  <?php
+              }
+          }
+              ?>
         </div>
       </div>
     </div>
     <!-- <div class="round"></div> -->
   </section>
-  <!-- footer Start -->
-  <footer class="footer">
-    <div class="row">
-      <div class="main-first d-flex flex-wrap align-items-center">
-        <div class="main1 col-3">
-            <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
-        </div>
-        <div class="footerHead col-3">
-            <h4 class="text-light ">quick links</h4>
-            <ul>
-                <li><a href="about.html">about us</a></li>
-                <li><a href="">FAQs</a></li>
-                <li><a href="policy.html">privacy policy</a></li>
-                <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
-            </ul>
-        </div>
-        <div class="footerHead col-3">
-            <h4 class="text-light">our services</h4>
-            <ul>
-                <li><a href="">contact us</a></li>
-                <li><a href="">....</a></li>
-                <li><a href="">....</a></li>
-            </ul>
-        </div>
-        <div class="main2 col-3">
-            <a href="https://www.facebook.com/Future-Lift-Education-PVT-LTD-112127913993548/"><i class="fab fa-facebook-square"></i></a>
-            <a href="https://instagram.com/futurelift_education?utm_medium=copy_link"><i class="fab fa-instagram-square"></i></a>
-            <a href=" https://twitter.com/Futurelift_edu?s=09"><i class="fab fa-twitter-square"></i></a>
-            <a href="https://youtube.com/channel/UCvY_1Aon-HqSHzqWwvIU2zQ"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/company/futurelift-duication"><i class="fab fa-linkedin"></i></a>
 
+  <!-- footer start -->
+  <footer id="footer" class="footer-area section-padding">
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
+            <div class="footer-logo mb-3">
+              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
+            <h3 class="footer-titel">quick links</h3>
+            <ul>
+              <li><a href="about.html">about us</a></li>
+              <li><a href="">FAQs</a></li>
+              <li><a href="policy.html">privacy policy</a></li>
+              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">
+            <h3 class="footer-titel">our services</h3>
+            <ul>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Clients</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.8s">
+            <h3 class="footer-titel">Find us on</h3>
+            <div class="social-icon">
+              <a href="https://www.facebook.com/Future-Lift-Education-PVT-LTD-112127913993548/"><i class="fab fa-facebook-square"></i></a>
+              <a href="https://instagram.com/futurelift_education?utm_medium=copy_link"><i class="fab fa-instagram-square"></i></a>
+              <a href=" https://twitter.com/Futurelift_edu?s=09"><i class="fab fa-twitter-square"></i></a>
+              <a href="https://youtube.com/channel/UCvY_1Aon-HqSHzqWwvIU2zQ"><i class="fab fa-youtube-square"></i></a>
+              <a href="https://www.linkedin.com/company/futurelift-duication"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
         </div>
+      </div>  
+    </div>     
+  </footer> 
+  <!-- footer end -->
+
+  <section id="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>Copyright © 2022 future lift All Right Reserved</p>
+        </div>
+      </div>
     </div>
-  </div>
-    <hr>
-    <p>copyrights&copy;<span> future lift</span>-2022</p>
-</footer>
-  <!-- Footer End -->
+  </section>
 
   <script src="js/script.js"></script>
  

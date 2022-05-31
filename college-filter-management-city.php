@@ -92,7 +92,7 @@ $specilizationlist = getspecilizationlist();
 		<div class="divider py-5"></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3  left_side">
+				<div class="col-lg-3  left_side" id="showFilter">
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
 							<h2 class="filter_info-header float-start" id="digree-filterOpen">degree</h2>

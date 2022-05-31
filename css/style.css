@@ -37,6 +37,7 @@ body{
 }
 ul,li,ol{
     list-style: none;
+    padding-left: 0;
 }
 
 .heading{
@@ -888,7 +889,7 @@ color: rgb(19, 19, 71);
     height: 1.25rem;
     margin-left: auto;
     content: "";
-    background-image: url(/images/Arrow-down.png);
+    background-image: url(../images/Arrow-down.png);
     background-repeat: no-repeat;
     background-size: 1.25rem;
     
@@ -1150,7 +1151,7 @@ width: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    background:url(/images/gnihm.jpg) no-repeat;
+    background:url(../images/gnihm.jpg) no-repeat;
     background-size: cover;
 }
 .topUniCol .colInfo::before{
@@ -1479,6 +1480,13 @@ left: 20%;
     flex-wrap: wrap;
     
 }
+.collgBox{
+    margin: .3rem auto;
+    /* background: #ddd; */
+    transition: .5s ;
+    border: .1rem solid #ebebeb;
+}
+
 .futureTabs .allTabs .collgBox{
     margin: .8rem 0;
     align-items: center;
@@ -1643,12 +1651,6 @@ left: 20%;
     color: rgb(58, 3, 3);
     font-size: 2rem;
 } */
-.collgBox{
-    margin: .3rem auto;
-    /* background: #ddd; */
-    transition: .5s ;
-    border: 1px solid gray;
-}
 
 .TopColleges img{
     width: 12rem;
@@ -1879,7 +1881,7 @@ box-shadow: 2px 5px 10px rgba(248, 136, 136, 0.8)
     color: #808080;
 }
 .form-section{
-    padding-top: 10rem;
+    /* padding-top: 10rem; */
 }
 form{
     width:100%;
@@ -2114,14 +2116,78 @@ input[type="email"]{
     text-align: center;
     
 }
-.footer{
-    padding: 1.5rem 9%;
+/* footer */
+
+.footer-area{
     background: #1e2c3d ;
+    padding: 1.5rem;
 }
+.footer-area .footer-titel{
+    color: #fff;
+}
+.footer-area .footer-logo{
+    padding: 1.5rem;
+}
+.footer-area .footer_div ul li a{
+    font-size: 1.3rem;
+    color: #fff;
+    opacity: 50%;
+    text-decoration: none;
+}
+.footer-area .footer_div ul li a:hover{
+    
+    opacity: 90%;
+    border-bottom: .1rem solid #fff;
+}
+.footer-area .footer_div .social-icon a .fab{
+    font-size: 2.8rem;
+    color: #dcdcdc;
+    padding-left: .5rem;
+}
+.footer-area .footer_div .social-icon a .fa-facebook-square:hover{
+    color: #4267B2;
+}
+.footer-area .footer_div .social-icon a .fa-instagram-square:hover{
+    color: #e95950;
+}
+.footer-area .footer_div .social-icon a .fa-twitter-square:hover{
+    color: #1DA1F2;
+}
+.footer-area .footer_div .social-icon a .fa-youtube-square:hover{
+    color: #FF0000;
+}
+.footer-area .footer_div .social-icon a .fa-linkedin:hover{
+    color: #2867B2;
+}
+/* copy rights */
+#copyright {
+    background: #1e2c3d;
+    border-top: .1rem dotted rgb(180, 180, 180, 50%);
+    padding: 10px;
+  }
+  
+  #copyright p {
+    line-height: 42px;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  #copyright p a {
+    color: #fff;
+  }
+  
+  #copyright p a:hover {
+    color: #137ED9;
+  }
+
+/*
 .footer .main-first{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 .main-first .main1 img{
    width: 150px;
@@ -2168,7 +2234,7 @@ cursor: pointer;
     color: #ffffff;
     font-size: 1.4rem;
     opacity: .5;
-}
+} */
 /* back to top */
 .back-to-top {
     position: fixed;
@@ -2177,11 +2243,12 @@ cursor: pointer;
     right: 15px;
     bottom: 15px;
     z-index: 10001;
-    background: #e03a3c;
+    background:var(--primary-bg-color);
     width: 40px;
     height: 40px;
     border-radius: 4px;
     transition: all 0.4s;
+    text-decoration: none;
   }
   .back-to-top i {
     font-size: 28px;
@@ -2189,7 +2256,7 @@ cursor: pointer;
     
   }
   .back-to-top:hover {
-    background: #e65d5f;
+    background:var(--btn-bg-color);
     color: #fff;
   }
   .back-to-top.active {
@@ -3127,14 +3194,21 @@ width: 100%;
 
 /* college Filter */
 .college_filter_page_management .filter-item .filter-body .filterItems{
-    height: 15rem!important;
-    overflow:auto;
+    height: 18rem!important;
+    overflow-y:scroll;
     margin-top: 1.5rem;
+}
+.college_filter_page_management .filter-item{
+    margin-bottom: .8rem;
 }
 .toggle-heade .accordion-button:not(.collapsed) {
     color:rgb(255, 202, 202) !important;
     background-color: transparent !important;
     box-shadow: none;
+}
+.filter-body{
+    background: #fff;
+    padding: .8rem;
 }
 .filter-body .filterItems .filterBtn:focus{
     border: none !important;
@@ -3142,8 +3216,12 @@ width: 100%;
 }
 .toggle-heade{
     background: var(--primary-bg-color) !important;
-    color: #fff;
     padding: .8rem;
+}
+.toggle-heade h2{
+    font-size: 1.4rem;
+    color: #fff;
+    text-transform: uppercase;
 }
 .toggle-heade .accordion-button{
     background: transparent;
@@ -3185,10 +3263,21 @@ width: 100%;
 .filterItems .filterContentCheck span{
     font-size: 1.1rem;
 }
+#more {display: none;}
+.readMore{
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
 
 /* right Side */
 .right_side{
     position: relative;
+}
+.right_side .boxfilterDitails{
+    display: none;
 }
 .right_side .logowithDitail{
     display: flex;
@@ -3239,14 +3328,40 @@ width: 100%;
     font-size: 1.5rem;
     font-weight: 600;
 }
+.filterCall{
+    width: 12rem;
+    /* background: var(--primary-bg-color); */
+    border: .2rem solid var(--primary-bg-color);
+    text-align: center;
+    margin-right: 2.5rem;
+    float: right;
+    border-radius: 5rem;
+    display: none;
+}
+.filterCall h4{
+    padding: 1rem;
+    font-weight: 800;
+    color:var(--primary-bg-color);
+    cursor: pointer;
+}
+.loadMore{
+    margin-left: 70rem;
+}
+/* .center-block{
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+} */
 
 /* college filter end */
 
-
+/* Counseler Form */
 
 .cunslForm{
-    background: var(--primary-bg-color);
+    background: var(--main-bg-color);
     padding: 1.5rem;
+    width: 100%;
 }
 .cunslForm .form-group .form-label{
     font-size: 1.3rem;
@@ -3311,7 +3426,7 @@ text-transform: capitalize;
     background: var(--primary-bg-color);
     color: #fff;
 }
-/* filter of colleges */
+
 
 
 
@@ -3362,11 +3477,6 @@ text-transform: capitalize;
 
 
 /* media Queris */
-@media screen and (max-width: 1024px){
-    .filterBlock {
-        display: block;
-    }
-}
 
 
 
@@ -3381,17 +3491,18 @@ text-transform: capitalize;
     section{
         padding: 0rem;
     }
-
-}
-
-@media screen and (max-width: 768px){
-    .filter_box .modal-body {
-        padding: 0;
-        position: relative;
-        min-height: 315px;
-        overflow: hidden;
+    .left_side{
+        display: none;
+        
+        
     }
+    .filterCall{
+        display: inline;
+    }
+    
+
 }
+
 
 @media(max-width:768px)
 {
@@ -3451,6 +3562,30 @@ text-transform: capitalize;
     .home .content h3{
         font-size: 3rem;
     }
+    .left_side{
+        display: initial;
+        position: absolute;
+        top:-581px;
+        z-index: 100;
+    }
+    .left_side .filter-item{
+        display: flex;
+        background: #fff;
+    }
+    .show-filter{
+        top: 180px;
+        left: 0;
+    }
+    .toggle-heade{
+        width: 15rem;
+    }
+    .filter-body{
+        width: 43rem;
+    }
+    .mobile-width{
+        width: 100% !important;
+    }
+    
 }
 @media(max-width:425px){
 html{
@@ -3618,17 +3753,15 @@ top: 38%;
 .formBox .formContainer .signBox{
     width: 100%;
 } 
-.footer {
+/* .footer {
     padding: 0.5rem 2%;
 }
 .footer .main-first{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   
 }
 .footer .main2{
     display: flex;
-}
+} */
 .eqry {
     top: 40%;
     left: -4.5rem;
@@ -3665,7 +3798,7 @@ top: 38%;
 }
 .dropdown-menu[data-bs-popper] {
     top: 0%;
-    left: 100%;
+    left: 73%;
     margin-top: 0.125rem;
 }
 .dropdown-toggle::after {
@@ -3723,14 +3856,14 @@ top: 38%;
         left: 8px;
         
     }
-.imgaRef {
-    margin-left: 7rem;
-}
-.refText {
+    .imgaRef {
+        margin-left: 7rem;
+    }
+    .refText {
 
-    padding-left: 17rem;
-    
-}
+        padding-left: 17rem;
+        
+    }
     .modal {
         top: 29%;
         
@@ -3751,7 +3884,7 @@ top: 38%;
         left: 12%;
         color: var(--primary-bg-color);
         font-size: 4.5rem;
-}
+    }
 
     .allBtn {
        top: .3rem;
@@ -3765,7 +3898,8 @@ top: 38%;
        
     }
     #mainPopUp .formBox{
-        left: 6%;
+        left: 10%;
+        top: 13%;
     }
    .formBox{
        padding: 5rem;
@@ -3789,17 +3923,17 @@ top: 38%;
         transform: translateX(0%);
         padding-bottom:0;
     }
-    .footer {
-        padding: 0.5rem 2%;
-        margin-top: 25rem;
-    }
-    .main-first .main1 img {
+    /* .footer {
+        padding: 0.5rem 2%; */
+        /* margin-top: 10rem; */
+    
+    /* .main-first .main1 img {
         width: 80px;
     }
     .footer .footerHead h4 {
         
         padding-top: 2rem;
-    }
+    } */
     .service .container {
     
         margin-top: -7rem;
@@ -3829,7 +3963,7 @@ top: 38%;
         margin-top: 5rem;
     }
     .form-section{
-        margin-top: 10rem;
+        /* margin: 5.5rem 0 5.5rem 0; */
     }
     .referErn .accountMain {
        
@@ -3858,6 +3992,37 @@ top: 38%;
     }
     .form-counseler{width: 100%;}
 
+    .filter-body {
+        width: 38rem;
+    }
+    .show-filter{
+        top: 120px;
+        left: 0;
+    }
+    .right_side .logowithDitail .col-name p {
+        font-size: 1.3rem;
+        
+    }
+    
+    .boxfilterDitails .btn{
+        font-size: 1rem !important;
+        padding: .5rem 1rem;
+    }
+    .right_side .logowithDitail .col-name h3 a{
+        font-size: inherit;
+    }
+    .footer-area .footer-logo {
+        width: 20rem;
+        
+    }
+    .page_college .banner_college .colgImg {
+        height: auto; 
+        border: none;
+    }
+    .loadMore{
+        margin-left: 20rem;
+    }
+
 }
 
 /* timeline media query */
@@ -3876,6 +4041,9 @@ top: 38%;
     }
     .main-timeline .timeline:nth-child(2n) .timeline-content {
         padding: 10px 30px 10px 0;
+    }
+    .college_filter_page_management .filter-item{
+        margin-bottom: 0rem;
     }
 }
 

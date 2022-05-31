@@ -5,21 +5,9 @@ menu.onclick = () => {
     menu.classList.toggle('fa-itmes');
     navbar.classList.toggle('active');
 }
-// window.onscroll = () => {
-//     menu.classList.remove('fa-itmes');
-//     navbar.classList.remove('active');
-// }
 
-    // var swiper = new Swiper(".mySwiper1", {
-    //   pagination: {
-    //     el: ".swiper-pagination",
-    //     type: "fraction",
-    //   },
-    //   navigation: {
-    //     nextEl: ".swiper-button-next",
-    //     prevEl: ".swiper-button-prev",
-    //   },
-    // });
+
+
 
     document.getElementById('mySearch').addEventListener('click',function(){
 			var x = document.getElementById('myUl');
@@ -602,6 +590,7 @@ slidesPerGroup: 1
   });
 
 })()
+
 // copy code
 function copy(){
   var copy = document.getElementById('copyCode');
@@ -620,4 +609,18 @@ function copyLink(){
 
 
 
-// 
+// window.onscroll = () => {
+//     menu.classList.remove('fa-itmes');
+//     navbar.classList.remove('active');
+// }
+
+    // var swiper = new Swiper(".mySwiper1", {
+    //   pagination: {
+    //     el: ".swiper-pagination",
+    //     type: "fraction",
+    //   },
+    //   navigation: {
+    //     nextEl: ".swiper-button-next",
+    //     prevEl: ".swiper-button-prev",
+    //   },
+    // });
