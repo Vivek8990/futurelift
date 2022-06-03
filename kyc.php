@@ -44,22 +44,22 @@ $data=$_SESSION['userdata'];
 <body>
      <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.html" class="active">Career Solutions</a>
-      <a href="explore-colleges.html" class="active">explore colleges</a>
+      <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
-      <a href="admission.html" class="active">admission</a>
+      <a href="admission.php" class="active">admission</a>
       <div class="dropdown">
         <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
           more
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Colleges</a></li>
-          <li><a class="dropdown-item" href="counselerForm.html">counseler</a></li>
+          <li><a class="dropdown-item" href="counselerForm.php">counseler</a></li>
           <li><a class="dropdown-item" href="#">news</a></li>
         </ul>
       </div>
@@ -78,8 +78,8 @@ $data=$_SESSION['userdata'];
  
 
       <div class="btnGroup">
-        <a href="log-in.html" class="btn btn-sign">log in</a>
-        <a href="sign-up.html" class="btn">sign up</a>
+        <a href="log-in.php" class="btn btn-sign">log in</a>
+        <a href="sign-up.php" class="btn">sign up</a>
       </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
@@ -95,24 +95,25 @@ $data=$_SESSION['userdata'];
                         <img src="images/kyc-01.png" alt="" class="img-fluid" style="width: 300px;">
                     </figure>
                 </div>
-                <form action="referandearnsharecode.html" class="kycForm" >
+                <form action="functions.php?kyc" class="kycForm" method="post" enctype="multipart/form-data" >
                     <fieldset>
-                        <legend>upload your aadhar</legend>
-                        <div class="input-group">
-                            <input type="file" class="form-control" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                          </div>
+                    <legend>your email</legend>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="email" aria-label="Upload">
+                        
+                      </div>
                     </fieldset>
                     <fieldset>
                       <legend>your pan card</legend>
                       <div class="input-group">
-                          <input type="file" class="form-control" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                          <input type="file" class="form-control" required id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="pan">
                           
                         </div>
                   </fieldset>
                   <fieldset>
                     <legend>your pan number</legend>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <input type="text" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="pannumber">
                         
                       </div>
                 </fieldset>
@@ -137,10 +138,10 @@ $data=$_SESSION['userdata'];
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
             <h3 class="footer-titel">quick links</h3>
             <ul>
-              <li><a href="about.html">about us</a></li>
+              <li><a href="about.php">about us</a></li>
               <li><a href="">FAQs</a></li>
-              <li><a href="policy.html">privacy policy</a></li>
-              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+              <li><a href="policy.php">privacy policy</a></li>
+              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">

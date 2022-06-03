@@ -374,7 +374,7 @@ where c.id=$id";
 function getcity(){
    $db=$GLOBALS['db'];
    
-   $query="SELECT * FROM City ";
+   $query="SELECT * FROM City order by city_name";
   
   $runQuery=mysqli_query($db,$query);
   
@@ -990,6 +990,7 @@ function addnewCollege($data,$files)
     $course_id = mysqli_real_escape_string($db, $data['course_id']);
     $gender = mysqli_real_escape_string($db, $data['gender']);
     $rank = mysqli_real_escape_string($db, $data['rank']);
+    $fees = mysqli_real_escape_string($db, $data['fees']);
     $logo =$files['logo']['tmp_name'];
     $bruchre = $files['brucher']['tmp_name'];
     $logoupload = base64_encode(file_get_contents(addslashes($logo)));
@@ -1009,10 +1010,16 @@ function addnewCollege($data,$files)
   
     $runQuery = mysqli_query($db,$query);
     
-    
-
+    $last_id = $db->insert_id;
+echo $last_id ;
     
     if($runQuery){
+
+        $queryfee="INSERT INTO college_fee(college_id,course_id,course_fee) ";
+        $queryfee.="VALUES('$last_id','$course_id','$fees')";
+      
+        $runQueryfee = mysqli_query($db,$queryfee);
+         
         $user['success']="college added successfully !";
 
         

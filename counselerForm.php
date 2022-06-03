@@ -1,3 +1,7 @@
+<?php
+require_once('functions.php');?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,28 +38,28 @@
 
 <body>
     <header class="header">
-        <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+        <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
         <nav class="navbar">
             <div class="user">
                 <i class="fas fa-user"></i>
             </div>
-            <a href="career.html" class="active">Career Solutions</a>
-            <a href="explore-colleges.html" class="active">explore colleges</a>
+            <a href="career.php" class="active">Career Solutions</a>
+            <a href="explore-colleges.php" class="active">explore colleges</a>
             <a href="" class="active"> partner</a>
-            <a href="admission.html" class="active">admission</a>
+            <a href="admission.php" class="active">admission</a>
             <div class="dropdown">
                 <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
                     more
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Colleges</a></li>
-                    <li><a class="dropdown-item" href="counselerForm.html">counseler</a></li>
+                    <li><a class="dropdown-item" href="counselerForm.php">counseler</a></li>
                     <li><a class="dropdown-item" href="#">news</a></li>
                 </ul>
             </div>
             <div class="btnGroup">
-                <a href="log-in.html" class="btn btn-sign">log in</a>
-                <a href="sign-up.html" class="btn">sign up</a>
+                <a href="log-in.php" class="btn btn-sign">log in</a>
+                <a href="sign-up.php" class="btn">sign up</a>
             </div>
         </nav>
         <i class="fas fa-bars" id="manu-bars"></i>
@@ -139,9 +143,12 @@
                                 <label for="salary preference" class="form-label">slary preference <span>(optional)</span></label>
                                 <select name="salary" id="" class="form-select">
                                     <option value="select">select</option>
-                                    <option value="">100000</option>
-                                    <option value="">200000</option>
-                                    <option value="">300000</option>
+                                    <option value="UPI">UPI</option>
+                                    <option value="Bank Account">Bank Account</option>
+                                    <option value="Cheque">Cheque</option>
+                                    <option value="NEFT">NEFT</option>
+                                    <option value="Demand Draft">Demand Draft</option>
+                                    
                                 </select>
                             </div>
                             <button class="btn" value="submit">submit</button>
@@ -172,10 +179,10 @@
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
             <h3 class="footer-titel">quick links</h3>
             <ul>
-              <li><a href="about.html">about us</a></li>
+              <li><a href="about.php">about us</a></li>
               <li><a href="">FAQs</a></li>
-              <li><a href="policy.html">privacy policy</a></li>
-              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+              <li><a href="policy.php">privacy policy</a></li>
+              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">

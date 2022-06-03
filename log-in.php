@@ -43,15 +43,15 @@ session_start();?>
 <body>
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.html" class="active">Career Solutions</a>
-      <a href="explore-colleges.html" class="active">explore colleges</a>
+      <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
-      <a href="admission.html" class="active">admission</a>
+      <a href="admission.php" class="active">admission</a>
       <div class="dropdown">
         <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
           more
@@ -78,8 +78,8 @@ session_start();?>
 
 
       <div class="btnGroup">
-        <a href="log-in.html" class="btn btn-sign">log in</a>
-        <a href="sign-up.html" class="btn">sign up</a>
+        <a href="log-in.php" class="btn btn-sign">log in</a>
+        <a href="sign-up.php" class="btn">sign up</a>
       </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
@@ -101,7 +101,7 @@ session_start();?>
         </div>
         <div class="signBox">
           <h1>sign in</h1>
-          <form action="sign-up.html" class="text-center">
+          <form action="sign-up.php" class="text-center">
             <div class="form-group ">
               <div class="row ">
                 <div class="col-2">
@@ -135,7 +135,7 @@ session_start();?>
               </div>
             </div>
             
-            <p class=" text-center"> have not an account?<a href="sign-up.html">sign up</a></p>
+            <p class=" text-center"> have not an account?<a href="sign-up.php">sign up</a></p>
             <button type="submit" class="btn text-center">Submit</button>
             <a href="" class="linkForgt">forgot password?</a>
           </form>
@@ -169,10 +169,10 @@ session_start();?>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
             <h3 class="footer-titel">quick links</h3>
             <ul>
-              <li><a href="about.html">about us</a></li>
+              <li><a href="about.php">about us</a></li>
               <li><a href="">FAQs</a></li>
-              <li><a href="policy.html">privacy policy</a></li>
-              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+              <li><a href="policy.php">privacy policy</a></li>
+              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">

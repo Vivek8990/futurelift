@@ -143,10 +143,10 @@
         <div class="footerHead col-3">
             <h4 class="text-light ">quick links</h4>
             <ul>
-                <li><a href="about.html">about us</a></li>
+                <li><a href="about.php">about us</a></li>
                 <li><a href="">FAQs</a></li>
-                <li><a href="policy.html">privacy policy</a></li>
-                <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+                <li><a href="policy.php">privacy policy</a></li>
+                <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
             </ul>
         </div>
         <div class="footerHead col-3">

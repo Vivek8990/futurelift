@@ -13,14 +13,103 @@ $hostel = gethostel();
 $facility = getfacility();
 $degreelist = getdegreelist();
 $specilizationlist = getspecilizationlist();
+$colleges=searchcollegebyfilter();
+  
+function searchcollegebyfilter(){
+	if (isset($_GET['gtspacialization'])) {
+		unset($_COOKIE["degree"]);
+		setcookie('degree', '', time() - 3600, '/');
+	} 
+	if (isset($_GET['degree'])) {
+		unset($_COOKIE["spacialization"]);
+		setcookie('spacialization', '', time() - 3600, '/');
+	}
+	if (isset($_GET['gtstate'])) {
+		unset($_COOKIE["city"]);
+		setcookie('city', '', time() - 3600, '/');
+	} 
+	if (isset($_GET['gtcity'])) {
+		unset($_COOKIE["state"]);
+		setcookie('state', '', time() - 3600, '/');
+  }
+    $db=$GLOBALS['db'];
+   $state=$_COOKIE["state"];
+   $city =$_COOKIE["city"];
+   $mode=$_COOKIE["study"];
+   $type=$_COOKIE["type"];
+   $degree=$_COOKIE["degree"];
+   $spacialization = $_COOKIE["spacialization"];
+   $hostels = $_COOKIE["hostels"];
+   
+   $facilities =$_COOKIE["facilities"];
+	 $feerange = $_COOKIE["fee"];
 
-$term=$_GET['gtspacialization'];
-$_SESSION['term']=$term;
-$colleges = getCollegeByCategoury($term);
+
+
+   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,s.state_name,ct.type ,
+   co.degree_name,ss.specialization_name 
+   FROM college c 
+   join affiliation af on af.id=c.affiliated_id
+   join Approval ap on ap.id= c.approvel_id 
+   join Degree co on co.id= c.degree_id
+   join State s on s.id=c.state_id 
+   join Collage_type ct on ct.id=c.collage_type_id 
+   join City cy on cy.id = c.city_id
+   
+   join Spacialization ss on ss.id = co.specialization_id
+   join Country cty on cty.id = s.country_id
+   join collage_mode cm on cm.collage_id = c.id
+   join study_mode sm on sm.id = cm.study_mode_id
+   join collage_hostel ch on ch.collage_id= c.id
+   join hostels h on h.id = ch.hostel_id
+   join collage_facilities cf on cf.collage_id = c.id
+   join facilities fa on fa.id = cf.facility_id
+   join college_fee cfe on cfe.college_id = c.id
+   where  cty.country_name='India'" ;
+
+    if($state){ $query.=" and s.state_name='$state'"; }
+    if($city){ $query.=" and cy.city_name='$city'"; } 
+    if($type){ $query.=" and ct.type='$type'"; }
+    if($degree){ $query.=" and co.degree_name='$degree'"; }
+    if($mode){ $query.=" and sm.mode='$mode'"; }
+    if($hostels){ $query.=" and h.type='$hostels'"; }
+    // if($freerange){ $query.=" and co.degree_name='$freerange'"; }
+
+    if($facilities){ $query.=" and fa.facility='$facilities'"; }
+    if($spacialization){ $query.=" and ss.specialization_name='$spacialization'"; }
+		if($feerange){ 
+			
+			switch ($feerange) {
+				case "100000":
+				$query.=" and (cfe.course_fee between '0' and '100000')";
+					break;
+				case "200000":
+				$query.=" and (cfe.course_fee between '100000' and '200000')";
+					break;
+				case "300000":
+				$query.=" and (cfe.course_fee between '200000' and '300000')";
+					break;
+					case "400000":
+					$query.=" and (cfe.course_fee between '300000' and '400000')";
+					break;
+					case "500000":
+					$query.=" and (cfe.course_fee between '400000' and '500000')";
+					break;
+					case "above500000":
+					$query.=" and (cfe.course_fee > '500000')";
+					break;
+				default:
+				$query.="";
+			}
+		 }
+
+    echo $query;
+		$runQuery=mysqli_query($db,$query);
+		print_r($runQuery);
+return $runQuery;
+     
+    }
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -30,7 +119,7 @@ $colleges = getCollegeByCategoury($term);
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>future lift medical Colleges in india</title>
+	<title>future lift law Colleges in india</title>
 	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
 	<!-- Font Awesome CDN Link -->
@@ -85,14 +174,14 @@ $colleges = getCollegeByCategoury($term);
 		<i class="fas fa-bars" id="manu-bars"></i>
 	</header>
 	<section class="college_filter_page_management" id="management">
-        <div class="container shadow">
+		<div class="container shadow">
 			<div class="row">
-				<h1 class="heading text-center">medical colleges in india</h1>
+				<h1 class="heading text-center">law colleges in india</h1>
 				<h2 class="text-center">fullfil your college ditails</h2>
 				<p class="lead p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est,<span id="dots">...</span><span id="more">ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, perferendis ipsam eos iusto officiis mollitia iure possimus incidunt facilis, praesentium veniam nihil quam laborum asperiores! Beatae illo sapiente veritatis unde quo, optio nobis aut aliquid voluptas laboriosam labore sint odit pariatur ratione expedita! Perferendis vitae ex commodi eaque accusamus corrupti dolorum asperiores qui, adipisci labore fugiat corporis aut, nostrum optio mollitia eveniet numquam possimus officiis! Doloribus, quas. Earum iure possimus delectus, quibusdam aliquid, aut maiores distinctio labore atque, illum reiciendis quam? Assumenda praesentium consequuntur nulla iusto totam minima laudantium vero ipsa exercitationem fuga qui aspernatur, sequi modi. Atque perferendis dicta mollitia dolorem numquam magni excepturi, quibusdam reprehenderit beatae ipsa ex ratione sed earum nemo temporibus animi in magnam distinctio molestias enim quas. Reprehenderit ut praesentium sequi quas sed dolores ea hic beatae, iste aliquid eveniet fugit, consectetur omnis accusamus eligendi. Corporis aperiam explicabo debitis sequi repellendus eveniet facilis doloribus eaque dolore optio impedit placeat est nostrum dolorum, temporibus deserunt quis deleniti sed ut laborum accusantium ipsum nemo, reprehenderit saepe. Eius nobis ipsa sequi animi quibusdam minus a debitis earum quas. Autem, sed recusandae aut id minus magnam voluptates, aliquid quaerat temporibus impedit exercitationem optio corrupti soluta ad nemo ducimus quam. sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
 				<a onclick="readFunction()" id="readMore" class="readMore">Read more</a>
 			</div>
-        </div>
+		</div>
 		<div class="filterCall mt-5">
 			<h4 id="callFilter">
 				show filter
@@ -366,42 +455,42 @@ $colleges = getCollegeByCategoury($term);
 								<div class="filterItems ">
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" name="fee"  class="form-check-input fee" value="100000">
 											<label for="" class="form-label">Less Than 1 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" name="fee"  class="form-check-input fee" value="200000">
 											<label for="" class="form-label">1 to 2 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" name="fee"  class="form-check-input fee" value="300000">
 											<label for="" class="form-label">2 to 3 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" name="fee"  class="form-check-input fee" value="400000">
 											<label for="" class="form-label">3 to 4 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" name="fee"  class="form-check-input fee" value="500000">
 											<label for="" class="form-label">4 to 5 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" name="fee"  class="form-check-input fee" value="above500000">
 											<label for="" class="form-label">Greater than 5 Lakh</label>
 											<span>(1004)</span>
 										</div>
@@ -579,6 +668,9 @@ $colleges = getCollegeByCategoury($term);
           state.push(event.target.value)
           console.log(state);
           document.cookie = "state="+state;
+					document.cookie = "degree='';max-age=0";
+					document.cookie = "city='';max-age=0";
+
           window.location.href = "college-filter.php?gtstate";
         }
       })
@@ -592,6 +684,8 @@ $colleges = getCollegeByCategoury($term);
           city.push(event.target.value)
           console.log(city);
           document.cookie = "city="+city;
+					document.cookie = "degree='';max-age=0";
+					document.cookie = "state='';max-age=0";
           window.location.href = "college-filter.php?gtcity";
         }
       })
@@ -669,6 +763,7 @@ $colleges = getCollegeByCategoury($term);
             spacialization.push(event.target.value)
           console.log(spacialization);
           document.cookie = "spacialization="+spacialization;
+					document.cookie = "degree='';max-age=0";
           window.location.href = "college-filter.php?gtspacialization";
         }
       })
@@ -682,7 +777,25 @@ $colleges = getCollegeByCategoury($term);
             degree.push(event.target.value)
           console.log(degree);
           document.cookie = "degree="+degree;
+					document.cookie = "spacialization='';max-age=0";
           window.location.href = "college-filter.php?gtdegree";
+        }
+      })
+    })
+
+		let feeCheckBox = document.querySelectorAll('.fee')
+    var fee= [];
+    feeCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            fee.push(event.target.value)
+          console.log(fee);
+          document.cookie = "fee="+fee;
+					document.cookie = "spacialization='';max-age=0";
+					document.cookie = "degree='';max-age=0";
+					document.cookie = "state='';max-age=0";
+					document.cookie = "city='';max-age=0";
+          window.location.href = "college-filter.php?gtfee";
         }
       })
     })

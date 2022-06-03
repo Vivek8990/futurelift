@@ -3,8 +3,7 @@
 require_once 'functions.php';
 $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
-$term=$_GET['q'];
-$_SESSION['term']=$term;
+
 
 $city = getcity();
 $State = getstate();
@@ -15,126 +14,11 @@ $facility = getfacility();
 $degreelist = getdegreelist();
 $specilizationlist = getspecilizationlist();
 
-if (isset($_GET['gtstate'])) {
-      
-   
-	$colleges =   searchcollegebyfilter();
-  
-  }
-  
-  if (isset($_GET['gtcity'])) {
-         
-  
-		$colleges =  searchcollegebyfilter();
-  
-  }
-  
-  if (isset($_GET['gtfreerange'])) {
-          
-		$colleges = searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['gthostels'])) {
-      echo "34342424"; 
-			$colleges =  searchcollegebyfilter();
-  }
-
-  if (isset($_GET['gtspacialization'])) {
-          
-		$colleges =  searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['gtdegree'])) {
-          
-		$colleges =   searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['gtmode'])) {
-          
-		$colleges =  searchcollegebyfilter();
-  
-  
-  }
-
-
-  
-  if (isset($_GET['gtfacilities'])) {
-          
-		$colleges =  searchcollegebyfilter();
-  
-  
-  }
-  
-  if (isset($_GET['institutetype'])) {
-          
-		$colleges = searchcollegebyfilter();
-  
-  
-  }
-  
- print_r($college);   
-function searchcollegebyfilter(){
-    
-    $db=$GLOBALS['db'];
-   $state=$_COOKIE["state"];
-   $city =$_COOKIE["city"];
-   $mode=$_COOKIE["study"];
-   $type=$_COOKIE["type"];
-   $degree=$_COOKIE["degree"];
-   $spacialization = $_COOKIE["spacialization"];
-   $hostels = $_COOKIE["hostels"];
-   $freerange = $_COOKIE["freerange"];
-   $facilities =$_COOKIE["facilities"];
-   
-
-
-
-   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,s.state_name,ct.type ,
-   co.degree_name,ss.specialization_name 
-   FROM college c 
-   join affiliation af on af.id=c.affiliated_id
-   join Approval ap on ap.id= c.approvel_id 
-   join Degree co on co.id= c.degree_id
-   join State s on s.id=c.state_id 
-   join Collage_type ct on ct.id=c.collage_type_id 
-   join City cy on cy.id = c.city_id
-   
-   join Spacialization ss on ss.id = co.specialization_id
-   join Country cty on cty.id = s.country_id
-   join collage_mode cm on cm.collage_id = c.id
-   join study_mode sm on sm.id = cm.study_mode_id
-   join collage_hostel ch on ch.collage_id= c.id
-   join hostels h on h.id = ch.hostel_id
-   join collage_facilities cf on cf.collage_id = c.id
-   join facilities fa on fa.id = cf.facility_id
-  
-   where  cty.country_name='India'" ;
-
-    if($state){ $query.=" and s.state_name='$state'"; }
-    if($city){ $query.=" and cy.city_name='$city'"; } 
-    if($type){ $query.=" and ct.type='$type'"; }
-    if($degree){ $query.=" and co.degree_name='$degree'"; }
-    if($mode){ $query.=" and sm.mode='$mode'"; }
-    if($hostels){ $query.=" and h.type='$hostels'"; }
-    // if($freerange){ $query.=" and co.degree_name='$freerange'"; }
-
-    if($facilities){ $query.=" and fa.facility='$facilities'"; }
-    if($spacialization){ $query.=" and ss.specialization_name='$spacialization'"; }
-
-
-    echo $query;
-		$runQuery=mysqli_query($db,$query);
-		print_r($runQuery);
-return $runQuery;
-     
-    }
+$term=$_GET['gtspacialization'];
+$_SESSION['term']=$term;
+$colleges = getCollegeByCategoury($term);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -181,7 +65,7 @@ return $runQuery;
 			<a href="career.php" class="active">Career Solutions</a>
 			<a href="explore-colleges.php" class="active">explore colleges</a>
 			<a href="" class="active"> partner</a>
-			<a href="admission.html" class="active">admission</a>
+			<a href="admission.php" class="active">admission</a>
 			<div class="dropdown">
 				<a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
 					more
@@ -621,10 +505,10 @@ return $runQuery;
 			<div class="footerHead">
 				<h4 class="text-light ">quick links</h4>
 				<ul>
-					<li><a href="about.html">about us</a></li>
+					<li><a href="about.php">about us</a></li>
 					<li><a href="">FAQs</a></li>
-					<li><a href="policy.html">privacy policy</a></li>
-					<li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+					<li><a href="policy.php">privacy policy</a></li>
+					<li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
 				</ul>
 			</div>
 			<div class="footerHead">

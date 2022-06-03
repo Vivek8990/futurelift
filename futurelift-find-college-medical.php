@@ -981,7 +981,7 @@ function searchcollegebyfilter(){
           state.push(event.target.value)
           console.log(state);
           document.cookie = "state="+state;
-          window.location.href = "college-filter-management.php?gtstate";
+          window.location.href = "college-filter.php?gtstate";
         }
       })
     })
@@ -994,7 +994,7 @@ function searchcollegebyfilter(){
           city.push(event.target.value)
           console.log(city);
           document.cookie = "city="+city;
-          window.location.href = "college-filter-management.php?gtcity";
+          window.location.href = "college-filter.php?gtcity";
         }
       })
     })
@@ -1007,7 +1007,7 @@ function searchcollegebyfilter(){
             study.push(event.target.value)
             console.log(study);
             document.cookie = "study="+study;
-          window.location.href = "college-filter-management.php?gtmode";
+          window.location.href = "college-filter.php?gtmode";
         }
       })
     })
@@ -1020,7 +1020,7 @@ function searchcollegebyfilter(){
             type.push(event.target.value)
             console.log(type);
             document.cookie = "type="+type;
-          window.location.href = "college-filter-management.php?institutetype";
+          window.location.href = "college-filter.php?institutetype";
         }
       })
     }) 
@@ -1034,7 +1034,7 @@ function searchcollegebyfilter(){
             facilities.push(event.target.value)
           console.log(facilities);
           document.cookie = "facilities="+facilities;
-          window.location.href = "college-filter-management.php?gtfacilities";
+          window.location.href = "college-filter.php?gtfacilities";
         }
       })
     })
@@ -1047,7 +1047,7 @@ function searchcollegebyfilter(){
             freerange.push(event.target.value)
           console.log(freerange);
           document.cookie = "freerange="+freerange;
-          window.location.href = "college-filter-management.php?gtfreerange";
+          window.location.href = "college-filter.php?gtfreerange";
         }
       })
     })
@@ -1059,7 +1059,7 @@ function searchcollegebyfilter(){
             hostels.push(event.target.value)
           console.log(hostels);
           document.cookie = "hostels="+hostels;
-          window.location.href = "college-filter-management.php?gthostels";
+          window.location.href = "college-filter.php?gthostels";
         }
       })
     })
@@ -1071,7 +1071,7 @@ function searchcollegebyfilter(){
             spacialization.push(event.target.value)
           console.log(spacialization);
           document.cookie = "spacialization="+spacialization;
-          window.location.href = "college-filter-management.php?gtspacialization";
+          window.location.href = "college-filter.php?gtspacialization";
         }
       })
     })
@@ -1084,7 +1084,7 @@ function searchcollegebyfilter(){
             degree.push(event.target.value)
           console.log(degree);
           document.cookie = "degree="+degree;
-          window.location.href = "college-filter-management.php?gtdegree";
+          window.location.href = "college-filter.php?gtdegree";
         }
       })
     })

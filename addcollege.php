@@ -166,6 +166,14 @@ body {
             </div>
             <div class="form-group">
               <div class="row">
+             
+                
+                  <input type="text" name="fees" class="form-control" required placeholder="Fees" autocomplete="off">
+                
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
               <select name="affiliated_id" id="cars">
               <option value="">Select Affiliation</option>
                                 <?php

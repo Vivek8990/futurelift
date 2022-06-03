@@ -1,3 +1,26 @@
+
+<?php
+require_once 'functions.php';
+$login = $_SESSION['userIsLoggedIn'];
+$data=$_SESSION['userdata'];
+
+
+$city = getcity();
+$State = getstate();
+$studymode= getstudymode();
+$getinstutiontype= getinstutiontype();
+$hostel = gethostel();
+$facility = getfacility();
+$degreelist = getdegreelist();
+$specilizationlist = getspecilizationlist();
+
+$term=$_GET['gtspacialization'];
+$_SESSION['term']=$term;
+$colleges = getCollegeByCategoury($term);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,15 +56,15 @@
 
 <body>
 	<header class="header">
-		<a href="index.html" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+		<a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
 		<nav class="navbar">
 			<div class="user">
 				<i class="fas fa-user"></i>
 			</div>
-			<a href="career.html" class="active">Career Solutions</a>
-			<a href="explore-colleges.html" class="active">explore colleges</a>
+			<a href="career.php" class="active">Career Solutions</a>
+			<a href="explore-colleges.php" class="active">explore colleges</a>
 			<a href="" class="active"> partner</a>
-			<a href="admission.html" class="active">admission</a>
+			<a href="admission.php" class="active">admission</a>
 			<div class="dropdown">
 				<a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
 					more
@@ -53,8 +76,8 @@
 				</ul>
 			</div>
 			<div class="btnGroup">
-				<a href="log-in.html" class="btn btn-sign">log in</a>
-				<a href="sign-up.html" class="btn">sign up</a>
+				<a href="log-in.php" class="btn btn-sign">log in</a>
+				<a href="sign-up.php" class="btn">sign up</a>
 			</div>
 		</nav>
 		<i class="fas fa-bars" id="manu-bars"></i>
@@ -79,7 +102,7 @@
 				<div class="col-lg-3  left_side" id="showFilter">
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="digree-filterOpen">digree</h2>
+							<h2 class="filter_info-header float-start" id="digree-filterOpen">Degree</h2>
 							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
 								data-bs-target="#digree-filterShow" aria-expanded="true"
 								aria-controls="digree-filterShow" style="width: 20%;">
@@ -92,183 +115,65 @@
 									<input type="text" class="form-control">
 								</div>
 								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Diploma</label>
+									<?php
+								while($row =mysqli_fetch_array($degreelist,MYSQLI_ASSOC))
+
+{
+		echo "			
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input degree' name='degree' value='".$row['degree_name']."'>
+											<label for='' class='form-label'>".$row['degree_name']."</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.Sc (Bachelor of Science)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Certificate</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.Des(Bachelor of Design)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.Sc (Master of Science)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.Des (Master of Design)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.Des (Master of Design)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Post Graduate Diploma</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.A (Bachelor of Arts)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.Voc. (Bachelor of Vacation)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.A (Master of Arts)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.Des (Master of Design)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Ph.D. (Doctor of Philosophy)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.F.A. (Bachelor of Fine Arts)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.F.Tech (Bachelor of Fashion Technology)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.V.A. (Bachelor of Visual Arts)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.F.A.D (Bachelor of Fashion and Apparel Design)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.Arch (Bachelor of Architecture)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.F.A (Master of Fashion Management)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.Voc (Master of Vocation)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.Des + M.Des</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.Tech (Master of Technology)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">M.V.A (Master of Visual Arts)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">B.M.M.C (Bachelor of Multimedia Communication)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                </div>
+									</div>";
+
+}
+
+?>
+                </div>
 							</div>
 						</div>
 					</div>
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="state-filterOpen">state</h2>
+							<h2 class="filter_info-header float-start" id="spacialization-filterOpen">spacialization</h2>
+							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
+								data-bs-target="#spacializationFilter-filterShow" aria-expanded="true"
+								aria-controls="spacializationFilter-filterShow" style="width: 20%;">
+								
+							</button>
+						</div>
+						<div id="spacializationFilter-filterShow" class="filter-collapse collapse"
+							aria-labelledby="spacialization-filterOpen">
+							<div class="filter-body">
+								<div class="searchFilter mt-3">
+									<input type="text" class="form-control">
+								</div>
+								<div class="filterItems ">
+								<?php
+								while($row =mysqli_fetch_array($specilizationlist,MYSQLI_ASSOC))
+
+{
+		echo "			
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input spacialization' name='spacialization' value='".$row['specialization_name']."'>
+											<label for='' class='form-label'>".$row['specialization_name']."</label>
+											<span>(1004)</span>
+										</div>
+									</div>";
+
+}
+
+?>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="filter-item  shadow">
+						<div class="toggle-heade clearfix">
+							<h2 class="filter_info-header float-start" id="state-filterOpen">State</h2>
 							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
 								data-bs-target="#state-filterShow" aria-expanded="true"
 								aria-controls="div-city-filterShow" style="width: 20%;">
@@ -282,139 +187,23 @@
 									<input type="text" class="form-control">
 								</div>
 								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Arunachal Pradesh</label>
+								<?php
+								while($row =mysqli_fetch_array($State,MYSQLI_ASSOC))
+
+{
+		echo "			
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input state' name='state' value='".$row['state_name']."'>
+											<label for='' class='form-label'>".$row['state_name']."</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Assam</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">biha</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Chandigarh</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Chhattisgarh</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Delhi</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Gujarat</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Haryana</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Himachal Pradesh </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Jammu & Kashmir </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Jharkhand </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Karnataka </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Kerala  </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Madhya Pradesh </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Maharashtra </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Manipur</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Mizoram</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Orissa</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Pondicherry</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									</div>";
+
+}
+
+?>
+									
 								</div>
 							</div>
 						</div>
@@ -434,147 +223,30 @@
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
-								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Abohar</label>
+								<div class='filterItems'>
+								<?php
+ while($row =mysqli_fetch_array($city,MYSQLI_ASSOC))
+
+  {
+			echo "					
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input city' name='city' value='".$row['city_name']."'>
+											<label for='' class='form-label'>".$row['city_name']."</label>
 											<span>(1004)</span>
 										</div>
 									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Agra</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Ahmedabad</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Ahmednagar</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Aizawl</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Akola</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Aligarh</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Allahabad</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Ambala </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Amravati </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Amreli</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Amritsar</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Anandpur Sahib</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Anantnag)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Auraiya</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Aurangabad</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Aurangabad (Bh)</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Azamgarh</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Bagalkot</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									";
+
+	}?>
+									
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="StudyMode-filterOpen">studu mode</h2>
+							<h2 class="filter_info-header float-start" id="StudyMode-filterOpen">study mode</h2>
 							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
 								data-bs-target="#divStudyMode-filterShow" aria-expanded="true"
 								aria-controls="divStudyMode-filterShow" style="width: 20%;">
@@ -584,28 +256,23 @@
 						<div id="divStudyMode-filterShow" class="filter-collapse collapse"
 							aria-labelledby="StudyMode-filterOpen">
 							<div class="filter-body">
-								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Regular</label>
+							<div class="filterItems ">
+								<?php
+ while($row =mysqli_fetch_array($studymode,MYSQLI_ASSOC))
+
+  {
+			echo "		<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class=form-check-input studymode' name='studymode' value='".$row['mode']."'>
+											<label for='' class='form-label'>".$row['mode']."</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Part Time</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Distance Learning</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									</div>";
+
+
+
+	}?>
+								
 								</div>
 							</div>
 						</div>
@@ -626,27 +293,22 @@
 									<input type="text" class="form-control">
 								</div>
 								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">government</label>
+								<?php
+ while($row =mysqli_fetch_array($getinstutiontype,MYSQLI_ASSOC))
+
+  {
+			echo "		<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input studymode' name='studymode' value='".$row['type']."'>
+											<label for='' class='form-label'>".$row['type']."</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">private</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">public</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									</div>";
+
+
+
+		}	?>
+								
 								</div>
 							</div>
 						</div>
@@ -663,21 +325,24 @@
 						<div id="hostelFilter-filterShow" class="filter-collapse collapse"
 							aria-labelledby="hostel-filterOpen">
 							<div class="filter-body">
-								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">boy's</label>
+							<div class="filterItems ">
+								<?php
+ while($row =mysqli_fetch_array($hostel,MYSQLI_ASSOC))
+
+  {
+
+								
+							echo	"	<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input hostels' name='hostels' value='".$row['type']."'>
+											<label for='' class='form-label'>".$row['type']."'s</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">girl's</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									</div>";
+
+									}
+									?>
+								
 								</div>
 							</div>
 						</div>
@@ -759,783 +424,78 @@
 									<input type="text" class="form-control">
 								</div>
 								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">A/C</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">ATM</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">AV Lav</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Academic Zone</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Canteen</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Computer Lab</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Conference Room</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Convo. Hall</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Counselling</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Cultural Zone</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Fest</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Ground</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Guest House</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Gym</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Hospital</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Hostel</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Math Lab</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Wi-Fi</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Sports</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="filter-item  shadow">
-						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="spacialization-filterOpen">spacialization</h2>
-							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
-								data-bs-target="#spacializationFilter-filterShow" aria-expanded="true"
-								aria-controls="spacializationFilter-filterShow" style="width: 20%;">
+								<?php
+ while($row =mysqli_fetch_array($facility,MYSQLI_ASSOC))
+
+  {
+
 								
-							</button>
-						</div>
-						<div id="spacializationFilter-filterShow" class="filter-collapse collapse"
-							aria-labelledby="spacialization-filterOpen">
-							<div class="filter-body">
-								<div class="searchFilter mt-3">
-									<input type="text" class="form-control">
-								</div>
-								<div class="filterItems ">
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Fashion Designing</label>
+							echo	"
+
+									<div class='filterContent'>
+										<div class='filterContentCheck d-flex'>
+											<input type='checkbox' class='form-check-input facilities' name='facilities' value='".$row['facility']."'>
+											<label for=''  class='form-label'>".$row['facility']."</label>
 											<span>(1004)</span>
 										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Interior Design</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Fashion & Textile Design</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Design</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Graphic Design</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Web Designing</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Animation</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Animation & VFX</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Graphic, Multimedia, Animation </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Product Design</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Tailoring</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Jewellery & Accessory Design </label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Animation 2D/3D</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Communication Design</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Dental Mechanic</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Oral & Maxillofacial Pathology</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Dental Hygiene</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Community Dentistry</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-									<div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Endodontic</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Implantology</label>
-											<span>(1004)</span>
-										</div>
-									</div>
-                                    <div class="filterContent">
-										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
-											<label for="" class="form-label">Dental Science</label>
-											<span>(1004)</span>
-										</div>
-									</div>
+									</div>";
+	}
+	?>
+								
 								</div>
 							</div>
 						</div>
 					</div>
+					
 				</div>
 				<!-- college information -->
 				<div class="col-lg-9 col-md-12 right_side mt-5">
-					<div class="boxfilterDitails  shadow p-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (9).png" alt="" >
+				<?php
+ while($row =mysqli_fetch_array($colleges,MYSQLI_ASSOC))
+
+  {
+
+  echo "
+					<div class='boxfilterDitails  shadow p-3 my-3'>
+						<div class='logowithDitail'>
+							<div class='col-logo'>
+							<img src='data:image;base64,".$row['logo']."' alt='' class='img-fluid'>
 							</div>
-							<div class="col-name">
-								<h3><a href="">seacom skills universitiy</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="college-page.html" target="_blank" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (10).png" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">guru nanak institute of hotel management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
+							<div class='col-name'>
+								<h3><a href=''>".$row['collage_name']."</a></h3>
+								<p>approved by: <span>". $row['approval_name'] ."</span> government of india</p>
+								<p>type :  ".$row['type']."</p>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star'></i>
 	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star'></i>
+								<i class='fa fa-star'></i>
 							</div>
-							<div class="aplyButton">
-								<a href="college-page.html" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
+							<div class='aplyButton'>
+								<a href='' class='btn'>aply now</a>
 							</div>
 						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (13).jpeg" alt="" >
+						<div class='ditail  clearfix'>
+							<div class='structurDitail float-start'>
+								<a href='' class='downBtn'>structure</a>
 							</div>
-							<div class="col-name">
-								<h3><a href="">CNK College Of Nursing</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
+							<div class='getBrochure float-end'>
+								<a href='data:image;base64,".$row['bruchre']."' class='downBtn' download><i class='fa fa-download'></i> brochure</a>
 							</div>
 						</div>
 					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (16).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">bharat technology</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (14).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">presidency college bangalore</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
-					<div class="boxfilterDitails  shadow p-3 my-3">
-						<div class="logowithDitail">
-							<div class="col-logo">
-								<img src="images/partner/images (20).jpeg" alt="" >
-							</div>
-							<div class="col-name">
-								<h3><a href="">Indian Institute of Business Management</a></h3>
-								<p>approved by: <span>aicte mhrd</span> government of india</p>
-								<p>type : private</p>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-	
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<div class="aplyButton">
-								<a href="" class="btn">aply now</a>
-							</div>
-						</div>
-						<div class="ditail  clearfix">
-							<div class="structurDitail float-start">
-								<a href="" class="downBtn">structure</a>
-							</div>
-							<div class="getBrochure float-end">
-								<a href="" class="downBtn"><i class="fa fa-download"></i> brochure</a>
-							</div>
-						</div>
-					</div>
+				";
+	}
+				?>
+
 				</div>
 			</div>
 		</div>
 		</div>
 	</section>
 	<button type="button" class="btn mb-5 center-block loadMore">Load More</button>
-	
+
 
 
 	<!-- footer start -->
@@ -1551,10 +511,10 @@
 			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
 				<h3 class="footer-titel">quick links</h3>
 				<ul>
-				  <li><a href="about.html">about us</a></li>
+				  <li><a href="about.php">about us</a></li>
 				  <li><a href="">FAQs</a></li>
-				  <li><a href="policy.html">privacy policy</a></li>
-				  <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+				  <li><a href="policy.php">privacy policy</a></li>
+				  <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
 				</ul>
 			  </div>
 			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">
@@ -1607,5 +567,123 @@
 <script src="js/filter.js"></script>
 
 
+<script> 
+
+    let stateCheckBox = document.querySelectorAll('.state')
+    var state= [];
+    stateCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+          state.push(event.target.value)
+          console.log(state);
+          document.cookie = "state="+state;
+          window.location.href = "college-filter.php?gtstate";
+        }
+      })
+    })
+    
+    let cityCheckBox = document.querySelectorAll('.city')
+    var city= [];
+    cityCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+          city.push(event.target.value)
+          console.log(city);
+          document.cookie = "city="+city;
+          window.location.href = "college-filter.php?gtcity";
+        }
+      })
+    })
+    
+    let studyCheckBox = document.querySelectorAll('.studymode')
+    var study= [];
+    studyCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            study.push(event.target.value)
+            console.log(study);
+            document.cookie = "study="+study;
+          window.location.href = "college-filter.php?gtmode";
+        }
+      })
+    })
+    
+    let institutetypeCheckBox = document.querySelectorAll('.institutetype')
+    var type= [];
+    institutetypeCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            type.push(event.target.value)
+            console.log(type);
+            document.cookie = "type="+type;
+          window.location.href = "college-filter.php?institutetype";
+        }
+      })
+    }) 
+    
+    
+    let facilitiesCheckBox = document.querySelectorAll('.facilities')
+    var facilities= [];
+    facilitiesCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            facilities.push(event.target.value)
+          console.log(facilities);
+          document.cookie = "facilities="+facilities;
+          window.location.href = "college-filter.php?gtfacilities";
+        }
+      })
+    })
+
+    let freerangeCheckBox = document.querySelectorAll('.freerange')
+    var freerange= [];
+    freerangeCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            freerange.push(event.target.value)
+          console.log(freerange);
+          document.cookie = "freerange="+freerange;
+          window.location.href = "college-filter.php?gtfreerange";
+        }
+      })
+    })
+    let hostelsCheckBox = document.querySelectorAll('.hostels')
+    var hostels= [];
+    hostelsCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            hostels.push(event.target.value)
+          console.log(hostels);
+          document.cookie = "hostels="+hostels;
+          window.location.href = "college-filter.php?gthostels";
+        }
+      })
+    })
+    let spacializationCheckBox = document.querySelectorAll('.spacialization')
+    var spacialization= [];
+    spacializationCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            spacialization.push(event.target.value)
+          console.log(spacialization);
+          document.cookie = "spacialization="+spacialization;
+          window.location.href = "college-filter.php?gtspacialization";
+        }
+      })
+    })
+
+    let degreeCheckBox = document.querySelectorAll('.degree')
+    var degree= [];
+    degreeCheckBox.forEach((checkbox) => { 
+      checkbox.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            degree.push(event.target.value)
+          console.log(degree);
+          document.cookie = "degree="+degree;
+          window.location.href = "college-filter.php?gtdegree";
+        }
+      })
+    })
+    </script>
 
 </html>

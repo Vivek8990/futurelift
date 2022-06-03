@@ -23,7 +23,7 @@ $specilizationlist = getspecilizationlist();
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>future lift management Colleges in india</title>
+	<title>future lift law Colleges in india</title>
 	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
 	<!-- Font Awesome CDN Link -->
@@ -45,9 +45,7 @@ $specilizationlist = getspecilizationlist();
 	<link rel="stylesheet" href="css/college.css">
 
 	<!-- swiper js -->
-	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-	<script src="https://use.fontawesome.com/2054339f84.js"></script>
-	<script src="https://kit.fontawesome.com/78ddd3cd4c.js" ></script>
+	
 
 </head>
 
@@ -61,7 +59,7 @@ $specilizationlist = getspecilizationlist();
 			<a href="career.php" class="active">Career Solutions</a>
 			<a href="explore-colleges.php" class="active">explore colleges</a>
 			<a href="" class="active"> partner</a>
-			<a href="admission.html" class="active">admission</a>
+			<a href="admission.php" class="active">admission</a>
 			<div class="dropdown">
 				<a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
 					more
@@ -72,44 +70,47 @@ $specilizationlist = getspecilizationlist();
 					<li><a class="dropdown-item" href="#">news</a></li>
 				</ul>
 			</div>
-			<?php if($login){?>
-       
-       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
-       <a class="active" href="functions.php?logout">Signout</a><?php }
-      ?>
-      <div class="btnGroup">
-        <?php if(!$login){ ?>
-        <a href="log-in.php" class="btn btn-sign">log in</a>
-        <a href="sign-up.php" class="btn">sign up</a>
-        <?php    
-        } 
-        ?>
-      </div>
+			<div class="btnGroup">
+				<a href="log-in.php" class="btn btn-sign">log in</a>
+				<a href="sign-up.php" class="btn">sign up</a>
+			</div>
 		</nav>
 		<i class="fas fa-bars" id="manu-bars"></i>
 	</header>
 	<section class="college_filter_page_management" id="management">
+		<div class="container shadow">
+			<div class="row">
+				<h1 class="heading text-center">law colleges in india</h1>
+				<h2 class="text-center">fullfil your college ditails</h2>
+				<p class="lead p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est,<span id="dots">...</span><span id="more">ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, perferendis ipsam eos iusto officiis mollitia iure possimus incidunt facilis, praesentium veniam nihil quam laborum asperiores! Beatae illo sapiente veritatis unde quo, optio nobis aut aliquid voluptas laboriosam labore sint odit pariatur ratione expedita! Perferendis vitae ex commodi eaque accusamus corrupti dolorum asperiores qui, adipisci labore fugiat corporis aut, nostrum optio mollitia eveniet numquam possimus officiis! Doloribus, quas. Earum iure possimus delectus, quibusdam aliquid, aut maiores distinctio labore atque, illum reiciendis quam? Assumenda praesentium consequuntur nulla iusto totam minima laudantium vero ipsa exercitationem fuga qui aspernatur, sequi modi. Atque perferendis dicta mollitia dolorem numquam magni excepturi, quibusdam reprehenderit beatae ipsa ex ratione sed earum nemo temporibus animi in magnam distinctio molestias enim quas. Reprehenderit ut praesentium sequi quas sed dolores ea hic beatae, iste aliquid eveniet fugit, consectetur omnis accusamus eligendi. Corporis aperiam explicabo debitis sequi repellendus eveniet facilis doloribus eaque dolore optio impedit placeat est nostrum dolorum, temporibus deserunt quis deleniti sed ut laborum accusantium ipsum nemo, reprehenderit saepe. Eius nobis ipsa sequi animi quibusdam minus a debitis earum quas. Autem, sed recusandae aut id minus magnam voluptates, aliquid quaerat temporibus impedit exercitationem optio corrupti soluta ad nemo ducimus quam. sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+				<a onclick="readFunction()" id="readMore" class="readMore">Read more</a>
+			</div>
+		</div>
+		<div class="filterCall mt-5">
+			<h4 id="callFilter">
+				show filter
+			</h4>
+		</div>
 		<div class="divider py-5"></div>
 		<div class="container">
-			<div class="row">
+			<div class="row mobile-width">
 				<div class="col-lg-3  left_side" id="showFilter">
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="digree-filterOpen">degree</h2>
+							<h2 class="filter_info-header float-start" id="digree-filterOpen">Degree</h2>
 							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
 								data-bs-target="#digree-filterShow" aria-expanded="true"
 								aria-controls="digree-filterShow" style="width: 20%;">
-								
 							</button>
 						</div>
 						<div id="digree-filterShow" class="filter-collapse collapse show"
 							aria-labelledby="digree-filterOpen collapseOne">
-							<div class="filter-body shadow">
+							<div class="filter-body">
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
 								<div class="filterItems ">
-								<?php
+									<?php
 								while($row =mysqli_fetch_array($degreelist,MYSQLI_ASSOC))
 
 {
@@ -125,7 +126,7 @@ $specilizationlist = getspecilizationlist();
 }
 
 ?>
-								</div>
+                </div>
 							</div>
 						</div>
 					</div>
@@ -140,7 +141,7 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="spacializationFilter-filterShow" class="filter-collapse collapse"
 							aria-labelledby="spacialization-filterOpen">
-							<div class="filter-body shadow">
+							<div class="filter-body">
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
@@ -167,7 +168,7 @@ $specilizationlist = getspecilizationlist();
 					</div>
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="state-filterOpen">state</h2>
+							<h2 class="filter_info-header float-start" id="state-filterOpen">State</h2>
 							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
 								data-bs-target="#state-filterShow" aria-expanded="true"
 								aria-controls="div-city-filterShow" style="width: 20%;">
@@ -213,7 +214,7 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="city-filterShow" class="filter-collapse collapse"
 							aria-labelledby="divcity-filterOpen">
-							<div class="filter-body shadow">
+							<div class="filter-body">
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
@@ -240,7 +241,7 @@ $specilizationlist = getspecilizationlist();
 					</div>
 					<div class="filter-item  shadow">
 						<div class="toggle-heade clearfix">
-							<h2 class="filter_info-header float-start" id="StudyMode-filterOpen">studu mode</h2>
+							<h2 class="filter_info-header float-start" id="StudyMode-filterOpen">study mode</h2>
 							<button class="accordion-button filterBtn float-end" type="button" data-bs-toggle="collapse"
 								data-bs-target="#divStudyMode-filterShow" aria-expanded="true"
 								aria-controls="divStudyMode-filterShow" style="width: 20%;">
@@ -249,8 +250,8 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="divStudyMode-filterShow" class="filter-collapse collapse"
 							aria-labelledby="StudyMode-filterOpen">
-							<div class="filter-body shadow">
-								<div class="filterItems ">
+							<div class="filter-body">
+							<div class="filterItems ">
 								<?php
  while($row =mysqli_fetch_array($studymode,MYSQLI_ASSOC))
 
@@ -282,7 +283,7 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="divInstituteType-filterShow" class="filter-collapse collapse"
 							aria-labelledby="divInstituteType-filterOpen">
-							<div class="filter-body shadow">
+							<div class="filter-body">
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
@@ -318,8 +319,8 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="hostelFilter-filterShow" class="filter-collapse collapse"
 							aria-labelledby="hostel-filterOpen">
-							<div class="filter-body shadow">
-								<div class="filterItems ">
+							<div class="filter-body">
+							<div class="filterItems ">
 								<?php
  while($row =mysqli_fetch_array($hostel,MYSQLI_ASSOC))
 
@@ -351,7 +352,7 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="free-range-filterShow" class="filter-collapse collapse"
 							aria-labelledby="freeRange-filterOpen">
-							<div class="filter-body shadow">
+							<div class="filter-body">
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
@@ -413,7 +414,7 @@ $specilizationlist = getspecilizationlist();
 						</div>
 						<div id="facilitiesFilter-filterShow" class="filter-collapse collapse"
 							aria-labelledby="facilities-filterOpen">
-							<div class="filter-body shadow">
+							<div class="filter-body">
 								<div class="searchFilter mt-3">
 									<input type="text" class="form-control">
 								</div>
@@ -443,7 +444,7 @@ $specilizationlist = getspecilizationlist();
 					
 				</div>
 				<!-- college information -->
-				<div class="col-lg-9 col-md-12 right_side">
+				<div class="col-lg-9 col-md-12 right_side mt-5">
 				<?php
  while($row =mysqli_fetch_array($colleges,MYSQLI_ASSOC))
 
@@ -488,46 +489,62 @@ $specilizationlist = getspecilizationlist();
 		</div>
 		</div>
 	</section>
+	<button type="button" class="btn mb-5 center-block loadMore">Load More</button>
 
 
-	<!-- footer Start -->
-	<footer class="footer">
-		<div class="row">
-		  <div class="main-first d-flex flex-wrap align-items-center">
-			<div class="main1 col-3">
-				<a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt="" ></a>
-			</div>
-			<div class="footerHead">
-				<h4 class="text-light ">quick links</h4>
+
+	<!-- footer start -->
+	<footer id="footer" class="footer-area section-padding">
+		<div class="container">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
+				<div class="footer-logo mb-3">
+				  <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+				</div>
+			  </div>
+			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
+				<h3 class="footer-titel">quick links</h3>
 				<ul>
-					<li><a href="about.html">about us</a></li>
-					<li><a href="">FAQs</a></li>
-					<li><a href="policy.html">privacy policy</a></li>
-					<li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+				  <li><a href="about.php">about us</a></li>
+				  <li><a href="">FAQs</a></li>
+				  <li><a href="policy.php">privacy policy</a></li>
+				  <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
 				</ul>
-			</div>
-			<div class="footerHead">
-				<h4 class="text-light">our services</h4>
+			  </div>
+			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">
+				<h3 class="footer-titel">our services</h3>
 				<ul>
-					<li><a href="">contact us</a></li>
-					<li><a href="">....</a></li>
-					<li><a href="">....</a></li>
+				  <li><a href="#">Career</a></li>
+				  <li><a href="#">Team</a></li>
+				  <li><a href="#">Clients</a></li>
 				</ul>
+			  </div>
+			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.8s">
+				<h3 class="footer-titel">Find us on</h3>
+				<div class="social-icon">
+				  <a href="https://www.facebook.com/Future-Lift-Education-PVT-LTD-112127913993548/"><i class="fab fa-facebook-square"></i></a>
+				  <a href="https://instagram.com/futurelift_education?utm_medium=copy_link"><i class="fab fa-instagram-square"></i></a>
+				  <a href=" https://twitter.com/Futurelift_edu?s=09"><i class="fab fa-twitter-square"></i></a>
+				  <a href="https://youtube.com/channel/UCvY_1Aon-HqSHzqWwvIU2zQ"><i class="fab fa-youtube-square"></i></a>
+				  <a href="https://www.linkedin.com/company/futurelift-duication"><i class="fab fa-linkedin"></i></a>
+				</div>
+			  </div>
 			</div>
-			<div class="main2 col-3">
-				<a href="https://www.facebook.com/Future-Lift-Education-PVT-LTD-112127913993548/"><i class="fab fa-facebook-square"></i></a>
-				<a href="https://instagram.com/futurelift_education?utm_medium=copy_link"><i class="fab fa-instagram-square"></i></a>
-				<a href=" https://twitter.com/Futurelift_edu?s=09"><i class="fab fa-twitter-square"></i></a>
-				<a href="https://youtube.com/channel/UCvY_1Aon-HqSHzqWwvIU2zQ"><i class="fab fa-youtube-square"></i></a>
-				<a href="https://www.linkedin.com/company/futurelift-duication"><i class="fab fa-linkedin"></i></a>
+		  </div>  
+		</div>     
+	  </footer> 
+	  <!-- footer end -->
 	
+	  <section id="copyright">
+		<div class="container">
+		  <div class="row">
+			<div class="col-md-12">
+			  <p>Copyright © 2022 future lift All Right Reserved</p>
 			</div>
+		  </div>
 		</div>
-	  </div>
-		<hr>
-		<p>copyrights&copy;<span> future lift</span>-2022</p>
-	</footer>
-	  <!-- Footer End -->
+	  </section>
 
 
 
@@ -542,6 +559,7 @@ $specilizationlist = getspecilizationlist();
 <script src="js/list.js"></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/filter.js"></script>
 
 
 <script> 
@@ -554,7 +572,7 @@ $specilizationlist = getspecilizationlist();
           state.push(event.target.value)
           console.log(state);
           document.cookie = "state="+state;
-          window.location.href = "college-filter-managements.php?gtstate";
+          window.location.href = "college-filter.php?gtstate";
         }
       })
     })
@@ -567,7 +585,7 @@ $specilizationlist = getspecilizationlist();
           city.push(event.target.value)
           console.log(city);
           document.cookie = "city="+city;
-          window.location.href = "college-filter-managements.php?gtcity";
+          window.location.href = "college-filter.php?gtcity="+city;
         }
       })
     })
@@ -580,7 +598,7 @@ $specilizationlist = getspecilizationlist();
             study.push(event.target.value)
             console.log(study);
             document.cookie = "study="+study;
-          window.location.href = "college-filter-managements.php?gtmode";
+          window.location.href = "college-filter.php?gtmode";
         }
       })
     })
@@ -593,7 +611,7 @@ $specilizationlist = getspecilizationlist();
             type.push(event.target.value)
             console.log(type);
             document.cookie = "type="+type;
-          window.location.href = "college-filter-managements.php?institutetype";
+          window.location.href = "college-filter.php?institutetype";
         }
       })
     }) 
@@ -607,7 +625,7 @@ $specilizationlist = getspecilizationlist();
             facilities.push(event.target.value)
           console.log(facilities);
           document.cookie = "facilities="+facilities;
-          window.location.href = "college-filter-managements.php?gtfacilities";
+          window.location.href = "college-filter.php?gtfacilities";
         }
       })
     })
@@ -620,7 +638,7 @@ $specilizationlist = getspecilizationlist();
             freerange.push(event.target.value)
           console.log(freerange);
           document.cookie = "freerange="+freerange;
-          window.location.href = "college-filter-managements.php?gtfreerange";
+          window.location.href = "college-filter.php?gtfreerange";
         }
       })
     })
@@ -632,7 +650,7 @@ $specilizationlist = getspecilizationlist();
             hostels.push(event.target.value)
           console.log(hostels);
           document.cookie = "hostels="+hostels;
-          window.location.href = "college-filter-managements.php?gthostels";
+          window.location.href = "college-filter.php?gthostels";
         }
       })
     })
@@ -644,7 +662,7 @@ $specilizationlist = getspecilizationlist();
             spacialization.push(event.target.value)
           console.log(spacialization);
           document.cookie = "spacialization="+spacialization;
-          window.location.href = "college-filter-managements.php?gtspacialization";
+          window.location.href = "college-filter.php?gtspacialization";
         }
       })
     })
@@ -657,7 +675,7 @@ $specilizationlist = getspecilizationlist();
             degree.push(event.target.value)
           console.log(degree);
           document.cookie = "degree="+degree;
-          window.location.href = "college-filter-managements.php?gtdegree";
+          window.location.href = "college-filter.php?gtdegree";
         }
       })
     })

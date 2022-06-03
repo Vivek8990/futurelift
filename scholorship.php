@@ -53,7 +53,7 @@ $data=$_SESSION['userdata'];
       <a href="career.php" class="active">Career Solutions</a>
       <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
-      <a href="admission.html" class="active">admission</a>
+      <a href="admission.php" class="active">admission</a>
       <div class="dropdown">
         <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
           more
@@ -191,7 +191,7 @@ $data=$_SESSION['userdata'];
               </div>
             </div>
             <button type="submit" class="btn">Submit</button>
-            <p class=" text-center"><a href="refer_earn_TC.html">terms & conditions</a></p>
+            <p class=" text-center"><a href="refer_earn_TC.php">terms & conditions</a></p>
           
           </form>
           <br>
@@ -304,10 +304,10 @@ $data=$_SESSION['userdata'];
       <div class="footerHead col-3">
           <h4 class="text-light ">quick links</h4>
           <ul>
-              <li><a href="about.html">about us</a></li>
+              <li><a href="about.php">about us</a></li>
               <li><a href="">FAQs</a></li>
-              <li><a href="policy.html">privacy policy</a></li>
-              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
+              <li><a href="policy.php">privacy policy</a></li>
+              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
           </ul>
       </div>
       <div class="footerHead col-3">
