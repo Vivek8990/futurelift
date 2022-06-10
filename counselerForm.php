@@ -70,22 +70,26 @@ require_once('functions.php');?>
                 <h1 class="heading text-center">counseler form</h1>
                 <div class="d-flex flex-wrap-reverse justify-content-space-between align-items-center g-5 formCons">
                     <div class="col-lg-6 col-md-6 col-sm-12 form-counseler">
-                        <form action="#identification" class="cunslForm col-sm-12">
-                            <div class="form-group">
-                                <label for="name" class="form-label">full name</label>
-                                <input type="text" placeholder="full name" class="form-control" required>
-                            </div>
+                        <form action="functions.php?counseler" method="post"  class="cunslForm col-sm-12">
+                        <div class="form-group">
+                              <label for="" class="form-label">Full Name</label>
+                              <input type="text" class="form-control" name="name"placeholder="Full Name" >
+                          </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">email</label>
-                                <input type="email" placeholder="your email" class="form-control" required>
+                                <input type="email" placeholder="your email"name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="form-label">password</label>
+                                <input type="password" placeholder="your password"name="password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="dateofbirth" class="form-label">date of birth</label>
-                                <input type="date" placeholder="date of birth" class="form-control" required>
+                                <input type="date" placeholder="date of birth" name="dateofbirth"class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="gender" class="form-label">select gender</label>
-                                <select name="" id="" class="form-select" required>
+                                <select name="gender" id="" class="form-select" required>
                                     <option value="">select gender</option>
                                     <option value="male">male</option>
                                     <option value="female">female</option>
@@ -95,48 +99,48 @@ require_once('functions.php');?>
                             <div class="form-group">
                                 <label for="laguage" class="form-label">select language</label>
                                 <select name="laguage" id="" class="form-select">
-                                    <option value="select">select language</option>
-                                    <option value="">english</option>
-                                    <option value="">Hindi</option>
-                                    <option value="">Marathi</option>
-                                    <option value="">Tamil</option>
-                                    <option value="">Telugu</option>
-                                    <option value="">Kannada</option>
-                                    <option value="">Gujarati</option>
-                                    <option value="">Bengali</option>
-                                    <option value="">Punjabi</option>
-                                    <option value="">Malayalam</option>
-                                    <option value="">Odia</option>
-                                    <option value="">Assamese</option>
-                                    <option value="">Nepali</option>
+                                    <option value="">select language</option>
+                                    <option value="english">english</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Assamese">Assamese</option>
+                                    <option value="Nepali">Nepali</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="laguage" class="form-label">Preferred language</label>
-                                <select name="Preferred language" id="" class="form-select">
-                                    <option value="select">select language</option>
-                                    <option value="">english</option>
-                                    <option value="">Hindi</option>
-                                    <option value="">Marathi</option>
-                                    <option value="">Tamil</option>
-                                    <option value="">Telugu</option>
-                                    <option value="">Kannada</option>
-                                    <option value="">Gujarati</option>
-                                    <option value="">Bengali</option>
-                                    <option value="">Punjabi</option>
-                                    <option value="">Malayalam</option>
-                                    <option value="">Odia</option>
-                                    <option value="">Assamese</option>
-                                    <option value="">Nepali</option>
+                                <select name="Preferred_language" id="" class="form-select">
+                                    <option value="">select language</option>
+                                    <option value="english">english</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Marathi">Marathi</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Kannada">Kannada</option>
+                                    <option value="Gujarati">Gujarati</option>
+                                    <option value="Bengali">Bengali</option>
+                                    <option value="Punjabi">Punjabi</option>
+                                    <option value="Malayalam">Malayalam</option>
+                                    <option value="Odia">Odia</option>
+                                    <option value="Assamese">Assamese</option>
+                                    <option value="Nepali">Nepali</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="schedule" class="form-label">work schedule</label>
                                 <select name="workSchedule" id="" class="form-select">
-                                    <option value="select">select work schedule</option>
-                                    <option value="">morning</option>
-                                    <option value="">day</option>
-                                    <option value="">night</option>
+                                    <option value="">select work schedule</option>
+                                    <option value="morning">morning</option>
+                                    <option value="day">day</option>
+                                    <option value="night">night</option>
                                 </select>
                             </div>
                             <div class="form-group">

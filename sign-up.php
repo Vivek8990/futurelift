@@ -78,10 +78,7 @@ $data=$_SESSION['userdata'];
          <?php    
          } 
          ?>
-      <div class="btnGroup">
-        <a href="log-in.php" class="btn btn-sign">log in</a>
-        <a href="sign-up.php" class="btn">sign up</a>
-      </div>
+     </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
   </header>
@@ -89,6 +86,7 @@ $data=$_SESSION['userdata'];
   <!-- Header Section End -->
 
   <!-- sign up form start -->
+  
   
   <section class="form-section" id="form-section">
     <div class="formBox">
@@ -134,8 +132,8 @@ $data=$_SESSION['userdata'];
                   <label for="mobile" class="form-label text-center"><i class="fa fa-mobile"></i></label>
                 </div>
                 <div class="col-10">
-                  <input type="number" name="mobile" class="form-control" placeholder="mobile" autocomplete="off"
-                    id="mobile">
+                  <input type="text" name="mobile" class="form-control" placeholder="mobile" autocomplete="off"
+                    id="mobile"  maxlength="10">
                 </div>
                 <span id="mobileNum" class="text-dark"></span>
               </div>
@@ -147,6 +145,18 @@ $data=$_SESSION['userdata'];
                 </div>
                 <div class="col-10">
                   <input type="password" name="password" class="form-control" placeholder="password" id="pass"
+                    autocomplete="off">
+                </div>
+                <span id="password" class="text-dark"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row ">
+                <div class="col-2">
+                  <label for="conpassword" class="form-label"><i class="fa fa-lock"></i></label>
+                </div>
+                <div class="col-10">
+                  <input type="password" name="cfn_password" class="form-control" placeholder="confirm password" id="conPas"
                     autocomplete="off">
                 </div>
                 <span id="confirmPasword" class="text-dark"></span>

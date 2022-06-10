@@ -1,8 +1,8 @@
 <?php
 require_once('functions.php');
-$result=(counslerlist());
+$result=studentlist();
 $admin = $_SESSION['userdata']['role'];
-if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
+
 ?>
 <html>
 <head>
@@ -89,18 +89,28 @@ body {
 </div>
 <div class="main">
 <table id="customers">
-<caption><h1>Counsler List</h1></caption>
+<caption><h1>student List</h1></caption>
 <tr>
-<th>Full name </th>
-<th>Email </th>
-<th>Date of birth </th>
-<th>Gender </th>
-<th>Language </th>
-<th>Prefered Language </th>
-<th>Work Schedule </th>
-<th>Salary </th>
-<th>Refer Code </th>
-<th>view  details </th>
+<th>Name </th>
+<th>mobile </th>
+<th>email </th>
+<th>fathe name </th>
+<th>father mobile number</th>
+<th>10th percentage</th>
+<th>12t percentage</th>
+<th>graduation percentage</th>
+<th> course</th>
+<th>specialization</th>
+<th>college</th>
+<th>permanent address</th>
+<th>city</th>
+<th>pin code</th>
+
+<th>created</th>
+<?php if($admin == 'superadmin') {?>
+<th>action </th>
+<th>action </th>
+<?php } ?>
 </tr>
 <?php
  while($row =mysqli_fetch_array($result,MYSQLI_ASSOC))
@@ -109,19 +119,29 @@ body {
 
   echo "<tr>";
 
-  echo "<td>" . $row['fullname'] . "</td>";
+  echo "<td>" . $row['full_name'] . "</td>";
 
-  echo "<td>" . $row['email'] . "</td>";
+  echo "<td>" . $row['student_mobile_name'] . "</td>";
 
-  echo "<td>" . $row['dob'] . "</td>";
+  echo "<td>" . $row['email_id'] . "</td>";
 
-  echo "<td>" . $row['gender'] . "</td>";
-  echo "<td>" . $row['language'] . "</td>";
-  echo "<td>" . $row['preferedlanguage'] . "</td>";
-  echo "<td>" . $row['workschedule'] . "</td>";
-  echo "<td>" . $row['salary'] . "</td>";
-  echo "<td>" . $row['refercode'] . "</td>";
-  echo "<td> <a href='counselerdetails.php?id=" . $row['id'] . "'>view " ."</a></td>";
+  echo "<td>" . $row['fathe_name'] . "</td>";
+  echo "<td>" . $row['father_mobile_number'] . "</td>";
+  echo "<td>" . $row['10th_percentage'] . "</td>";
+  echo "<td>" . $row['12t_percentage'] . "</td>";
+  echo "<td>" . $row['graduation_percentage'] . "</td>";
+  echo "<td>" . $row['select_course'] . "</td>";
+  echo "<td>" . $row['specialization'] . "</td>";
+  echo "<td>" . $row['select_college'] . "</td>";
+  echo "<td>" . $row['permanent_address'] . "</td>";
+  echo "<td>" . $row['city'] . "</td>";
+  echo "<td>" . $row['pin_code'] . "</td>";
+  echo "<td>" . $row['created'] . "</td>";
+
+  if($admin == 'superadmin') {
+  echo "<td> <a href='update.php?id=" . $row['id'] . "'>Update </a></td>";
+  echo "<td> <a href='remove.php?type=student&id=" . $row['id'] . "'>Remove</a></td>";
+}
 
   echo "</tr>";
 

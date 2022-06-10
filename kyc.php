@@ -119,7 +119,17 @@ $data=$_SESSION['userdata'];
                 </fieldset>
                   <button class="btn btn-outline-secondary mt-3" type="submit" id="inputGroupFileAddon04">submit</button>
                 </form>
-                
+                <?php
+          if(isset($_SESSION['msg'])){
+              foreach($_SESSION['msg'] as $message){
+                  ?>
+          <div class="alert alert-danger" role="alert">
+          <?=$message?>
+          </div>
+                  <?php
+              }
+          }
+              ?>
             </div>
         </div>
     </div>

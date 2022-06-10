@@ -96,18 +96,9 @@ session_start();?>
         </div>
         <div class="signBox">
           <h1>sign in</h1>
-          <form action="functions.php?login" class="text-center" method="post">
+          <form action="functions.php?counselerlogin" class="text-center" method="post">
             
-            <div class="form-group ">
-              <div class="row ">
-                <div class="col-2">
-                  <label for="" class="form-label"><i class="fa fa-user"></i></label>
-                </div>
-                <div class="col-10">
-                  <input type="text" name="name" class="form-control" placeholder="name" id="user" autocomplete="off">
-                </div>
-              </div>
-            </div>
+            
             <div class="form-group">
               <div class="row">
                 <div class="col-2">

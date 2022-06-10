@@ -62,6 +62,8 @@ body {
   .sidenav a {font-size: 18px;}
 }
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 </head>
 <body>
 
@@ -94,7 +96,7 @@ body {
                   <label for="" class="form-label"><i class="fa fa-user"></i></label>
                 </div>
                 <div class="col-10">
-                  <input type="text" name="collage_name" class="form-control" required placeholder="College name"autocomplete="off">
+                  <input type="text" name="collage_name" class="form-control"  placeholder="College name"autocomplete="off">
                 </div>
               </div>
             </div>
@@ -149,29 +151,27 @@ body {
               </div>
             </div>
             <div class="form-group">
+           
               <div class="row">
-              <select name="approvel_id" id="cars">
-              <option value="">Select Approval</option>
+              <span>college approval </span><br>
+              <!-- <select name="approvel_id" id="cars">
+              <option value="">Select Approval</option> -->
                                 <?php
                     while($row =mysqli_fetch_array($Approvallist,MYSQLI_ASSOC))
 
                     {
-                    echo "<option value='".$row['id'] ."'>".$row['approval_name'] ."</option>";
+                    // echo "<option value='".$row['id'] ."'>".$row['approval_name'] ."</option>";
+                    echo "   <input type='checkbox' name='vehicle1[]' value='".$row['id'] ."'>
+                    <label for='vehicle1' style='font-size:15px;'> ".$row['approval_name'] ."</label>";
+                   
 
                     }
 
                     ?>
-                </select>
+                <!-- </select> -->
               </div>
             </div>
-            <div class="form-group">
-              <div class="row">
-             
-                
-                  <input type="text" name="fees" class="form-control" required placeholder="Fees" autocomplete="off">
-                
-              </div>
-            </div>
+            
             <div class="form-group">
               <div class="row">
               <select name="affiliated_id" id="cars">
@@ -189,7 +189,8 @@ body {
               </div>
             </div>
             <div class="form-group">
-              <div class="row">
+<div class="container1">
+              <div class="row ">
               <select name="course_id" id="cars">
               <option value="">Select Degree</option>
                                 <?php
@@ -202,9 +203,10 @@ body {
 
                     ?>
                 </select>
-              </div>
+ <input type="text" name="fees" class="form-control"  placeholder="Fees" autocomplete="off">
+      </div>
+</div>
             </div>
-            
             <div class="form-group">
               <div class="row ">
               <select name="gender" id="cars">
@@ -215,15 +217,34 @@ body {
               </select>
               </div>
             </div>
-            
-
+            <div class="form-group ">
+              <div class="row ">
+                
+               
+                  <input type="text" name="college_contact" class="form-control"  placeholder="College contact"autocomplete="off">
+               
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="row ">
+               
+                  <input type="text" name="address" class="form-control"  placeholder="College address"autocomplete="off">
+                
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="row ">
+              <input type="text" name="college_details" class="form-control"  placeholder="College details"autocomplete="off">
+                  </div>
+                  </div>
+               
             <div class="form-group ">
               <div class="row ">
                 <div class="col-2">
                   <span>Upload Bruchre</span>
                 </div>
                 <div class="col-10">
-                  <input type="file" name="brucher" class="form-control" required >
+                  <input type="file" name="brucher" class="form-control"  >
                 </div>
               </div>
             </div>
@@ -233,7 +254,17 @@ body {
                   <span>Upload logo</span>
                 </div>
                 <div class="col-10">
-                  <input type="file" name="logo" class="form-control" required >
+                  <input type="file" name="logo" class="form-control"  >
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <div class="row ">
+                <div class="col-2">
+                  <span>Upload photo Gallery</span>
+                </div>
+                <div class="col-10">
+                  <input type="file" name="gallery[]" multiple class="form-control"  >
                 </div>
               </div>
             </div>
@@ -243,7 +274,7 @@ body {
                   <label for="" class="form-label"></label>
                 </div>
                 <div class="col-10">
-                  <input type="text" name="rank" class="form-control" placeholder="College rank" required >
+                  <input type="text" name="rank" class="form-control" placeholder="College rank"  >
                 </div>
               </div>
             </div>
@@ -262,6 +293,7 @@ body {
 
 <!-- Footer End -->
   <script src="js/script.js"></script>
+ 
   
 
   

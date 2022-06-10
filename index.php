@@ -42,7 +42,7 @@ $collage = getCollegeByRank();
   <title>Future Lift Home</title>
 </head>
 
-<body>
+<body onload="deleteAllCookies()">
   <div id="mainPopUp" style="display: none;">
     <div class="formBox" id="popUpForm">
       <div class="boxForm">
@@ -142,6 +142,7 @@ $collage = getCollegeByRank();
          <?php    
          } 
          ?>
+         </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
   </header>
@@ -2158,5 +2159,16 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
   <script src="js/script.js"></script>
 
 </body>
+<script>
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
 
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+</script>
 </html>

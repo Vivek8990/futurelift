@@ -1,10 +1,12 @@
 <?php 
-session_start();
+require_once('functions.php');
 $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
-
+$id=$data['id'];
+$totalrefer = gettotalrefer($id);
+$balance = getBalance($id);
+$kyc = checkkyc($id);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,10 +66,19 @@ $data=$_SESSION['userdata'];
           <li><a class="dropdown-item" href="#">news</a></li>
         </ul>
       </div>
+      <?php if($login){?>
+       
+       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+       <a class="active" href="functions.php?logout">Signout</a><?php }
+      ?>
       <div class="btnGroup">
+        <?php if(!$login){ ?>
         <a href="log-in.php" class="btn btn-sign">log in</a>
         <a href="sign-up.php" class="btn">sign up</a>
-      </div>
+        <?php    
+        } 
+        ?>
+        </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
   </header>
@@ -106,7 +117,7 @@ $data=$_SESSION['userdata'];
 
 
   <section class="referErn" id="referErn">
-    <h1 class="text-center heading">Your Account</h1>
+    <h1 class="text-center heading">Your Account </h1>
     <div class="container">
       <div class="row">
         <div class="accountMain">
@@ -116,7 +127,7 @@ $data=$_SESSION['userdata'];
                 <p>current balecne</p>
                 <div class="tag">
                   <i class="fa fa-inr"></i>
-                  <h3>7,400</h3>
+                  <h3><?php echo $balance['available']; ?></h3>
                 </div>
                 <span></span>
               </div>
@@ -131,12 +142,12 @@ $data=$_SESSION['userdata'];
           <div class="acountDiv">
             <div class="balance1">
               <h3 class="text-center">Total Balance</h3>
-              <h4 class="text-center">10,000/-</h4>
+              <h4 class="text-center"><?php echo $balance['total']; ?>/-</h4>
               <a href="" class="btn">Recommendation</a>
             </div>
             <div class="balance1">
               <h3 class="text-center">My Network</h3>
-              <h4 class="text-center">10</h4>
+              <h4 class="text-center"><?php echo $totalrefer; ?></h4>
               <a href="" class="btn">Refer a Friend</a>
             </div>
           </div>
@@ -144,19 +155,38 @@ $data=$_SESSION['userdata'];
       </div>
     </div>
   </section>
+<section> 
+<div class="container">
+<h4>
+KYC : <?php if($kyc == 'Pending'){
+  echo "<a href='kyc.php'>click here to complete your KYC</a>";
+}
+elseif($kyc['status']=='processing') {
+  echo "KYC is under processing";
+}
+elseif($kyc['status']=='approved') {
+  echo "APPROVED";
+}
+?>
+</h4>
+</div>
 
+ </section>
   <section class="shareCode">
     <div class="container">
-      <h4 class="heading text-center">share your code</h4>
+      <h4 class="heading text-center">share your code </h4>
       <div class="row g-2">
         <div class="col-md">
           <div class="form-group mb-3">
             <label class="form-label" for="inputGroupSelect01">select program</label>
-            <select class="form-control p-4" id="inputGroupSelect01">
+            <select class="form-control p-4" id="inputGroupSelect01" >
               <option>program</option>
-              <option value="net Banking">net Banking</option>
-              <option value="upi transfer">upi transfer</option>
-              <option value="Credit Card">Credit Card</option>
+              <option value="upi transfer" <?php if($data['salary']=='UPI'){ echo 'selected';} ?>>UPI transfer</option>
+              <option value="Credit Card"  <?php if($datar['salary']=='Credit Card'){echo 'selected';} ?>>Credit Card</option>
+              <option value="Bank Account"  <?php if($data['salary']=='Bank Account'){echo 'selected';} ?>>Bank Account</option>
+              <option value="Cheque"   <?php if($data['salary']=='Cheque'){echo 'selected';} ?>>Cheque</option>
+              <option value="NEFT"  <?php if($data['salary']=='NEFT'){echo 'selected';} ?>>NEFT</option>
+              <option value="Demand Draft"  <?php if($data['salary']=='Demand Draft'){echo 'selected';} ?>>Demand Draft</option>
             </select>
           </div>
         </div>
@@ -164,7 +194,7 @@ $data=$_SESSION['userdata'];
           <div class="form-group mb-3">
             <label for="" class="form-label">copy code</label>
             <div class="input-group">
-              <input type="text" class="form-control" id="copyCode" value="copy link" placeholder="copy code">
+              <input type="text" class="form-control" id="copyCode" value="<?php echo $data['refercode']; ?>" placeholder="copy code">
               <button class="btn btn-info btn-clipboard" type="button" onclick="copy()">copy</button>
             </div>
           </div>
@@ -183,11 +213,11 @@ $data=$_SESSION['userdata'];
         
         <div class="socialDiv">
           <i class="fa fa-envelope"></i>
-          <h6> <a href="">email</a></h6>
+          <h6> <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=&su=Your+Subject+here&body='+msgbody+'&ui=2&tf=1&pli=1" target="blank">email</a></h6>
         </div>
         <div class="socialDiv">
           <i class="fa fa-facebook-square"></i>
-          <h6><a href="">facebook</a></h6>
+          <h6><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2use+my+code+651UO1+to+register+and+get+discount&oq=use+my+code+651UO1+to+register+and+get+discount" target="blank">facebook</a></h6>
         </div>
         <div class="socialDiv">
           <i class="fa fa-whatsapp"></i>
@@ -195,11 +225,11 @@ $data=$_SESSION['userdata'];
         </div>
         <div class="socialDiv">
           <i class="fa fa-linkedin-square"></i>
-          <h6><a href="">linkedin</a></h6>
+          <h6><a href="https://www.linkedin.com/sharing/share-offsite/?url=https:google.com">linkedin</a></h6>
         </div>
         <div class="socialDiv">
           <i class="fa fa-instagram"></i>
-          <h6><a href="">instagram</a> </h6>
+          <h6><a href="https://www.instagram.com/?url=https://www.drdrop.co/" target="_blank" rel="noopener">instagram</a> </h6>
         </div>
       </div>
     </div>

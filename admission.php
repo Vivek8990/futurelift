@@ -5,10 +5,8 @@ $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
 
 ?>
-
-
-
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -61,13 +59,19 @@ $data=$_SESSION['userdata'];
               <li><a class="dropdown-item" href="#">news</a></li>
             </ul>
           </div>
-          <div class="btnGroup">
-            <?php if(!$login){ ?>
-            <a href="log-in.php" class="btn btn-sign">log in</a>
-            <a href="sign-up.php" class="btn">sign up</a>
-            <?php    
-            } 
-            ?>
+          <?php if($login){?>
+       
+       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
+       <a class="active" href="functions.php?logout">Signout</a><?php }
+      ?>
+      <div class="btnGroup">
+        <?php if(!$login){ ?>
+        <a href="log-in.php" class="btn btn-sign">log in</a>
+        <a href="sign-up.php" class="btn">sign up</a>
+        <?php    
+        } 
+        ?>
+      </div>
         </nav>
         <i class="fas fa-bars" id="manu-bars"></i>
       </header>
@@ -76,43 +80,44 @@ $data=$_SESSION['userdata'];
               <div class="d-flex flex-wrap justify-content-center ">
                   <div class="admissionFormPart col-md-6">
                       <h1 class="heading text-center p-5">open admission for 2022</h1>
-                      <form action="">
+                      <form action="functions.php?admission"  method="post">
                         <p class="text-center">take your site first</p>
                           <div class="form-group">
                               <label for="" class="form-label">Full Name</label>
-                              <input type="text" class="form-control" placeholder="Full Name" >
+                              <input type="text" class="form-control"name="fullname" placeholder="Full Name" >
                           </div>
                           <div class="form-group">
                             <label for="" class="form-label">Mobile Number</label>
-                            <input type="mobile" class="form-control" placeholder="Mobile Number">
+                            <input type="mobile" class="form-control" name="mobilenumber" placeholder="Mobile Number">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Email Id</label>
-                            <input type="mail" class="form-control" placeholder="Email Id" >
+                            <input type="mail" class="form-control" name="emailid" placeholder="Email Id" >
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Father Name</label>
-                            <input type="text" class="form-control" placeholder="Father Name" >
+                            <input type="text" class="form-control" name="fathername" placeholder="Father Name" >
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Mobile Number</label>
-                            <input type="text" class="form-control" placeholder="Mobile Number" >
+                            <input type="text" class="form-control"  name="fathermobilenumber"placeholder="Mobile Number" >
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">10th Percentage</label>
-                            <input type="text" class="form-control" placeholder="10th Percentage">
+                            <input type="text" class="form-control" name="10thpercentages" placeholder="10th Percentage">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">12th Percentage</label>
-                            <input type="text" class="form-control" placeholder="12th Percentage">
+                            <input type="text" class="form-control" name="12thpercentages" placeholder="12th Percentage">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Graduation Percentage</label>
-                            <input type="text" class="form-control" placeholder="Graduation Percentage">
+                            <input type="text" class="form-control" name="graduationpercentages" placeholder="Graduation Percentage">
                         </div>
+
                         <div class="form-group">
                             <label for="" class="form-label">select course</label>
-                            <select name="" id="" class="form-select">
+                            <select name="selectcourse" id="" class="form-select">
                                 <option value="MBA">MBA</option>
                                 <option value="LLB">LLB</option>
                                 <option value="BSc">BSc</option>
@@ -126,7 +131,7 @@ $data=$_SESSION['userdata'];
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">Specialization</label>
-                            <select name="" id="" class="form-select">
+                            <select name="specilization" id="" class="form-select">
                                 <option value="Business Administration">Business Administration</option>
                                 <option value="General Management">General Management</option>
                                 <option value="Human Resources Management">Human Resources Management</option>
@@ -140,7 +145,7 @@ $data=$_SESSION['userdata'];
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">select college</label>
-                            <select name="" id="" class="form-select">
+                            <select name="selectcollege" id="" class="form-select">
                                 <option value="Business Administration">Delhi University</option>
                                 <option value="General Management">chandigarh University</option>
                                 <option value="Human Resources Management">Nalanda University</option>
@@ -154,11 +159,11 @@ $data=$_SESSION['userdata'];
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">permanent address</label>
-                            <input type="text" class="form-control" placeholder="permanent address">
+                            <input type="text" name="permanentaddress" class="form-control" placeholder="permanent address">
                         </div>
                         <div class="form-group">
                             <label for="" class="form-label">city</label>
-                            <select name="" id="" class="form-select">
+                            <select name="city" id="" class="form-select">
                                 <option value="Kolkata">Kolkata</option>
                                 <option value="Delhi">Delhi</option>
                                 <option value="Mumbai">Mumbai</option>
@@ -170,9 +175,13 @@ $data=$_SESSION['userdata'];
                                 <option value="Nagpure">Nagpure</option>
                             </select>
                         </div>
+
+
+
+
                       
                             <label for="" class="form-label">pin code</label>
-                            <input type="number" class="form-control" placeholder="pin code" required>
+                            <input type="number"  name="pincode"class="form-control" placeholder="pin code" required>
                         
                           <button type="submit" class="btn" value="submit">submit</button>
                         
@@ -186,59 +195,6 @@ $data=$_SESSION['userdata'];
           </div>
 
       </section>
-
-      <!-- footer start -->
-  <footer id="footer" class="footer-area section-padding">
-    <div class="container">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
-            <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
-            <h3 class="footer-titel">quick links</h3>
-            <ul>
-              <li><a href="about.php">about us</a></li>
-              <li><a href="">FAQs</a></li>
-              <li><a href="policy.php">privacy policy</a></li>
-              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">
-            <h3 class="footer-titel">our services</h3>
-            <ul>
-              <li><a href="#">Career</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Clients</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.8s">
-            <h3 class="footer-titel">Find us on</h3>
-            <div class="social-icon">
-              <a href="https://www.facebook.com/Future-Lift-Education-PVT-LTD-112127913993548/"><i class="fab fa-facebook-square"></i></a>
-              <a href="https://instagram.com/futurelift_education?utm_medium=copy_link"><i class="fab fa-instagram-square"></i></a>
-              <a href=" https://twitter.com/Futurelift_edu?s=09"><i class="fab fa-twitter-square"></i></a>
-              <a href="https://youtube.com/channel/UCvY_1Aon-HqSHzqWwvIU2zQ"><i class="fab fa-youtube-square"></i></a>
-              <a href="https://www.linkedin.com/company/futurelift-duication"><i class="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>  
-    </div>     
-  </footer> 
-  <!-- footer end -->
-
-  <section id="copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p>Copyright © 2022 future lift All Right Reserved</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
 

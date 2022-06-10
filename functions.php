@@ -20,7 +20,23 @@ if (isset($_GET['kyc'])) {
 
 }
   
-  
+if ($_GET['fn'] == "kycupdate")
+{
+    if (!empty($_GET['id']))
+    {
+         $db = $GLOBALS['db'];
+        $id=$_GET['id'];
+$type=$_GET['status'];
+    echo $id;
+     $query = "update  counsler_kyc set status='$type' WHERE counslerid = $id ";
+   echo $query; 
+    $runQuery = mysqli_query($db, $query);
+    
+     header("location:counselerdetails.php?id=".$id);
+    
+    }
+}
+
 
 //For new user registration
 if (isset($_GET['signup'])) {
@@ -45,20 +61,26 @@ if (isset($_GET['collegesearch'])) {
 if (isset($_GET['counseler'])) {
     unset($_SESSION['msg']);
     $user = addcounseler($_POST);
-    if (isset($user['success'])) {
+
+    if (isset($user['success']) && is_array($user)) {
         $_SESSION['msg'][] = $user['success'];
         $_SESSION['counseler']=$user['counseler'];
-        header('location:kyc.php');
+        
+            $_SESSION['userdata'] = $user;
+            $_SESSION['userIsLoggedIn'] = true;
+            header('location:referandearnsharecode.php');
+       
+       
     } else {
         $_SESSION['msg'] = $user['errors'];
-        echo "error";
-        header('location:counselerForm.php');
+       header('location:counselerForm.php');
     }
 
 }
+
 if (isset($_GET['updatecollege'])) {
     unset($_SESSION['msg']);
-    echo "00000";
+   // echo "00000";
     $user = updatecollegedetails($_POST);
     if (isset($user['success'])) {
         $_SESSION['msg'][] = $user['success'];
@@ -85,14 +107,20 @@ if (isset($_GET['scholership'])) {
 
 if (isset($_GET['addcollege'])) {
     unset($_SESSION['msg']);
+  
+
+    // foreach ($_POST['vehicle1'] as $key => $val) {
+    //     echo $val;
+    //  }
+   echo "999999";
     $user = addnewCollege($_POST,$_FILES);
-    if (isset($user['success'])) {
-        $_SESSION['msg'][] = $user['success'];
-        header('location:addcollege.php');
-    } else {
-        $_SESSION['msg'] = $user['errors'];
-        header('location:addcollege.php');
-    }
+    // if (isset($user['success'])) {
+    //     $_SESSION['msg'][] = $user['success'];
+    //     header('location:addcollege.php');
+    // } else {
+    //     $_SESSION['msg'] = $user['errors'];
+    //     header('location:addcollege.php');
+    // }
 
 }
 
@@ -123,6 +151,7 @@ if (isset($_GET['admin_signup'])) {
 }
 //For new admission
 if (isset($_GET['admission'])) {
+    
     unset($_SESSION['msg']);
     $user = admission($_POST);
     if (isset($user['success'])) {
@@ -133,6 +162,20 @@ if (isset($_GET['admission'])) {
       
     }
     header('location:admission.php');
+}
+
+if (isset($_GET['student'])) {
+    
+    unset($_SESSION['msg']);
+    $user = admission($_POST);
+    if (isset($user['success'])) {
+        $_SESSION['msg'][] = $user['success'];
+       
+    } else {
+        $_SESSION['msg'] = $user['errors'];
+      
+    }
+    header('location:addstudent.php');
 }
 //this is for login
 if (isset($_GET['login'])) {
@@ -154,6 +197,30 @@ if (isset($_GET['login'])) {
     }
 
 }
+
+          
+if (isset($_GET['counselerlogin'])) {
+    unset($_SESSION['msg']);
+    if ($_POST['email'] == '' || $_POST['password'] == '') {
+        $_SESSION['msg'][] = 'All fields are required';
+
+    } else {
+        $user = checkCounselerdata($_POST);
+        if (is_array($user)) {
+            $_SESSION['userdata'] = $user;
+            $_SESSION['userIsLoggedIn'] = true;
+            header('location:referandearnsharecode.php');
+        } else {
+            $_SESSION['msg'][] = 'Incorrect Email/Password !';
+            header('location:counselerlog-in.php');
+        }
+
+    }
+
+}
+
+
+
 //this is for contact
 if (isset($_GET['contact'])) {
     unset($_SESSION['msg']);
@@ -192,7 +259,7 @@ if (isset($_GET['adminlogin'])) {
 
 if (isset($_GET['logout'])) {
     session_destroy();
-    header('location:log-in.php');
+    header('location:index.php');
 
 }
 if (isset($_GET['adminlogout'])) {
@@ -218,6 +285,25 @@ function checkUser($data)
         return false;
     }
 }
+
+    function checkcounsler($data)
+{
+    $db = $GLOBALS['db'];
+    $email_id = $data;
+    // $password = md5(mysqli_real_escape_string($db, $data['password']));
+    $query = "SELECT * FROM counsler WHERE email_id='$email_id'";
+    $runQuery = mysqli_query($db, $query);
+    $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($runQuery);
+
+    if ($count > 0) {
+        return true;
+    } else {
+
+        return false;
+    }
+}
+
 //this is for checking the user
 function admincheckUser($data)
 {
@@ -573,6 +659,16 @@ function collegelist(){
      return $runQuery;  
 }
 
+function studentlist(){
+
+    $db=$GLOBALS['db'];
+    $query="SELECT * from admission where isremoved='0'";
+  
+    $runQuery=mysqli_query($db,$query);
+  
+     return $runQuery;  
+}
+
 function getCollegeGroupByCategoury(){
     $db=$GLOBALS['db'];
     $query ="SELECT s.specialization_name, COUNT(c.id) as count
@@ -757,7 +853,7 @@ function admission($data)
     $created = date("Y-m-d h:i:s");
     $full_name = mysqli_real_escape_string($db, $data['fullname']);
     $mobilenumber = mysqli_real_escape_string($db, $data['mobilenumber']);
-    $emailid = md5(mysqli_real_escape_string($db, $data['emailid']));
+    $emailid = mysqli_real_escape_string($db, $data['emailid']);
     $fathername = mysqli_real_escape_string($db, $data['fathername']);
     $fathermobilenumber = mysqli_real_escape_string($db, $data['fathermobilenumber']);
     $tenpercentages = mysqli_real_escape_string($db, $data['10thpercentages']);
@@ -774,11 +870,11 @@ function admission($data)
         $user['errors'][] = "all fields are required !";
     }
     
-    $query="INSERT INTO admission(full_name,student_mobile_name,email_id,fathe_name,father_mobile_number,10th_percentage,12t_percentage,graduation_percentage,select_course,specialization,select_college,permanent_address,city,pin_code,created) ";
+    $query="INSERT INTO admission(full_name,student_mobile_name,email_id,fathe_name,father_mobile_number,10th_percentage,12t_percentage,graduation_percentage,select_course,specialization,select_college,permanent_address,city,pin_code,created,isremoved) ";
 
     $query.="VALUES('$full_name','$mobilenumber','$emailid','$fathername','$fathermobilenumber','$tenpercentages','$twelvethpercentages','$graduationpercentages',
-    '$selectcourse','$specilization','$selectcollege','$permanentaddress','$city','$pincode','$created')";
-    echo  $query;
+    '$selectcourse','$specilization','$selectcollege','$permanentaddress','$city','$pincode','$created','0')";
+   
     $runQuery = mysqli_query($db,$query);
     
    
@@ -976,7 +1072,7 @@ function checkStudent($data)
 
 //New college addition
 function addnewCollege($data,$files)
-{
+{echo "ftjytuuuuuuuuuuuuuuuuuuuu";
     $db = $GLOBALS['db'];
     $user = array();
     $user['errors'] = array();
@@ -985,7 +1081,7 @@ function addnewCollege($data,$files)
     $state_id = mysqli_real_escape_string($db, $data['state_id']);
     $city_id = mysqli_real_escape_string($db, $data['city_id']);
     $Collage_type = mysqli_real_escape_string($db, $data['Collage_type']);
-    $approvel_id = mysqli_real_escape_string($db, $data['approvel_id']);
+    
     $affiliated_id = mysqli_real_escape_string($db, $data['affiliated_id']);
     $course_id = mysqli_real_escape_string($db, $data['course_id']);
     $gender = mysqli_real_escape_string($db, $data['gender']);
@@ -995,39 +1091,60 @@ function addnewCollege($data,$files)
     $bruchre = $files['brucher']['tmp_name'];
     $logoupload = base64_encode(file_get_contents(addslashes($logo)));
     $brucherupload = base64_encode(file_get_contents(addslashes($bruchre)));
-  
+$college_contact =mysqli_real_escape_string($db, $data['college_contact']);
+$address=mysqli_real_escape_string($db, $data['address']);
+$cllege_details=mysqli_real_escape_string($db, $data['college_details']);
+
+    echo "ttttttttttt";
+    print_r($data['vehicle1']);
+   
+    $approvel_id =  $data['vehicle1'];
+
+
     
     if ($collage_name == '' || $state_id == '' || $Collage_type == '' || $approvel_id == '' ||
      $affiliated_id == '' || $course_id == '' || $gender == '' || $logo || $bruchre) {
         $user['errors'][] = "all fields are required !";
     }
-    
+   echo "dggggggggggggggggggggggggggggtttt";
     
     $query="INSERT INTO college(collage_name,state_id,collage_type_id,approvel_id,
-    affiliated_id,degree_id,gender,created,updated,city_id,rank,logo,bruchre) ";
+    affiliated_id,degree_id,gender,created,updated,city_id,rank,logo,bruchre,college_contact,address,cllege_details) ";
     $query.="VALUES('$collage_name','$state_id','$Collage_type','$approvel_id',
-    '$affiliated_id','$course_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload')";
-  
+    '$affiliated_id','$course_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload','$college_contact','$address','$cllege_details')";
+  echo $query;
     $runQuery = mysqli_query($db,$query);
     
     $last_id = $db->insert_id;
 echo $last_id ;
     
-    if($runQuery){
+    // if($runQuery){
 
-        $queryfee="INSERT INTO college_fee(college_id,course_id,course_fee) ";
-        $queryfee.="VALUES('$last_id','$course_id','$fees')";
+    //     $queryfee="INSERT INTO college_fee(college_id,course_id,course_fee) ";
+    //     $queryfee.="VALUES('$last_id','$course_id','$fees')";
       
-        $runQueryfee = mysqli_query($db,$queryfee);
+    //     $runQueryfee = mysqli_query($db,$queryfee);
          
-        $user['success']="college added successfully !";
+    //     $user['success']="college added successfully !";
 
+    //     foreach ($files['gallery']['tmp_name'] as $key => $value) {
+    //         $gallery = $files['gallery']['tmp_name'][$key];
+    //         $filename = $files['gallery']['name'][$key];
+    //         $galleryupload = base64_encode(file_get_contents(addslashes($gallery)));
+
+    //         $querygallery="INSERT INTO college_gallery(name,url,college_id,created) ";
+    //         $querygallery.="VALUES('$filename','$galleryupload','$last_id','$created')";
+
+    //         $runQuerygallery = mysqli_query($db,$querygallery);
+    //     }
         
-    }else{
-        $user['errors'][]="Something went wrong !";
-    }
+    // }
+    
+    // else{
+    //     $user['errors'][]="Something went wrong !";
+    // }
    
-   return $user;
+//    return $user;
    
     
 }
@@ -1052,7 +1169,7 @@ function updatecollegedetails($data)
     $id = mysqli_real_escape_string($db, $data['id']);
     $city_id = mysqli_real_escape_string($db, $data['city_id']);
     $rank = mysqli_real_escape_string($db, $data['rank']);
-    echo $id;
+  //  echo $id;
    
     if ($collage_name == '' || $state_id == '' || $Collage_type == '' || $approvel_id == '' ||
      $affiliated_id == '' || $course_id == '' || $gender == '') {
@@ -1063,7 +1180,7 @@ function updatecollegedetails($data)
     collage_name='$collage_name',state_id='$state_id',collage_type_id='$Collage_type',approvel_id='$approvel_id',
     affiliated_id='$affiliated_id',degree_id='$course_id',gender='$gender',updated='$created',rank='$rank',city_id='$city_id' Where id='$id'";
     
-    echo $query;
+   // echo $query;
     $runQuery = mysqli_query($db,$query);
     
     
@@ -1092,46 +1209,45 @@ function addcounseler($data)
     $created = date("Y-m-d h:i:s");
     $name = mysqli_real_escape_string($db, $data['name']);
     $email = mysqli_real_escape_string($db, $data['email']);
+    $password = md5(mysqli_real_escape_string($db, $data['password']));
     $dateofbirth = mysqli_real_escape_string($db, $data['dateofbirth']);
     $gender = mysqli_real_escape_string($db, $data['gender']);
     $laguage = mysqli_real_escape_string($db, $data['laguage']);
-    $Preferred = mysqli_real_escape_string($db, $data['Preferred']);
+    $Preferred = mysqli_real_escape_string($db, $data['Preferred_language']);
     $workSchedule = mysqli_real_escape_string($db, $data['workSchedule']);
     $salary = mysqli_real_escape_string($db, $data['salary']);
     $code =  genUserCode();
     if ($name == '' || $email == '' || $dateofbirth == ''
      || $gender == '' ||
-     $laguage == '' || $Preferred == '' || $workSchedule == '' || $salary == '')
+     $laguage == '' || $Preferred == '' || $workSchedule == '' || $salary == '' || $password == '')
      
      {
         $user['errors'][] = "all fields are required !";
    }
-   
+  
      if (checkcounsler($email))
     {
-
-        echo "counsler already added";
         $user['errors'][]="counsler already added";
    }
     else{
-    $query="INSERT INTO counsler(fullname,email,dob,gender,
-    	language,preferedlanguage,workschedule,created,salary,refercode) ";
+    $query="INSERT INTO counsler(fullname,email_id,dob,gender,
+    	language,preferedlanguage,workschedule,created,salary,refercode,password) ";
     $query.="VALUES('$name','$email','$dateofbirth','$gender','$laguage',
-    '$Preferred','$workSchedule','$created','$salary','$code')";
-    echo $query;
-    
+    '$Preferred','$workSchedule','$created','$salary','$code','$password')";
+   
     $runQuery = mysqli_query($db,$query);
     
-    
-
-    
     if($runQuery){
-        $user['counseler']=$code;
-        echo $code;
-        $user['success']="Counseler added successfully !";
-
         
+        $user['success']="Counseler added successfully !";
+        $querys = "SELECT * FROM counsler WHERE id='$db->insert_id;'";
+        $runQuerys = mysqli_query($db, $querys);
+        $user = mysqli_fetch_array($runQuerys, MYSQLI_ASSOC);
+        $user['success']="Counseler added successfully !";
+        
+     
     }else{
+        
         $user['errors'][]="Something went wrong !";
     }
 }
@@ -1140,24 +1256,47 @@ function addcounseler($data)
     
 }
 
-function checkcounsler($data)
-{
+
+ function gettotalrefer($id){
     $db = $GLOBALS['db'];
-    $email_id = $data;
-    // $password = md5(mysqli_real_escape_string($db, $data['password']));
-    $query = "SELECT * FROM counsler WHERE email='$email_id'";
+    $counselerid = $id;
+    //echo 'sdsd';
+    $query = "SELECT count(*)as total FROM refer WHERE counseler_id='$counselerid'";
     $runQuery = mysqli_query($db, $query);
     $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
     $count = mysqli_num_rows($runQuery);
+    
+    
+    return $user['total'];
+    
+ }
 
-    if ($count > 0) {
-        return true;
-    } else {
+function getBalance($id){
+    $db = $GLOBALS['db'];
+    $counselerid = $id;
+    $querycredit = "SELECT sum(amount) as credit FROM counseler_wallet WHERE counseler_id='$counselerid' and type='credit' and status='success'";
+    $runQuerycredit = mysqli_query($db, $querycredit);
+    $credit = mysqli_fetch_array($runQuerycredit, MYSQLI_ASSOC);
 
-        return false;
-    }
-}
-  //New User registration
+    $querycreditpending = "SELECT sum(amount) as credit FROM counseler_wallet WHERE counseler_id='$counselerid' and type='credit' ";
+    $runQuerycreditpending = mysqli_query($db, $querycreditpending);
+    $creditpending = mysqli_fetch_array($runQuerycreditpending, MYSQLI_ASSOC);
+
+
+    $querydebit = "SELECT sum(amount) as debit FROM counseler_wallet WHERE counseler_id='$counselerid' and type='debit' and status='success'";
+    $runQuerydebit = mysqli_query($db, $querydebit);
+    $debit = mysqli_fetch_array($runQuerydebit, MYSQLI_ASSOC);
+    $available = $credit['credit']-$debit['debit'];
+    $total =$creditpending['credit']-$debit['debit'];
+    
+    $counseler['available']=$available;
+    $counseler['total']=$total;
+    return $counseler;
+    
+ }
+
+
+//New User registration
   function contactform($data)
   {
       $db = $GLOBALS['db'];
@@ -1184,7 +1323,7 @@ function checkcounsler($data)
           $query="INSERT INTO contact
           (name,email,mobile,state,city,course,messages) ";
            $query.="VALUES('$name','$email_id','$mobile','$state','$city','$course','$message')";
-         echo $query;
+       //  echo $query;
           $runQuery = mysqli_query($db,$query);
           
           if($runQuery){
@@ -1263,36 +1402,41 @@ function addkyc($data,$files)
     $pan = $files['pan']['tmp_name'];
     $panupload = base64_encode(file_get_contents(addslashes($pan)));
     // $adharupload = base64_encode(file_get_contents(addslashes($adhar)));
-  
-    if ($email_id == '' || $pannumber == ''  ) {
-        $user['errors'][] = "all fields are required !";
+//   echo "fsfnjdfnkdjskjd";
+     if ($email_id == '' || $pannumber == ''  ) {
+       $user['errors'][] = "all fields are required !";
     }
-    $query1="SELECT * FROM counsler WHERE email='$email_id'";
-    $runQuery1=mysqli_query($db,$query1);
-    $counseler=mysqli_fetch_array($runQuery1,MYSQLI_ASSOC);
-  
-    $count = mysqli_num_rows($runQuery1);
-         
+     $query1="SELECT * FROM counsler WHERE email_id='$email_id'";
+     echo  $query1; 
+     $runQuery1=mysqli_query($db,$query1);
+     $counseler=mysqli_fetch_array($runQuery1,MYSQLI_ASSOC);
+     $count = mysqli_num_rows($runQuery1);
+       
         if($count<1)  {
             $user['errors'][] = "Counseler not rgistered.";
         }
         else{
             $cou=$counseler['id'];
+
+            $query1="SELECT * FROM counsler WHERE email_id='$email_id'";
+            echo  $query1; 
+            $runQuery1=mysqli_query($db,$query1);
+            $counseler=mysqli_fetch_array($runQuery1,MYSQLI_ASSOC);
+            $count = mysqli_num_rows($runQuery1);
+
         }
     if(count($user['errors'])<1){
     
     
    
-    $query="INSERT INTO counsler_kyc(pan,pannumber,counslerid,created) ";
-    $query.="VALUES('$panupload','$pannumber',' $cou','$created')";
+    $query="INSERT INTO counsler_kyc(pan,pannumber,counslerid,created,status) ";
+    $query.="VALUES('$panupload','$pannumber',' $cou','$created','processing')";
     $runQuery = mysqli_query($db,$query);
 
     if($runQuery){
         $user['success']="KYC submitted successfully !";
 
         
-    }else{
-        $user['errors'][]="Something went wrong !";
     }
     }
    return $user;
@@ -1322,6 +1466,84 @@ function getCollegeByRank(){
    
    
     return $runQuery;
+}
+function getCollegeDetail($id){
+    $db=$GLOBALS['db'];
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
+    af.affiliation_name,ap.approval_name,cty.type,ct.city_name,rt.rating,count(rv.id) as rv
+    FROM college c
+    join Degree ds on ds.id = c.degree_id
+    join Spacialization s on s.id = ds.specialization_id
+    join State st on st.id = c.state_id
+   
+    join affiliation af on af.id= c.affiliated_id
+    join Approval ap on ap.id = c.approvel_id
+    join Collage_type cty on cty.id = c.collage_type_id
+    join City ct on ct.id = c.city_id
+    join rating rt on rt.collage_id= c.id
+   join Reviews rv on rv.collage_id = c.id
+   group by c.id
+    order by c.rank limit 8";
+
+   $runQuery = mysqli_query($db,$query);
+   
+   
+    return $runQuery;
+}
+
+function checkCounselerdata($data)
+{
+    $db = $GLOBALS['db'];
+    $email_id = mysqli_real_escape_string($db, $data['email']);
+     $password = md5(mysqli_real_escape_string($db, $data['password']));
+    $query = "SELECT * FROM counsler WHERE email_id='$email_id' and password='$password'";
+    
+    $runQuery = mysqli_query($db, $query);
+    $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($runQuery);
+
+    if ($count > 0) {
+        return $user;
+    } else {
+
+        return false;
+    }
+   // print_r($user);
+}
+function checkkyc($id){
+    $db = $GLOBALS['db'];
+  
+    $query = "SELECT * FROM counsler_kyc WHERE counslerid='$id' ";
+    
+    $runQuery = mysqli_query($db, $query);
+    $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($runQuery);
+
+    if ($count > 0) {
+        return $user;
+
+       
+    } else {
+
+       return "Pending";
+    }
+}
+function counselerdeatails($id){
+
+    $db = $GLOBALS['db'];
+   
+    $query = "SELECT * FROM counsler WHERE id = $id ";
+    
+    $runQuery = mysqli_query($db, $query);
+    $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    $count = mysqli_num_rows($runQuery);
+
+    if ($count > 0) {
+        return $user;
+    } else {
+
+        return false;
+    }
 }
 
   ?>
