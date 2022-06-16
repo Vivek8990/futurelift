@@ -2,8 +2,8 @@
 require_once 'functions.php';
 $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
-$courses= getCollegeGroupByCategoury();
-$collage = getCollegeByRank();
+// $courses= getCollegeGroupByCategoury();
+ $collage = getCollegeByRank();
 
 ?>
 
@@ -261,112 +261,112 @@ $collage = getCollegeByRank();
             <div class="collgBox">
               <img src="images/courseIcon-02.png" alt="">
               <h5>
-                <a href="college-filter-management.php?gtspacialization=managment" target="_blank" title="B.M.S. Colleges in India">Management</a>
+                <a href="college-filter-management.php?gtspacialization=Management" target="_blank" title="">Management</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/courseIcon1-02.png" alt="">
               <h5>
-                <a href="college-filter-medical.php?gtspacialization=medical" target="_blank" title="B.M.S. Colleges in India">medical</a>
+                <a href="college-filter-medical.php?gtspacialization=Medical" target="_blank" title="">Medical</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/engineering-02.png" alt="">
               <h5>
-                <a href="college-filter-engeneering.php?gtspacialization=engineering" target="_blank" title="B.M.S. Colleges in India">engineering</a>
+                <a href="college-filter-engeneering.php?gtspacialization=Engineering" target="_blank" title="">Engineering</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/courseIcon3-02.png" alt="">
               <h5>
-                <a href="college-filter-law.php?gtspacialization=law" target="_blank" title="B.M.S. Colleges in India">law</a>
+                <a href="college-filter-law.php?gtspacialization=Law" target="_blank" title="">Law</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/science-02.png" alt="">
               <h5>
-                <a href="college-filter-science.php?gtspacialization=science" target="_blank" title="B.M.S. Colleges in India">science</a>
+                <a href="college-filter-science.php?gtspacialization=Science" target="_blank" title="">Science</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/phamecy-02.png" alt="">
               <h5>
-                <a href="college-filter-pharmecy.php?gtspacialization=pharmecy" target="_blank" title="B.M.S. Colleges in India">pharmacy</a>
+                <a href="college-filter-pharmecy.php?gtspacialization=Pharmacy" target="_blank" title="">Pharmacy</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/agriculture-02.png" alt="">
               <h5>
-                <a href="college-filter-agriculture.php?gtspacialization=agriculture" target="_blank" title="B.M.S. Colleges in India">agriculture</a>
+                <a href="college-filter-agriculture.php?gtspacialization=Agriculture" target="_blank" title="">Agriculture</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/it-02.png" alt="">
               <h5>
-                <a href="college-filter-information-technology.php?gtspacialization=technology" title="B.M.S. Colleges in India">Information Technology</a>
+                <a href="college-filter-information-technology.php?gtspacialization=Information Tech" title="">Information Technology</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/dental-02.png" alt="">
               <h5>
-                <a href="college-filter-dental.php?gtspacialization=dental" target="_blank" title="B.M.S. Colleges in India">dental</a>
+                <a href="college-filter-dental.php?gtspacialization=Dental" target="_blank" title="">dental</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/design-02.png" alt="">
               <h5>
-                <a href="college-filter-design.php?gtspacialization=design" target="_blank" title="B.M.S. Colleges in India">design</a>
+                <a href="college-filter-design.php?gtspacialization=Design" target="_blank" title="">design</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/education-02.png" alt="">
               <h5>
-                <a href="college-filter-education.php?gtspacialization=education" target="_blank" title="B.M.S. Colleges in India">education</a>
+                <a href="college-filter-education.php?gtspacialization=Nursing" target="_blank" title="">Nursing</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/hotel-02.png" alt="">
               <h5>
-                <a href="college-filter-hotelmanagement.php?gtspacialization=hotelmanagement" target="_blank" title="B.M.S. Colleges in India">hotel Management</a>
+                <a href="college-filter-hotelmanagement.php?gtspacialization=Hotel Management" target="_blank" title="">hotel Management</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/" alt="">
               <h5>
-                <a href="college-filter-masscommunication.php?gtspacialization=masscommunication" target="_blank" title="B.M.S. Colleges in India">mass Communication</a>
+                <a href="college-filter-masscommunication.php?gtspacialization=Mass Communication" target="_blank" title="">mass Communication</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/art-02.png" alt="">
               <h5>
-                <a href="college-filter-arts.php?gtspacialization=arts" target="_blank" title="B.M.S. Colleges in India">arts</a>
+                <a href="college-filter-arts.php?gtspacialization=Arts" target="_blank" title="">arts</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/para-02.png" alt="">
               <h5>
-                <a href="college-filter-paremedical.php?gtspacialization=paremedical" target="_blank" title="B.M.S. Colleges in India">paramedical</a>
+                <a href="college-filter-paremedical.php?gtspacialization=Paramedical" target="_blank" title="">paramedical</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/para-02.png" alt="">
               <h5>
-                <a href="college-filter-commerce-banking.php?gtspacialization=banking" target="_blank" title="B.M.S. Colleges in India">commerce & banking</a>
+                <a href="college-filter-commerce-banking.php?gtspacialization=banking" target="_blank" title="">commerce & banking</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
@@ -380,112 +380,112 @@ $collage = getCollegeByRank();
             <div class="collgBox">
               <img src="images/jee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">JEE</a>
+                <a href="/information-technology-stream/" title="">JEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/Jeem-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">JEE MAIN</a>
+                <a href="/information-technology-stream/" title="">JEE MAIN</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/NEET-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">NEET</a>
+                <a href="/information-technology-stream/" title="">NEET</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/cat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">CAT</a>
+                <a href="/information-technology-stream/" title="">CAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/janapas-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">JEN PAS</a>
+                <a href="/information-technology-stream/" title="">JEN PAS</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/wbjee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">WBJEE</a>
+                <a href="/information-technology-stream/" title="">WBJEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/upsee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">UPSEE</a>
+                <a href="/information-technology-stream/" title="">UPSEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/gate-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">GATE</a>
+                <a href="/information-technology-stream/" title="">GATE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/cmat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">CMAT</a>
+                <a href="/information-technology-stream/" title="">CMAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/12thwb-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">12th WB</a>
+                <a href="/information-technology-stream/" title="">12th WB</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/aieee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">AIEEE</a>
+                <a href="/information-technology-stream/" title="">AIEEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/ailet-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">AILET</a>
+                <a href="/information-technology-stream/" title="">AILET</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">MAT</a>
+                <a href="/information-technology-stream/" title="">MAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/xat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">XAT</a>
+                <a href="/information-technology-stream/" title="">XAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/atma-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">ATMA</a>
+                <a href="/information-technology-stream/" title="">ATMA</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/atimpt-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">AIPMT</a>
+                <a href="/information-technology-stream/" title="">AIPMT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
@@ -498,105 +498,105 @@ $collage = getCollegeByRank();
             <div class="collgBox">
               <img src="images/btech-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">B.TECH</a>
+                <a href="/information-technology-stream/" title="">B.TECH</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mba-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">MBA</a>
+                <a href="/information-technology-stream/" title="">MBA</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bsc-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">B.Sc</a>
+                <a href="/information-technology-stream/" title="">B.Sc</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bed-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">B.Ed</a>
+                <a href="/information-technology-stream/" title="">B.Ed</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bpharma-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">B.Pharm</a>
+                <a href="/information-technology-stream/" title="">B.Pharm</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mtech-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">M.Tech</a>
+                <a href="/information-technology-stream/" title="">M.Tech</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mcom-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">M.Com</a>
+                <a href="/information-technology-stream/" title="">M.Com</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/ma-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">M.A.</a>
+                <a href="/information-technology-stream/" title="">M.A.</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/ba-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">B.A</a>
+                <a href="/information-technology-stream/" title="">B.A</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/diploma-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">Diploma</a>
+                <a href="/information-technology-stream/" title="">Diploma</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bcom-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">B.Com</a>
+                <a href="/information-technology-stream/" title="">B.Com</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/llb-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">LLB</a>
+                <a href="/information-technology-stream/" title="">LLB</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/gnm-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">GNM</a>
+                <a href="/information-technology-stream/" title="">GNM</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bds-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">BDS</a>
+                <a href="/information-technology-stream/" title="">BDS</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/md-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">M.D.</a>
+                <a href="/information-technology-stream/" title="">M.D.</a>
               </h5>
               <p>6077 Colleges</p>
             </div>

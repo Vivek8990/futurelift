@@ -258,7 +258,7 @@ $specilizationlist = getspecilizationlist();
   {
 			echo "		<div class='filterContent'>
 										<div class='filterContentCheck d-flex'>
-											<input type='checkbox' class=form-check-input studymode' name='studymode' value='".$row['mode']."'>
+											<input type='checkbox' class='form-check-input studymode' name='studymode' value='".$row['mode']."'>
 											<label for='' class='form-label'>".$row['mode']."</label>
 											<span>(1004)</span>
 										</div>
@@ -294,7 +294,7 @@ $specilizationlist = getspecilizationlist();
   {
 			echo "		<div class='filterContent'>
 										<div class='filterContentCheck d-flex'>
-											<input type='checkbox' class='form-check-input studymode' name='studymode' value='".$row['type']."'>
+											<input type='checkbox' class='form-check-input institutetype' name='institutetype' value='".$row['type']."'>
 											<label for='' class='form-label'>".$row['type']."</label>
 											<span>(1004)</span>
 										</div>

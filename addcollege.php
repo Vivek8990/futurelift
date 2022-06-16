@@ -8,6 +8,8 @@ $Agenceylist=Agenceylist();
 $getCollegetype=getCollegetype();
 $statelist=statelist();
 $citylist=citylist();
+$stream = getstreamlist();
+
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
 ?>
@@ -154,13 +156,12 @@ body {
            
               <div class="row">
               <span>college approval </span><br>
-              <!-- <select name="approvel_id" id="cars">
-              <option value="">Select Approval</option> -->
+             
                                 <?php
                     while($row =mysqli_fetch_array($Approvallist,MYSQLI_ASSOC))
 
                     {
-                    // echo "<option value='".$row['id'] ."'>".$row['approval_name'] ."</option>";
+                    
                     echo "   <input type='checkbox' name='vehicle1[]' value='".$row['id'] ."'>
                     <label for='vehicle1' style='font-size:15px;'> ".$row['approval_name'] ."</label>";
                    
@@ -168,7 +169,7 @@ body {
                     }
 
                     ?>
-                <!-- </select> -->
+               
               </div>
             </div>
             
@@ -191,7 +192,20 @@ body {
             <div class="form-group">
 <div class="container1">
               <div class="row ">
-              <select name="course_id" id="cars">
+              <select name="stream_id" id="stream" >
+              <option value="">Select Stream</option>
+                                <?php
+                    while($row =mysqli_fetch_array($stream,MYSQLI_ASSOC))
+
+                    {
+                    echo "<option value='".$row['id'] ."'>".$row['stream'] ."</option>";
+
+                    }
+
+                    ?>
+                </select>
+               
+              <select name="course_id" id="degrees">
               <option value="">Select Degree</option>
                                 <?php
                     while($row =mysqli_fetch_array($course,MYSQLI_ASSOC))
@@ -203,10 +217,25 @@ body {
 
                     ?>
                 </select>
+                <select name="specilization_id" id="cars">
+              <option value="">Select Specilization</option>
+                                <?php
+                    while($row =mysqli_fetch_array($specilization,MYSQLI_ASSOC))
+
+                    {
+                    echo "<option value='".$row['id'] ."'>".$row['specialization_name'] ."</option>";
+
+                    }
+
+                    ?>
+                </select>
  <input type="text" name="fees" class="form-control"  placeholder="Fees" autocomplete="off">
+ <span id="asdf"></span>
       </div>
 </div>
             </div>
+           
+           
             <div class="form-group">
               <div class="row ">
               <select name="gender" id="cars">
@@ -292,9 +321,54 @@ body {
   <!-- signup form end -->
 
 <!-- Footer End -->
-  <script src="js/script.js"></script>
- 
+<script>
+    var stream ='';
   
+  //   $('#stream').on('change', function(){
+     
+  //          var city = $(this).find('option:selected').val();
+  //       stream = city;
+  //     $.get( "functions.php?action=getdegree&data=" + city, function( data ) {
+      
+  
+  //  var select = $('<select>').prop('id', 'degree')
+  //                     .prop('name', 'course_id');
+   
+  
+  
+  // var test = data;
+  // var split = test.split('},{');
+  
+  // split.forEach(function(item) {
+  //   console.log(item);
+  //   select.append($("<option>")
+  //   .prop('value',item['id']));
+  // });
+      
+         
+      
+   
+      
+   
+  //     $('.con').append(select);
+      
+    
+  // });
+  
+  //    });
+  
+  
+  //    $('#degrees').on('change', function(){
+     
+   
+  
+  // $.get( "functions.php?action=getspecilization&data=" + stream, function( data ) {
+  
+  // alert( data );
+  // });
+  
+  // });
+</script>
 
   
 </body>

@@ -221,11 +221,12 @@ elseif($kyc['status']=='approved') {
         </div>
         <div class="socialDiv">
           <i class="fa fa-whatsapp"></i>
-          <h6><a href="">whatsapp</a></h6>
+          <h6><a href="https://api.whatsapp.com/send?text=Hello+Vinod+kumar">whatsapp</a></h6>
+          
         </div>
         <div class="socialDiv">
           <i class="fa fa-linkedin-square"></i>
-          <h6><a href="https://www.linkedin.com/sharing/share-offsite/?url=https:google.com">linkedin</a></h6>
+          <h6><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.w3schools.com/&title=w3schools.com&summary=&source=">linkedin</a></h6>
         </div>
         <div class="socialDiv">
           <i class="fa fa-instagram"></i>

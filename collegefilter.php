@@ -14,25 +14,12 @@ $facility = getfacility();
 $degreelist = getdegreelist();
 $specilizationlist = getspecilizationlist();
 $colleges=searchcollegebyfilter();
-  
+
+
+   
 function searchcollegebyfilter(){
-	if (isset($_GET['gtspacialization'])) {
-		unset($_COOKIE["degree"]);
-		setcookie('degree', '', time() - 3600, '/');
-	} 
-	if (isset($_GET['degree'])) {
-		unset($_COOKIE["spacialization"]);
-		setcookie('spacialization', '', time() - 3600, '/');
-	}
-	if (isset($_GET['gtstate'])) {
-		unset($_COOKIE["city"]);
-		setcookie('city', '', time() - 3600, '/');
-	} 
-	if (isset($_GET['gtcity'])) {
-		unset($_COOKIE["state"]);
-		setcookie('state', '', time() - 3600, '/');
-  }
-    $db=$GLOBALS['db'];
+
+  $db=$GLOBALS['db'];
    $state=$_COOKIE["state"];
    $city =$_COOKIE["city"];
    $mode=$_COOKIE["study"];
@@ -40,44 +27,46 @@ function searchcollegebyfilter(){
    $degree=$_COOKIE["degree"];
    $spacialization = $_COOKIE["spacialization"];
    $hostels = $_COOKIE["hostels"];
-   
+  
    $facilities =$_COOKIE["facilities"];
-	 $feerange = $_COOKIE["fee"];
+   $feerange = $_COOKIE["fee"];
 
 
 
-   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,s.state_name,ct.type ,
-   co.degree_name,ss.specialization_name 
-   FROM college c 
-   join affiliation af on af.id=c.affiliated_id
-   join Approval ap on ap.id= c.approvel_id 
-   join Degree co on co.id= c.degree_id
-   join State s on s.id=c.state_id 
-   join Collage_type ct on ct.id=c.collage_type_id 
-   join City cy on cy.id = c.city_id
-   
-   join Spacialization ss on ss.id = co.specialization_id
-   join Country cty on cty.id = s.country_id
-   join collage_mode cm on cm.collage_id = c.id
-   join study_mode sm on sm.id = cm.study_mode_id
-   join collage_hostel ch on ch.collage_id= c.id
-   join hostels h on h.id = ch.hostel_id
-   join collage_facilities cf on cf.collage_id = c.id
+   $query="SELECT c.*,af.affiliation_name,ap.approval_name	,st.state_name,ctp.type ,
+   ds.degree_name,s.specialization_name 
+
+	 FROM college c
+    join college_degree cd on cd.college_id=c.id 
+    join Degree ds on ds.id = cd.degree_id 
+    join college_specilization cs on cs.college_id= c.id 
+    join Spacialization s on s.id = cs.specilization_id 
+    join college_stream cst on cst.college_id= c.id 
+    join stream sem on sem.id = cst.stream_id 
+    join State st on st.id = c.state_id
+    join affiliation af on af.id= c.affiliated_id
+    join Approval ap on ap.id = c.approvel_id
+    join Collage_type cty on cty.id = c.collage_type_id
+    join City ct on ct.id = c.city_id
+    join Collage_type ctp on ctp.id=c.collage_type_id 
+		join Country cont on cont.id = st.country_id
+		join collage_mode cm on cm.collage_id = c.id
+		join study_mode sm on sm.id = cm.study_mode_id
+		join collage_hostel ch on ch.collage_id= c.id
+		join hostels h on h.id = ch.hostel_id
+		join collage_facilities cf on cf.collage_id = c.id
    join facilities fa on fa.id = cf.facility_id
-   join college_fee cfe on cfe.college_id = c.id
-   where  cty.country_name='India'" ;
+	 join college_fee cfe on cfe.college_id = c.id
+   where  cont.country_name='India'" ;
+   
 
-    if($state){ $query.=" and s.state_name='$state'"; }
-    if($city){ $query.=" and cy.city_name='$city'"; } 
-    if($type){ $query.=" and ct.type='$type'"; }
-    if($degree){ $query.=" and co.degree_name='$degree'"; }
+    if($state){ $query.=" and st.state_name='$state'"; }
+    if($city){ $query.=" and ct.city_name='$city'"; } 
+    if($type){ $query.=" and cty.type='$type'"; }
+    if($degree){ $query.=" and ds.degree_name='$degree'"; }
     if($mode){ $query.=" and sm.mode='$mode'"; }
     if($hostels){ $query.=" and h.type='$hostels'"; }
-    // if($freerange){ $query.=" and co.degree_name='$freerange'"; }
-
-    if($facilities){ $query.=" and fa.facility='$facilities'"; }
-    if($spacialization){ $query.=" and ss.specialization_name='$spacialization'"; }
-		if($feerange){ 
+    if($feerange){ 
 			
 			switch ($feerange) {
 				case "100000":
@@ -102,6 +91,10 @@ function searchcollegebyfilter(){
 				$query.="";
 			}
 		 }
+
+    if($facilities){ $query.=" and fa.facility='$facilities'"; }
+    if($spacialization){ $query.=" and s.specialization_name='$spacialization'"; }
+
 
     echo $query;
 		$runQuery=mysqli_query($db,$query);
@@ -354,7 +347,7 @@ return $runQuery;
   {
 			echo "		<div class='filterContent'>
 										<div class='filterContentCheck d-flex'>
-											<input type='checkbox' class=form-check-input studymode' name='studymode' value='".$row['mode']."'>
+											<input type='checkbox' class='form-check-input studymode' name='studymodes' value='".$row['mode']."'>
 											<label for='' class='form-label'>".$row['mode']."</label>
 											<span>(1004)</span>
 										</div>
@@ -390,7 +383,7 @@ return $runQuery;
   {
 			echo "		<div class='filterContent'>
 										<div class='filterContentCheck d-flex'>
-											<input type='checkbox' class='form-check-input studymode' name='studymode' value='".$row['type']."'>
+											<input type='checkbox' class='form-check-input institutetype' name='institutetype' value='".$row['type']."'>
 											<label for='' class='form-label'>".$row['type']."</label>
 											<span>(1004)</span>
 										</div>
@@ -670,7 +663,7 @@ return $runQuery;
           document.cookie = "state="+state;
 					document.cookie = "degree='';max-age=0";
 					document.cookie = "city='';max-age=0";
-
+					document.cookie = "spacialization='';max-age=0";
           window.location.href = "college-filter.php?gtstate";
         }
       })
@@ -685,15 +678,15 @@ return $runQuery;
           console.log(city);
           document.cookie = "city="+city;
 					document.cookie = "degree='';max-age=0";
-					document.cookie = "state='';max-age=0";
+					document.cookie = "state='';max-age=0";	document.cookie = "spacialization='';max-age=0";
           window.location.href = "college-filter.php?gtcity";
         }
       })
     })
     
-    let studyCheckBox = document.querySelectorAll('.studymode')
+    let studymodeCheckBox = document.querySelectorAll('.studymode')
     var study= [];
-    studyCheckBox.forEach((checkbox) => { 
+    studymodeCheckBox.forEach((checkbox) => { 
       checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
             study.push(event.target.value)
@@ -782,20 +775,19 @@ return $runQuery;
         }
       })
     })
-
 		let feeCheckBox = document.querySelectorAll('.fee')
     var fee= [];
     feeCheckBox.forEach((checkbox) => { 
       checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
-            fee.push(event.target.value)
+					fee.push(event.target.value)
           console.log(fee);
           document.cookie = "fee="+fee;
 					document.cookie = "spacialization='';max-age=0";
 					document.cookie = "degree='';max-age=0";
 					document.cookie = "state='';max-age=0";
 					document.cookie = "city='';max-age=0";
-          window.location.href = "college-filter.php?gtfee";
+          window.location.href = "collegefilter.php?gtfee";
         }
       })
     })

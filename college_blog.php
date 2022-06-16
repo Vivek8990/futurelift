@@ -1,15 +1,6 @@
 <?php
 require_once('functions.php');
-$id='';
-if (isset($_GET['id']))
-{
-    $id=$_GET['id'];
-   
-}
-$counseler=counselerdeatails($id);
-$kyc=checkkyc($id);
-$totalrefer = gettotalrefer($id);
-$balance = getBalance($id);
+
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
 ?>
@@ -58,14 +49,21 @@ body {
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
+.txt {
+  width: 60%; /* Same as the width of the sidenav */
+  height: 50%;
+}
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 </head>
 <body>
+
 <div class="sidenav">
   <a href="admin_dashboard.php">Dashboard</a>
   <a href="collegelist.php">collegelist</a>
@@ -79,40 +77,34 @@ body {
   <?php } ?>
   <a href="functions.php?adminlogout">Signout</a>
 </div>
+
   <!-- college addition form start -->
-  <div class="main"> 
+  <div class="main">
   <section class="form-section" id="form-section">
     <div >
       <div >
-        <h1> counseler details</h1>
         
         <div >
-       <span>email : <?php echo $counseler['email_id']?></span><br>
-       <span>fullname : <?php echo $counseler['fullname']?></span><br>
-       <span>dob : <?php echo $counseler['dob']?></span><br>
-       <span>gender : <?php echo $counseler['gender']?></span><br>
-       <span>language : <?php echo $counseler['language']?></span><br>
-       <span>preferedlanguage : <?php echo $counseler['preferedlanguage']?></span><br>
-       <span>workschedule : <?php echo $counseler['workschedule']?></span> <br>
-       <span>salary : <?php echo $counseler['salary']?></span><br>
-       <span>refercode : <?php echo $counseler['refercode']?></span><br>
-       <span>Total balance : <?php echo $balance['total']; ?></span><br>
-       <span>Available balance : <?php echo $balance['available']; ?></span><br>
-       <span>Total Referal : <?php echo $totalrefer; ?></span><br>
-       <?php if($kyc=='Pending') {?>  <span>KYC status : <?php echo $kyc;?></span> <?php }?>
-       <?php if($kyc['status']!='Pending') {?>
-       <span>pannumber : <?php echo $kyc['pannumber']?></span><br>
-       <span>KYC status : <?php echo $kyc['status']?></span>
-       
-
-       
-        <?php if($kyc['status']=='processing') {
-  echo " <a href='functions.php?fn=kycupdate&status=approved&id=".$id."'>Approve KYC</a>";
-  echo " <a href='functions.php?fn=kycupdate&status=rejected&id=".$id."'>Reject KYC</a>";
-}  ?> <br>
-       <?php echo " <img src='data:image;base64,".$kyc['pan']."' alt='' class='img-fluid' style = 'width : 200px; height :200px;'>"; ?> <?php }?>
-
-
+          <h1>Add College</h1>
+          <form action="functions.php?collegeblog" class="text-center" method="post" >
+          <div> 
+          <div class="form-group "> 
+          <div class="row ">
+               
+               <input type="text" name="name" class="form-control"  placeholder="College name"autocomplete="off">
+             
+           </div>
+           </div> 
+           <div class="form-group "> 
+          <div class="row ">
+    <textarea id="txtarea"  name="description" class="txt"></textarea>  
+    
+    <div id="divkarea"></div> 
+    </div>
+           </div> 
+            <button type="submit" class="btn">Submit</button>
+            
+          </form>
         </div>
       </div>
     </div>
@@ -124,7 +116,29 @@ body {
 
 <!-- Footer End -->
   <script src="js/script.js"></script>
-  
+ 
+  <script src="https://cdn.tiny.cloud/1/acv9e4attlmhza6zulk01qn0acopt45f41t8fxicdlepa3xe/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+  </script>
+
+
+ <script>
+  $(document).ready(function() {  
+ $('#btnValue').click(function() {  
+  $("#divkarea").html("");  
+  var content = tinymce.get("txtarea").getContent();  
+  $("#divkarea").html(content);  
+ });  
+});   
+  </script>
 
   
 </body>
