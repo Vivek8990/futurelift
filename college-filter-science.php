@@ -4,18 +4,18 @@ require_once 'functions.php';
 $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
 
-
+$term=$_GET['gtspacialization'];
+$_SESSION['term']=$term;
 $city = getcity();
 $State = getstate();
 $studymode= getstudymode();
 $getinstutiontype= getinstutiontype();
 $hostel = gethostel();
 $facility = getfacility();
-$degreelist = getdegreelist();
-$specilizationlist = getspecilizationlist();
+$degreelist = getdegreelist($term);
+$specilizationlist = getspecilizationlist($term);
 
-$term=$_GET['gtspacialization'];
-$_SESSION['term']=$term;
+
 $colleges = getCollegeByCategoury($term);
 ?>
 
@@ -462,7 +462,7 @@ $colleges = getCollegeByCategoury($term);
 							<img src='data:image;base64,".$row['logo']."' alt='' class='img-fluid'>
 							</div>
 							<div class='col-name'>
-								<h3><a href=''>".$row['collage_name']."</a></h3>
+								<h3><a href='collegepage.php?id=".$row['id']."'>".$row['collage_name']."</a></h3>
 								<p>approved by: <span>". $row['approval_name'] ."</span> government of india</p>
 								<p>type :  ".$row['type']."</p>
 								<i class='fa fa-star'></i>

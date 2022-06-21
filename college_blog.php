@@ -85,21 +85,21 @@ body {
       <div >
         
         <div >
-          <h1>Add College</h1>
+          <h1>Add Blog</h1>
           <form action="functions.php?collegeblog" class="text-center" method="post" >
           <div> 
-          <div class="form-group "> 
+          <!-- <div class="form-group "> 
           <div class="row ">
                
                <input type="text" name="name" class="form-control"  placeholder="College name"autocomplete="off">
              
            </div>
-           </div> 
+           </div>  -->
            <div class="form-group "> 
           <div class="row ">
     <textarea id="txtarea"  name="description" class="txt"></textarea>  
     
-    <div id="divkarea"></div> 
+    <!-- <div id="divkarea"></div>  -->
     </div>
            </div> 
             <button type="submit" class="btn">Submit</button>

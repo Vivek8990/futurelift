@@ -4,6 +4,7 @@ $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
 // $courses= getCollegeGroupByCategoury();
  $collage = getCollegeByRank();
+ $blog = getBlog();
 
 ?>
 
@@ -1314,7 +1315,26 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
       <hr>
       <div class="swiper mySwiper topCardDetails">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+        <?php
+while($row = mysqli_fetch_array($blog ,MYSQLI_ASSOC))
+
+{
+    echo "      
+    <div class='swiper-slide'>
+    <div class='maiBox'>
+      <div class='box'>
+        <p class='boxText'>".$row['blog']."</p>
+        <img src='images/team-2.jpg' alt='' class='imgIcon'>
+        <div class='details'>
+          <h3>Lorem, ipsum, dolor.</h3>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>";
+}
+          ?>
+          <!-- <div class="swiper-slide">
             <div class="maiBox">
               <div class="box">
                 <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -1390,18 +1410,7 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
                 </div>
               </div>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="maiBox">
-              <div class="box">
-                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <img src="images/team-2.jpg" alt="" class="imgIcon">
-                <div class="details">
-                  <h3>Lorem, ipsum, dolor.</h3>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> -->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>

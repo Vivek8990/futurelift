@@ -173,22 +173,22 @@ body {
               </div>
             </div>
             
-            <div class="form-group">
+            <!-- <div class="form-group">
               <div class="row">
               <select name="affiliated_id" id="cars">
-              <option value="">Select Affiliation</option>
+              <option value="">Select Affiliation</option> -->
                                 <?php
-                    while($row =mysqli_fetch_array($affiliationlist,MYSQLI_ASSOC))
+                    // while($row =mysqli_fetch_array($affiliationlist,MYSQLI_ASSOC))
 
-                    {
-                    echo "<option value='".$row['id'] ."'>".$row['affiliation_name'] ."</option>";
+                    // {
+                    // echo "<option value='".$row['id'] ."'>".$row['affiliation_name'] ."</option>";
 
-                    }
+                    // }
 
                     ?>
-                </select>
+                <!-- </select>
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
 <div class="container1">
               <div class="row ">
@@ -261,11 +261,16 @@ body {
                 
               </div>
             </div>
-            <div class="form-group ">
-              <div class="row ">
-              <input type="text" name="college_details" class="form-control"  placeholder="College details"autocomplete="off">
-                  </div>
-                  </div>
+            
+              <div class="form-group "> 
+              <div class="row "><span>College Detail</span></div>
+          <div class="row ">
+    <textarea id="txtarea"  name="college_details" class="txt"></textarea>  
+    
+    <!-- <div id="divkarea"></div>  -->
+    </div>
+           </div> 
+                 
                
             <div class="form-group ">
               <div class="row ">
@@ -370,7 +375,20 @@ body {
   // });
 </script>
 
-  
+<script src="js/script.js"></script>
+ 
+ <script src="https://cdn.tiny.cloud/1/acv9e4attlmhza6zulk01qn0acopt45f41t8fxicdlepa3xe/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+   tinymce.init({
+     selector: 'textarea',
+     plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+     toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+     toolbar_mode: 'floating',
+     tinycomments_mode: 'embedded',
+     tinycomments_author: 'Author name',
+   });
+ </script>
+
 </body>
 
 </html>

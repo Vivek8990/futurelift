@@ -1,4 +1,16 @@
-
+<?php
+require_once 'functions.php';
+$id='';
+if (isset($_GET['id']))
+{
+    $id=$_GET['id'];
+  // echo $id;
+}
+ $college = get_college($id);
+ $course = get_course($id);
+ $placement = get_placement($id);
+ $college_gellary = get_college_gellary($id);
+?>
 
 
 
@@ -31,6 +43,48 @@
     <!-- swiper js -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <title>Future Lift College Page</title>
+    <style>
+/* body {font-family: Arial, Helvetica, sans-serif;} */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
@@ -75,41 +129,47 @@
                 </div>
                
                 <div class="row">
-                    <div class="d-flex flex-wrap justify-centent-space-between align-items-center">
-                        <div class="col-lg-4 col-md-12">
+                <?php  while($row =mysqli_fetch_array($college,MYSQLI_ASSOC))
+
+{
+  echo "<div class='d-flex flex-wrap justify-centent-space-between align-items-center'>
+                        <div class='col-lg-4 col-md-12'>
                             <figure>
-                                <img src="images/partner/images (10).png" alt="college logo">
+                                <img src='data:image;base64,".$row['logo']."' alt='college logo'>
+                                
                             </figure>
                         </div>
-                        <div class="col-lg-4 col-md-12">
-                            <h4 class="fw-bold">netaji subhash chandra bose open universitiy</h4>
-                            <div class="d-flex">
-                                <div class="location">
-                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    Kolkata
+                        <div class='col-lg-4 col-md-12'>
+                            <h4 class='fw-bold'>".$row['collage_name']."</h4>
+                            <div class='d-flex'>
+                                <div class='location'>
+                                    <i class='fa fa-map-marker' aria-hidden='true'></i>
+                                    ".$row['city_name']."
                                 </div>
-                                <div class="location mx-5">
+                                <div class='location mx-5'>
                                     5.5
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                                    <i class='fa fa-star' aria-hidden='true'></i>
+                                    <i class='fa fa-star' aria-hidden='true'></i>
+                                    <i class='fa fa-star' aria-hidden='true'></i>
+                                    <i class='fa fa-star' aria-hidden='true'></i>
+                                    <i class='fa fa-star' aria-hidden='true'></i>
+                                    <i class='fa fa-star-half' aria-hidden='true'></i>
                                     (150)
                                 </div>
-                                <div class="location">
-                                    <i class="fa fa-share-square-o" aria-hidden="true"></i>
+                                <div class='location'>
+                                    <i class='fa fa-share-square-o' aria-hidden='true'></i>
                                     share
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 mb-5">
-                            <button type="button" class="btn">Compare</button>
-                            <button type="" class="btn"><i class="fa fa-download" aria-hidden="true"></i>Download</button>
+                        <div class='col-lg-4 col-md-12 mb-5'>
+                            <button type='button' class='btn'>Free Counseling</button>
+                            <button type='' class='btn' id='myBtn'>Apply Now</button>
                         </div>
                     </div>
-                </div>
+                </div>";
+}
+                ?>
             </div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -135,13 +195,9 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-Infrastructure-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-Infrastructure" type="button" role="tab" aria-controls="pills-Infrastructure"
-                        aria-selected="false">Infrastructure</button>
+                        aria-selected="false">Gallery</button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-Scholarship-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-Scholarship" type="button" role="tab" aria-controls="pills-Scholarship"
-                        aria-selected="false">Scholarship</button>
-                </li>
+              
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-collegeInfo" role="tabpanel" aria-labelledby="pills-collegeInfo-tab">
@@ -152,15 +208,97 @@
                 </div>
                 <div class="tab-pane fade" id="pills-Admission" role="tabpanel" aria-labelledby="pills-Admission-tab">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor explicabo sint similique ab rem asperiores dolores nulla. Quisquam, aut. Sapiente, sit. Quibusdam praesentium eius odio soluta sequi. Reiciendis quod sint cumque. Amet nam praesentium dolores?
                 </div>
-                <div class="tab-pane fade" id="pills-Placement" role="tabpanel" aria-labelledby="pills-Placement-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus doloremque at vitae, facere veniam molestias asperiores debitis fugit officia animi?
+                <div class="tab-pane fade" id="pills-Placement" role="tabpanel" aria-labelledby="pills-Placement-tab"><?php  while($row =mysqli_fetch_array($placement,MYSQLI_ASSOC))
+
+{
+   echo " <span>placement_company :".$row['placement_company']."</span><br>";
+   echo " <span>placement_department :".$row['placement_department']."</span><br>";
+   echo " <span>placement_ctc :".$row['placement_ctc']."</span><br>";
+//    echo " <span>Duration :".$row['duration']."</span><br>";
+   
+} 
+
+?>
                 </div>
-                <div class="tab-pane fade" id="pills-Infrastructure" role="tabpanel" aria-labelledby="pills-Infrastructure-tab">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus facilis, neque distinctio commodi voluptas odit? Molestiae laboriosam aperiam est distinctio doloremque odio nesciunt, delectus beatae officiis vitae dicta mollitia ducimus temporibus culpa adipisci tenetur nemo? Voluptatum magni ab provident reiciendis!
-                </div>
-                <div class="tab-pane fade" id="pills-Scholarship" role="tabpanel" aria-labelledby="pills-Scholarship-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, fugiat debitis suscipit aut et magnam obcaecati, id architecto adipisci nemo recusandae iste corrupti deleniti molestias asperiores officiis nam rem labore fuga. Dolores, ullam. Inventore nostrum laboriosam unde! Voluptates minus incidunt, libero animi magnam accusamus laboriosam quae quam quis, qui at?
+                <div class="tab-pane fade" id="pills-Infrastructure" role="tabpanel" aria-labelledby="pills-Infrastructure-tab"><?php  while($row =mysqli_fetch_array($college_gellary,MYSQLI_ASSOC))
+
+{
+    echo " <img src='data:image;base64,".$row['url']."' alt='' class='img-fluid' style = 'width : 200px; height :200px;'>";
+   
+} 
+
+
+?>
+</div>
+                <div class="tab-pane fade" id="f" role="tabpanel" aria-labelledby="pills-Scholarship-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, fugiat debitis suscipit aut et magnam obcaecati, id architecto adipisci nemo recusandae iste corrupti deleniti molestias asperiores officiis nam rem labore fuga. Dolores, ullam. Inventore nostrum laboriosam unde! Voluptates minus incidunt, libero animi magnam accusamus laboriosam quae quam quis, qui at?
                 </div>
             </div>
         </div>
+        <div id="myModal" class="modal">
 
+<!-- Modal content -->
+<div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="functions.php?applynow" method="post">
+        <div class="form-group">
+          <input type="text" name="name" class="form-control" placeholder="Name" required="" >
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" class="form-control" placeholder="Email" required="">
+        </div>
+        <div class="form-group">
+          <input type="text" name="mobile" class="form-control" placeholder="Phone" required="">
+        </div>
+        <div class="form-group">
+          <input type="text" name="program" class="form-control" placeholder="Select Program Type" required="">
+        </div>
+        <div class="form-group">
+          <input type="text" name="board" class="form-control" placeholder="Board" required="">
+        </div>
+        <div class="form-group">
+          <select id="Preferred stream" name="stream" class="form-control" required="">
+            <option value="">Select Your State</option>
+            <option value="Andaman &amp; Nicobar">Andaman &amp; Nicobar</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chandigarh">Wes Bengal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="city" id="city3" class="form-control" required="">
+            <option>Select Your City</option>
+
+            <option value="B. Pharm">Kolkata</option>
+            <option value="B.A. LLB">Banglore</option>
+            <option value="B.A.M.S">Mumbai</option>
+            <option value="B.Arch">Delhi</option>
+            <option value="B.Com">haydrabad</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="course" id="popupcourse" required="">
+            <option value="">Select Course</option>
+
+            <option value="B. Pharm">B. Pharm</option>
+            <option value="B.A. LLB">B.A. LLB</option>
+            <option value="B.A.M.S">B.A.M.S</option>
+            <option value="B.Arch">B.Arch</option>
+            <option value="B.Com">B.Com</option>
+
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Message" class="form-control"></textarea>
+        </div>
+        <button class="btn" value="submit" name="submit" class="btn btn3">Submit</button>
+        <button type="submit" class="btn btn3" id="closeBtn">cancel</button>
+      </form>
+    </div>
+
+</div>
     </section>
 
     
@@ -231,6 +369,33 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
 
+    <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 
 </html>

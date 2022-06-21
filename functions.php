@@ -19,7 +19,24 @@ if (isset($_GET['kyc'])) {
     }
 
 }
-  
+ //applynow 
+
+ if (isset($_GET['applynow'])) {
+    unset($_SESSION['msg']);
+
+   
+   $user =  applynow($_POST);
+    // if (isset($user['success'])) {
+    //     $_SESSION['msg'][] = $user['success'];
+    //     header('location:collegepage.php');
+    // } else {
+    //     $_SESSION['msg'] = $user['errors'];
+    //     header('location:collegepage.php');
+    // }
+
+}
+
+
 if ($_GET['fn'] == "kycupdate")
 {
     if (!empty($_GET['id']))
@@ -125,20 +142,19 @@ if (isset($_GET['scholership'])) {
 if (isset($_GET['addcollege'])) {
     unset($_SESSION['msg']);
   
-
-    // foreach ($_POST['vehicle1'] as $key => $val) {
-    //     echo $val;
-    //  }
-   echo "999999";
     $user = addnewCollege($_POST,$_FILES);
-    if (isset($user['success'])) {
-        $_SESSION['msg'][] = $user['success'];
-        header('location:addcollege.php');
-    } else {
-        $_SESSION['msg'] = $user['errors'];
-        header('location:addcollege.php');
-    }
-
+//     if (isset($user['success'])) {
+//         $_SESSION['msg'][] = $user['success'];
+//         echo 'asasasa';
+       
+//     } else {
+//         $_SESSION['msg'] = $user['errors'];
+//         echo 'errrrr';
+        
+//     }
+// echo 'lllllllllll';
+header("location:collegelist.php");
+exit();
 }
 
 if (isset($_GET['scholershipparent'])) {
@@ -263,7 +279,7 @@ if (isset($_GET['adminlogin'])) {
         $user = admincheckUser($_POST);
         if (is_array($user)) {
             $_SESSION['userdata'] = $user;
-            $_SESSION['userIsLoggedIn'] = true;
+            $_SESSION['adminIsLoggedIn'] = true;
             header('location:admin_dashboard.php');
         } else {
             $_SESSION['msg'][] = 'Incorrect Email/Password !';
@@ -541,24 +557,44 @@ function getfacility(){
     
      return $runQuery;   
  }
- function getdegreelist(){
+ function getdegreelist($term){
     $db=$GLOBALS['db'];
-    
-    $query="SELECT * FROM Degree ";
-   
+  //  echo "ooooooooooo";
+    $query="SELECT d.* FROM Degree d join stream s on s.id = d.stream_id where s.stream='$term'";
+  // echo $query;
    $runQuery=mysqli_query($db,$query);
    
-    
+    //print_r($runQuery);
      return $runQuery;   
  }
- function getspecilizationlist(){
+ function getspecilizationlist($term){
     $db=$GLOBALS['db'];
     
-    $query="SELECT * FROM Spacialization ";
+    $query="SELECT s.* FROM Spacialization s join stream sm on sm.id = s.stream_id where sm.stream='$term'";
    
    $runQuery=mysqli_query($db,$query);
    
+  // echo $runQuery;
+     return $runQuery;   
+ }
+ function getdegreelists(){
+    $db=$GLOBALS['db'];
+  //  echo "ooooooooooo";
+    $query="SELECT d.* FROM Degree d ";
+  // echo $query;
+   $runQuery=mysqli_query($db,$query);
+   
+    //print_r($runQuery);
+     return $runQuery;   
+ }
+ function getspecilizationlists(){
+    $db=$GLOBALS['db'];
     
+    $query="SELECT s.* FROM Spacialization s";
+   
+   $runQuery=mysqli_query($db,$query);
+   
+  // echo $runQuery;
      return $runQuery;   
  }
  function getstreamlist(){
@@ -1118,7 +1154,7 @@ function checkStudent($data)
 
 //New college addition
 function addnewCollege($data,$files)
-{ echo "ftjytuuuuuuuuuuuuuuuuuuuu";
+{ 
     $db = $GLOBALS['db'];
     $user = array();
     $user['errors'] = array();
@@ -1128,7 +1164,8 @@ function addnewCollege($data,$files)
     $city_id = mysqli_real_escape_string($db, $data['city_id']);
     $Collage_type = mysqli_real_escape_string($db, $data['Collage_type']);
     
-    $affiliated_id = mysqli_real_escape_string($db, $data['affiliated_id']);
+    // $affiliated_id = mysqli_real_escape_string($db, $data['affiliated_id']);
+    $affiliated_id ='1';
 
     $stream = mysqli_real_escape_string($db, $data['stream_id']);
     $specilization = mysqli_real_escape_string($db, $data['specilization_id']);
@@ -1147,8 +1184,8 @@ function addnewCollege($data,$files)
     $cllege_details=mysqli_real_escape_string($db, $data['college_details']);
     
 
-    echo "ttttttttttt";
-    print_r($data['vehicle1']);
+    
+    //print_r($data['vehicle1']);
    
     $approvel_id =  $data['vehicle1'];
 
@@ -1158,32 +1195,63 @@ function addnewCollege($data,$files)
      $affiliated_id == '' || $course_id == '' || $gender == '' || $logo || $bruchre) {
         $user['errors'][] = "all fields are required !";
     }
-   echo "dggggggggggggggggggggggggggggtttt";
-
-   print_r($data);
+   
+  // print_r($data);
     
     $query="INSERT INTO college(collage_name,state_id,collage_type_id,approvel_id,
     affiliated_id,gender,created,updated,city_id,rank,logo,bruchre,college_contact,address,cllege_details) ";
     $query.="VALUES('$collage_name','$state_id','$Collage_type','1',
     '$affiliated_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload','$college_contact','$address','$cllege_details')";
-      echo $query;
+     // echo $query;
     $runQuery = mysqli_query($db,$query);
     
     $last_id = $db->insert_id;
-    echo $last_id ;
+    //echo $last_id ;
     
             if($runQuery){
-
+                    //data entry in college_fee
                 $queryfee="INSERT INTO college_fee(college_id,course_id,course_fee) ";
                 $queryfee.="VALUES('$last_id','$course_id','$fees')";
             
                 $runQueryfee = mysqli_query($db,$queryfee);
-                
+                //data entry in college_degree
+                $querydegree="INSERT INTO college_degree(college_id,degree_id) ";
+                $querydegree.="VALUES('$last_id','$course_id')";
+            
+                $runQuerydegree = mysqli_query($db,$querydegree);
+                //data entry in college_specilization
+                $queryspec="INSERT INTO college_specilization(college_id,specilization_id) ";
+                $queryspec.="VALUES('$last_id','$specilization')";
+            
+                $runQueryspec = mysqli_query($db,$queryspec);
+                //data entry in college_stream
+                $querystrem="INSERT INTO college_stream(college_id,stream_id) ";
+                $querystrem.="VALUES('$last_id','$stream')";
+
+                $runQuerystrem = mysqli_query($db,$querystrem);
+    
+                $user['success']="college added successfully !";
+                //data entry in rating
+                $queryrating="INSERT INTO rating(collage_id,rating,created) ";
+                $queryrating.="VALUES('$last_id','8','$created')";
+
+                $runQueryrating = mysqli_query($db,$queryrating);
+               // echo $queryrating;
+               // echo '--------------------------';
+                $user['success']="college added successfully !";
+
+                //data entry in review
+                $queryreview="INSERT INTO Reviews(collage_id,review,created) ";
+                $queryreview.="VALUES('$last_id','Very good college for students.','$created')";
+               // echo $queryreview;
+               // echo '----------------------------';
+                $runQueryreview = mysqli_query($db,$queryreview);
+
                 $user['success']="college added successfully !";
 
                 foreach ($approvel_id as $key => $value) {
                     $id = $approvel_id[$key];
-
+                        //data entry in college_approvel
                     $queryapproval="INSERT INTO college_approvel(college_id,approvel_id	) ";
                     $queryapproval.="VALUES('$last_id','$id')";
 
@@ -1194,7 +1262,7 @@ function addnewCollege($data,$files)
                     $gallery = $files['gallery']['tmp_name'][$key];
                     $filename = $files['gallery']['name'][$key];
                     $galleryupload = base64_encode(file_get_contents(addslashes($gallery)));
-
+                        //data entry in college_gallery
                     $querygallery="INSERT INTO college_gallery(name,url,college_id,created) ";
                     $querygallery.="VALUES('$filename','$galleryupload','$last_id','$created')";
 
@@ -1527,7 +1595,7 @@ function getCollegeByRank(){
     join City ct on ct.id = c.city_id 
     join rating rt on rt.collage_id= c.id 
     join Reviews rv on rv.collage_id = c.id group by c.id 
-    order by c.rank limit 8";
+    order by c.rank ";
 
 
 echo $qyery;
@@ -1627,28 +1695,28 @@ function addcollegeblog($data)
     $user = array();
     $user['errors'] = array();
     $created = date("Y-m-d h:i:s");
-    $collage_name = mysqli_real_escape_string($db, $data['name']);
+   // $collage_name = mysqli_real_escape_string($db, $data['name']);
     $blog= mysqli_real_escape_string($db, $data['description']);
    
     if ($collage_name == '' || $state_id == '') {
         $user['errors'][] = "all fields are required !";
     }
    
-    $query = "SELECT * FROM college WHERE collage_name='$collage_name' ";
+    // $query = "SELECT * FROM college WHERE collage_name='$collage_name' ";
     
-    $runQuery1 = mysqli_query($db, $query);
-    $users = mysqli_fetch_array($runQuery1, MYSQLI_ASSOC);
-    $count = mysqli_num_rows($runQuery1);
+    // $runQuery1 = mysqli_query($db, $query);
+    // $users = mysqli_fetch_array($runQuery1, MYSQLI_ASSOC);
+    // $count = mysqli_num_rows($runQuery1);
 
-    if($count<1)  {
-        $user['errors'][] = "College not rgistered.";
-    }
-    else{
+    // if($count<1)  {
+    //     $user['errors'][] = "College not rgistered.";
+    // }
+    // else{
        
-        $cou=$users['id'];
+       // $cou=$users['id'];
 
-        $query="INSERT INTO collageblog(college_id,blog) ";
-        $query.="VALUES('$cou','$blog')";
+        $query="INSERT INTO collageblog(blog) ";
+        $query.="VALUES('$blog')";
         echo $query;
         $runQuery = mysqli_query($db,$query);
     
@@ -1661,7 +1729,7 @@ function addcollegeblog($data)
             $user['errors'][]="Something went wrong !";
         }
 
-    }
+   // }
     
     
    
@@ -1712,4 +1780,108 @@ function getDegreeByStream()
         if (isset($_GET['action']) && $_GET['action'] == 'getspecilization'){
             getSpecilizationByStream();
         }
+
+
+        function getBlog(){
+          
+            $db=$GLOBALS['db'];
+            $query ="SELECT * from collageblog order by id desc";
+        //
+          $runQuery = mysqli_query($db,$query);
+         
+         
+           
+            return $runQuery;
+        }
+
+function get_college($id){
+    $db=$GLOBALS['db'];
+    
+//     $query="SELECT * FROM college where id= '$id'";
+//   // echo $query;
+//    $runQuery=mysqli_query($db,$query);
+//     $runQuery1 = mysqli_fetch_all($runQuery,MYSQLI_ASSOC);
+//   // print_r($runQuery1);
+//     return  $runQuery1;
+
+$query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
+af.affiliation_name,ap.approval_name,cty.type,ct.city_name
+FROM college c
+join college_degree cd on cd.college_id=c.id 
+join Degree ds on ds.id = cd.degree_id 
+join college_specilization cs on cs.college_id= c.id 
+join Spacialization s on s.id = cs.specilization_id 
+join college_stream cst on cst.college_id= c.id 
+join stream sm on sm.id = cst.stream_id 
+join State st on st.id = c.state_id
+
+join affiliation af on af.id= c.affiliated_id
+join Approval ap on ap.id = c.approvel_id
+join Collage_type cty on cty.id = c.collage_type_id
+join City ct on ct.id = c.city_id
+
+where  c.id ='$id' ";
+//print_r($runQuery1);
+$runQuery = mysqli_query($db,$query);
+//$runQuery1 = mysqli_fetch_array($runQuery,MYSQLI_ASSOC);
+//print_r($runQuery1);
+return $runQuery;
+}
+function get_course($id){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT d.degree_name, d.duration,e.details,f.course_fee FROM college_degree cd 
+    join  Degree d on d.id = cd.degree_id
+    join eligibility e on e.id =d.eligibility_id
+    join college_fee f on f.course_id = d.id
+    
+     where cd.college_id= '$id'";
+ // echo $query;
+   $runQuery=mysqli_query($db,$query);
+   // $runQuery1 = mysqli_fetch_all($runQuery,MYSQLI_ASSOC);
+  
+    return  $runQuery;
+}
+function get_placement($id){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM Placement where placement_collage_id= '$id'";
+  // echo $query;
+   $runQuery=mysqli_query($db,$query);
+   // $runQuery1 = mysqli_fetch_all($runQuery,MYSQLI_ASSOC);
+// print_r($runQuery1);
+    return  $runQuery;
+}
+function get_college_gellary($id){
+    $db=$GLOBALS['db'];
+    
+    $query="SELECT * FROM college_gallery where college_id= '$id'";
+  // echo $query;
+   $runQuery=mysqli_query($db,$query);
+  //  $runQuery1 = mysqli_fetch_all($runQuery,MYSQLI_ASSOC);
+// print_r($runQuery1);
+    return  $runQuery;
+}
+
+
+function applynow($data)
+{
+    $db = $GLOBALS['db'];
+    $user = array();
+    $user['errors'] = array();
+    $created = date("Y-m-d h:i:s");
+  
+//message
+    $email_id = mysqli_real_escape_string($db, $data['email']);
+    $mobile = mysqli_real_escape_string($db, $data['mobile']);
+    $program = mysqli_real_escape_string($db, $data['program']);
+    $board = mysqli_real_escape_string($db, $data['board']);
+    $stream = mysqli_real_escape_string($db, $data['stream']);
+    $city = mysqli_real_escape_string($db, $data['city']);
+    $course = mysqli_real_escape_string($db, $data['course']);
+    $message = mysqli_real_escape_string($db, $data['message']);
+  // return $user;
+   print_r($data);
+    
+}
   ?>

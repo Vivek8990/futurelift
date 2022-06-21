@@ -6,6 +6,7 @@ $id=$data['id'];
 $totalrefer = gettotalrefer($id);
 $balance = getBalance($id);
 $kyc = checkkyc($id);
+print_r($data);
 ?>
 
 <!DOCTYPE html>
@@ -115,9 +116,10 @@ $kyc = checkkyc($id);
 
   <!-- Home Section End -->
 
-
+  [Fullname]
   <section class="referErn" id="referErn">
     <h1 class="text-center heading">Your Account </h1>
+    <h1 class="text-center "><?php echo $data['fullname']; ?></h1>
     <div class="container">
       <div class="row">
         <div class="accountMain">
