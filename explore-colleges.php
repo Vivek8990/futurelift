@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-$login = $_SESSION['userIsLoggedIn'];
-$data=$_SESSION['userdata'];
-
-?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,15 +38,15 @@ $data=$_SESSION['userdata'];
 <body>
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.html" class="logo"><img src="images/newlogo.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.php" class="active">Career Solutions</a>
-      <a href="explore-colleges.php" class="active">explore colleges</a>
+      <a href="career.html" class="active">Career Solutions</a>
+      <a href="explore-colleges.html" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
-      <a href="admission.php" class="active">admission</a>
+      <a href="admission.html" class="active">admission</a>
       <div class="dropdown">
         <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
           more
@@ -68,19 +57,10 @@ $data=$_SESSION['userdata'];
           <li><a class="dropdown-item" href="#">news</a></li>
         </ul>
       </div>
-      <?php if($login){?>
-       
-        <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
-        <a class="active" href="functions.php?logout">Signout</a> <?php }
-       ?>
-       <div class="btnGroup">
-         <?php if(!$login){ ?>
-         <a href="log-in.php" class="btn btn-sign">log in</a>
-         <a href="sign-up.php" class="btn">sign up</a>
-         <?php    
-         } 
-         ?>
-       </div>
+      <div class="btnGroup">
+        <a href="log-in.html" class="btn btn-sign">log in</a>
+        <a href="sign-up.html" class="btn">sign up</a>
+      </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
   </header>
@@ -90,176 +70,426 @@ $data=$_SESSION['userdata'];
     <div class="d-flex justify-content-center align-items-center">
       <img src="images/EXPLORBANNER.png" alt="" class="img-fluid">
     </div>
-
-    <div class="container-fluid">
-      <div class="allBtn">
-        <div class="btn-group">
-          <a href="index.php" class="homebtn">home</a><span>/</span><a href="" class="homebtn">explore colleges</a>
+  </section>
+  <section class="TopColleges" id="TopColleges">
+    <div class="container">
+      <h1 class="heading text-center xpoHeading mt-5">top Study Places</h1>
+      <div class="" data-aos="fade-up" data-aos-delay="300">
+        <div class="swiper mySwiper topSwiper ">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon6-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">bangalore</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon3-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">delhi</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon2-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">pune</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon4-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">hyadrabad</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon5-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">chennai</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon7-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">mumbai</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon8-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">Kolkata</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/bhopal-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">bhopal</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/cityicon1-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">agra</h4>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="swiper-slide">
+              <figure class="items">
+                <img src="images/rajasthan-02.png" alt="">
+                <figcaption>
+                  <h4 class="text-center">rajsthan</h4>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <!-- <div class="swiper-pagination"></div> -->
         </div>
-        <div class="btn-group">
-          <a href="" class="homebtn">free counselling</a>
-        </div>
 
+        <div class="guidePart">
+          <div class="row">
+            <div class="col-md-8 guidCard">
+              <div class="cardHeadline">
+                <h2>are you looking perfect college for you?</h2>
+              </div>
+              <div class="cardImgButton">
+                <img src="images/looking search-06.png" alt="">
+                <a href="guid.html" target="_blank" class="btn">free guide</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- <div class=" explore">
-            <div class=" exploimg">
-                <img src="images/explore-02.png" alt="" class="img-fluid">
-            </div>
-            <div class="arrowDownR">
-                <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-            </div>
-        </div> -->
     </div>
   </section>
-  <div class="homeHeading d-none">
-    <div class="container">
-      <div class="searchBar">
-          <input type="text" placeholder="search anything..." id="mySearch" onkeyup="myFunction()" autocomplete="off">
-          <input type="submit" value="search" class="searchBtn">
+  <section class="homeSearc" id="searchForHome">
+    <div class="homeHeading d-none">
+      <div class="container">
+        <div class="barsearch">
+            <input type="text" placeholder="search anything..." id="mySearch"  autocomplete="off">
+            <input type="submit" value="search" class="searchBtn">
+        </div>
       </div>
-      <ul id="myUl" class="listCollege">
-        <li><a href="about.php">Barasat Government college</a><span>MBA</span></li>
-        <li><a href="#">agra university</a></li>
-      
-        <li><a href="#">nalanda university</a></li>
-        <li><a href="#">aligarh university</a></li>
-      
-        <li><a href="#">chandigarh university</a></li>
-        <li><a href="#">nataji open university</a></li>
-        <li><a href="#">delhi IIT</a></li>
-      </ul>
     </div>
-  </div>
+  </section>
+  
   
   <section class="topCollection" id="topCollection">
     <div class="container">
       <h1 class="heading">Top Universities/Colleges</h1>
-      <hr>
       <div class="swiper mySwiper cardDetails">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -271,128 +501,299 @@ $data=$_SESSION['userdata'];
       <div class="swiper mySwiper cardDetails">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
-              </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
-              </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
-            <div class="ab">
-              <div class="at">
-                <h4>name</h4>
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
               </div>
-              <div class="ap">
-                <img src="images/team-1.jpg" alt="" class="imgmain">
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
               </div>
-              <div class="tb">
-                <h3>title</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Reprehenderit, optio?</p>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="topUniCol">
+              <div class="colInfo">
+                <div class="colimg">
+                  <img src="images/partner/images (10).png" alt="">
+                </div>
+                <div class="colDitail">
+                  <h4>guru nakak institue of hotel Management</h4>
+                  <p>west bengal, Kolkata <span>| aicte,ugc</span> </p>
+                </div>
+              </div>
+              <div class="reviweRating">
+                <div class="courseDitail">
+                  <h4>be/btech</h4>
+                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                </div>
+                <div class="reting">
+                  <i class="fa fa-star">7.5/10</i>
+                  <p>83 reviews</p>
+                </div>
+              </div>
+              <div class="courseDownloadPart">
+                <div class="couresFess">
+                  <h4><a href=""> view course and fees</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
+                <div class="downlodPart">
+                  <h4><a href="">downlod bruchre</a></h4>
+                  <i class="fa fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -407,7 +808,6 @@ $data=$_SESSION['userdata'];
   <section class="topCollection" id="topCollection">
     <div class="container">
       <h1 class="heading">top collection</h1>
-      <hr>
       <div class="row">
         <div class="d-flex flex-wrap justify-content-center">
           <div class="col-lg-3">
@@ -458,92 +858,7 @@ $data=$_SESSION['userdata'];
       </div>
     </div>
   </section>
-  <section class="TopColleges topCollg" id="TopColleges">
-    <div class="container">
-      <h1 class="heading">top Study Places</h1>
-      <hr>
-      <div class=>
-        <div class="swiper topSwiper ">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon6-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">bangalore</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon3-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">delhi</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon2-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">pune</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon4-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">hyadrabad</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon5-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">chennai</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon7-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">mumbai</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon8-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">Kolkata</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon1-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">agra</h4>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="items">
-                <img src="/images/cityicon1-02.png" alt="">
-                <figcaption>
-                  <h4 class="text-center">agra</h4>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <!-- <div class="swiper-pagination"></div> -->
-        </div>
-      </div>
-  </section>
+  
   <section class="get_started">
     <div class="container">
       <h3 class="heading text-center">subscribe our news letter</h3>
@@ -747,6 +1062,37 @@ $data=$_SESSION['userdata'];
       </div>
     </div>
   </section>
+  <section class="upComingFeatures" id="upCmngFtre">
+    <div class="container mb-5">
+      <h1 class="heading text-center">up comimg features</h1>
+      <div class="row">
+        <div class="col-3 ftureCadr">
+          <div class="fturDitail">
+            <img src="images/smart app-05.png" alt="">
+            <h2>Smart Application</h2>
+          </div>
+        </div>
+        <div class="col-3 ftureCadr">
+          <div class="fturDitail">
+            <img src="images/target-05.png" alt="">
+          <h2>My Target</h2>
+          </div>
+        </div>
+        <div class="col-3 ftureCadr">
+          <div class="fturDitail">
+            <img src="images/compair-05.png" alt="">
+            <h2>College Compare</h2>
+          </div>
+        </div>
+        <div class="col-3 ftureCadr">
+          <div class="fturDitail">
+            <img src="images/predictor-05.png" alt="">
+            <h2>Rank Predictor</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- footer start -->
   <footer id="footer" class="footer-area section-padding">
@@ -755,16 +1101,16 @@ $data=$_SESSION['userdata'];
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
             <h3 class="footer-titel">quick links</h3>
             <ul>
-              <li><a href="about.php">about us</a></li>
+              <li><a href="about.html">about us</a></li>
               <li><a href="">FAQs</a></li>
-              <li><a href="policy.php">privacy policy</a></li>
-              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
+              <li><a href="policy.html">privacy policy</a></li>
+              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">

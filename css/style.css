@@ -14,7 +14,7 @@
 :root{
     --main-bg-color:linear-gradient(to left, #7836f4 15%, #F44336 85%);
     --font-color:#ffffff;
-    --primary-bg-color:#fc766d;
+    --primary-bg-color:#fc473a;
     --btn-bg-color:#cc443a;
 }
 html{
@@ -95,6 +95,11 @@ ul,li,ol{
    display: flex;
    justify-content: space-between;
    align-items: center;
+   position: sticky;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 10000;
    
    
 
@@ -155,6 +160,8 @@ ul,li,ol{
     max-width: 70rem;
 
 }
+
+/*************************************** careere  counselling************************************************/
 .return{
     position: relative;
 }
@@ -198,50 +205,686 @@ ul,li,ol{
     box-shadow: 1rem 1rem 2rem .1rem rgba(19, 18, 71, 0.603);
 
 }
-.explore{
-    padding: 1.5rem;
+.homebannerText{
     position: relative;
+}
+.homebannerText .heading{
+    font-size: 6rem;
+    padding-right: 4.5rem;
+    text-transform: capitalize;
+    color: #0215c2;
+    text-align: right;
+}
+.homebannerText p{
+    font-size: 4.5rem;
+    font-weight: 600;
+    padding-right: 4.5rem;
+    color: #993CC3;
+    text-align: right;
+}
+.homebannerText .btn{
+    position: absolute;
+    bottom:7rem;
+    right: -36rem;
+    font-size: 2.5rem !important;
+    background: #FF5B5B !important;
+}
+.homebannerText .btnExamt{
+    right: 50rem !important;
+}
+.counsellingBenefit .benifiCard{
+    width: 30rem;
+    height: 30rem;
+    border: .1rem solid grey;
+    position: relative;
+    cursor: pointer;
+    transition: .5s all ease;
+    padding: .8rem;
+}
+.counsellingBenefit .benifiCard:hover{
+    transform: scale(1);
+    box-shadow: .8rem .5rem 1rem rgb(255, 104, 104)
+}
+.benifiCard .beniBox .img-assessment{
+   width: 20rem;
+   height: 20rem;
+   margin-left: 4.5rem;
+}
+.benifiCard .beniBox .benifiCardText{
+    font-size: 1.2rem;
+    padding-bottom: 1.5rem;
+}
+.benifiCardHead{
+    font-weight: 700;
+    color: #3B6AFA;
+    position: relative;
+    text-decoration: underline;
+    font-size: 2rem;
+}
+.counsellingBenefit .heading{
+    color: #012A95;
+    font-weight: 800;
+} 
+.counsellingBenefit .swiper-button-next, .counsellingBenefit .swiper-button-prev{
+    background: #0018F3 !important;
+}
+.program .progCard{
+    width: 100%;
+    height: auto;
+    background: #DBC0FE;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.program .progCard:hover{
+    transform: rotateY(360deg);
+    box-shadow: .8rem .5rem 1rem rgb(255, 104, 104)
+}
+.program .progCard .progCardDitail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.program .progCard .progCardDitail h2{
+    font-size: 3rem;
+    font-weight: 800;
+}
+.program .progCard .progCardDitail p{
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-weight: 600;
+}
+.program .progHeading{
+    height: 10rem;
+    background: red;
+    background-image: linear-gradient(to bottom right, #141F83, #5B6CFF);
+    text-align: center;
+    margin-bottom: 1.5rem;
+
+}
+.program .progHeading h1{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 800;
+    padding-top: 1rem;
+}
+.program .progHeading p{
+    color: #fff;
+    padding-top: 1rem;
+    font-size: 1.3rem;
+}
+.program .progHeading.hidden{
+    background: #fff !important;
+    background-image: linear-gradient(to bottom right, #fff, #fff) !important;
+}
+.chooseCounsel .heading{
+    margin-top: 5rem;
+    color: #012A95;
+    font-weight: 800;
+}
+.chooseCounsel .pointsBg{
+    background: red;
+    background-image: linear-gradient(to top right, #41AFFF, #9F21AA);
+    border-radius: 1rem;
+}
+.chooseCounsel .pointsBg p{
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 900;
+    padding-left: .8rem;
+    padding-top: .8rem;
+}
+.chooseCounsel .formBg{
+    width: 90%;
+    height: 98%;
+    background-image: linear-gradient(to top right, #7206C8,#DBC0FE );
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.chooseCounsel .formBg form{
+    padding: 3rem;
+}
+.formBg .form-control{
+    padding:1.3rem;
+    margin-top: 7rem;
+}
+.formBg .form-control:focus{
+    border: none;
+    box-shadow: none;
+}
+.formBg .form-control[placeholder]{
+    font-size: 1.4rem;
+}
+.chooseCounsel .formBg h2{
+    color: rgb(0, 0, 0);
+    font-size: 2.5rem;
+    padding: .8rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+}
+.topCollection .heading{
+    text-align: center;
+    color:#012A95 ;
+    margin-top: 5rem;
+    font-weight: 800;
+}
+.topCollection .homHeading{
+    color: var(--primary-bg-color);
+    font-weight: 700;
+    text-align: left;
+}
+.careerFormPart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 2.5rem 30rem;
+}
+.careerFormPart .form-label{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(140, 140, 140);color: rgb(140, 140, 140);
+}
+.careerFormPart .form-control{
+    padding: 1.5rem;
+}
+.careerFormPart .form-control[placeholder]{
+    font-size: 1.3rem;
+}
+.careerFormPart .form-control:focus{
+    border: .1rem solid var(--primary-bg-color);
+    box-shadow: none;
+}
+.careerFormPart .form-control:focus::placeholder{
+    transform: translateY(-10px);
+}
+.careerFormPart .form-select{
+    padding: 1.5rem;
+    font-size: 1.3rem;
+    color: rgb(140, 140, 140);
+    
     
 }
-.explore .exploimg{
-    width: 20rem;
-    height: 20rem;
-    /* position: absolute; */
-    /* background: rgb(252, 251, 251); */
-    top: -23rem;
-    right: 30rem;
+.careerFormPart .form-select:focus{
+    border: .1rem solid var(--primary-bg-color);
+}
+.careerFormPart .form-select:focus[option]{
+    font-size: 1.5rem
+}
+.counselling_heading{
+    position: absolute;
+    top: 10%;
+    left: 28%;
+    color: #fff;
+    font-size: 2.5rem;
+}
+.counselling_headingP{
+    position: absolute;
+    top: 18%;
+    left: 35%;
+    color: #fff;
+    font-size: 1.8rem;
+    text-align: center;
+}
+.counselling_heading.afterHead{
+    left: 35%;
+}
+.counselling_heading.afterHead1{
+    left: 38%;
+}
+.counselling_heading.afterHead2{
+    left: 35%;
+}
+.counselling_heading.afterHead3{
+    left: 40%;
+}
+.counselling_heading.afterHead4{
+    left: 38%;
+}
+.formLowre{
+    position: relative;
+}
+.formLowre .baneer_vartical{
+    display: none;
+}
+.lead{
+    font-size: 1.4rem;
+    margin-top: -2rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+}
+.formLowre .lowerBtn{
+    padding-bottom: 10rem;
+}
+.formLowre .btn{
+    position: absolute;
+    left: 45%;
+    padding: 1rem 2.5rem !important;
+    font-size: 1.8rem !important;
+}
+.counsellingFormPart{
+    margin-top: 5rem;
+}
+.imprtance{
+    margin-top: 5rem;
+}
+.imprtance .heading{
+    color: #012A95;
+    font-weight: 800;
+}
+.imprtance .impotancePart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imprtance .impotancePart .points{
+    background: #995AFF;
+    border: .2rem solid #fff;
+    box-shadow: .1rem .2rem .5rem rgb(104, 104, 104);
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
+    text-align: center;
+    line-height: 4rem;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 800;
+}
+.imprtance .impotancePart .pointsPara{
+    font-size: 1.8rem;
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+.pathInstraction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.pathInstraction .figPara{
+    /* text-align: center; */
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgb(0, 0, 0,50%);
+}
+.subscribtionVdoPart{
+    background: url(../images/Vector.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 85vh;
+    position: relative;
+}
+.btnovdo{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+}
+.btnovdo a{
+    text-decoration: none;
+    font-size: 5rem;
+    color: rgb(0 0 0 / 20%);
+}
+.contPart{
+    margin-top: 15rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contPart h1{
+    font-size: 5.5rem;
+    padding-top:2rem;
+    text-align: center;
+    color: #fff;
+    font-weight: 800;
+    text-shadow: .1rem .5rem .5rem rgb(0, 0, 0,.1);
+}
+.counsellingFormPart .heading{
+    color: #012A95;
+    font-weight: 800;
+}
+.subscriptionPart{
+    margin-top: 5rem;
+}
+.subscriptionPart .para{
+    font-size: 1.8rem;
+    margin-top: -1rem;
+    font-weight: 500;
+    color: rgb(0 0 0 / 50%);
+}
+.crrForm p{
+color: rgb(0, 0, 0,50%);
+}
+.crrForm .form-check .form-check-input{
+    padding: .8rem;
+}
+.crrForm .form-check .form-check-label{
+    font-size: 1.3rem;
+    margin-left: 1rem;
+}
+
+/*************************** careere counselling end *******************************/
+
+
+/* **************************Examate Part Start********************************* */
+.exmtBox{
+    margin-top: 2rem;
+    padding-left: 1.5rem;
+}
+.examatePart .heading{
+    color: #000;
+    font-weight: 800;
+    margin-top: 1.5rem;
+}
+.examatePart .exmtIconBox{
+    width: 17rem;
+    margin: 0.5rem;
     overflow: hidden;
-    box-shadow: 1rem 1rem 2rem .1rem rgba(19, 18, 71, 0.603);
+    box-shadow: .2rem .3rem .5rem rgb(0,24,243,50%);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.examatePart .exmtIconBox h1{
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-align: center;
+}
+.product{
+    margin-top: 2rem;
+    padding: 1.5rem;
+}
+.product .heading{
+    color: #000;
+    font-weight: 800;
+}
+.product .heading span{
+    color: var(--primary-bg-color);
+}
+.product .explorProdctBox{
+    width: 40rem;
+    height: 16rem;
+    border: .1rem solid #995AFF;
+    box-shadow: .1rem .2rem .5rem rgba(153, 90, 255, 0.847);
+    border-radius: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+}
+.product .explorProdctBox .textButtn{
+    float: left;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.product .explorProdctBox .imgButton{
+    float: right;
+    width: 50%;
+}
+.product .explorProdctBox .imgButton img{
+    width: 13rem;
+    float: right;
+}
+.product .explorProdctBox:hover{
+    box-shadow:none;
+    transform: translateY(-1rem);
+}
+.product .explorProdctBox .textButtn h3{
+    font-weight: 800;
+    text-align: left;
+}
+.product .explorProdctBox .textButtn .btn{
+    font-size:1.1rem !important;
+    padding: .2rem .8rem !important;
+}
+.product .explorProdctBox .textButtn p{
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: left;
+    /* padding-right: 1.5rem; */
+}
+/* examate nav-tab */
+
+.explrProductsPart .main_tab .leftSide_nav{
+    box-shadow: .1rem .2rem .5rem rgb(0 0 0 / 20%);
+    background:var(--primary-bg-color);
+}
+.explrProductsPart .main_tab .leftSide_nav a{
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 1.5rem;
+    text-transform: uppercase;
+    border: .1rem solid #fff;
+}
+.course_tab ul{
+    display: flex;
+    justify-content: flex-start;
 
 }
-.arrowDownR i{
-    color: rgb(19, 19, 71);
-    animation: move 5s linear infinite;
-    /* box-shadow: 1px 2px 5px 5px black; */
-    position: absolute;
-    top: -15rem;
-    right: 25rem;
-    font-size: 5.5rem;
+
+.explrProductsPart .main_tab .leftSide_nav a.active{
+    background: #fff;
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--primary-bg-color);
 }
-.arrowDown i{
+.explrProductsPart .main_tab .right_side{
+    margin: 1.5rem;
+    /* overflow:auto; */
     
-color: rgb(19, 19, 71);
-    animation: move 5s linear infinite;
-    /* box-shadow: 1px 2px 5px 5px black; */
+}
+.explrProductsPart .main_tab .right_side ul li{
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+    
+}
+.explrProductsPart .main_tab .right_side ul li button{
+    color: #000;
+    text-transform: uppercase;
+}
+.explrProductsPart .main_tab .right_side ul li button.active{
+    color: #fff;
+    background: var(--primary-bg-color);
+}
+.course_tab .cors_link{
+    background: rgb(255, 255, 255);
+    padding:1.2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: .5rem;
+    border-bottom: .1rem solid black;
+    box-shadow: .1rem .2rem .5rem rgb(0 0 0 / 50%);
+
+}
+.jobBox .col-2{
+    box-shadow: .1rem .2rem .3rem var(--primary-bg-color);
+    padding: .5rem;
+    margin: .5rem;
+    width: 15.5%;
+    
+}
+.jobBox .col-2 ul li{
+    margin-left: 0 !important;
+    text-align: center;
+}
+.jobBox .col-2 a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-align: center;
+    color: rgb(0 0 0 / 50%);
+    font-weight: 700;
+
+}
+.course_tab .cors_link a{
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+}
+.exmtNewsPart{
+    padding: 1.5rem 0;
+}
+.exmtNewsPart .heading{
+    color: #000;
+    font-weight: 800;
+}
+.exmtNewsPart .heading span{
+    color: var(--primary-bg-color);
+}
+.exmtNewsPart .newsbox{
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    box-shadow: .1rem .1rem .5rem var(--primary-bg-color);
+    margin-bottom: 1.2rem;
+    height: 15rem;
+
+}
+.exmtNewsPart .newsbox .newsImgBox{
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+.exmtNewsPart .newsbox .newsText p{
+    font-size: 1.5rem;
+
+}
+.exmtNewsPart .newsbox .newsText{
+    padding: 0 1.5rem;
+    height: 12rem;
+    align-items: center;
+}
+
+
+/* examate nav-tab end */
+
+/* Explore Part */
+.guidePart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.guidCard{
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    margin-left:10rem;
+    margin-top: 5rem;
+    box-shadow: 0 .2rem .5rem rgba(153, 90, 255, 0.847);
+    position: relative;
+    overflow: hidden;
+    
+    
+}
+.guidCard::before{
+    content: '';
+    width: 120%;
+    height: 100%;
     position: absolute;
-    top: -15rem;
-    left: 13rem;
-    font-size: 5.5rem;
+    background: conic-gradient(#5364ff,#ff1008,#5364ff,#ff0000,#5364ff,#ff0000);
+    top:0;
+    animation: spin 5s linear infinite;
+}
+@keyframes spin {
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(90deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+.guidCard::after{
+    content: '';
+    position: absolute;
+    width: 97%;
+    height: 94%;
+    background: #fff;
+    border-radius: 1.5rem;
+    top: 3%;
+}
+.cardHeadline{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.cardHeadline h2{
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-align: left;
 
 }
-@keyframes move{
-    0%{transform: translateY(10px);}
-    25%{transform: translateY(-20px);}
-    75%{transform: translateY(-10px);}
-    100%{transform: translateY(20px);}
-
+.cardImgButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: right;
+    z-index: 100;
 }
+.upComingFeatures .ftureCadr{
+   
+    width: 24%;
+    margin: .5rem;
+}
+.fturDitail{
+    padding: 1.5rem;
+    align-items: center;
+    background: #99b4fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2rem;
+    box-shadow: 1rem .2rem .1rem #012A95;
+}
+
+.product .exploreProduct{
+    height: 25rem;
+}
+.preparationPart .heading{
+    color: #000;
+    font-weight: 800;
+}
+.preparationPart .heading span{
+    color: var(--primary-bg-color);
+}
+.preparationPart p{
+    font-size: 1.3rem;
+    margin-top: -1rem;
+    font-weight: 700;
+}
+.preparationPart .preparBox{
+    border: .1rem solid var(--primary-bg-color);
+    margin: 0 .5rem;
+    width: 23.75%;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    box-shadow: .1rem .2rem .5rem rgb(255, 0, 0, 35%);
+}
+.preparationPart .preparBox:hover{
+    transform: rotateY(20deg);
+}
+.preTxtBox h1{
+    font-weight: 800;
+}
+
+/* **************************Examate Part End**********************************8 */
 
 
 .careerLogo h4{
@@ -253,74 +896,71 @@ color: rgb(19, 19, 71);
     color: var(--primary-bg-color);
 }
 
-
-
+.subscriptionPat{
+    margin-top: 5rem;
+}
+.subscriptionPat .heading{
+    color: #012A95;
+    text-align: center;
+    font-weight: 800;
+}
+.subscribtion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    position: relative;
+}
 .subContent p{
     color: #333;
     font-size: 1.5rem;
     font-weight: 700;
     padding-top: 2.5rem;
     text-align: center;
-   
-    
 }
-.subContent .subBottom{
+.subBottom{
     display: flex;
     justify-content: space-around;
     align-items: center;
     background: rgb(112, 14, 14);
     padding: 1.5rem .5rem;
-    border-bottom-left-radius: 3rem;
-    border-bottom-right-radius: 3rem;
-
+    /* border-bottom-left-radius: 3rem; */
+    border-top-right-radius: 3rem;
     position: absolute;
-    top: 38rem;
-    left: 1rem;
-    width: 90%;
+    left:0;
+    bottom: 0;
+    width: 80%;
+    box-shadow: .1rem .2rem .5rem var(--primary-bg-color);
+    
 }
-.subContent .subBottom a{
+.subBottom a{
     text-decoration: none;
     font-size: 2rem;
     color: #fff;
     opacity: .3;
 }
-.subContent .subBottom:hover a{
+.subBottom:hover a{
     opacity: 1;
 }
-.subContent .subBottom h2{
+.subBottom h2{
     color: #dddddd;
     font-size: 2rem;
     cursor: pointer;
 }
 .subHead{
-    padding: 1.5rem;
+    padding:.5rem 1.5rem;
     text-align: center;
     position: relative;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
     background: #fa7202;
+    height: 7rem;
+    width: 100%;
 
 }
-.subsSubHead{
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--btn-bg-color);
-    position: relative;
 
-}
-.subsSubHead::after{
-    content: '';
-    position: absolute;
-    width: 10rem;
-    height: .1rem;
-    top: 100%;
-    left: 45%;
-    border: .2rem solid var(--btn-bg-color);
-}
 .subHead ::after{
     content: '\25BC';
     position: absolute;
-    top: 5.8rem;
+    top: 5rem;
     left: 40%;
     color: #fa7202;
     font-size: 4.5rem;
@@ -331,7 +971,7 @@ color: rgb(19, 19, 71);
 .subHeadF ::after{
     content: '\25BC';
     position: absolute;
-    top: 5.8rem;
+    top: 5rem;
     left: 40%;
     color: #1e2c3d;
 }
@@ -343,10 +983,9 @@ color: rgb(19, 19, 71);
 .subHeadP ::after{
     content: '\25BC';
     position: absolute;
-    top: 5.8rem;
+    top: 5rem;
     left: 40%;
     color: #0c9bad;
-    /* font-size: 3.5rem; */
 }
 
 .subHead h4{
@@ -358,19 +997,24 @@ color: rgb(19, 19, 71);
 .subHead h5{
     color: rgb(255, 255, 255);
 }
-.subHead p{
-    color: #fff;
-    font-size: 1.2rem;
-}
 
 
 .subContent{
     margin: 0 .8rem;
-    /* border-bottom-left-radius: 5rem; */
-    border-top-right-radius: 2rem;
     cursor: pointer;
     height: 40rem;
+    width: 25rem;
     position: relative;
+    overflow: hidden;
+}
+.flag{
+    position: absolute;
+    top: 1rem;
+    left: -3rem;
+    z-index: 1;
+    background: rgb(255, 238, 0);
+    padding: .5rem 3.2rem;
+    transform: rotate(-45deg);
 }
 .subContent:hover{
     box-shadow: .8rem .5rem 1rem rgb(255, 104, 104);
@@ -378,6 +1022,7 @@ color: rgb(19, 19, 71);
 .subContent ul{
     list-style: none;
     padding-top: 1.5rem;
+    padding-left: .8rem;
 }
 .subContent ul li{
     font-size: 1.2rem;
@@ -391,24 +1036,8 @@ color: rgb(19, 19, 71);
     color: #505050;
 }
 
-/* .subContent ul li:nth-child(5){
-    text-decoration: line-through;
-} */
-/* .subContent ul li:nth-child(6){
-    text-decoration: line-through;
-} */
-/* .subContent ul li::before{
-    content:'\F26B ';
-    position: absolute;
-    top: 0;
-    left: -1.5rem;
-} */
+
 #home_banner{
-    /* background: linear-gradient(rgba(0,0,0,0.5),rgba(255, 21, 21, 0.3)),url(/images/college1.jpg);
-    background-size: cover; */
-    /* background-position: center;
-    background-repeat: no-repeat; */
-   
     height: 50rem;
 
 }
@@ -429,14 +1058,7 @@ color: rgb(19, 19, 71);
     left: 15%;
    
 }
-/* .homeHeading .banner_heading h1{
-    font-size: 3.5rem;
-    font-weight: bold;
-}
-.homeHeading .banner_heading p{
-    font-size: 1.8rem;
-    font-weight: normal;
-} */
+
 .homeHeading .searchBar{
     width: 60%;
     position: absolute;
@@ -556,6 +1178,21 @@ color: rgb(19, 19, 71);
     text-align: center;
     font-size: 1.5rem;
 }
+.get_started .form-control{
+    font-size: 1.2rem;
+    
+}
+.get_started .form-control:focus{
+    box-shadow: none;
+    border: .1rem solid var(--primary-bg-color);
+    transition: .5s;
+}
+.get_started .form-control:focus::placeholder{
+    transform: translateY(-2rem);
+    transition: .5s;
+    background: rgb(255, 255, 255);
+    width: 50%;
+}
 .subscribe{
     transform: translateX(10%);
     padding:2rem;
@@ -600,7 +1237,6 @@ color: rgb(19, 19, 71);
 .service .box-container .corsBox img{
     width: 15rem;
     margin-top: -rem;
-    /* background: #ff8f8f; */
     border-radius: 50%;
 }
 .service .box-container .corsBox .dailog{
@@ -745,7 +1381,7 @@ color: rgb(19, 19, 71);
 }
 /* examate */
 .commingSoong .landingExamate{
-    font-size: 30rem;
+    font-size: 10rem;
     padding: 5.5rem;
 }
 .commingSoong .examatePara{
@@ -814,7 +1450,6 @@ color: rgb(19, 19, 71);
     font-size: 8rem;
     font-weight: 900;
     color: #fff;
-    /* padding-top: 2rem; */
     text-shadow: .2rem 1.5rem 1rem rgba(0,0,0,0.4);
 }
 .fa-inr{
@@ -837,9 +1472,7 @@ color: rgb(19, 19, 71);
 .alRef .btn{
     margin-left: 25rem;
 }
-/* .d-flex{
-    padding-left: 5rem;
-} */
+
 .imgaRef{
     margin-left: 20rem;
 }
@@ -889,7 +1522,7 @@ color: rgb(19, 19, 71);
     height: 1.25rem;
     margin-left: auto;
     content: "";
-    background-image: url(../images/Arrow-down.png);
+    background-image: url(/images/Arrow-down.png);
     background-repeat: no-repeat;
     background-size: 1.25rem;
     
@@ -964,6 +1597,9 @@ color: rgb(19, 19, 71);
 .subscriptionDetails .caption{
     font-size: 2.5rem;
     padding-top: 5rem;
+    color: #012A95;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .faQs{
@@ -1040,26 +1676,23 @@ width: 100%;
 }
 
 /* swiper */
-.TopColleges .swiper {
-    /* width: 103rem;
-    padding: 1.5rem; */
+.TopColleges .xpoHeading{
+    color: #012A95;
+    font-weight: 800;
 }
+
 .TopColleges .swiper-slide{
     border: .1rem solid #cecece;
     cursor: pointer;
-    filter: grayscale(100%);
     transition: .5s ease all;
     
 }
 .TopColleges .swiper-slide:hover{
-    /* background: #e9e9e9; */
     box-shadow: 1px 2px 5px var(--primary-bg-color);
     border: none;
-    filter: grayscale(0);
+    
 }
-/* .topCollg{
-    padding-top: 15rem;
-} */
+
 /* swiper start */
 
 .swiper {
@@ -1069,9 +1702,9 @@ width: 100%;
 
   .swiper-slide {
     text-align: center;
-    /* font-size: 18px; */
-
+    
     /* Center slide text vertically */
+
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -1133,7 +1766,7 @@ width: 100%;
 }
 
 /* swiper end */
-/* slick slider */
+
 .maiBox{
     height:40rem;
     width: 30%;
@@ -1151,7 +1784,7 @@ width: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    background:url(../images/gnihm.jpg) no-repeat;
+    background:url(/images/gnihm.jpg) no-repeat;
     background-size: cover;
 }
 .topUniCol .colInfo::before{
@@ -1263,7 +1896,7 @@ width: 100%;
     width: 10%;
     float: right;
     color: var(--primary-bg-color);
-    /* transform: rotate(45deg); */
+    
 }
 .topUniCol .courseDownloadPart .downlodPart{
     height: 50%;
@@ -1303,8 +1936,6 @@ width: 100%;
 	position: absolute;
 	width: 30rem;
 	top: 10%;
-	/* padding: 2.5rem; */
-	/* background: grey; */
 }
 .ap img{
 	width: 100%;
@@ -1359,32 +1990,7 @@ width: 100%;
 	color: rgb(51, 51, 51);
     font-size: 1.2rem;
 }
-/* .top-collection .box{
-	width: 20rem;
-    height: 20rem;
-	background: var(--primary-bg-color);
-	border-radius: 2rem;
-	
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	margin: 2rem 2.5rem;
-	box-sizing: border-box;
-	position: relative;
-    transition: 30s all ease linear;
-    cursor: pointer;
-}
-.top-collection .maiBox{
-    height:20rem;
-    width: 20rem;
-}
-.top-collection .imgIcon{
-	width: 20rem;
-	max-width: 100%;
-	max-height: 100%;
-	
-} */
+
 .box{
 	width: 20rem;
 	background: var(--primary-bg-color);
@@ -1465,7 +2071,6 @@ left: 20%;
 }
 .futureTabs .allTabs{
     width: 100%;
-    /* background: var(--main-bg-color); */
     padding: 1.5rem;
     order: 1;
     display: none;
@@ -1475,25 +2080,25 @@ left: 20%;
     display: block;
 }
 .futureTabs .allTabs .conteintBox{
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:start;
     flex-wrap: wrap;
     
 }
 .collgBox{
     margin: .3rem auto;
-    /* background: #ddd; */
     transition: .5s ;
     border: .1rem solid #ebebeb;
 }
 
 .futureTabs .allTabs .collgBox{
-    margin: .8rem 0;
+    margin: .8rem .6rem;
     align-items: center;
     display: flex;
     flex-direction: column;
     width: 16rem;
     height: 12rem;
+    padding: .5rem;
 
     
 }
@@ -1530,7 +2135,6 @@ left: 20%;
 }
 .reviewTabs label{
     font-size: 2rem;
-    /* background: var(--main-bg-color); */
     color:  var(--main-bg-color);
     margin: 1.5rem .5rem;
     padding: .8rem 2.5rem;
@@ -1643,14 +2247,7 @@ left: 20%;
     border-radius: 2rem;
     z-index: 2;
 }
-/* .user-text p{
-    font-size: 2rem;
-}
-.user-text h3{
-    margin: 1.5rem 0 1.8rem;
-    color: rgb(58, 3, 3);
-    font-size: 2rem;
-} */
+
 
 .TopColleges img{
     width: 12rem;
@@ -1664,10 +2261,11 @@ left: 20%;
     padding: 5rem 0;
     margin: 5rem 0;
 }
-.studentReview{
-    padding: 2rem;
-}
 
+.studentReview .heading{
+    color:#012A95;
+    font-weight: 800;
+}
 .endCounselling .main-h1{
     color: #fff;
     font-size: 3.5rem;
@@ -1708,7 +2306,6 @@ left: 20%;
     list-style: none;
     margin: auto;
     min-height: 50px;
-    /* border-left: 2px solid #fff; */
     padding: 0 0 10px 30px;
     position: relative;
 }
@@ -1728,8 +2325,6 @@ left: 20%;
     text-align: center;
    
 }
-/* .button, button.btn:focus:hover{
-} */
 .counselling-left .watch-video {
     cursor: pointer;
     position: relative;
@@ -1779,7 +2374,7 @@ left: 20%;
      text-transform: uppercase;
  }
 .psychometric .testCard .cardTest .imagePart{
-    width: 13rem;
+    width: 22rem;
 }
 
 .psychometric .testCard .cardTest{
@@ -1799,10 +2394,13 @@ box-shadow: 2px 5px 10px rgba(248, 136, 136, 0.8)
     font-size: 1.8rem;
     font-weight: 800;
 }
+.psychometric .testCard .cardTest .textPart p{
+    padding-right: 1.5rem;
+    font-size: 1.1rem;
+}
 .counselling-left .video {
     display: inline;
     margin-left: 15px;
-    /* background: url(/images/vdoicon-03.png) ; */
 }
 .counselling-left .watch-video:before {
     content: '';
@@ -1880,12 +2478,8 @@ box-shadow: 2px 5px 10px rgba(248, 136, 136, 0.8)
     font-weight: bold;
     color: #808080;
 }
-.form-section{
-    /* padding-top: 10rem; */
-}
 form{
     width:100%;
-    /* overflow: hidden; */
     
 }
 form p{
@@ -1917,7 +2511,7 @@ form p>a{
       left: 50%;
       transform: translate(-50% ,-50%);
       background: rgba(0, 0, 0, 0.5);
-      z-index: 1001;
+      z-index: 10001;
       
   }
   #mainPopUp .formBox{
@@ -2028,14 +2622,11 @@ form p>a{
     .formBox .formContainer{
         box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.8);
         width: 90%;
-        /* padding: 2rem; */
         display: flex;
         flex-wrap: wrap;
     }
 
     .formBox .formContainer .boxForm{
-   
-      /* height: 30rem; */
       width: 50%;
       padding: 2rem;
       display: flex;
@@ -2182,59 +2773,7 @@ input[type="email"]{
     color: #137ED9;
   }
 
-/*
-.footer .main-first{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.main-first .main1 img{
-   width: 150px;
-}
-.footer .main-first .main2 .fab{
-margin-left: 1.5rem;
 
-color: rgb(122, 122, 122);
-font-size: 2.5rem;
-padding-top: 1.5rem;
-cursor: pointer;
-}
-.footer .main-first .main2 .fab:hover{
-    color: #ffffff; 
-}
-.footer hr{
-    width: 100%;
-    background: #fff;
-    height: .1rem;
-    margin-top: 2rem;
-}
-.footer p{
-    text-align: center;
-    font-size: 2rem;
-    color: #fff;
-    padding: 1.5rem;
-}
-.footer span{
-    color: #fff;
-}
-.footer .footerHead{
-    text-align: center;
-}
-.footer .footerHead h4{
-    font-size: 1.5rem;
-    text-align: center;
-    padding-top: 8rem;
-}
-.footer .footerHead ul li{
-    list-style: none;
-}
-.footer .footerHead ul li a{
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 1.4rem;
-    opacity: .5;
-} */
 /* back to top */
 .back-to-top {
     position: fixed;
@@ -2269,7 +2808,6 @@ cursor: pointer;
   }
   .main-timeline {
     position: relative;
-    /* margin-top: 5rem; */
 }
 
 .main-timeline:before {
@@ -2498,7 +3036,6 @@ cursor: pointer;
     font-size: 1.8rem;
     color: #464C86;
     font-weight: 400;
-    /* padding-top: 1.5rem; */
 }
 .currentBlnc .tag{
     display: flex;
@@ -2541,19 +3078,7 @@ cursor: pointer;
     z-index: -1;
 
 }
-/* .withdrText::before{
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 32%;
-    width:6.5rem;
-    height: 6.5rem;
-    border-left: 2rem solid #15016d;
-    border-bottom: #15016d 2rem solid;
-    transform: rotate(135deg);
-    z-index: -1;
 
-} */
 .withdrwa .withdrText h4{
     color: #fff;
     font-size: 2.5rem;
@@ -2683,45 +3208,6 @@ cursor: pointer;
     box-shadow: none!important;
 }
 
-/* ****************** Emni ******************************* */
-.round{
-    width: 9.5rem;
-    height: 9.5rem;
-    border: .5rem solid rgb(255, 56, 56);
-    background: rgb(255, 56, 56);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    
-}
-.round::before{
-    content: '';
-    position: absolute;
-    width: 10rem;
-    height: 10rem;
-    top: -10%;
-    left: -10%;
-    border: 0;
-    right: 0;
-    border: .5rem solid rgba(250,86,86,50%);
-    border-radius: 50%;
-    animation: round .5s linear infinite;
-
-}
-@keyframes round{
-    0%{
-        transform: scale(1.5);
-        border: 1.5rem solid rgb(112, 14, 14);
-
-    }
-    
-}
-
-
-
-
 .socialGroup{
     width: 100%;
     height: 5rem;
@@ -2796,7 +3282,6 @@ cursor: pointer;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* padding-bottom: 2rem; */
     margin:2rem 0 2rem 0;
 }
 .referTermsAndCondition .heading{
@@ -2846,7 +3331,6 @@ cursor: pointer;
     position: relative;
     overflow: hidden;
     border-radius: 2rem;
-    /* margin: 0% .5rem 0 0; */
     padding: .5rem;
     margin: .5rem;
 }
@@ -2938,24 +3422,14 @@ flex-direction: column;
 .btnShare .btn:hover{
     background: rgb(25, 30, 109)!important;
 }
-/* admission part */
-/* .admissionPart{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-.admissionFormPart{
-    /* border: .1rem solid #0018F3; */
-}
+
+
 .admissionFormPart form{
     padding: 5rem;
    width: 100%;
    background: linear-gradient(to right,rgb(252, 125, 125) 50%,transparent);
    margin-left: 2rem;
    border-radius: 2rem;
-   /* transition: 5s ease all; */
 }
 .admissionFormPart form:hover{
     background: linear-gradient(to right,rgb(252, 125, 125) 50%,rgba(123, 8, 255, 0.5));
@@ -2987,210 +3461,6 @@ flex-direction: column;
     transition: .5s ease all;
     font-size: 1.6rem;
 }
-/* ********************* college list filter */
-/* .main-text .top{
-    background: #fff;
-    box-shadow:.5rem 0 1rem .2rem rgb(122, 122, 122,.3); 
-    margin-top: 2rem;
-    padding: 2.5rem;
-} */
-/* .collegeFilterBox .allFilter {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.collegeFilterBox .allFilter .topdegreeCollg{
-   
-    width: 30rem;
-    margin: 2.5rem 0 2rem 0;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    box-shadow: .5rem 0 1rem .2rem rgb(122, 122, 122,.3);
-}
-.collegeFilterBox .collegeContentFilter {
-    width: 65%;
-}
-.collegeFilterBox .collegeContentFilter .collegeCetategory{
-    height: 15rem;
-    padding: 1.2rem;
-}
-.collegeCetategory{
-    position: relative;
-}
-.collegeCetategory .forAply{
-    
-    margin-top: -2rem!important;
-}
-
-.collegeCetategory .sturctureLink{
-    float: left;
-    display: block;
-
-}
-.collegeCetategory .sturctureLink a{
-    font-size: 1.3rem;
-    margin-bottom: .8rem;
-    text-decoration: none;
-    color: #333;
-    padding: .5rem;
-}
-.collegeCetategory .sturctureLink a:hover{
-    color: var(--primary-bg-color);
-    
-}
-.collegeCetategory .btnDownload{
-    color: var(--btn-bg-color);
-    font-size: 1.3rem;
-    position: relative;
-    display: block;
-    float: right;
-    cursor: pointer;
-    transition: .5s all;
-}
-.collegeCetategory .btnDownload:hover{
-    color: #0fbe61;
-}
-.collegeCetategory .btnDownload::before{
-   content: '';
-   position: absolute;
-   top: 0;
-   left: 0;
-   background: url(/images/mobile-01.png);
-   background-repeat: no-repeat;
-   width: 20px;
-   height: 20px;
-   background-position: center;
-   padding-right: 1.8rem;
-}
-.collegeCetategory .collegeName h3{
-    font-size: 1.8rem;
-    padding: .5rem;
-    margin: 0 1.5rem;
-    font-weight: 700;
-}
-.collegeCetategory .collegeName ul li{
-    color:rgb(87, 87, 87);
-    font-size: 1.2rem;
-}
-.collegeCetategory .collegeName h3 a{
-    text-decoration: none;
-    color: #474747;
-}
-.collegeCetategory .collegLogo{
-    width: 10rem;
-}
-.clogLogoDiv{
-    width: 12rem;
-    height: 12rem;
-    border: .1rem solid black;
-}
-.collegNameDiv{
-    font-size: 1.8rem;
-    border: .1rem solid black;
-    display: flex;
-    flex-direction: column;
-    padding-left: .8rem;
-    
-}
-.collegNameDiv a{
-    text-transform: uppercase;
-    font-weight: 800;
-    color: #a0a0a0;
-    font-size: 2rem;
-    text-decoration: none;
-}
-.aply{
-    flex: 1 1 end;
-
-}
-.collegeCetategory button{
-    font-size: 1.8rem;
-    text-transform: capitalize;
-    font-weight: 600;
-    padding: 1.5rem 2.5rem;
-    letter-spacing: .1rem;
-    margin-top: 0;
-    flex: end;
-}
-.topdegreeCollg .dgree{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    height: 4rem;
-    margin-bottom: .5rem;
-    padding: 0 1.5rem;
-}
-.topdegreeCollg .dgree img{
-    cursor: pointer;
-}
-.topdegreeCollg .colgSearch {
-padding: 1.2rem;
-width: 100%;
-}
-.topdegreeCollg .colgSearch input{
-    padding: .5rem 1.5rem;
-    width: 100%;
-    border-radius: .3rem;
-    font-size: 1.7rem;
-    background: rgba(175, 175, 175, 0.3);
-    border-bottom: .2rem solid #fff;
-    color: rgb(8, 8, 8);
-}
-.topdegreeCollg .dgreeFilter{
-    width: 100%;
-    padding: 1.5rem;
-    overflow-y: auto;
-    height: 20rem;
-}
-.topdegreeCollg .dgreeFilter .checkBox{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: .2rem;
-    align-items: center;
-    
-}
-.topdegreeCollg .dgreeFilter label{
-    color: rgb(71, 64, 64);
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-.topdegreeCollg .dgreeFilter label>span{
-    color: rgb(71, 64, 64);
-    font-size: .9rem;
-    text-transform: capitalize;
-    padding: 1rem;
-}
-
-.topdegreeCollg .dgreeFilter .form-check-input{
-    font-size: 2.5rem;
-    border: .2rem solid var(--primary-bg-color);
-    
-}
-.topdegreeCollg .dgreeFilter .form-check-input:focus{
-  box-shadow: none;
-    
-}
-.form-check-input:checked {
-    background-color: var(--primary-bg-color);
-    border-color: var(--primary-bg-color);
-}
-.formCons{
-    background: var(--main-bg-color);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-} */
-
-
-
 
 /* college Filter */
 .college_filter_page_management .filter-item .filter-body .filterItems{
@@ -3245,7 +3515,6 @@ width: 100%;
     padding: .2rem;
 }
 .filterItems .form-check-input:focus {
-    /* background: var(--primary-bg-color); */
     border: .1rem solid var(--primary-bg-color);
     box-shadow: none;
 }
@@ -3330,7 +3599,6 @@ width: 100%;
 }
 .filterCall{
     width: 12rem;
-    /* background: var(--primary-bg-color); */
     border: .2rem solid var(--primary-bg-color);
     text-align: center;
     margin-right: 2.5rem;
@@ -3347,12 +3615,6 @@ width: 100%;
 .loadMore{
     margin-left: 70rem;
 }
-/* .center-block{
-    position: absolute !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50% -50%);
-} */
 
 /* college filter end */
 
@@ -3511,7 +3773,7 @@ text-transform: capitalize;
     }
     .header .navbar{
         position: absolute;
-        top: 12%;
+        top: 100%;
         left:100%;
         border: 1px solid var(--main-bg-color);
         background: var(--main-bg-color);
@@ -3704,9 +3966,9 @@ top: 38%;
 
 }
 .futureTabs .allTabs .collgBox {
-    margin: 0.8rem .1rem;
-   
-    width: 8rem;
+    margin: 0.8rem .5rem;
+   text-align: center;
+    width: 30%;
     height: 13rem;
 }
 .TopColleges img {
@@ -3725,21 +3987,13 @@ top: 38%;
     color: var(--font-color);
 }
 .swiper-button-next, .swiper-rtl, .swiper-button-prev {
-    /* right: -8px!important; */
+    
     left: auto;
     border-radius: 50%;
     background:var(--primary-bg-color);
     box-shadow: 1px 2px 5px black;
     height: 4.5rem !important;
 }
-/* .swiper-button-prev, .swiper-rtl .swiper-button-next {
-    left: -8px!important;
-    right: auto;
-    border-radius: 50%;
-    background:var(--primary-bg-color);
-    height: 4.5rem !important;
-    z-index: 1001;
-} */
 
 /* Swiper End */
 .signBox {
@@ -3753,15 +4007,7 @@ top: 38%;
 .formBox .formContainer .signBox{
     width: 100%;
 } 
-/* .footer {
-    padding: 0.5rem 2%;
-}
-.footer .main-first{
-   
-}
-.footer .main2{
-    display: flex;
-} */
+
 .eqry {
     top: 40%;
     left: -4.5rem;
@@ -3835,10 +4081,11 @@ top: 38%;
         padding: 0;
     }
     .subscribe .btn{
-        margin-top: 1.2rem;
+        margin-top: 1.2rem !important;
     }
     .subscribe .form-control{
         margin-top: 1.2rem;
+        font-size: 1.5rem;
     }
     .eqry {
        padding: 0.8rem;
@@ -3923,17 +4170,7 @@ top: 38%;
         transform: translateX(0%);
         padding-bottom:0;
     }
-    /* .footer {
-        padding: 0.5rem 2%; */
-        /* margin-top: 10rem; */
-    
-    /* .main-first .main1 img {
-        width: 80px;
-    }
-    .footer .footerHead h4 {
-        
-        padding-top: 2rem;
-    } */
+   
     .service .container {
     
         margin-top: -7rem;
@@ -3962,9 +4199,7 @@ top: 38%;
     .main-timeline{
         margin-top: 5rem;
     }
-    .form-section{
-        /* margin: 5.5rem 0 5.5rem 0; */
-    }
+    
     .referErn .accountMain {
        
         padding-left: 2.5rem;
@@ -4022,6 +4257,170 @@ top: 38%;
     .loadMore{
         margin-left: 20rem;
     }
+    .homebannerText .heading{
+        font-size: 3rem;
+        text-align: center;
+    }
+    .homebannerText p{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .homebannerText .btn{
+        bottom: 5rem;
+        font-size: 1.5rem !important;
+        right: 4rem;
+    }
+    .homebannerText .btnExamt {
+        right: 38rem !important;
+    }
+    .psychometric .second_row{
+        margin-top: -37px;
+    }
+    .psychometric .cardThree{
+        margin-bottom: 1.8rem;
+    }
+    .program .progCard{
+        margin: .5rem 0;
+    }
+    .program .progHeading.hidden {
+        display: none;
+    }
+    .program .progHeading{
+        height: 14rem;
+        margin-bottom: -.3rem;
+        padding: 2.5rem;
+        margin-top: 5rem;
+    }
+    .chooseCounsel .formBg{
+        width: 100%;
+    }
+    .careerFormPart{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 2.5rem 0rem;
+        padding: 1.5rem;
+    }
+    .counselling_heading{
+        font-size: 1.5rem;
+        left: 67px;
+        top: 0;
+    }
+    .counselling_heading.afterHead{
+        left:16rem !important
+    }
+    .baneer_horizantal{
+        display: none;
+    }
+    .formLowre .baneer_vartical{
+        display: block;
+    }
+    .formLowre .baneer_vartical img{
+        width: 20rem;
+        margin-left: 18rem;
+    }
+    .formLowre .btn{
+        left: 43%;
+    }
+    .counselling_heading.afterHead1{
+        left: 35%;
+    }
+    .counselling_heading.afterHead2{
+        left: 30%;
+    }
+    .counselling_heading.afterHead3{
+        left: 36%;
+    }
+    .counselling_heading.afterHead4{
+        left: 35%;
+    }
+    .subscribtion{
+        width: 100%;
+    }
+    .counselling_headingP {
+      
+        top: 14%;
+        left: 24%;
+        font-size: 1.2rem;
+    }
+    .imprtance .impotancePart .pointsPara{
+        font-size: 2.8rem;
+        padding: 0;
+    }
+    .examatePart .exmtIconBox{
+        width: 13rem;
+        margin-left: 3rem;
+    }
+    .exploreProduct .swiper-slide{
+        width: 40rem !important;
+    }
+    .preparationPart .preparBox {
+        width: 47.75%;
+        margin: .5rem;
+    }
+    .preparationPart .preBox{
+        flex-direction: column !important;
+        margin-bottom: .5rem;
+    }
+    .exmtNewsPart .newsbox .newsText p{
+        font-size: 1rem;
+    }
+    .jobBox .col-2{
+        width: 24.666667%;;
+        margin-left: 3.1rem;
+    }
+    .explrProductsPart .main_tab{
+        position: relative;
+    }
+       .leftSide_nav .nav{
+        position: absolute;
+        top: 0;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: row !important;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+       }
+       .explrProductsPart .main_tab .right_side{
+        margin-top: 7rem;
+       }
+       .explrProductsPart .main_tab .leftSide_nav a{
+        color: var(--primary-bg-color);
+        border: .1rem solid var(--primary-bg-color);
+       }
+       .explrProductsPart .main_tab .leftSide_nav a.active{
+        color:#fff ;
+        background: var(--primary-bg-color);
+       }
+       .upComingFeatures .ftureCadr{
+        width: 40%;
+    }
+    .guidCard{
+        margin-left: 0;
+    }
+    .cardHeadline h2{
+        font-size: 1.3rem;
+        padding-right: 1rem;
+    }
+    .subscribe .btn{
+        margin-top: .8rem;
+    }
+    .counsellingBenefit .benifiCard{
+        width: 24rem;
+    }.counsellingBenefit .benifiCard .beniBox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .benifiCard .beniBox .img-assessment{
+        margin-left: 0rem;
+    }
+
+
+     
 
 }
 
@@ -4099,7 +4498,14 @@ top: 38%;
     .acountDiv{
         width: 100%;
     }
-
+    .btnovdo {
+        top: 38%;
+        left: 41%;
+    }
+    .hide{
+        display: none;
+    }
+    
 }
 @media screen and (max-width: 768px)
 {

@@ -88,7 +88,7 @@ var swiper = new Swiper(".cardDetails", {
         spaceBetween: 30,
         slidesPerGroup: 3,
         loop: false,
-        centeredSlides: true,
+        centeredSlides: false,
         loopFillGroupWithBlank: true,
         pagination: {
           el: ".swiper-pagination",
@@ -100,9 +100,9 @@ var swiper = new Swiper(".cardDetails", {
         },
         breakpoints: {
           320: {
-            slidesPerView: 4,
-            spaceBetween: 30,
-            slidesPerGroup: 3,
+            slidesPerView: 2,
+            spaceBetween: 50,
+            slidesPerGroup: 1,
           },
           450: {
             slidesPerView: 3,
@@ -113,8 +113,9 @@ var swiper = new Swiper(".cardDetails", {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 3,
             spaceBetween: 10,
+            slidesPerGroup: 1
           },
         },
       });
@@ -213,8 +214,51 @@ var swiper = new Swiper(".cardDetails", {
       $('#closeBtn').click(function() {
         $('#mainPopUp').css('display','none');
       });
+      
+
+      var swiper = new Swiper(".beniFitCoun", {
+        slidesPerView: "3",
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+         
+        breakpoints: {
+          350: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            slidesPerGroup: 1,
+            with:180
+          },
+          450: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+            slidesPerGroup: 1
+          },
+        },
+      });
 
 
+
+      
+      
+
+      // show referral code
+
+      
       // for form
       function validation(){
         var user = document.getElementById('user').value;
