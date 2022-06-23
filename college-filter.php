@@ -11,8 +11,8 @@ $studymode= getstudymode();
 $getinstutiontype= getinstutiontype();
 $hostel = gethostel();
 $facility = getfacility();
-$degreelist = getdegreelist();
-$specilizationlist = getspecilizationlist();
+$degreelist = getdegreelists();
+$specilizationlist = getspecilizationlists();
 $colleges=searchcollegebyfilter();
 
 
@@ -37,34 +37,30 @@ function searchcollegebyfilter(){
    ds.degree_name,s.specialization_name 
 
 	 FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sem on sem.id = cst.stream_id 
-    join State st on st.id = c.state_id
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join Collage_type cty on cty.id = c.collage_type_id
-    join City ct on ct.id = c.city_id
-    join Collage_type ctp on ctp.id=c.collage_type_id 
-		join Country cont on cont.id = st.country_id
-		join collage_mode cm on cm.collage_id = c.id
-		join study_mode sm on sm.id = cm.study_mode_id
-		join collage_hostel ch on ch.collage_id= c.id
-		join hostels h on h.id = ch.hostel_id
-		join collage_facilities cf on cf.collage_id = c.id
-   join facilities fa on fa.id = cf.facility_id
-	 join college_fee cfe on cfe.college_id = c.id
+   Join college_degree Cd On Cd.College_id=C.Id Join State St On St.Id = C.State_id  Join Country Cont On Cont.Id = St.Country_id 
+Join Degree Ds On Ds.Id = Cd.Degree_id 
+Join college_approvel cap On cap.college_id = C.id 
+Join Approval Ap On Ap.Id = cap.Approvel_id 
+Join college_specilization Cs On Cs.College_id= C.Id 
+Join Spacialization S On S.Id = Cs.Specilization_id 
+Join college_stream Cst On Cst.College_id= C.Id 
+Join stream Sem On Sem.Id = Cst.Stream_id 
+Join Collage_type Cty On Cty.Id = C.Collage_type_id
+ Join City Ct On Ct.Id = C.City_id
+Join collage_mode Cm On Cm.Collage_id = C.Id 
+Join study_mode Sm On Sm.Id = Cm.Study_mode_id  
+Join collage_hostel Ch On Ch.Collage_id= C.Id 
+Join hostels H On H.Id = Ch.Hostel_id 
+Join college_fee Cfe On Cfe.College_id = C.Id Join collage_facilities Cf On Cf.Collage_id = C.Id 
+Join facilities Fa On Fa.Id = Cf.Facility_id 
    where  cont.country_name='India'" ;
    
 
-    if($state){ $query.=" and st.state_name='$state'"; }
-    if($city){ $query.=" and ct.city_name='$city'"; } 
-    if($type){ $query.=" and cty.type='$type'"; }
-    if($degree){ $query.=" and ds.degree_name='$degree'"; }
-    if($mode){ $query.=" and sm.mode='$mode'"; }
+     if($state){ $query.=" and st.state_name='$state'"; }
+     if($city){ $query.=" and ct.city_name='$city'"; } 
+     if($type){ $query.=" and cty.type='$type'"; }
+     if($degree){ $query.=" and ds.degree_name='$degree'"; }
+     if($mode){ $query.=" and sm.mode='$mode'"; }
     if($hostels){ $query.=" and h.type='$hostels'"; }
     if($feerange){ 
 			
@@ -92,14 +88,14 @@ function searchcollegebyfilter(){
 			}
 		 }
 
-    if($facilities){ $query.=" and fa.facility='$facilities'"; }
+     if($facilities){ $query.=" and fa.facility='$facilities'"; }
     if($spacialization){ $query.=" and s.specialization_name='$spacialization'"; }
 
 
     echo $query;
-		$runQuery=mysqli_query($db,$query);
-		print_r($runQuery);
-return $runQuery;
+ 		$runQuery=mysqli_query($db,$query);
+ 		print_r($runQuery);
+// return $runQuery;
      
     }
 ?>
@@ -664,7 +660,7 @@ return $runQuery;
 					document.cookie = "degree='';max-age=0";
 					document.cookie = "city='';max-age=0";
 					document.cookie = "spacialization='';max-age=0";
-          window.location.href = "college-filter.php?gtstate";
+          window.location.href = "collegefilter.php?gtstate";
         }
       })
     })
@@ -679,7 +675,7 @@ return $runQuery;
           document.cookie = "city="+city;
 					document.cookie = "degree='';max-age=0";
 					document.cookie = "state='';max-age=0";	document.cookie = "spacialization='';max-age=0";
-          window.location.href = "college-filter.php?gtcity";
+          window.location.href = "collegefilter.php?gtcity";
         }
       })
     })
@@ -692,7 +688,7 @@ return $runQuery;
             study.push(event.target.value)
             console.log(study);
             document.cookie = "study="+study;
-          window.location.href = "college-filter.php?gtmode";
+          window.location.href = "collegefilter.php?gtmode";
         }
       })
     })
@@ -705,7 +701,7 @@ return $runQuery;
             type.push(event.target.value)
             console.log(type);
             document.cookie = "type="+type;
-          window.location.href = "college-filter.php?institutetype";
+          window.location.href = "collegefilter.php?institutetype";
         }
       })
     }) 
@@ -719,7 +715,7 @@ return $runQuery;
             facilities.push(event.target.value)
           console.log(facilities);
           document.cookie = "facilities="+facilities;
-          window.location.href = "college-filter.php?gtfacilities";
+          window.location.href = "collegefilter.php?gtfacilities";
         }
       })
     })
@@ -732,7 +728,7 @@ return $runQuery;
             freerange.push(event.target.value)
           console.log(freerange);
           document.cookie = "freerange="+freerange;
-          window.location.href = "college-filter.php?gtfreerange";
+          window.location.href = "collegefilter.php?gtfreerange";
         }
       })
     })
@@ -744,7 +740,7 @@ return $runQuery;
             hostels.push(event.target.value)
           console.log(hostels);
           document.cookie = "hostels="+hostels;
-          window.location.href = "college-filter.php?gthostels";
+          window.location.href = "collegefilter.php?gthostels";
         }
       })
     })
@@ -757,7 +753,7 @@ return $runQuery;
           console.log(spacialization);
           document.cookie = "spacialization="+spacialization;
 					document.cookie = "degree='';max-age=0";
-          window.location.href = "college-filter.php?gtspacialization";
+          window.location.href = "collegefilter.php?gtspacialization";
         }
       })
     })
@@ -771,7 +767,7 @@ return $runQuery;
           console.log(degree);
           document.cookie = "degree="+degree;
 					document.cookie = "spacialization='';max-age=0";
-          window.location.href = "college-filter.php?gtdegree";
+          window.location.href = "collegefilter.php?gtdegree";
         }
       })
     })

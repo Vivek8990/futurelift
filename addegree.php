@@ -74,6 +74,7 @@ body {
   
   <a href="counslerlist.php">Counslerlist</a>
   <a href="totalscholership.php">Scholership</a>
+  <a href="addreferal.php">Add Referal</a>
   <?php } ?>
   <a href="functions.php?adminlogout">Signout</a>
 </div>

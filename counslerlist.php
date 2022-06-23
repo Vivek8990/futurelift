@@ -84,6 +84,7 @@ body {
   
   <a href="counslerlist.php">Counslerlist</a>
   <a href="totalscholership.php">Scholership</a>
+  <a href="addreferal.php">Add Referal</a>
   <?php } ?>
   <a href="functions.php?adminlogout">Signout</a>
 </div>
@@ -101,6 +102,7 @@ body {
 <th>Salary </th>
 <th>Refer Code </th>
 <th>view  details </th>
+<th>Add Referal </th>
 </tr>
 <?php
  while($row =mysqli_fetch_array($result,MYSQLI_ASSOC))
@@ -121,8 +123,10 @@ body {
   echo "<td>" . $row['workschedule'] . "</td>";
   echo "<td>" . $row['salary'] . "</td>";
   echo "<td>" . $row['refercode'] . "</td>";
-  echo "<td> <a href='counselerdetails.php?id=" . $row['id'] . "'>view " ."</a></td>";
-
+  echo "<td> <a href='counselerdetails.php?id=" . $row['id'] . "'>view " ."</a></
+  td>";
+  echo "<td> <a href='addreferal.php?'>Add " ."</a></
+  td>";
   echo "</tr>";
 
   }

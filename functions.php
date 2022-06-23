@@ -69,6 +69,19 @@ if (isset($_GET['signup'])) {
 
 }
 
+//For new user registration
+if (isset($_GET['addreferal'])) {
+    unset($_SESSION['msg']);
+    $user = addreferal($_POST);
+    if (isset($user['success'])) {
+        $_SESSION['msg'][] = $user['success'];
+        header('location:counslerlist.php');
+    } else {
+        $_SESSION['msg'] = $user['errors'];
+        header('location:addreferal.php');
+    }
+
+}
 if (isset($_GET['collegesearch'])) {
     $user = searchcollege($_POST);
    return $user;
@@ -431,19 +444,57 @@ function register($data)
     $password = md5(mysqli_real_escape_string($db, $data['password']));
     $mobile = mysqli_real_escape_string($db, $data['mobile']);
     $cfn_password = mysqli_real_escape_string($db, $data['cfn_password']);
-
+    $refercode = mysqli_real_escape_string($db, $data['refercode']);
+    
+    if ( $email_id == '' || $password == '' || $full_name == '' ||  $mobile == ''  ) {
+        $user['errors'][] = "all fields are required !";
+    }
+    
+    if (checkEmail($data)) {
+        $user['errors'][] = "User already exists";
+    
+    
+    }
+   
    
     if(count($user['errors'])<1){
+        
     $user_code =""; 
     $query="INSERT INTO users(full_name,email_id,password,ref_code,user_code,mobile,created) ";
     $query.="VALUES('$full_name','$email_id','$password','','$user_code','$mobile','$created')";
     $runQuery = mysqli_query($db,$query);
-  
+    $last_id = $db->insert_id;
+
+    echo $last_id;
     $query1="SELECT * FROM users WHERE email_id='$email_id' AND password='$password'";
     $runQuery1=mysqli_query($db,$query1);
     $user=mysqli_fetch_array($runQuery1,MYSQLI_ASSOC);
     $count = mysqli_num_rows($runQuery1);
-         
+
+
+    $queryCounseler="SELECT id from counsler where refercode='$refercode'";
+    $runCounseler=mysqli_query($db,$queryCounseler);
+    $Counseler=mysqli_fetch_array($runCounseler,MYSQLI_ASSOC);   
+    $counts = mysqli_num_rows($runCounseler);
+    
+    if($counts>0)  {
+        echo "oooo";
+        $amount='100';
+        $cid=$Counseler['id'];
+       
+        $refer="INSERT INTO refer(name,email,counseler_id) ";
+        $refer.="VALUES('$full_name','$email_id','$cid')";
+        $runRefer = mysqli_query($db,$refer);
+
+
+        $refercc="INSERT INTO counseler_wallet(amount,type,status,created,counseler_id) ";
+        
+        $refercc.="VALUES('$amount','credit','success','$created','$cid')";echo $refercc;
+        $runRefercc = mysqli_query($db,$refercc);
+        echo "kkkkkkk";
+    }
+
+
         if($count>0)  {
             $_SESSION['userdata']=$user;
         }
@@ -1884,4 +1935,61 @@ function applynow($data)
    print_r($data);
     
 }
+
+function addreferal($data)
+{
+    $db = $GLOBALS['db'];
+    $user = array();
+    $user['errors'] = array();
+    $created = date("Y-m-d h:i:s");
+    $full_name = mysqli_real_escape_string($db, $data['name']);
+    $email_id = mysqli_real_escape_string($db, $data['emailid']);
+    $collegename = mysqli_real_escape_string($db, $data['collegename']);
+    $referal = mysqli_real_escape_string($db, $data['referal']);
+    $amount = mysqli_real_escape_string($db, $data['amount']);
+    $status = mysqli_real_escape_string($db, $data['status']);
+    
+    if ( $email_id == '' || $collegename == '' || $full_name == '' ||  $referal == ''  || $amount =='' || $status=='') {
+        $user['errors'][] = "all fields are required !";
+    }
+    
+    
+    $queryCounseler="SELECT id from counsler where refercode='$referal'";
+    $runCounseler=mysqli_query($db,$queryCounseler);
+    $Counseler=mysqli_fetch_array($runCounseler,MYSQLI_ASSOC);   
+    $counts = mysqli_num_rows($runCounseler);
+    
+    
+
+        if($counts>0)  {
+           
+            $id=$Counseler['id'];
+
+            $refer="INSERT INTO refer(name,email,counseler_id,college) ";
+            $refer.="VALUES('$full_name','$email_id','$id','$collegename')";
+            $runRefer = mysqli_query($db,$refer);
+
+
+            $refercc="INSERT INTO counseler_wallet(amount,type,status,created,counseler_id) ";
+            
+            $refercc.="VALUES('$amount','credit','$status','$created','$id')";echo $refercc;
+            $runRefercc = mysqli_query($db,$refercc);
+                if($runQuery){
+                    $user['success']="Added successfully !";
+            
+                    
+                }else{
+                    $user['errors'][]="Something went wrong !";
+                }
+        }
+
+
+    
+    
+   // }
+   return $user;
+   
+    
+}
+ 
   ?>

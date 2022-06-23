@@ -84,6 +84,7 @@ body {
   
   <a href="counslerlist.php">Counslerlist</a>
   <a href="totalscholership.php">Scholership</a>
+  <a href="addreferal.php">Add Referal</a>
   <?php } ?>
   <a href="functions.php?adminlogout">Signout</a>
 </div>
@@ -122,7 +123,7 @@ body {
   echo "<td>" . $row['degree_name'] . "</td>";
   echo "<td>" . $row['created'] . "</td>";
   if($admin == 'superadmin') {
-  echo "<td> <a href='update.php?id=" . $row['id'] . "'>Update ". $row['id'] ."</a></td>";
+  echo "<td> <a href='update.php?id=" . $row['id'] . "'>Update </a></td>";
 }
 
   echo "</tr>";

@@ -162,6 +162,18 @@ $data=$_SESSION['userdata'];
                 <span id="confirmPasword" class="text-dark"></span>
               </div>
             </div>
+            <div class="form-group">
+              <div class="row ">
+                <div class="col-2">
+                <label for="" class="form-label"><i class="fa fa-user"></i></label>
+                </div>
+                <div class="col-10">
+                  <input type="text" name="refercode" class="form-control" placeholder="Refer code (Optional)" id="conPas"
+                    autocomplete="off">
+                </div>
+                
+              </div>
+            </div>
             <p class=" text-center"> have an account?<a href="log-in.php">log in</a></p>
             <button type="submit" class="btn">Submit</button>
             </form>
