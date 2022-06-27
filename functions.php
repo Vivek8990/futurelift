@@ -1233,10 +1233,10 @@ function addnewCollege($data,$files)
     $college_contact =mysqli_real_escape_string($db, $data['college_contact']);
     $address=mysqli_real_escape_string($db, $data['address']);
     $cllege_details=mysqli_real_escape_string($db, $data['college_details']);
-    
-
-    
-    //print_r($data['vehicle1']);
+    $mode = $data['mode'];
+    $hostel = $data['hostel'];
+    $facility = $data['facility'];
+    //print_r($data['vehicle1']);facility
    
     $approvel_id =  $data['vehicle1'];
 
@@ -1253,11 +1253,11 @@ function addnewCollege($data,$files)
     affiliated_id,gender,created,updated,city_id,rank,logo,bruchre,college_contact,address,cllege_details) ";
     $query.="VALUES('$collage_name','$state_id','$Collage_type','1',
     '$affiliated_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload','$college_contact','$address','$cllege_details')";
-     // echo $query;
+    
     $runQuery = mysqli_query($db,$query);
     
     $last_id = $db->insert_id;
-    //echo $last_id ;
+   
     
             if($runQuery){
                     //data entry in college_fee
@@ -1299,6 +1299,33 @@ function addnewCollege($data,$files)
                 $runQueryreview = mysqli_query($db,$queryreview);
 
                 $user['success']="college added successfully !";
+
+                foreach ($mode as $key => $value) {
+                    $modeid = $mode[$key];
+                        //data entry in college_approvel
+                    $querymode="INSERT INTO collage_mode(collage_id,study_mode_id	) ";
+                    $querymode.="VALUES('$last_id','$modeid')";
+                    
+                    $runQuerymode = mysqli_query($db,$querymode);
+                }
+                foreach ($hostel as $key => $value) {
+                    $hostelid = $hostel[$key];
+                        //data entry in college_approvel
+                    $queryhostel="INSERT INTO collage_hostel(collage_id,hostel_id) ";
+                    $queryhostel.="VALUES('$last_id','$hostelid')";
+                    echo $queryhostel;
+                    $runQueryhostel = mysqli_query($db,$queryhostel);
+                }
+                //facility
+
+                foreach ($facility as $key => $value) {
+                    $facilityid = $facility[$key];
+                        //data entry in collage_facilities
+                    $queryfacility="INSERT INTO collage_facilities(collage_id,facility_id	) ";
+                    $queryfacility.="VALUES('$last_id','$facilityid')";
+                    echo $queryfacility;
+                    $runQueryfacility = mysqli_query($db,$queryfacility);
+                }
 
                 foreach ($approvel_id as $key => $value) {
                     $id = $approvel_id[$key];

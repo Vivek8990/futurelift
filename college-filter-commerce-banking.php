@@ -6,6 +6,10 @@ $data=$_SESSION['userdata'];
 
 $term=$_GET['gtspacialization'];
 $_SESSION['term']=$term;
+
+	$term ='Commerce & banking';
+
+
 $city = getcity();
 $State = getstate();
 $studymode= getstudymode();

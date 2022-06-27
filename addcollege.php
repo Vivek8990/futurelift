@@ -9,6 +9,8 @@ $getCollegetype=getCollegetype();
 $statelist=statelist();
 $citylist=citylist();
 $stream = getstreamlist();
+$facility = getfacility();
+
 
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
@@ -173,7 +175,58 @@ body {
                
               </div>
             </div>
-            
+            <div class="form-group">
+           
+              <div class="row">
+              <span>Study Mode </span><br>
+             
+                    <input type='checkbox' name='mode[]' value='1'>
+                    <label for='mode' style='font-size:15px;'>Regular</label><br>
+                    <input type='checkbox' name='mode[]' value='2'>
+                    <label for='mode' style='font-size:15px;'>Part Time</label><br>
+                    <input type='checkbox' name='mode[]' value='3'>
+                    <label for='mode' style='font-size:15px;'>Distance Learning</label><br>
+
+                   
+               
+              </div>
+            </div>
+            <div class="form-group">
+           
+              <div class="row">
+              <span>College Hostel </span><br>
+             
+                    <input type='checkbox' name='hostel[]' value='1'>
+                    <label for='hostel' style='font-size:15px;'>Girl's</label><br>
+                    <input type='checkbox' name='hostel[]' value='2'>
+                    <label for='hostel' style='font-size:15px;'>Boy's</label><br>
+                    
+
+                   
+               
+              </div>
+            </div>
+            <div class="form-group">
+           
+           <div class="row">
+           <span>college facilities </span><br>
+          
+                             <?php
+                 while($row =mysqli_fetch_array($facility,MYSQLI_ASSOC))
+
+                 {
+                 
+                 echo "   <input type='checkbox' name='facility[]' value='".$row['id'] ."'>
+                 <label for='facility' style='font-size:15px;'> ".$row['facility'] ."</label>";
+                
+
+                 }
+
+                 ?>
+            <br>
+            <br>
+           </div>
+         </div>
             <!-- <div class="form-group">
               <div class="row">
               <select name="affiliated_id" id="cars">

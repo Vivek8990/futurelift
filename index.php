@@ -367,7 +367,7 @@ $data=$_SESSION['userdata'];
             <div class="collgBox">
               <img src="images/para-02.png" alt="">
               <h5>
-                <a href="college-filter-commerce-banking.php?gtspacialization=banking" target="_blank" title="">commerce & banking</a>
+                <a href="college-filter-commerce-banking.php?gtspacialization=Commerce & banking" target="_blank" title="">commerce & banking</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
