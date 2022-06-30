@@ -724,15 +724,15 @@ function affiliationlist(){
 function Courseslist(){
 
     $db=$GLOBALS['db'];
-    $query="SELECT * FROM Degree ";
-    $runQuery=mysqli_query($db,$query);
+    $query="SELECT * FROM Degree order by stream_id";
+    $runQuery=mysqli_query($db,$query) ;
     
     return $runQuery;  
 }
 function specilizationlist(){
 
     $db=$GLOBALS['db'];
-    $query="SELECT * FROM Spacialization ";
+    $query="SELECT * FROM Spacialization order by stream_id";
     $runQuery=mysqli_query($db,$query);
     
     return $runQuery;  
@@ -2018,5 +2018,30 @@ function addreferal($data)
    
     
 }
- 
+function  getCollegeByCourse($term){
+     echo "dhfkjdsfkhsdf";
+     echo $term;
+    $db=$GLOBALS['db'];
+    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
+    af.affiliation_name,ap.approval_name,cty.type,ct.city_name
+    FROM college c
+    join college_degree cd on cd.college_id=c.id 
+    join Degree ds on ds.id = cd.degree_id 
+    join college_specilization cs on cs.college_id= c.id 
+    join Spacialization s on s.id = cs.specilization_id 
+    join college_stream cst on cst.college_id= c.id 
+    join stream sm on sm.id = cst.stream_id 
+    join State st on st.id = c.state_id
+    join affiliation af on af.id= c.affiliated_id
+    join Approval ap on ap.id = c.approvel_id
+    join Collage_type cty on cty.id = c.collage_type_id
+    join City ct on ct.id = c.city_id
+   
+    where  ds.degree_name like ('%$term%')";
+echo  $query;
+   $runQuery = mysqli_query($db,$query);
+   
+   
+    return $runQuery;
+}
   ?>

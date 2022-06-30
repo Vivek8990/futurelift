@@ -1,11 +1,11 @@
-<?php
-
+<?php 
 require_once 'functions.php';
 $login = $_SESSION['userIsLoggedIn'];
 $data=$_SESSION['userdata'];
 // $courses= getCollegeGroupByCategoury();
  $collage = getCollegeByRank();
  $blog = getBlog();
+
 ?>
 
 
@@ -43,7 +43,7 @@ $data=$_SESSION['userdata'];
   <title>Future Lift Home</title>
 </head>
 
-<body>
+<body onload="deleteAllCookies()">
   <div id="mainPopUp" style="display: none;">
     <div class="formBox" id="popUpForm">
       <div class="boxForm">
@@ -58,13 +58,13 @@ $data=$_SESSION['userdata'];
       </div>
       <form>
         <div class="form-group">
-          <input type="text" name="name" pattern="[A-Za-z]" class="form-control" placeholder="Name" required="">
+          <input type="text" name="name" class="form-control" placeholder="Name" required="">
         </div>
         <div class="form-group">
-          <input type="Email" name="Email" class="form-control" placeholder="Email" required="">
+          <input type="email" name="email" class="form-control" placeholder="Email" required="">
         </div>
         <div class="form-group">
-          <input type="number" min="6000000000" min="9999999999" name="mobile" class="form-control" placeholder="Phone" required="">
+          <input type="text" name="mobile" class="form-control" placeholder="Phone" required="">
         </div>
         <div class="form-group">
           <select id="state3" name="state" class="form-control" required="">
@@ -75,264 +75,25 @@ $data=$_SESSION['userdata'];
             <option value="Assam">Assam</option>
             <option value="Bihar">Bihar</option>
             <option value="Chandigarh">Chandigarh</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Orissa">Orissa</option>
-            <option value="Pondicherry">Pondicherry</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="West Bengal">West Bengal</option>
+            <option value="Chandigarh">Wes Bengal</option>
           </select>
         </div>
         <div class="form-group">
           <select name="city" id="city3" class="form-control" required="">
             <option>Select Your City</option>
-             
-            <option value="Abohar">Abohar</option>
-            <option value="Agra">Agra</option>
-            <option value="Ahmedabad">Ahmedabad</option>
-            <option value="Ahmednagar">Ahmednagar</option>
-            <option value="Aizwal">Aizwal</option>
-            <option value="Akaol">Akaol</option>
-            <option value="Aligarh">Aligarh</option>
-            <option value="Allahabad">Allahabad</option>
-            <option value="Ambala">Ambala</option>
-            <option value="Amravati">Amravati</option>
-            <option value="Amreli">Amreli</option>
-            <option value="Amritsar">Amritsar</option>
-            <option value="Anandpur Sahib">Anandpur Sahib</option>
-            <option value="Anantnag">Anantnag</option>
-            <option value="Auraiya">Auraiya</option>
-            <option value="Aurangabad">Aurangabad</option>
-            <option value="Aurangabad (Bh)">Aurangabad (Bh)</option>
-            <option value="Azamgarh">Azamgarh</option>
-            <option value="Bagalkot">Bagalkot</option>
-            <option value="Bageshwar">Bageshwar</option>
-            <option value="Bahadurgarh">Bahadurgarh</option>
-            <option value="Balaghat">Balaghat</option>
-            <option value="Baloda Bazar">Baloda Bazar</option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Bantwal">Bantwal</option>
-            <option value="Bareilly">Bareilly</option>
-            <option value="Barnala">Barnala</option>
-            <option value="Barpeta">Barpeta</option>
-            <option value="Barrackpore">Barrackpore</option>
-            <option value="Barwani">Barwani</option>
-            <option value="Bathinda">Bathinda</option>
-            <option value="Beed">Beed</option>
-            <option value="Bellary">Bellary</option>
-            <option value="Bhadoho">Bhadoho</option>
-            <option value="Bhagalpur">Bhagalpur</option>
-            <option value="Bhilwara">Bhilwara</option>
-            <option value="Bhimtal">Bhimtal</option>
-            <option value="Bhopal">Bhopal</option>
-            <option value="Bhubaneswar">Bhubaneswar</option>
-            <option value="Bijnor">Bijnor</option>
-            <option value="Bikaner">Bikaner</option>
-            <option value="Bilaspur">Bilaspur</option>
-            <option value="Birbhum">Birbhum</option>
-            <option value="Bongaigaon">Bongaigaon</option>
-            <option value="Bulandshahr">Bulandshahr</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Chandrapur">Chandrapur</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Chittor">Chittor</option>
-            <option value="Chittorgarh">Chittorgarh</option>
-            <option value="Coimbatore">Coimbatore</option>
-            <option value="Dakshina Kannada">Dakshina Kannada</option>
-            <option value="Dentewada">Dentewada</option>
-            <option value="Dausa">Dausa</option>
-            <option value="Dehradun">Dehradun</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Deoria">Deoria</option>
-            <option value="Dhemaji">Dhemaji</option>
-            <option value="Dibrugarh">Dibrugarh</option>
-            <option value="Dindigual">Dindigual</option>
-            <option value="Ernakulam">Ernakulam</option>
-            <option value="Erode">Erode</option>
-            <option value="Etawah">Etawah</option>
-            <option value="Faridabad">Faridabad</option>
-            <option value="Faridkot">Faridkot</option>
-            <option value="Feteharh Sahib">Feteharh Sahib</option>
-            <option value="Ferozepur">Ferozepur</option>
-            <option value="Gandhinagar">Gandhinagar</option>
-            <option value="Ganganagar">Ganganagar</option>
-            <option value="Ganjam">Ganjam</option>
-            <option value="Gazipur">Gazipur</option>
-            <option value="Gobindgarh">Gobindgarh</option>
-            <option value="Gondia">Gondia</option>
-            <option value="Gorakhpur">Gorakhpur</option>
-            <option value="Greater Noida">Greater Noida</option>
-            <option value="Guntur">Guntur</option>
-            <option value="Gunupur">Gunupur</option>
-            <option value="Gurdaspur">Gurdaspur</option>
-            <option value="Gurgaon">Gurgaon</option>
-            <option value="Gwalior">Gwalior</option>
-            <option value="Haldwani">Haldwani</option>
-            <option value="Harda">Harda</option>
-            <option value="Hassan">Hassan</option>
-            <option value="Hazaribagh">Hazaribagh</option>
-            <option value="Hissar">Hissar</option>
-            <option value="Hooghly">Hooghly</option>
-            <option value="Hoshiarpur">Hoshiarpur</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Imphal">Imphal</option>
-            <option value="Indore">Indore</option>
-            <option value="Jabalpur">Jabalpur</option>
-            <option value="Jagdalpur">Jagdalpur</option>
-            <option value="Jaipur">Jaipur</option>
-            <option value="Jalandhar">Jalandhar</option>
-            <option value="Jalaun">Jalaun</option>
-            <option value="Jalgaon">Jalgaon</option>
-            <option value="Jhansi">Jhansi</option>
-            <option value="Jorhat">Jorhat</option>
-            <option value="Junagadh">Junagadh</option>
-            <option value="Kaithal">Kaithal</option>
-            <option value="Kakinada">Kakinada</option>
-            <option value="Kamrup">Kamrup</option>
-            <option value="Kanchipuram">Kanchipuram</option>
-            <option value="Kannauj">Kannauj</option>
-            <option value="Kanpur">Kanpur</option>
-            <option value="Karnal">Karnal</option>
-            <option value="Kasaragod">Kasaragod</option>
-            <option value="Kashipur">Kashipur</option>
-            <option value="Kaushambi">Kaushambi</option>
-            <option value="Kawardha">Kawardha</option>
-            <option value="Khammam">Khammam</option>
-            <option value="Khandwa">Khandwa</option>
-            <option value="Kharagpur">Kharagpur</option>
-            <option value="Khargone">Khargone</option>
-            <option value="Kolhapur">Kolhapur</option>
-            <option value="Kolkata">Kolkata</option>
-            <option value="Korba">Korba</option>
-            <option value="Koriya">Koriya</option>
-            <option value="Kota">Kota</option>
-            <option value="Kottayam">Kottayam</option>
-            <option value="Krishnankovil">Krishnankovil</option>
-            <option value="Lakhimpur">Lakhimpur</option>
-            <option value="Lalitpur">Lalitpur</option>
-            <option value="Latur">Latur</option>
-            <option value="Lucknow">Lucknow</option>
-            <option value="Ludhiana">Ludhiana</option>
-            <option value="Madurai">Madurai</option>
-            <option value="Mahesana">Mahesana</option>
-            <option value="Malout">Malout</option>
-            <option value="Mandi Gobindgarh">Mandi Gobindgarh</option>
-            <option value="Mandsaur">Mandsaur</option>
-            <option value="Mangalore">Mangalore</option>
-            <option value="Manjari">Manjari</option>
-            <option value="Mannargudi">Mannargudi</option>
-            <option value="Mansa">Mansa</option>
-            <option value="Mathura">Mathura</option>
-            <option value="Mayurbhanj">Mayurbhanj</option>
-            <option value="Meerut">Meerut</option>
-            <option value="Midnapore">Midnapore</option>
-            <option value="Mohali">Mohali</option>
-            <option value="Moradabad">Moradabad</option>
-            <option value="Morena">Morena</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Mungeli">Mungeli</option>
-            <option value="Muzaffarpur">Muzaffarpur</option>
-            <option value="Mysore">Mysore</option>
-            <option value="Nagapattinam">Nagapattinam</option>
-            <option value="Nagpur">Nagpur</option>
-            <option value="Nainital">Nainital</option>
-            <option value="Namakkal">Namakkal</option>
-            <option value="Nanded">Nanded</option>
-            <option value="Narsinghpur">Narsinghpur</option>
-            <option value="Nashik">Nashik</option>
-            <option value="Nawabganj">Nawabganj</option>
-            <option value="Nawanshahr">Nawanshahr</option>
-            <option value="Neemrana">Neemrana</option>
-            <option value="Nellore">Nellore</option>
-            <option value="Noida">Noida</option>
-            <option value="Nuzvid">Nuzvid</option>
-            <option value="Pantnagar">Pantnagar</option>
-            <option value="Paralakhemundi">Paralakhemundi</option>
-            <option value="Parbhani">Parbhani</option>
-            <option value="Pasighat">Pasighat</option>
-            <option value="Pathankot">Pathankot</option>
-            <option value="Patiala">Patiala</option>
-            <option value="Patna">Patna</option>
-            <option value="Perambalur">Perambalur</option>
-            <option value="Periyakulam">Periyakulam</option>
-            <option value="Phagwara">Phagwara</option>
-            <option value="Pilani">Pilani</option>
-            <option value="Pithoragarh">Pithoragarh</option>
-            <option value="Pondicherry">Pondicherry/option>
-            <option value="Prakasam">Prakasam</option>
-            <option value="Pryagraj">Pryagraj</option>
-            <option value="Pune">Pune</option>
-            <option value="Rae Bareli">Rae Bareli</option>
-            <option value="Raigad">Raigad</option>
-            <option value="Raiganj">Raiganj</option>
-            <option value="Raipur">Raipur</option>
-            <option value="Rajkot">Rajkot</option>
-            <option value="Rampur">Rampur</option>
-            <option value="Ranchi">Ranchi</option>
-            <option value="Ranikhet">Ranikhet</option>
-            <option value="Ratnagiri">Ratnagiri</option>
-            <option value="Renukoot">Renukoot</option>
-            <option value="Roorkee">Roorkee</option>
-            <option value="Ropar">Ropar</option>
-            <option value="Sharnpur">Sharnpur</option>
-            <option value="Salem">Salem</option>
-            <option value="Sangrur">Sangrur</option>
-            <option value="Satna">Satna</option>
-            <option value="Secunderabad">Secunderabad</option>
-            <option value="Sehore">Sehore</option>
-            <option value="Shikohabad">Shikohabad</option>
-            <option value="Shimoga">Shimoga</option>
-            <option value="Sikar">Sikar</option>
-            <option value="Sindhudurg">Sindhudurg</option>
-            <option value="Sirmaur">Sirmaur</option>
-            <option value="Solan">Solan</option>
-            <option value="Solapur">Solapur</option>
-            <option value="Suktanpur">Suktanpur</option>
-            <option value="Sonepat">Sonepat</option>
-            <option value="Sonitpur">Sonitpur</option>
-            <option value="Tekkali">Tekkali</option>
-            <option value="Thane">Thane</option>
-            <option value="Thanjavur">Thanjavur</option>
-            <option value="Theni">Theni</option>
-            <option value="Thoothukudi">Thoothukudi</option>
-            <option value="Thoubal">Thoubal</option>
-            <option value="Thrissur">Thrissur</option>
-            <option value="Tiruchirappalli">Tiruchirappalli</option>
-            <option value="Trunelveli">Trunelveli</option>
-            <option value="Tirupati">Tirupati</option>
-            <option value="Udaipur">Udaipur</option>
-            <option value="Udham Singh Nagar">Udham Singh Nagar</option>
-            <option value="Udupi">Udupi</option>
-            <option value="Vadodara">Vadodara</option>
-            <option value="Varanasi">Varanasi</option>
-            <option value="Vellore">Vellore</option>
-            <option value="Vijayawada">Vijayawada</option>
-            <option value="Virudhunagar">Virudhunagar</option>
-            <option value="Visakhapatnam">Visakhapatnam</option>
-            <option value="Vizayanagaram">Vizayanagaram</option>
-            <option value="Warangal">Warangal</option>
-            <option value="Wardha">Wardha</option>
-            <option value="West Godavari">West Godavari</option>
+
+            <option value="B. Pharm">Kolkata</option>
+            <option value="B.A. LLB">Banglore</option>
+            <option value="B.A.M.S">Mumbai</option>
+            <option value="B.Arch">Delhi</option>
+            <option value="B.Com">haydrabad</option>
           </select>
         </div>
         <div class="form-group">
           <select class="form-control" name="course" id="popupcourse" required="">
             <option value="">Select Course</option>
-            <option value="M.B.A">M.B.A (Master of Business Administration)</option>
-            <option value="B.B.A">B.B.A (Bachelor of Business Administration)</option>
+
+            <option value="B. Pharm">B. Pharm</option>
             <option value="B.A. LLB">B.A. LLB</option>
             <option value="B.A.M.S">B.A.M.S</option>
             <option value="B.Arch">B.Arch</option>
@@ -382,6 +143,7 @@ $data=$_SESSION['userdata'];
          <?php    
          } 
          ?>
+         </div>
     </nav>
     <i class="fas fa-bars" id="manu-bars"></i>
   </header>
@@ -500,112 +262,112 @@ $data=$_SESSION['userdata'];
             <div class="collgBox">
               <img src="images/courseIcon-02.png" alt="">
               <h5>
-              <a href="college-filter-management.php?gtspacialization=Management" target="_blank" title="">Management</a>
+                <a href="college-filter-management.php?gtspacialization=Management" target="_blank" title="">Management</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/courseIcon1-02.png" alt="">
               <h5>
-              <a href="college-filter-medical.php?gtspacialization=Medical" target="_blank" title="">Medical</a>
+                <a href="college-filter-medical.php?gtspacialization=Medical" target="_blank" title="">Medical</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/engineering-02.png" alt="">
               <h5>
-              <a href="college-filter-engeneering.php?gtspacialization=Engineering" target="_blank" title="">Engineering</a>
+                <a href="college-filter-engeneering.php?gtspacialization=Engineering" target="_blank" title="">Engineering</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/courseIcon3-02.png" alt="">
               <h5>
-              <a href="college-filter-law.php?gtspacialization=Law" target="_blank" title="">Law</a>
+                <a href="college-filter-law.php?gtspacialization=Law" target="_blank" title="">Law</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/science-02.png" alt="">
               <h5>
-              <a href="college-filter-science.php?gtspacialization=Science" target="_blank" title="">Science</a>
+                <a href="college-filter-science.php?gtspacialization=Science" target="_blank" title="">Science</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/phamecy-02.png" alt="">
               <h5>
-              <a href="college-filter-pharmecy.php?gtspacialization=Pharmacy" target="_blank" title="">Pharmacy</a>
+                <a href="college-filter-pharmecy.php?gtspacialization=Pharmacy" target="_blank" title="">Pharmacy</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/agriculture-02.png" alt="">
               <h5>
-              <a href="college-filter-agriculture.php?gtspacialization=Agriculture" target="_blank" title="">Agriculture</a>
+                <a href="college-filter-agriculture.php?gtspacialization=Agriculture" target="_blank" title="">Agriculture</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/it-02.png" alt="">
               <h5>
-              <a href="college-filter-information-technology.php?gtspacialization=Information Tech" title="" target="_blank">Information Technology</a>
+                <a href="college-filter-information-technology.php?gtspacialization=Information Tech" title="">Information Technology</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/dental-02.png" alt="">
               <h5>
-              <a href="college-filter-dental.php?gtspacialization=Dental" target="_blank" title="">dental</a>
+                <a href="college-filter-dental.php?gtspacialization=Dental" target="_blank" title="">dental</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/design-02.png" alt="">
               <h5>
-              <a href="college-filter-design.php?gtspacialization=Design" target="_blank" title="">design</a>
+                <a href="college-filter-design.php?gtspacialization=Design" target="_blank" title="">design</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/education-02.png" alt="">
               <h5>
-              <a href="college-filter-education.php?gtspacialization=Nursing" target="_blank" title="">Nursing</a>
+                <a href="college-filter-education.php?gtspacialization=Nursing" target="_blank" title="">Nursing</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/hotel-02.png" alt="">
               <h5>
-              <a href="college-filter-hotelmanagement.php?gtspacialization=Hotel Management" target="_blank" title="">hotel Management</a>
+                <a href="college-filter-hotelmanagement.php?gtspacialization=Hotel Management" target="_blank" title="">hotel Management</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
-              <img src="images/mass.jpeg" alt="">
+              <img src="images/" alt="">
               <h5>
-              <a href="college-filter-masscommunication.php?gtspacialization=Mass Communication" target="_blank" title="">mass Communication</a>
+                <a href="college-filter-masscommunication.php?gtspacialization=Mass Communication" target="_blank" title="">mass Communication</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/art-02.png" alt="">
               <h5>
-              <a href="college-filter-arts.php?gtspacialization=Arts" target="_blank" title="">arts</a>
+                <a href="college-filter-arts.php?gtspacialization=Arts" target="_blank" title="">arts</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/para-02.png" alt="">
               <h5>
-              <a href="college-filter-paremedical.php?gtspacialization=Paramedical" target="_blank" title="">paramedical</a>
+                <a href="college-filter-paremedical.php?gtspacialization=Paramedical" target="_blank" title="">paramedical</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/para-02.png" alt="">
               <h5>
-              <a href="college-filter-commerce-banking.php?gtspacialization=Commerce & banking" target="_blank" title="">commerce & banking</a>
+                <a href="college-filter-commerce-banking.php?gtspacialization=Commerce & banking" target="_blank" title="">commerce & banking</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
@@ -619,112 +381,112 @@ $data=$_SESSION['userdata'];
             <div class="collgBox">
               <img src="images/jee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">JEE</a>
+                <a href="/information-technology-stream/" title="">JEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/Jeem-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">JEE MAIN</a>
+                <a href="/information-technology-stream/" title="">JEE MAIN</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/NEET-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">NEET</a>
+                <a href="/information-technology-stream/" title="">NEET</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/cat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">CAT</a>
+                <a href="/information-technology-stream/" title="">CAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/janapas-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">JEN PAS</a>
+                <a href="/information-technology-stream/" title="">JEN PAS</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/wbjee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">WBJEE</a>
+                <a href="/information-technology-stream/" title="">WBJEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/upsee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">UPSEE</a>
+                <a href="/information-technology-stream/" title="">UPSEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/gate-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">GATE</a>
+                <a href="/information-technology-stream/" title="">GATE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/cmat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">CMAT</a>
+                <a href="/information-technology-stream/" title="">CMAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/12thwb-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">12th WB</a>
+                <a href="/information-technology-stream/" title="">12th WB</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/aieee-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">AIEEE</a>
+                <a href="/information-technology-stream/" title="">AIEEE</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/ailet-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">AILET</a>
+                <a href="/information-technology-stream/" title="">AILET</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">MAT</a>
+                <a href="/information-technology-stream/" title="">MAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/xat-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">XAT</a>
+                <a href="/information-technology-stream/" title="">XAT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/atma-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">ATMA</a>
+                <a href="/information-technology-stream/" title="">ATMA</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/atimpt-02.png" alt="">
               <h5>
-                <a href="/information-technology-stream/" title="B.M.S. Colleges in India">AIPMT</a>
+                <a href="/information-technology-stream/" title="">AIPMT</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
@@ -737,105 +499,105 @@ $data=$_SESSION['userdata'];
             <div class="collgBox">
               <img src="images/btech-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.Tech" title="B.M.S. Colleges in India">B.TECH</a>
+                <a href="/information-technology-stream/" title="">B.TECH</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mba-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=M.B.A"  title="B.M.S. Colleges in India">MBA</a>
+                <a href="/information-technology-stream/" title="">MBA</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bsc-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.sc"  title="B.M.S. Colleges in India">B.Sc</a>
+                <a href="/information-technology-stream/" title="">B.Sc</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bed-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.ED"  title="B.M.S. Colleges in India">B.Ed</a>
+                <a href="/information-technology-stream/" title="">B.Ed</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bpharma-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.Pharm" title="B.M.S. Colleges in India">B.Pharm</a>
+                <a href="/information-technology-stream/" title="">B.Pharm</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mtech-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=M.Tech"  title="B.M.S. Colleges in India">M.Tech</a>
+                <a href="/information-technology-stream/" title="">M.Tech</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/mcom-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=M.Com"  title="B.M.S. Colleges in India">M.Com</a>
+                <a href="/information-technology-stream/" title="">M.Com</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/ma-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=M.A."  title="B.M.S. Colleges in India">M.A.</a>
+                <a href="/information-technology-stream/" title="">M.A.</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/ba-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.A"   title="B.M.S. Colleges in India">B.A</a>
+                <a href="/information-technology-stream/" title="">B.A</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/diploma-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=Diploma"   title="B.M.S. Colleges in India">Diploma</a>
+                <a href="/information-technology-stream/" title="">Diploma</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bcom-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.Com"   title="B.M.S. Colleges in India">B.Com</a>
+                <a href="/information-technology-stream/" title="">B.Com</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/llb-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=L.L.B"  title="B.M.S. Colleges in India">LLB</a>
+                <a href="/information-technology-stream/" title="">LLB</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/gnm-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=G.N.M"  title="B.M.S. Colleges in India">GNM</a>
+                <a href="/information-technology-stream/" title="">GNM</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/bds-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=B.D.S" title="B.M.S. Colleges in India">BDS</a>
+                <a href="/information-technology-stream/" title="">BDS</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
               <img src="images/md-02.png" alt="">
               <h5>
-                <a href="test.php?gtcourse=M.D." title="B.M.S. Colleges in India">M.D.</a>
+                <a href="/information-technology-stream/" title="">M.D.</a>
               </h5>
               <p>6077 Colleges</p>
             </div>
@@ -1017,268 +779,30 @@ $data=$_SESSION['userdata'];
                   <div class="col-4">
                     <select id="state3" name="state" class="form-control" required="">
                       <option value="">Select Your State</option>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Orissa">Orissa</option>
-            <option value="Pondicherry">Pondicherry</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="West Bengal">West Bengal</option>
-          </select>
+                      <option value="Andaman &amp; Nicobar">Andaman &amp; Nicobar</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Chandigarh">Wes Bengal</option>
                     </select>
                   </div>
                   <div class="col-4">
                     <select name="city" id="city3" class="form-control" required="">
                       <option>Select Your City</option>
-                      <option value="Abohar">Abohar</option>
-            <option value="Agra">Agra</option>
-            <option value="Ahmedabad">Ahmedabad</option>
-            <option value="Ahmednagar">Ahmednagar</option>
-            <option value="Aizwal">Aizwal</option>
-            <option value="Akaol">Akaol</option>
-            <option value="Aligarh">Aligarh</option>
-            <option value="Allahabad">Allahabad</option>
-            <option value="Ambala">Ambala</option>
-            <option value="Amravati">Amravati</option>
-            <option value="Amreli">Amreli</option>
-            <option value="Amritsar">Amritsar</option>
-            <option value="Anandpur Sahib">Anandpur Sahib</option>
-            <option value="Anantnag">Anantnag</option>
-            <option value="Auraiya">Auraiya</option>
-            <option value="Aurangabad">Aurangabad</option>
-            <option value="Aurangabad (Bh)">Aurangabad (Bh)</option>
-            <option value="Azamgarh">Azamgarh</option>
-            <option value="Bagalkot">Bagalkot</option>
-            <option value="Bageshwar">Bageshwar</option>
-            <option value="Bahadurgarh">Bahadurgarh</option>
-            <option value="Balaghat">Balaghat</option>
-            <option value="Baloda Bazar">Baloda Bazar</option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Bantwal">Bantwal</option>
-            <option value="Bareilly">Bareilly</option>
-            <option value="Barnala">Barnala</option>
-            <option value="Barpeta">Barpeta</option>
-            <option value="Barrackpore">Barrackpore</option>
-            <option value="Barwani">Barwani</option>
-            <option value="Bathinda">Bathinda</option>
-            <option value="Beed">Beed</option>
-            <option value="Bellary">Bellary</option>
-            <option value="Bhadoho">Bhadoho</option>
-            <option value="Bhagalpur">Bhagalpur</option>
-            <option value="Bhilwara">Bhilwara</option>
-            <option value="Bhimtal">Bhimtal</option>
-            <option value="Bhopal">Bhopal</option>
-            <option value="Bhubaneswar">Bhubaneswar</option>
-            <option value="Bijnor">Bijnor</option>
-            <option value="Bikaner">Bikaner</option>
-            <option value="Bilaspur">Bilaspur</option>
-            <option value="Birbhum">Birbhum</option>
-            <option value="Bongaigaon">Bongaigaon</option>
-            <option value="Bulandshahr">Bulandshahr</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Chandrapur">Chandrapur</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Chittor">Chittor</option>
-            <option value="Chittorgarh">Chittorgarh</option>
-            <option value="Coimbatore">Coimbatore</option>
-            <option value="Dakshina Kannada">Dakshina Kannada</option>
-            <option value="Dentewada">Dentewada</option>
-            <option value="Dausa">Dausa</option>
-            <option value="Dehradun">Dehradun</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Deoria">Deoria</option>
-            <option value="Dhemaji">Dhemaji</option>
-            <option value="Dibrugarh">Dibrugarh</option>
-            <option value="Dindigual">Dindigual</option>
-            <option value="Ernakulam">Ernakulam</option>
-            <option value="Erode">Erode</option>
-            <option value="Etawah">Etawah</option>
-            <option value="Faridabad">Faridabad</option>
-            <option value="Faridkot">Faridkot</option>
-            <option value="Feteharh Sahib">Feteharh Sahib</option>
-            <option value="Ferozepur">Ferozepur</option>
-            <option value="Gandhinagar">Gandhinagar</option>
-            <option value="Ganganagar">Ganganagar</option>
-            <option value="Ganjam">Ganjam</option>
-            <option value="Gazipur">Gazipur</option>
-            <option value="Gobindgarh">Gobindgarh</option>
-            <option value="Gondia">Gondia</option>
-            <option value="Gorakhpur">Gorakhpur</option>
-            <option value="Greater Noida">Greater Noida</option>
-            <option value="Guntur">Guntur</option>
-            <option value="Gunupur">Gunupur</option>
-            <option value="Gurdaspur">Gurdaspur</option>
-            <option value="Gurgaon">Gurgaon</option>
-            <option value="Gwalior">Gwalior</option>
-            <option value="Haldwani">Haldwani</option>
-            <option value="Harda">Harda</option>
-            <option value="Hassan">Hassan</option>
-            <option value="Hazaribagh">Hazaribagh</option>
-            <option value="Hissar">Hissar</option>
-            <option value="Hooghly">Hooghly</option>
-            <option value="Hoshiarpur">Hoshiarpur</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Imphal">Imphal</option>
-            <option value="Indore">Indore</option>
-            <option value="Jabalpur">Jabalpur</option>
-            <option value="Jagdalpur">Jagdalpur</option>
-            <option value="Jaipur">Jaipur</option>
-            <option value="Jalandhar">Jalandhar</option>
-            <option value="Jalaun">Jalaun</option>
-            <option value="Jalgaon">Jalgaon</option>
-            <option value="Jhansi">Jhansi</option>
-            <option value="Jorhat">Jorhat</option>
-            <option value="Junagadh">Junagadh</option>
-            <option value="Kaithal">Kaithal</option>
-            <option value="Kakinada">Kakinada</option>
-            <option value="Kamrup">Kamrup</option>
-            <option value="Kanchipuram">Kanchipuram</option>
-            <option value="Kannauj">Kannauj</option>
-            <option value="Kanpur">Kanpur</option>
-            <option value="Karnal">Karnal</option>
-            <option value="Kasaragod">Kasaragod</option>
-            <option value="Kashipur">Kashipur</option>
-            <option value="Kaushambi">Kaushambi</option>
-            <option value="Kawardha">Kawardha</option>
-            <option value="Khammam">Khammam</option>
-            <option value="Khandwa">Khandwa</option>
-            <option value="Kharagpur">Kharagpur</option>
-            <option value="Khargone">Khargone</option>
-            <option value="Kolhapur">Kolhapur</option>
-            <option value="Kolkata">Kolkata</option>
-            <option value="Korba">Korba</option>
-            <option value="Koriya">Koriya</option>
-            <option value="Kota">Kota</option>
-            <option value="Kottayam">Kottayam</option>
-            <option value="Krishnankovil">Krishnankovil</option>
-            <option value="Lakhimpur">Lakhimpur</option>
-            <option value="Lalitpur">Lalitpur</option>
-            <option value="Latur">Latur</option>
-            <option value="Lucknow">Lucknow</option>
-            <option value="Ludhiana">Ludhiana</option>
-            <option value="Madurai">Madurai</option>
-            <option value="Mahesana">Mahesana</option>
-            <option value="Malout">Malout</option>
-            <option value="Mandi Gobindgarh">Mandi Gobindgarh</option>
-            <option value="Mandsaur">Mandsaur</option>
-            <option value="Mangalore">Mangalore</option>
-            <option value="Manjari">Manjari</option>
-            <option value="Mannargudi">Mannargudi</option>
-            <option value="Mansa">Mansa</option>
-            <option value="Mathura">Mathura</option>
-            <option value="Mayurbhanj">Mayurbhanj</option>
-            <option value="Meerut">Meerut</option>
-            <option value="Midnapore">Midnapore</option>
-            <option value="Mohali">Mohali</option>
-            <option value="Moradabad">Moradabad</option>
-            <option value="Morena">Morena</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Mungeli">Mungeli</option>
-            <option value="Muzaffarpur">Muzaffarpur</option>
-            <option value="Mysore">Mysore</option>
-            <option value="Nagapattinam">Nagapattinam</option>
-            <option value="Nagpur">Nagpur</option>
-            <option value="Nainital">Nainital</option>
-            <option value="Namakkal">Namakkal</option>
-            <option value="Nanded">Nanded</option>
-            <option value="Narsinghpur">Narsinghpur</option>
-            <option value="Nashik">Nashik</option>
-            <option value="Nawabganj">Nawabganj</option>
-            <option value="Nawanshahr">Nawanshahr</option>
-            <option value="Neemrana">Neemrana</option>
-            <option value="Nellore">Nellore</option>
-            <option value="Noida">Noida</option>
-            <option value="Nuzvid">Nuzvid</option>
-            <option value="Pantnagar">Pantnagar</option>
-            <option value="Paralakhemundi">Paralakhemundi</option>
-            <option value="Parbhani">Parbhani</option>
-            <option value="Pasighat">Pasighat</option>
-            <option value="Pathankot">Pathankot</option>
-            <option value="Patiala">Patiala</option>
-            <option value="Patna">Patna</option>
-            <option value="Perambalur">Perambalur</option>
-            <option value="Periyakulam">Periyakulam</option>
-            <option value="Phagwara">Phagwara</option>
-            <option value="Pilani">Pilani</option>
-            <option value="Pithoragarh">Pithoragarh</option>
-            <option value="Pondicherry">Pondicherry/option>
-            <option value="Prakasam">Prakasam</option>
-            <option value="Pryagraj">Pryagraj</option>
-            <option value="Pune">Pune</option>
-            <option value="Rae Bareli">Rae Bareli</option>
-            <option value="Raigad">Raigad</option>
-            <option value="Raiganj">Raiganj</option>
-            <option value="Raipur">Raipur</option>
-            <option value="Rajkot">Rajkot</option>
-            <option value="Rampur">Rampur</option>
-            <option value="Ranchi">Ranchi</option>
-            <option value="Ranikhet">Ranikhet</option>
-            <option value="Ratnagiri">Ratnagiri</option>
-            <option value="Renukoot">Renukoot</option>
-            <option value="Roorkee">Roorkee</option>
-            <option value="Ropar">Ropar</option>
-            <option value="Sharnpur">Sharnpur</option>
-            <option value="Salem">Salem</option>
-            <option value="Sangrur">Sangrur</option>
-            <option value="Satna">Satna</option>
-            <option value="Secunderabad">Secunderabad</option>
-            <option value="Sehore">Sehore</option>
-            <option value="Shikohabad">Shikohabad</option>
-            <option value="Shimoga">Shimoga</option>
-            <option value="Sikar">Sikar</option>
-            <option value="Sindhudurg">Sindhudurg</option>
-            <option value="Sirmaur">Sirmaur</option>
-            <option value="Solan">Solan</option>
-            <option value="Solapur">Solapur</option>
-            <option value="Suktanpur">Suktanpur</option>
-            <option value="Sonepat">Sonepat</option>
-            <option value="Sonitpur">Sonitpur</option>
-            <option value="Tekkali">Tekkali</option>
-            <option value="Thane">Thane</option>
-            <option value="Thanjavur">Thanjavur</option>
-            <option value="Theni">Theni</option>
-            <option value="Thoothukudi">Thoothukudi</option>
-            <option value="Thoubal">Thoubal</option>
-            <option value="Thrissur">Thrissur</option>
-            <option value="Tiruchirappalli">Tiruchirappalli</option>
-            <option value="Trunelveli">Trunelveli</option>
-            <option value="Tirupati">Tirupati</option>
-            <option value="Udaipur">Udaipur</option>
-            <option value="Udham Singh Nagar">Udham Singh Nagar</option>
-            <option value="Udupi">Udupi</option>
-            <option value="Vadodara">Vadodara</option>
-            <option value="Varanasi">Varanasi</option>
-            <option value="Vellore">Vellore</option>
-            <option value="Vijayawada">Vijayawada</option>
-            <option value="Virudhunagar">Virudhunagar</option>
-            <option value="Visakhapatnam">Visakhapatnam</option>
-            <option value="Vizayanagaram">Vizayanagaram</option>
-            <option value="Warangal">Warangal</option>
-            <option value="Wardha">Wardha</option>
-            <option value="West Godavari">West Godavari</option>
-          </select>
+
+                      <option value="B. Pharm">Kolkata</option>
+                      <option value="B.A. LLB">Banglore</option>
+                      <option value="B.A.M.S">Mumbai</option>
+                      <option value="B.Arch">Dwlhi</option>
+                      <option value="B.Com">haydrabad</option>
+                    </select>
                   </div>
                   <div class="col-4">
                     <select class="form-control" name="course" id="popupcourse" required="">
                       <option value="">Select course</option>
-                      <option value="M.B.A">M.B.A (Master of Business Administration)</option>
+
                       <option value="B. Pharm">B. Pharm</option>
                       <option value="B.A. LLB">B.A. LLB</option>
                       <option value="B.A.M.S">B.A.M.S</option>
@@ -1810,6 +1334,83 @@ while($row = mysqli_fetch_array($blog ,MYSQLI_ASSOC))
   </div>";
 }
           ?>
+          <!-- <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="maiBox">
+              <div class="box">
+                <p class="boxText">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <img src="images/team-2.jpg" alt="" class="imgIcon">
+                <div class="details">
+                  <h3>Lorem, ipsum, dolor.</h3>
+                </div>
+              </div>
+            </div>
+          </div> -->
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -2567,5 +2168,16 @@ while($row = mysqli_fetch_array($blog ,MYSQLI_ASSOC))
   <script src="js/script.js"></script>
 
 </body>
+<script>
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
 
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+</script>
 </html>
