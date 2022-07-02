@@ -42,7 +42,7 @@ $data=$_SESSION['userdata'];
 
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>

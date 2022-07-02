@@ -52,7 +52,7 @@
             </div>
             <h1 style="color: #fff;" class="text-center my-3">Welcome Back</h1>
             <div class="imgBox2">
-              <img src="images/logoBrand-01.png" alt="">
+              <img src="images/newlogo.png" alt="">
             </div>
           </div>
           <div class="signBox">
@@ -107,7 +107,7 @@
       <div class="row">
         <div class="main-first d-flex flex-wrap align-items-center">
           <div class="main1 col-3">
-              <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+              <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
           </div>
           <div class="footerHead col-3">
               <h4 class="text-light ">quick links</h4>

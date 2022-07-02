@@ -36,7 +36,7 @@
 <body>
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
@@ -81,7 +81,7 @@
       <div class="formContainer">
         <div class="boxForm">
           <div class="imgBox2">
-            <img src="images/logoBrand-01.png" alt="">
+            <img src="images/newlogo.png" alt="">
           </div>
           <div class="imgBox1">
             <img src="images/Scholarship-01.png" alt="">
@@ -183,7 +183,7 @@
   <div class="row">
     <div class="main-first d-flex flex-wrap align-items-center">
       <div class="main1 col-3">
-          <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+          <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
       </div>
       <div class="footerHead col-3">
           <h4 class="text-light ">quick links</h4>

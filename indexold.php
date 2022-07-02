@@ -112,7 +112,7 @@ $data=$_SESSION['userdata'];
 
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
@@ -760,7 +760,7 @@ $data=$_SESSION['userdata'];
                 <img src="images/modalpic-01.png" alt="">
               </div>
               <!-- <div class="imgBox2">
-                <img src="images/logoBrand-01.png" alt="">
+                <img src="images/newlogo.png" alt="">
               </div> -->
             </div>
             <form>

@@ -43,7 +43,7 @@ session_start();?>
 <body>
   <!-- Header Section Start -->
   <header class="header" >
-    <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+    <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
     <nav class="navbar">
       <div class="user">
         <i class="fas fa-user"></i>
@@ -91,7 +91,7 @@ session_start();?>
           </div>
           <h1 style="color: #fff;" class="text-center my-3">Welcome Back</h1>
           <div class="imgBox2">
-            <img src="images/logoBrand-01.png" alt="">
+            <img src="images/newlogo.png" alt="">
           </div>
         </div>
         <div class="signBox">

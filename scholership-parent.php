@@ -47,7 +47,7 @@ $data=$_SESSION['userdata'];
   <body>
     <!-- Header Section Start -->
     <header class="header" >
-      <a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt=""></a>
+      <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
       <nav class="navbar">
         <div class="user">
           <i class="fas fa-user"></i>
@@ -92,7 +92,7 @@ $data=$_SESSION['userdata'];
       <div class="formContainer">
         <div class="boxForm">
           <div class="imgBox2">
-            <img src="images/logoBrand-01.png" alt="">
+            <img src="images/newlogo.png" alt="">
           </div>
           <div class="imgBox1">
             <img src="images/Scholarship-01.png" alt="">
