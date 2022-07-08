@@ -41,7 +41,7 @@ $data=$_SESSION['userdata'];
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.php" class="active">Career Solutions</a>
+       <a href="career.php" class="active">Career Solutions</a>
       <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
       <a href="admission.php" class="active">admission</a>
@@ -234,7 +234,7 @@ $data=$_SESSION['userdata'];
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">

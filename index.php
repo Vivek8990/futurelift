@@ -9,6 +9,9 @@ $data=$_SESSION['userdata'];
  $city = getcity();
 $State = getstate();
 $degreelist = getdegreelists();
+$city1 = getcity();
+$State1 = getstate();
+$degreelist1 = getdegreelists();
 ?>
 
 
@@ -51,7 +54,7 @@ $degreelist = getdegreelists();
     <div class="formBox" id="popUpForm">
       <div class="boxForm">
         <div class="popImg mx-5 py-3">
-          <img src="/images/logoBrand-01.png" alt="" class="img-fluid">
+          <img src="/images/newlogo.png" alt="" class="img-fluid">
         </div>
         <div class="popHeding">
           <h2 style="color: #fff;">Quick Contact: +91 84155 77889</h2>
@@ -207,7 +210,7 @@ $degreelist = getdegreelists();
               <img src="images/examate-02.png" alt="">
             </i>
             <h3></h3>
-            <p class="dailog">examet</p>
+            <p class="dailog">Exam Preparation</p>
           </div>
         </a>
         <a href="career.php">
@@ -216,7 +219,7 @@ $degreelist = getdegreelists();
               <img src="images/icons-02.png" alt="">
             </i>
             <h3></h3>
-            <p class="dailog">carear crown</p>
+            <p class="dailog">career Counselling</p>
           </div>
         </a>
         <a href="explore-colleges.php">
@@ -368,7 +371,7 @@ $degreelist = getdegreelists();
               <p>6077 Colleges</p>
             </div>
             <div class="collgBox">
-              <img src="images/para-02.png" alt="">
+              <img src="images/commerce.png" alt="">
               <h5>
               <a href="college-filter-commerce-banking.php?gtspacialization=Commerce & banking" target="_blank" title="">commerce & banking</a>
               </h5>
@@ -782,274 +785,38 @@ $degreelist = getdegreelists();
                   <div class="col-4">
                     <select id="state3" name="state" class="form-control" required="">
                       <option value="">Select Your State</option>
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Orissa">Orissa</option>
-            <option value="Pondicherry">Pondicherry</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="West Bengal">West Bengal</option>
+            <?php      while($row =mysqli_fetch_array($State1,MYSQLI_ASSOC))
+
+{
+    echo "	 
+          <option value='".$row['state_name']."'>".$row['state_name']."</option>
+          ";
+        } ?> 
           </select>
                     </select>
                   </div>
                   <div class="col-4">
                     <select name="city" id="city3" class="form-control" required="">
                       <option>Select Your City</option>
-                      <option value="Abohar">Abohar</option>
-            <option value="Agra">Agra</option>
-            <option value="Ahmedabad">Ahmedabad</option>
-            <option value="Ahmednagar">Ahmednagar</option>
-            <option value="Aizwal">Aizwal</option>
-            <option value="Akaol">Akaol</option>
-            <option value="Aligarh">Aligarh</option>
-            <option value="Allahabad">Allahabad</option>
-            <option value="Ambala">Ambala</option>
-            <option value="Amravati">Amravati</option>
-            <option value="Amreli">Amreli</option>
-            <option value="Amritsar">Amritsar</option>
-            <option value="Anandpur Sahib">Anandpur Sahib</option>
-            <option value="Anantnag">Anantnag</option>
-            <option value="Auraiya">Auraiya</option>
-            <option value="Aurangabad">Aurangabad</option>
-            <option value="Aurangabad (Bh)">Aurangabad (Bh)</option>
-            <option value="Azamgarh">Azamgarh</option>
-            <option value="Bagalkot">Bagalkot</option>
-            <option value="Bageshwar">Bageshwar</option>
-            <option value="Bahadurgarh">Bahadurgarh</option>
-            <option value="Balaghat">Balaghat</option>
-            <option value="Baloda Bazar">Baloda Bazar</option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Bantwal">Bantwal</option>
-            <option value="Bareilly">Bareilly</option>
-            <option value="Barnala">Barnala</option>
-            <option value="Barpeta">Barpeta</option>
-            <option value="Barrackpore">Barrackpore</option>
-            <option value="Barwani">Barwani</option>
-            <option value="Bathinda">Bathinda</option>
-            <option value="Beed">Beed</option>
-            <option value="Bellary">Bellary</option>
-            <option value="Bhadoho">Bhadoho</option>
-            <option value="Bhagalpur">Bhagalpur</option>
-            <option value="Bhilwara">Bhilwara</option>
-            <option value="Bhimtal">Bhimtal</option>
-            <option value="Bhopal">Bhopal</option>
-            <option value="Bhubaneswar">Bhubaneswar</option>
-            <option value="Bijnor">Bijnor</option>
-            <option value="Bikaner">Bikaner</option>
-            <option value="Bilaspur">Bilaspur</option>
-            <option value="Birbhum">Birbhum</option>
-            <option value="Bongaigaon">Bongaigaon</option>
-            <option value="Bulandshahr">Bulandshahr</option>
-            <option value="Chandigarh">Chandigarh</option>
-            <option value="Chandrapur">Chandrapur</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Chittor">Chittor</option>
-            <option value="Chittorgarh">Chittorgarh</option>
-            <option value="Coimbatore">Coimbatore</option>
-            <option value="Dakshina Kannada">Dakshina Kannada</option>
-            <option value="Dentewada">Dentewada</option>
-            <option value="Dausa">Dausa</option>
-            <option value="Dehradun">Dehradun</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Deoria">Deoria</option>
-            <option value="Dhemaji">Dhemaji</option>
-            <option value="Dibrugarh">Dibrugarh</option>
-            <option value="Dindigual">Dindigual</option>
-            <option value="Ernakulam">Ernakulam</option>
-            <option value="Erode">Erode</option>
-            <option value="Etawah">Etawah</option>
-            <option value="Faridabad">Faridabad</option>
-            <option value="Faridkot">Faridkot</option>
-            <option value="Feteharh Sahib">Feteharh Sahib</option>
-            <option value="Ferozepur">Ferozepur</option>
-            <option value="Gandhinagar">Gandhinagar</option>
-            <option value="Ganganagar">Ganganagar</option>
-            <option value="Ganjam">Ganjam</option>
-            <option value="Gazipur">Gazipur</option>
-            <option value="Gobindgarh">Gobindgarh</option>
-            <option value="Gondia">Gondia</option>
-            <option value="Gorakhpur">Gorakhpur</option>
-            <option value="Greater Noida">Greater Noida</option>
-            <option value="Guntur">Guntur</option>
-            <option value="Gunupur">Gunupur</option>
-            <option value="Gurdaspur">Gurdaspur</option>
-            <option value="Gurgaon">Gurgaon</option>
-            <option value="Gwalior">Gwalior</option>
-            <option value="Haldwani">Haldwani</option>
-            <option value="Harda">Harda</option>
-            <option value="Hassan">Hassan</option>
-            <option value="Hazaribagh">Hazaribagh</option>
-            <option value="Hissar">Hissar</option>
-            <option value="Hooghly">Hooghly</option>
-            <option value="Hoshiarpur">Hoshiarpur</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Imphal">Imphal</option>
-            <option value="Indore">Indore</option>
-            <option value="Jabalpur">Jabalpur</option>
-            <option value="Jagdalpur">Jagdalpur</option>
-            <option value="Jaipur">Jaipur</option>
-            <option value="Jalandhar">Jalandhar</option>
-            <option value="Jalaun">Jalaun</option>
-            <option value="Jalgaon">Jalgaon</option>
-            <option value="Jhansi">Jhansi</option>
-            <option value="Jorhat">Jorhat</option>
-            <option value="Junagadh">Junagadh</option>
-            <option value="Kaithal">Kaithal</option>
-            <option value="Kakinada">Kakinada</option>
-            <option value="Kamrup">Kamrup</option>
-            <option value="Kanchipuram">Kanchipuram</option>
-            <option value="Kannauj">Kannauj</option>
-            <option value="Kanpur">Kanpur</option>
-            <option value="Karnal">Karnal</option>
-            <option value="Kasaragod">Kasaragod</option>
-            <option value="Kashipur">Kashipur</option>
-            <option value="Kaushambi">Kaushambi</option>
-            <option value="Kawardha">Kawardha</option>
-            <option value="Khammam">Khammam</option>
-            <option value="Khandwa">Khandwa</option>
-            <option value="Kharagpur">Kharagpur</option>
-            <option value="Khargone">Khargone</option>
-            <option value="Kolhapur">Kolhapur</option>
-            <option value="Kolkata">Kolkata</option>
-            <option value="Korba">Korba</option>
-            <option value="Koriya">Koriya</option>
-            <option value="Kota">Kota</option>
-            <option value="Kottayam">Kottayam</option>
-            <option value="Krishnankovil">Krishnankovil</option>
-            <option value="Lakhimpur">Lakhimpur</option>
-            <option value="Lalitpur">Lalitpur</option>
-            <option value="Latur">Latur</option>
-            <option value="Lucknow">Lucknow</option>
-            <option value="Ludhiana">Ludhiana</option>
-            <option value="Madurai">Madurai</option>
-            <option value="Mahesana">Mahesana</option>
-            <option value="Malout">Malout</option>
-            <option value="Mandi Gobindgarh">Mandi Gobindgarh</option>
-            <option value="Mandsaur">Mandsaur</option>
-            <option value="Mangalore">Mangalore</option>
-            <option value="Manjari">Manjari</option>
-            <option value="Mannargudi">Mannargudi</option>
-            <option value="Mansa">Mansa</option>
-            <option value="Mathura">Mathura</option>
-            <option value="Mayurbhanj">Mayurbhanj</option>
-            <option value="Meerut">Meerut</option>
-            <option value="Midnapore">Midnapore</option>
-            <option value="Mohali">Mohali</option>
-            <option value="Moradabad">Moradabad</option>
-            <option value="Morena">Morena</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Mungeli">Mungeli</option>
-            <option value="Muzaffarpur">Muzaffarpur</option>
-            <option value="Mysore">Mysore</option>
-            <option value="Nagapattinam">Nagapattinam</option>
-            <option value="Nagpur">Nagpur</option>
-            <option value="Nainital">Nainital</option>
-            <option value="Namakkal">Namakkal</option>
-            <option value="Nanded">Nanded</option>
-            <option value="Narsinghpur">Narsinghpur</option>
-            <option value="Nashik">Nashik</option>
-            <option value="Nawabganj">Nawabganj</option>
-            <option value="Nawanshahr">Nawanshahr</option>
-            <option value="Neemrana">Neemrana</option>
-            <option value="Nellore">Nellore</option>
-            <option value="Noida">Noida</option>
-            <option value="Nuzvid">Nuzvid</option>
-            <option value="Pantnagar">Pantnagar</option>
-            <option value="Paralakhemundi">Paralakhemundi</option>
-            <option value="Parbhani">Parbhani</option>
-            <option value="Pasighat">Pasighat</option>
-            <option value="Pathankot">Pathankot</option>
-            <option value="Patiala">Patiala</option>
-            <option value="Patna">Patna</option>
-            <option value="Perambalur">Perambalur</option>
-            <option value="Periyakulam">Periyakulam</option>
-            <option value="Phagwara">Phagwara</option>
-            <option value="Pilani">Pilani</option>
-            <option value="Pithoragarh">Pithoragarh</option>
-            <option value="Pondicherry">Pondicherry/option>
-            <option value="Prakasam">Prakasam</option>
-            <option value="Pryagraj">Pryagraj</option>
-            <option value="Pune">Pune</option>
-            <option value="Rae Bareli">Rae Bareli</option>
-            <option value="Raigad">Raigad</option>
-            <option value="Raiganj">Raiganj</option>
-            <option value="Raipur">Raipur</option>
-            <option value="Rajkot">Rajkot</option>
-            <option value="Rampur">Rampur</option>
-            <option value="Ranchi">Ranchi</option>
-            <option value="Ranikhet">Ranikhet</option>
-            <option value="Ratnagiri">Ratnagiri</option>
-            <option value="Renukoot">Renukoot</option>
-            <option value="Roorkee">Roorkee</option>
-            <option value="Ropar">Ropar</option>
-            <option value="Sharnpur">Sharnpur</option>
-            <option value="Salem">Salem</option>
-            <option value="Sangrur">Sangrur</option>
-            <option value="Satna">Satna</option>
-            <option value="Secunderabad">Secunderabad</option>
-            <option value="Sehore">Sehore</option>
-            <option value="Shikohabad">Shikohabad</option>
-            <option value="Shimoga">Shimoga</option>
-            <option value="Sikar">Sikar</option>
-            <option value="Sindhudurg">Sindhudurg</option>
-            <option value="Sirmaur">Sirmaur</option>
-            <option value="Solan">Solan</option>
-            <option value="Solapur">Solapur</option>
-            <option value="Suktanpur">Suktanpur</option>
-            <option value="Sonepat">Sonepat</option>
-            <option value="Sonitpur">Sonitpur</option>
-            <option value="Tekkali">Tekkali</option>
-            <option value="Thane">Thane</option>
-            <option value="Thanjavur">Thanjavur</option>
-            <option value="Theni">Theni</option>
-            <option value="Thoothukudi">Thoothukudi</option>
-            <option value="Thoubal">Thoubal</option>
-            <option value="Thrissur">Thrissur</option>
-            <option value="Tiruchirappalli">Tiruchirappalli</option>
-            <option value="Trunelveli">Trunelveli</option>
-            <option value="Tirupati">Tirupati</option>
-            <option value="Udaipur">Udaipur</option>
-            <option value="Udham Singh Nagar">Udham Singh Nagar</option>
-            <option value="Udupi">Udupi</option>
-            <option value="Vadodara">Vadodara</option>
-            <option value="Varanasi">Varanasi</option>
-            <option value="Vellore">Vellore</option>
-            <option value="Vijayawada">Vijayawada</option>
-            <option value="Virudhunagar">Virudhunagar</option>
-            <option value="Visakhapatnam">Visakhapatnam</option>
-            <option value="Vizayanagaram">Vizayanagaram</option>
-            <option value="Warangal">Warangal</option>
-            <option value="Wardha">Wardha</option>
-            <option value="West Godavari">West Godavari</option>
+                      <?php      while($row =mysqli_fetch_array($city1,MYSQLI_ASSOC))
+
+  {
+			echo "	 
+            <option value='".$row['city_name']."'>".$row['city_name']."</option>
+            ";
+          } ?>
           </select>
                   </div>
                   <div class="col-4">
                     <select class="form-control" name="course" id="popupcourse" required="">
                       <option value="">Select course</option>
-                      <option value="M.B.A">M.B.A (Master of Business Administration)</option>
-                      <option value="B. Pharm">B. Pharm</option>
-                      <option value="B.A. LLB">B.A. LLB</option>
-                      <option value="B.A.M.S">B.A.M.S</option>
-                      <option value="B.Arch">B.Arch</option>
-                      <option value="B.Com">B.Com</option>
+                      <?php      while($row =mysqli_fetch_array($degreelist1,MYSQLI_ASSOC))
 
+{
+    echo "	 
+          <option value='".$row['degree_name']."'>".$row['degree_name']."</option>
+          ";
+        } ?> 
                     </select>
                   </div>
                 </div>
@@ -2269,7 +2036,7 @@ while($row = mysqli_fetch_array($blog ,MYSQLI_ASSOC))
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">

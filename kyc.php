@@ -142,7 +142,7 @@ $data=$_SESSION['userdata'];
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">

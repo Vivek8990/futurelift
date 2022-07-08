@@ -48,7 +48,7 @@ $data=$_SESSION['userdata'];
     <div class="formBox" id="popUpForm">
       <div class="boxForm">
         <div class="popImg mx-5 py-3">
-          <img src="/images/logoBrand-01.png" alt="" class="img-fluid">
+          <img src="/images/newlogo.png" alt="" class="img-fluid">
         </div>
         <div class="popHeding">
           <h2 style="color: #fff;">Quick Contact: +91 84155 77889</h2>
@@ -2105,7 +2105,7 @@ while($row = mysqli_fetch_array($blog ,MYSQLI_ASSOC))
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">

@@ -50,7 +50,7 @@ $data=$_SESSION['userdata'];
       <div class="user">
         <i class="fas fa-user"></i>
       </div>
-      <a href="career.php" class="active">Career Solutions</a>
+       <a href="career.php" class="active">Career Solutions</a>
       <a href="explore-colleges.php" class="active">explore colleges</a>
       <a href="" class="active"> partner</a>
       <a href="admission.php" class="active">admission</a>

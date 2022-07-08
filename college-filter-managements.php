@@ -62,10 +62,10 @@ $colleges = getCollegeByCategoury($term);
 			<div class="user">
 				<i class="fas fa-user"></i>
 			</div>
-			<a href="career.php" class="active">Career Solutions</a>
-			<a href="explore-colleges.php" class="active">explore colleges</a>
-			<a href="" class="active"> partner</a>
-			<a href="admission.php" class="active">admission</a>
+			 <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
+      <a href="" class="active"> partner</a>
+      <a href="admission.php" class="active">admission</a>
 			<div class="dropdown">
 				<a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
 					more
@@ -500,7 +500,7 @@ $colleges = getCollegeByCategoury($term);
 		<div class="row">
 		  <div class="main-first d-flex flex-wrap align-items-center">
 			<div class="main1 col-3">
-				<a href="index.php" class="logo"><img src="images/logoBrand-01.png" alt="" ></a>
+				<a href="index.php" class="logo"><img src="images/newlogo.png" alt="" ></a>
 			</div>
 			<div class="footerHead">
 				<h4 class="text-light ">quick links</h4>

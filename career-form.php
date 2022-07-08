@@ -1,3 +1,14 @@
+
+<?php 
+
+
+require_once 'functions.php';
+$login = $_SESSION['userIsLoggedIn'];
+$data=$_SESSION['userdata'];
+$State = getstate();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,15 +47,15 @@
     <!-- Header Section Start -->
     <!-- Header Section Start -->
     <header class="header" >
-        <a href="index.html" class="logo"><img src="images/newlogo.png" alt=""></a>
+        <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
         <nav class="navbar">
           <div class="user">
             <i class="fas fa-user"></i>
           </div>
-          <a href="career.html" class="active">Career Solutions</a>
-          <a href="explore-colleges.html" class="active">explore colleges</a>
-          <a href="" class="active"> partner</a>
-          <a href="admission.html" class="active">admission</a>
+           <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
+      <a href="" class="active"> partner</a>
+      <a href="admission.php" class="active">admission</a>
           <div class="dropdown">
             <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
               more
@@ -99,7 +110,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="Education" class="form-label">Education</label>
-                            <select for="Education" class="form-select">
+                            <select for="Education" class="form-select" required>
                                 <option value="1">class 8th to 10th</option>
                                 <option value="2">class 1th to 1th</option>
                                 <option value="3">College Graduates</option>
@@ -107,129 +118,15 @@
                         </div>
                         <div class="mb-3">
                           <label for="Education" class="form-label">state</label>
-                            <select for="state" class="form-select">state
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Arunachal Pradesh</option>
-                            <option value="1">Ahemadabad</option>
-                            <option value="1">Agra</option>
-                            <option value="1">Agartalla</option>
-                            <option value="1">Badoda</option>
-                            <option value="1">Bihar</option>
-                            <option value="1">Bhopalh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
-                            <option value="1">Andhra Pradesh</option>
+                            <select for="state" class="form-select" required>state
+                            <option value="">Select Your State</option>
+            <?php      while($row =mysqli_fetch_array($State,MYSQLI_ASSOC))
 
+{
+    echo "	 
+          <option value='".$row['state_name']."'>".$row['state_name']."</option>
+          ";
+        } ?> 
                             </select>
                         </div>
                         <div class="mb-3 crrForm">
@@ -248,7 +145,7 @@
                               </div>
                             </div>
                             <div class="mb-3 crrForm">
-                              <input type="text" id="bixIinput" class="form-control" style="display:none;" placeholder="code">
+                              <input type="text" id="bixIinput" class="form-control" style="display:none;" placeholder="code" name ="referal">
                             </div>
                           </div>
                         </div>
@@ -285,7 +182,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">

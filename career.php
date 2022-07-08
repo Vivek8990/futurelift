@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-$login = $_SESSION['userIsLoggedIn'];
-$data=$_SESSION['userdata'];
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +41,10 @@ $data=$_SESSION['userdata'];
           <div class="user">
             <i class="fas fa-user"></i>
           </div>
-          <a href="career.php" class="active">Career Solutions</a>
-          <a href="explore-colleges.php" class="active">explore colleges</a>
-          <a href="" class="active"> partner</a>
-          <a href="admission.php" class="active">admission</a>
+           <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
+      <a href="" class="active"> partner</a>
+      <a href="admission.php" class="active">admission</a>
           <div class="dropdown">
             <a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
               more
@@ -64,21 +55,10 @@ $data=$_SESSION['userdata'];
               <li><a class="dropdown-item" href="#">news</a></li>
             </ul>
           </div>
+          <div class="btnGroup">
+            <a href="log-in.html" class="btn btn-sign">log in</a>
+            <a href="sign-up.html" class="btn">sign up</a>
           </div>
-          <?php if($login){?>
-       
-       <a  href="#" class="active"><?php  echo ($data['email_id']);?></a>
-       <a class="active" href="functions.php?logout">Signout</a>
-       <?php }
-      ?>
-      <div class="btnGroup">
-        <?php if(!$login){ ?>
-        <a href="log-in.php" class="btn btn-sign">log in</a>
-        <a href="sign-up.php" class="btn">sign up</a>
-        <?php    
-        } 
-        ?>
-      </div>
         </nav>
         <i class="fas fa-bars" id="manu-bars"></i>
       </header>
@@ -87,22 +67,18 @@ $data=$_SESSION['userdata'];
 
     <!-- Header Section End -->
     <section class="return" id="retun_home">
-        <div class="d-flex justify-content-center align-items-center">
-            <img src="images/crownbanner.png" alt="" class="img-fluid">
-        </div>
-
         <div class="container-fluid">
-            <div class="allBtn">
-                <div class="btn-group">
-                    <a href="index.php" class="homebtn">home</a><span>/</span><a href="" class="homebtn">career
-                        crown</a>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 homebanner">
+                    <img src="images/bannerCareer.png" alt="" class="img-fluid">
                 </div>
-                <div class="btn-group">
-                    <a href="" class="homebtn">free counselling</a>
+                <div class=" col-lg-8 col-md-6 col-sm-12 homebannerText">
+                    <a href="career-form.php" target="_blank" class="btn"> free demo</a>
                 </div>
             </div>
         </div>
     </section>
+    
     <div class="homeHeading d-none">
         <div class="container">
           <div class="searchBar">
@@ -110,7 +86,7 @@ $data=$_SESSION['userdata'];
               <input type="submit" value="search" class="searchBtn">
           </div>
           <ul id="myUl" class="listCollege">
-            <li><a href="about.php">Barasat Government college</a><span>MBA</span></li>
+            <li><a href="about.html">Barasat Government college</a><span>MBA</span></li>
             <li><a href="#">agra university</a></li>
           
             <li><a href="#">nalanda university</a></li>
@@ -122,17 +98,20 @@ $data=$_SESSION['userdata'];
           </ul>
         </div>
       </div>
+
     <!-- Home Section End -->
 
     <section class="psychometric" id="psychometric">
         <div class="container">
-            <div class="row">
+            <div class="row first_row">
                 <div class="testCard d-flex flex-wrap align-items-center justify-content-center my-5">
                     <div class="cardTest mx-3 cardOne">
                         <div class="textPart">
                             <h4>Psychometric Test</h4>
-                        <p>Evaluation of Dynamic Behavior</p>
-                        <a href="" class="btn testBtn">start test</a>
+                        <p>Psychology analysis the aspects 
+                            and fields that provide long term 
+                            satisfaction in career to a person</p>
+                        <a href="psymetcriTest.html" target="_blank" class="btn testBtn">start test</a>
                         </div>
                         <div class="imagePart">
                             <a href=""><img src="images/psychometric-02.png" alt="" class="img-fluid"></a>
@@ -141,26 +120,112 @@ $data=$_SESSION['userdata'];
                     <div class="cardTest mx-3 cardTwo">
                         <div class="textPart">
                             <h4>Aptitude Test</h4>
-                        <p>Prediction of Your Capabilities</p>
-                        <a href="" class="btn testBtn">start test</a>
+                        <p>This test purports to asses
+                            the skills, talents and abilities
+                            of an individual across several
+                            domains.
+                           </p>
+                        <a href="aptitudeTest.html" target="_blank" class="btn testBtn">start test</a>
                         </div>
                         <div class="imagePart">
                             <a href=""><img src="images/aptitude-02.png" alt="" class="img-fluid"></a>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row second_row">
+                <div class="testCard d-flex flex-wrap align-items-center justify-content-center my-5">
                     <div class="cardTest mx-3 cardThree">
                         <div class="textPart">
                             <h4>Personality  Test</h4>
-                        <p>Examine the Emotional Status of the individual</p>
-                        <a href="" class="btn testBtn">start test</a>
+                        <p>Personality based test to 
+                            explore and understand the 
+                            individual's socioemotional 
+                            characteristics.</p>
+                        <a href="personalityTest.html" target="_blank" class="btn testBtn">start test</a>
                         </div>
                         <div class="imagePart">
                             <a href=""><img src="images/personality-02.png" alt="" class="img-fluid"></a>
                         </div>
                     </div>
+                    
+                    <div class="cardTest mx-3 cardThree">
+                        <div class="textPart">
+                            <h4>iQ  Test</h4>
+                        <p>IQ (Intelligence Quotient) is
+                            an assessment of cognitive
+                            development with respect to
+                            the developement age.</p>
+                        <a href="IQTest.html" target="_blank" class="btn testBtn">start test</a>
+                        </div>
+                        <div class="imagePart">
+                            <a href=""><img src="images/iqtestpart-01.png" alt="" class="img-fluid"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="counsellingBenefit" id="beniFitCoun">
+        <div class="container">
+            <h1 class="heading text-center text-uppercase pb-5">Benefits of Future Lift Counseling</h1>
+            <div class="swiper mySwiper beniFitCoun">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                        <div class="benifiCard">
+                            <div class="beniBox">
+                                <img src="images/assesment-02.png" alt="" class="img-assessment">
+                                <h1 class="text-center benifiCardHead ">career assesment</h1>
+                                <p class="text-center benifiCardText">Helps Plan & Prepare for the Best 
+                                    Suitable Career for You</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="benifiCard">
+                            <div class="beniBox">
+                                <img src="images/sowt-02.png" alt="" class="img-assessment">
+                            <h1 class="text-center benifiCardHead "> SWOT Analysis</h1>
+                            <p class="text-center benifiCardText">Performs a SWOT Analysis for You</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="benifiCard">
+                            <div class="beniBox">
+                                <img src="images/techCounseling-02.png" alt="" class="img-assessment">
+                            <h1 class="text-center benifiCardHead ">Tech-Enpowerd Counseling</h1>
+                            <p class="text-center benifiCardText">Performs a SWOT Analysis for You</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="benifiCard">
+                            <div class="beniBox">
+                                <img src="images/repository-02.png" alt="" class="img-assessment">
+                            <h1 class="text-center benifiCardHead ">Value- Added Service</h1>
+                            <p class="text-center benifiCardText mb-3">Provides tools to conquer obstacles in the desired career path. Aligns Personal Interests for Professional Growth.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="benifiCard">
+                            <div class="beniBox">
+                                <img src="images/knowldge-02.png" alt="" class="img-assessment">
+                            <h1 class="text-center benifiCardHead "> Knowledge Repository</h1>
+                            <p class="text-center benifiCardText">It helps understand the demands of aparticular occupation.Provides Educational Grooming.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+            
+        </div>
+
     </section>
     
     <section class="subscriptionDetails">
@@ -201,11 +266,110 @@ $data=$_SESSION['userdata'];
             </div>
         </div>
     </section>
+
+    <section class="program" id="ourProgram">
+        <div class="container">
+            <div class="row">
+                <div class=" col-lg-3 col-md-6 col-sm-12 hidden">
+                    <div class="progHeading py-3 hidden">
+                        <!-- <h1>our programs</h1>
+                        <p>Personalized expert services & suport for all stakeholders in the career guidance proce</p> -->
+                    </div>
+                </div>
+                <div class=" col-lg-6 col-md-6 col-sm-12 ">
+                    <div class="progHeading py-3 col_show">
+                        <h1>our programs</h1>
+                        <p>Personalized expert services & suport for all stakeholders in the career guidance proce</p>
+                    </div>
+                </div>
+                <div class=" col-lg-3 col-md-6 col-sm-12 hidden">
+                    <div class="progHeading py-3 hidden">
+                        <!-- <h1>our programs</h1>
+                        <p>Personalized expert services & suport for all stakeholders in the career guidance proce</p> -->
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="progCard">
+                        <div class="progCardDitail">
+                            <img src="images/gate-02.png" alt="" class="img-fluid" style="width: 10rem;">
+                            <h2>8th to 9th class</h2>
+                            <p>Looking for the perfect stream and subjects you will enjoy?</p>
+                            <a href="career-form.php" target="_blank" class="btn">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="progCard">
+                        <div class="progCardDitail">
+                            <img src="images/education-02.png" alt="" class="img-fluid" style="width: 10rem;">
+                            <h2>10th to 12th class</h2>
+                            <p>Looking for the right course to pursue your dream?</p>
+                            <a href="career-form.php" target="_blank" class="btn">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="progCard">
+                        <div class="progCardDitail">
+                            <img src="images/diploma-02.png" alt="" class="img-fluid" style="width: 10rem;">
+                            <h2>College Graduates</h2>
+                            <p>Cought between choosing a specialization and getting job?</p>
+                            <a href="career-form.php" target="_blank" class="btn">Know More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="chooseCounsel" id="counsellingChoosing">
+        <div class="container">
+            <h1 class="heading text-center">Why Choose Future Lift Counseling</h1>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 points">
+                    <div class="pointsBg mt-3 py-3">
+                        <p>Advanceed Assessment & Best-Fit Matches.</p>
+                    </div>
+                    <div class="pointsBg mt-3 py-3">
+                        <p>Interactive Stream & Career Actives.</p>
+                    </div>
+                    <div class="pointsBg mt-3 py-3">
+                        <p>Personalised Guidance from Experts.</p>
+                    </div>
+                    <div class="pointsBg mt-3 py-3">
+                        <p>Career Roadmap Planner..</p>
+                    </div>
+                    <div class="pointsBg mt-3 py-3">
+                        <p>Extensive Support & Resources.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 points">
+                    <div class="formBg pb-4 mt-3">
+                        <form action="">
+                            <h2>Take the first step
+                                towards career clarity!</h2>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                                    <div class="row p-3">
+                                        <button type="submit" class="btn">Take free Demo</button>
+                                    </div>
+                                    
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
     <!-- top collection start -->
     <section class="topCollection" id="topCollection">
         <div class="container">
-            <h1 class="heading">top collection</h1>
-            <hr>
+            <h1 class="heading caption">top collection</h1>
             <div class="swiper mySwiper topCardDetails">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -303,111 +467,11 @@ $data=$_SESSION['userdata'];
             </div>
         </div>
     </section>
-    <section class="subcrib" id="subscribtion">
-        <div class="container">
-            <h1 class="heading">subscription package</h1>
-            <hr>
-            <div class="row">
-                <h3 class="text-center py-3 subsSubHead">futureLift Solution For Class 10-12</h3>
-                <div class="d-flex flex-wrap justify-content-center subscribtion">
-                    <div class="col-lg-3 col-md-6 col-sm-6 xs-6 py-5">
-                        <div class="subContent">
-                            <div class="subHead">
-                                <h4>career counselling</h4>
-                                <h5>Phycolomatric Test & Discussion</h5>
-                            </div>
-                            <p> Discussion with expert</p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i>Phycolomatric Career Test</li>
-                                <li><i class="fa-solid fa-user-tie"></i>Expert understand you</li>
-                                <li><i class="fa fa-question-circle"></i>You can ask Questions</li>
-                                <li><i class="fa fa-commenting"></i>Expert explain required services.</li>
-                                <li style="text-decoration: line-through;"><i class="fa fa-times disabled"
-                                        style="color: #ddd;"></i>Career Counseling Session </li>
-                                <li style="text-decoration: line-through;">
-                                    <i class="fa fa-times"style="color: #ddd;"></i>Career Recommendation</li>
-                            </ul>
-                            <div class="subBottom">
-                                <h2>free</h2>
-                                <a href=""><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 xs-6 py-5">
-                        <div class="subContent">
-                            <div class="subHead subHeadF">
-                                <h4> basic</h4>
-                                <h5>Phycolomatric Test & Career Counseling</h5>
-                            </div>
-                            <p>Session with the expert.</p>
-                            <ul>
-                                <li><i class="fa fa-users"></i>1 Counseling Session</li>
-                                <li><i class="fa fa-check-circle"></i>Phycolomatric Test</li>
-                                <li><i class="fa fa-signal"></i>Career Report</li>
-                                <li><i class="fa fa-briefcase"></i>Career Recommendation</li>
-                                <li><i class="fa fa-building"></i>College/ Course Counseling</li>
-                                <li><i class="fa-solid fa-phone-volume"></i>1 Follow-up call with expert</li>
-                            </ul>
-                            <div class="subBottom">
-                                <h2>1499/-</h2>
-                                <a href=""><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 xs-6 py-5">
-                        <div class="subContent">
-                            <div class="subHead subHeadP">
-                                <h4>Advance</h4>
-                                <h5>Phycolomatric Test & Career Counseling</h5>
-                            </div>
-                            <p>Session with expert</p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i>Phycolomatric Career Test</li>
-                                <li><i class="fa fa-users"></i>2 career Counseling Session</li>
-                                <li><i class="fa fa-signal"></i>Career Report & Explain</li>
-                                <li><i class="fa fa-briefcase"></i>Career Recommendation</li>
-                                <li><i class="fa fa-building"></i>College/ Course Counseling</li>
-                                <li><i class="fa-solid fa-phone-volume"></i>1 Follow-up call with expert</li>
-                                <li><i class="fa fa-info-circle"></i> Admission Guide</li>
-                                <li><i class="fa-solid fa-eye"></i>1 Year students guidance </li>
-                            </ul>
-                            <div class="subBottom">
-                                <h2>1999/-</h2>
-                                <a href=""><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 xs-6 py-5">
-                        <div class="subContent">
-                            <div class="subHead subHeadL">
-                                <h4> Premium </h4>
-                                <h5>Phycolomatric Test & Career Counseling</h5>
-                            </div>
-                            <p>Session with Mr. Rahul Sir </p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i>Phycolomatric Career Test</li>
-                                <li><i class="fa fa-users"></i>2 career Counseling Session</li>
-                                <li><i class="fa fa-signal"></i>Career Report & Explain</li>
-                                <li><i class="fa fa-briefcase"></i>Career Recommendation</li>
-                                <li><i class="fa fa-building"></i>College/ Course Counseling</li>
-                                <li><i class="fa-solid fa-phone-volume"></i>1 Follow-up call with expert</li>
-                                <li><i class="fa fa-info-circle"></i> Admission Guid</li>
-                                <li><i class="fa-solid fa-eye"></i>2 year Student Guidance </li>
-                            </ul>
-                            <div class="subBottom">
-                                <h2>4999/-</h2>
-                                <a href=""><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section class="studentReview" id="reviewStudents">
-        <div class="container">
-            <h1 class="text-center">students review</h1>
+        <div class="container my-5">
+            <h1 class="text-center heading">students review</h1>
             <div class="swiper mySwiper reviwSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -553,16 +617,16 @@ $data=$_SESSION['userdata'];
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
             <div class="footer-logo mb-3">
-              <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+              <img src="images/newlogo.png" alt="" class="img-fluid">
             </div>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">
             <h3 class="footer-titel">quick links</h3>
             <ul>
-              <li><a href="about.php">about us</a></li>
+              <li><a href="about.html">about us</a></li>
               <li><a href="">FAQs</a></li>
-              <li><a href="policy.php">privacy policy</a></li>
-              <li><a href="refund_cancelletion.php">refunds & cancellations</a></li>
+              <li><a href="policy.html">privacy policy</a></li>
+              <li><a href="refund_cancelletion.html">refunds & cancellations</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.6s">

@@ -146,7 +146,7 @@ if (isset($_GET['scholership'])) {
         header('location:index.php');
     } else {
         $_SESSION['msg'] = $user['errors'];
-       header('location:scholorship.php');
+       header('location:scholership.php');
     }
 
 

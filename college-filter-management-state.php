@@ -56,10 +56,10 @@ $specilizationlist = getspecilizationlists();
 			<div class="user">
 				<i class="fas fa-user"></i>
 			</div>
-			<a href="career.php" class="active">Career Solutions</a>
-			<a href="explore-colleges.php" class="active">explore colleges</a>
-			<a href="" class="active"> partner</a>
-			<a href="admission.php" class="active">admission</a>
+			 <a href="career.php" class="active">Career Solutions</a>
+      <a href="explore-colleges.php" class="active">explore colleges</a>
+      <a href="" class="active"> partner</a>
+      <a href="admission.php" class="active">admission</a>
 			<div class="dropdown">
 				<a herf="" type="button" class=" active dropdown-toggle" data-bs-toggle="dropdown">
 					more
@@ -80,7 +80,7 @@ $specilizationlist = getspecilizationlists();
 	<section class="college_filter_page_management" id="management">
 		<div class="container shadow">
 			<div class="row">
-				<h1 class="heading text-center">law colleges in india</h1>
+				<h1 class="heading text-center">Colleges in <?php echo $term; ?></h1>
 				<h2 class="text-center">fullfil your college ditails</h2>
 				<p class="lead p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est,<span id="dots">...</span><span id="more">ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, perferendis ipsam eos iusto officiis mollitia iure possimus incidunt facilis, praesentium veniam nihil quam laborum asperiores! Beatae illo sapiente veritatis unde quo, optio nobis aut aliquid voluptas laboriosam labore sint odit pariatur ratione expedita! Perferendis vitae ex commodi eaque accusamus corrupti dolorum asperiores qui, adipisci labore fugiat corporis aut, nostrum optio mollitia eveniet numquam possimus officiis! Doloribus, quas. Earum iure possimus delectus, quibusdam aliquid, aut maiores distinctio labore atque, illum reiciendis quam? Assumenda praesentium consequuntur nulla iusto totam minima laudantium vero ipsa exercitationem fuga qui aspernatur, sequi modi. Atque perferendis dicta mollitia dolorem numquam magni excepturi, quibusdam reprehenderit beatae ipsa ex ratione sed earum nemo temporibus animi in magnam distinctio molestias enim quas. Reprehenderit ut praesentium sequi quas sed dolores ea hic beatae, iste aliquid eveniet fugit, consectetur omnis accusamus eligendi. Corporis aperiam explicabo debitis sequi repellendus eveniet facilis doloribus eaque dolore optio impedit placeat est nostrum dolorum, temporibus deserunt quis deleniti sed ut laborum accusantium ipsum nemo, reprehenderit saepe. Eius nobis ipsa sequi animi quibusdam minus a debitis earum quas. Autem, sed recusandae aut id minus magnam voluptates, aliquid quaerat temporibus impedit exercitationem optio corrupti soluta ad nemo ducimus quam. sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
 				<a onclick="readFunction()" id="readMore" class="readMore">Read more</a>
@@ -500,7 +500,7 @@ $specilizationlist = getspecilizationlists();
 			<div class="row">
 			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.2s">
 				<div class="footer-logo mb-3">
-				  <img src="images/logoBrand-01.png" alt="" class="img-fluid">
+				  <img src="images/newlogo.png" alt="" class="img-fluid">
 				</div>
 			  </div>
 			  <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 footer_div" data-wow-delay="0.4s">

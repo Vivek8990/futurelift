@@ -1,6 +1,19 @@
+<?php
+
+require_once 'functions.php';
+$login = $_SESSION['userIsLoggedIn'];
+$data=$_SESSION['userdata'];
+// $courses= getCollegeGroupByCategoury();
+ $collage = getCollegeByRank();
+ $blog = getBlog();
+ $city = getcity();
+$State = getstate();
+$degreelist = getdegreelists();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,30 +24,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <script src="https://kit.fontawesome.com/c9c459e62c.js" crossorigin="anonymous"></script>
-
-    <!-- General Initialization -->
-    <script src="js/general.js" type="text/javascript"> </script>
+    <link href="aos/aos.css" rel="stylesheet">
 
     <!-- Bootsrtap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS --> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custome CSS Link -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- aos css -->
+    <link rel="stylesheet" href="aos/aos.css">
 
     <!-- swiper js -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <title>Career Future Lift</title>
-    <script src="https://use.fontawesome.com/2054339f84.js"></script>
-    <script src="https://kit.fontawesome.com/78ddd3cd4c.js" crossorigin="anonymous"></script>
+    <title>Future Lift Guidline</title>
 </head>
-
 <body>
-
-    <!-- Header Section Start -->
-    <!-- Header Section Start -->
     <header class="header" >
         <a href="index.php" class="logo"><img src="images/newlogo.png" alt=""></a>
         <nav class="navbar">
@@ -51,7 +58,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Colleges</a></li>
-              <li><a class="dropdown-item" href="#">counseler</a></li>
+              <li><a class="dropdown-item" href="counselerForm.html">counseler</a></li>
               <li><a class="dropdown-item" href="#">news</a></li>
             </ul>
           </div>
@@ -63,70 +70,79 @@
         <i class="fas fa-bars" id="manu-bars"></i>
       </header>
 
-    <!-- Header Section End -->
-
-    <!-- Header Section End -->
-    <section class="return" id="retun_home">
+      <section class="return" id="retun_home">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-6 col-sm-12 homebanner">
-                    <img src="images/psychomatricBanner.png" alt="" class="img-fluid">
-                    <h2 class="heading counselling_heading afterHead">START YOUR PSYCHOMETRIC TEST</h2>
+                    <img src="images/Group 71.png" alt="" class="img-fluid">
+                    <h2 class="heading counselling_heading afterHead4">future lift guidance</h2>
                 </div>
             </div>
         </div>
     </section>
     <section class="counsellingFormPart" id="careerCounsellingFormPart">
         <div class="container">
-            <h1 class="heading text-center">Instructions</h1>
-            <p class="text-center lead">Read This Instructions before you Start </p>
             <div class="row">
-                
-            </div>
-        </div>
-        <div class="formLowre">
-          <div class="container-fluid">
-            <div class="row">
-              <div class=" col-lg-12 col-sm-10 baneer_horizantal">
-                <img src="images/Group 65.png" alt="" class="img-fluid">
-              </div>
-            </div>
-            <div class="row">
-              <div class=" col-lg-12 col-sm-12 baneer_vartical">
-                <img src="images/Group 64.png" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="lowerBtn">
-            <a href="career-form.php" target="_blank" class="btn"> start</a>
-          </div>
-        </div>
+                <div class="col-10 careerFormPart">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="First-Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="MobileNumber" class="form-label">Mobile Number</label>
+                            <input type="mobile" class="form-control" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="EmailId" class="form-label">Email Id</label>
+                            <input type="email" class="form-control" placeholder="Email Id" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="Education" class="form-label">state</label>
+                            <select for="state" class="form-select">state
+                            <option value="">Select Your State</option>
+            <?php      while($row =mysqli_fetch_array($State,MYSQLI_ASSOC))
 
-        <div class="imprtance">
-            <div class="container">
-                <h1 class="heading text-center">Importance of Psychometric Test</h1>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 impotancePart mt-5">
-                        <h1 class="points ">1</h1>
-                        <p class="pointsPara">Tests include a wide range of questions that help in analysis of various personality traits</p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 impotancePart mt-5">
-                        <h1 class="points ">2</h1>
-                        <p class="pointsPara">Find out the reliable and unbiased qualities for maintaining transparency</p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 impotancePart mt-5">
-                        <h1 class="points">3</h1>
-                        <p class="pointsPara">Find your suitable conditions for work requirements</p>
-                    </div>
+{
+    echo "	 
+          <option value='".$row['state_name']."'>".$row['state_name']."</option>
+          ";
+        } ?> 
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                          <label for="Education" class="form-label">city</label>
+                          <select for="Education" class="form-select">
+                          <option>Select Your City</option>
+    <?php      while($row =mysqli_fetch_array($city,MYSQLI_ASSOC))
+
+  {
+			echo "	 
+            <option value='".$row['city_name']."'>".$row['city_name']."</option>
+            ";
+          } ?> 
+                          </select>
+                      </div>
+                        <div class="mb-3">
+                          <label for="Education" class="form-label">course</label>
+                          <select for="Education" class="form-select">
+                          <option value="">Select Course</option>
+            <?php      while($row =mysqli_fetch_array($degreelist,MYSQLI_ASSOC))
+
+{
+    echo "	 
+          <option value='".$row['degree_name']."'>".$row['degree_name']."</option>
+          ";
+        } ?> 
+                          </select>
+                      </div>
+                        <button type="submit" class="btn center-block"> submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-    
-    
-
-
-
     <!-- footer start -->
   <footer id="footer" class="footer-area section-padding">
     <div class="container">
@@ -187,16 +203,14 @@
 
 
 
-    <!-- Swiper JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
 
-    <script>
 
-    </script>
 
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="aos/aos.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="js/script.js"></script>
+    
 </body>
-
 </html>
