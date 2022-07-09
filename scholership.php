@@ -163,7 +163,7 @@ $data=$_SESSION['userdata'];
                   <label for="hspersentage" class="form-label"><i class="fa fa-percent"></i></label>
                 </div>
                 <div class="col-10">
-                  <input type="text" name="hspersentage" class="form-control" placeholder="hS persentage" required
+                  <input type="text" name="hspersentage" class="form-control" placeholder="10+2 persentage" required
                     autocomplete="off">
                 </div>
               </div>

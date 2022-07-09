@@ -350,6 +350,32 @@ function checkUser($data)
     }
 }
 
+function  getCollegeByCourse($term){
+    echo "dhfkjdsfkhsdf";
+    echo $term;
+   $db=$GLOBALS['db'];
+   $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
+   af.affiliation_name,ap.approval_name,cty.type,ct.city_name
+   FROM college c
+   INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN Collage_type cty on cty.id = c.collage_type_id
+    INNER JOIN City ct on ct.id = c.city_id
+  
+   where  ds.degree_name like ('%$term%')";
+echo  $query;
+  $runQuery = mysqli_query($db,$query);
+  
+  
+   return $runQuery;
+}
 //this is for checking the user
 function admincheckUser($data)
 {
@@ -611,7 +637,7 @@ function getfacility(){
  function getdegreelist($term){
     $db=$GLOBALS['db'];
   //  echo "ooooooooooo";
-    $query="SELECT d.* FROM Degree d join stream s on s.id = d.stream_id where s.stream='$term'";
+    $query="SELECT d.* FROM Degree d INNER JOIN stream s on s.id = d.stream_id where s.stream='$term'";
   // echo $query;
    $runQuery=mysqli_query($db,$query);
    
@@ -621,7 +647,7 @@ function getfacility(){
  function getspecilizationlist($term){
     $db=$GLOBALS['db'];
     
-    $query="SELECT s.* FROM Spacialization s join stream sm on sm.id = s.stream_id where sm.stream='$term'";
+    $query="SELECT s.* FROM Spacialization s INNER JOIN stream sm on sm.id = s.stream_id where sm.stream='$term'";
    
    $runQuery=mysqli_query($db,$query);
    
@@ -762,12 +788,12 @@ function scholershiplist(){
 function collegelist(){
 
     $db=$GLOBALS['db'];
-    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.degree_name,s.state_name,ct.type FROM college c join affiliation af on af.id=c.affiliated_id
-  join   Approval ap on ap.id= c.approvel_id 
-  join college_degree cd on cd.college_id = c.id
-  join   Degree co on co.id= cd.degree_id
-  join State s on s.id=c.state_id 
-  join   Collage_type ct on ct.id=c.collage_type_id order by c.id";
+    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.degree_name,s.state_name,ct.type FROM college c INNER JOIN affiliation af on af.id=c.affiliated_id
+  INNER JOIN   Approval ap on ap.id= c.approvel_id 
+  INNER JOIN college_degree cd on cd.college_id = c.id
+  INNER JOIN   Degree co on co.id= cd.degree_id
+  INNER JOIN State s on s.id=c.state_id 
+  INNER JOIN   Collage_type ct on ct.id=c.collage_type_id order by c.id";
   
     $runQuery=mysqli_query($db,$query);
   
@@ -788,12 +814,12 @@ function getCollegeGroupByCategoury(){
     $db=$GLOBALS['db'];
     $query ="SELECT s.specialization_name, COUNT(c.id) as count
     FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id  
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id  
     GROUP BY sm.stream";
 
     $runQuery = mysqli_query($db,$query);
@@ -806,17 +832,17 @@ function getCollegeByCategoury($data){
     $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name
     FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join Collage_type cty on cty.id = c.collage_type_id
-    join City ct on ct.id = c.city_id
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN Collage_type cty on cty.id = c.collage_type_id
+    INNER JOIN City ct on ct.id = c.city_id
    
     where  sm.stream ='$data' ";
  //echo $query;
@@ -833,17 +859,17 @@ function getCollegeBystate($data){
     $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name
     FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join Collage_type cty on cty.id = c.collage_type_id
-    join City ct on ct.id = c.city_id
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN Collage_type cty on cty.id = c.collage_type_id
+    INNER JOIN City ct on ct.id = c.city_id
    
     where  st.state_name ='$data' ";
 
@@ -859,18 +885,18 @@ function getCollegeBycity($data){
     $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name
     FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id
     
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join Collage_type cty on cty.id = c.collage_type_id
-    join City ct on ct.id = c.city_id
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN Collage_type cty on cty.id = c.collage_type_id
+    INNER JOIN City ct on ct.id = c.city_id
    
     where  ct.city_name ='$data' ";
 
@@ -886,7 +912,7 @@ function searchcollege($data){
     
     
     $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.degree_name,s.state_name,ct.type FROM college c 
-    join   Collage_type ct on ct.id=c.collage_type_id 
+    INNER JOIN   Collage_type ct on ct.id=c.collage_type_id 
     where c.collage_name ='$q' or af.affiliation_name ='$q' or ap.approval_name ='$q' or co.course_name='$q' or s.state_name='$q' or ct.type='$q' ";
 
     $runQuery=mysqli_query($db,$query);
@@ -1553,21 +1579,21 @@ function getBalance($id){
     $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,ct.city_name,a.agencey_name,re.review,r.rating
     FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id
     
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join City ct on ct.id = c.city_id
-    join college_agencey ag on ag.college_id = c.id
-    join Agencey a on a.id =ag.agencey_id
-    join Reviews re on re.collage_id = c.id
-    join rating r on r.collage_id = c.id";
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN City ct on ct.id = c.city_id
+    INNER JOIN college_agencey ag on ag.college_id = c.id
+    INNER JOIN Agencey a on a.id =ag.agencey_id
+    INNER JOIN Reviews re on re.collage_id = c.id
+    INNER JOIN rating r on r.collage_id = c.id";
    
     
 
@@ -1582,13 +1608,13 @@ function getCollegelist($data){
     $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,ct.city_name
     FROM college c
-    join Degree ds on ds.id = c.degree_id
-    join Spacialization s on s.id = ds.specialization_id
-    join State st on st.id = c.state_id
+    INNER JOIN Degree ds on ds.id = c.degree_id
+    INNER JOIN Spacialization s on s.id = ds.specialization_id
+    INNER JOIN State st on st.id = c.state_id
     
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join City ct on ct.id = c.city_id
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN City ct on ct.id = c.city_id
 
    
     where  s.specialization_name ='$data' ";
@@ -1660,19 +1686,19 @@ function addkyc($data,$files)
 function getCollegeByRank(){
     $db=$GLOBALS['db'];
     $query ="SELECT s.specialization_name, c.*,ds.degree_name,sm.stream,st.state_name, af.affiliation_name,ap.approval_name,cty.type,ct.city_name,rt.rating,count(rv.id) as rv FROM college c 
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id 
-    join affiliation af on af.id= c.affiliated_id 
-    join Approval ap on ap.id = c.approvel_id 
-    join Collage_type cty on cty.id = c.collage_type_id 
-    join City ct on ct.id = c.city_id 
-    join rating rt on rt.collage_id= c.id 
-    join Reviews rv on rv.collage_id = c.id group by c.id 
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id 
+    INNER JOIN affiliation af on af.id= c.affiliated_id 
+    INNER JOIN Approval ap on ap.id = c.approvel_id 
+    INNER JOIN Collage_type cty on cty.id = c.collage_type_id 
+    INNER JOIN City ct on ct.id = c.city_id 
+    INNER JOIN rating rt on rt.collage_id= c.id 
+    INNER JOIN Reviews rv on rv.collage_id = c.id group by c.id 
     order by c.rank ";
 
 
@@ -1687,20 +1713,20 @@ function getCollegeDetail($id){
     $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
     af.affiliation_name,ap.approval_name,cty.type,ct.city_name,rt.rating,count(rv.id) as rv
     FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id
+    INNER JOIN college_degree cd on cd.college_id=c.id 
+    INNER JOIN Degree ds on ds.id = cd.degree_id 
+    INNER JOIN college_specilization cs on cs.college_id= c.id 
+    INNER JOIN Spacialization s on s.id = cs.specilization_id 
+    INNER JOIN college_stream cst on cst.college_id= c.id 
+    INNER JOIN stream sm on sm.id = cst.stream_id 
+    INNER JOIN State st on st.id = c.state_id
    
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join Collage_type cty on cty.id = c.collage_type_id
-    join City ct on ct.id = c.city_id
-    join rating rt on rt.collage_id= c.id
-   join Reviews rv on rv.collage_id = c.id
+    INNER JOIN affiliation af on af.id= c.affiliated_id
+    INNER JOIN Approval ap on ap.id = c.approvel_id
+    INNER JOIN Collage_type cty on cty.id = c.collage_type_id
+    INNER JOIN City ct on ct.id = c.city_id
+    INNER JOIN rating rt on rt.collage_id= c.id
+   INNER JOIN Reviews rv on rv.collage_id = c.id
    group by c.id
     order by c.rank limit 8";
 
@@ -1885,18 +1911,18 @@ function get_college($id){
 $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
 af.affiliation_name,ap.approval_name,cty.type,ct.city_name
 FROM college c
-join college_degree cd on cd.college_id=c.id 
-join Degree ds on ds.id = cd.degree_id 
-join college_specilization cs on cs.college_id= c.id 
-join Spacialization s on s.id = cs.specilization_id 
-join college_stream cst on cst.college_id= c.id 
-join stream sm on sm.id = cst.stream_id 
-join State st on st.id = c.state_id
+INNER JOIN college_degree cd on cd.college_id=c.id 
+INNER JOIN Degree ds on ds.id = cd.degree_id 
+INNER JOIN college_specilization cs on cs.college_id= c.id 
+INNER JOIN Spacialization s on s.id = cs.specilization_id 
+INNER JOIN college_stream cst on cst.college_id= c.id 
+INNER JOIN stream sm on sm.id = cst.stream_id 
+INNER JOIN State st on st.id = c.state_id
 
-join affiliation af on af.id= c.affiliated_id
-join Approval ap on ap.id = c.approvel_id
-join Collage_type cty on cty.id = c.collage_type_id
-join City ct on ct.id = c.city_id
+INNER JOIN affiliation af on af.id= c.affiliated_id
+INNER JOIN Approval ap on ap.id = c.approvel_id
+INNER JOIN Collage_type cty on cty.id = c.collage_type_id
+INNER JOIN City ct on ct.id = c.city_id
 
 where  c.id ='$id' ";
 //print_r($runQuery1);
@@ -1909,9 +1935,9 @@ function get_course($id){
     $db=$GLOBALS['db'];
     
     $query="SELECT d.degree_name, d.duration,e.details,f.course_fee FROM college_degree cd 
-    join  Degree d on d.id = cd.degree_id
-    join eligibility e on e.id =d.eligibility_id
-    join college_fee f on f.course_id = d.id
+    INNER JOIN  Degree d on d.id = cd.degree_id
+    INNER JOIN eligibility e on e.id =d.eligibility_id
+    INNER JOIN college_fee f on f.course_id = d.id
     
      where cd.college_id= '$id'";
  // echo $query;
@@ -2017,31 +2043,5 @@ function addreferal($data)
    return $user;
    
     
-}
-function  getCollegeByCourse($term){
-     echo "dhfkjdsfkhsdf";
-     echo $term;
-    $db=$GLOBALS['db'];
-    $query ="SELECT s.specialization_name, c.*,s.specialization_name,ds.degree_name,st.state_name,
-    af.affiliation_name,ap.approval_name,cty.type,ct.city_name
-    FROM college c
-    join college_degree cd on cd.college_id=c.id 
-    join Degree ds on ds.id = cd.degree_id 
-    join college_specilization cs on cs.college_id= c.id 
-    join Spacialization s on s.id = cs.specilization_id 
-    join college_stream cst on cst.college_id= c.id 
-    join stream sm on sm.id = cst.stream_id 
-    join State st on st.id = c.state_id
-    join affiliation af on af.id= c.affiliated_id
-    join Approval ap on ap.id = c.approvel_id
-    join Collage_type cty on cty.id = c.collage_type_id
-    join City ct on ct.id = c.city_id
-   
-    where  ds.degree_name like ('%$term%')";
-echo  $query;
-   $runQuery = mysqli_query($db,$query);
-   
-   
-    return $runQuery;
 }
   ?>

@@ -16,8 +16,7 @@ $degreelist = getdegreelists();
 $specilizationlist = getspecilizationlists();
  $colleges=searchcollegebyfilter();
 
-echo "hdwhdhe";
-   
+
  
 function searchcollegebyfilter(){
 
@@ -33,33 +32,37 @@ function searchcollegebyfilter(){
    $facilities =$_COOKIE["facilities"];
    $feerange = $_COOKIE["fee"];
 
-
-
-   $query="SELECT C.*,Ap.approval_name	,St.state_name,Cty.type ,
+	 $query="SELECT C.*,Ap.approval_name	,St.state_name,Cty.type ,
    Ds.degree_name,S.specialization_name 
 
 	 FROM college C
-    Join college_degree Cd On Cd.College_id=C.Id 
-	  Join State St On St.Id = C.State_id  
-	  Join Country Cont On Cont.Id = St.Country_id 
-		Join Degree Ds On Ds.Id = Cd.Degree_id 
-		Join college_approvel cap On cap.college_id = C.id 
-		Join Approval Ap On Ap.Id = cap.Approvel_id 
-		Join college_specilization Cs On Cs.College_id= C.Id 
-		Join Spacialization S On S.Id = Cs.Specilization_id 
-		Join college_stream Cst On Cst.College_id= C.Id 
-		Join stream Sem On Sem.Id = Cst.Stream_id 
-		Join Collage_type Cty On Cty.Id = C.Collage_type_id
-		Join City Ct On Ct.Id = C.City_id
-		Join collage_mode Cm On Cm.Collage_id = C.Id 
-		Join study_mode Sm On Sm.Id = Cm.Study_mode_id  
-		Join collage_hostel Ch On Ch.Collage_id= C.Id 
-		Join hostels H On H.Id = Ch.Hostel_id 
-		Join college_fee Cfe On Cfe.College_id = C.Id 
-		Join collage_facilities Cf On Cf.Collage_id = C.Id 
-		Join facilities Fa On Fa.Id = Cf.Facility_id 
-   where  Cont.country_name='India'" ;
-   
+	 JOIN college_degree Cd On Cd.College_id=C.Id 
+	 JOIN Degree Ds On Ds.Id = Cd.Degree_id 
+		JOIN college_approvel cap On cap.college_id = C.id 
+		JOIN Approval Ap On Ap.Id = cap.Approvel_id 
+	  JOIN State St On St.Id = C.State_id 
+		JOIN Collage_type Cty On Cty.Id = C.Collage_type_id
+		JOIN college_specilization Cs On Cs.College_id= C.Id 
+		JOIN Spacialization S On S.Id = Cs.Specilization_id 
+	  JOIN Country Cont On Cont.Id = St.Country_id 
+		JOIN college_stream Cst On Cst.College_id= C.Id 
+		JOIN stream Sem On Sem.Id = Cst.Stream_id 
+   " ;
+  
+	 if($city){ $query.="JOIN City Ct On Ct.Id = C.City_id"; } 
+	 if($mode){ $query.=" JOIN collage_mode Cm On Cm.Collage_id = C.Id 
+		JOIN study_mode Sm On Sm.Id = Cm.Study_mode_id  "; }
+	if($hostels){ $query.=" JOIN collage_hostel Ch On Ch.Collage_id= C.Id 
+		JOIN hostels H On H.Id = Ch.Hostel_id"; }
+	if($facilities){ $query.="JOIN collage_facilities Cf On Cf.Collage_id = C.Id 
+		JOIN facilities Fa On Fa.Id = Cf.Facility_id"; }
+	if($feerange){ 
+		$query.="	JOIN college_fee Cfe On Cfe.College_id = C.Id "; 
+		
+	 }
+
+
+	 $query.= "where  Cont.country_name='India'";
 
      if($state){ $query.=" and St.state_name='$state'"; }
      if($city){ $query.=" and Ct.city_name='$city'"; } 
@@ -95,10 +98,10 @@ function searchcollegebyfilter(){
 				$query.="";
 			}
 		 }
-
+		 
     $query.=" group by C.id";
 
-    echo $query;
+   
  		$runQuery=mysqli_query($db,$query);
  	//	print_r($runQuery);
  return $runQuery;
