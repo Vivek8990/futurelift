@@ -53,15 +53,19 @@ $degreelist1 = getdegreelists();
   <div id="mainPopUp" style="display: none;">
     <div class="formBox" id="popUpForm">
       <div class="boxForm">
-        <div class="popImg mx-5 py-3">
-          <img src="/images/newlogo.png" alt="" class="img-fluid">
-        </div>
-        <div class="popHeding">
+      <div class="popHeding">
           <h2 style="color: #fff;">Quick Contact: +91 84155 77889</h2>
           <h2 class="text-center" style="color: #fff;">admission open 2022</h2>
         </div>
 
-      </div>
+      
+              <div class="imgBox1">
+                <img src="images/modalpic-01.png" alt="">
+              </div>
+            
+            </div>
+       
+      
       <form>
         <div class="form-group">
           <input type="text" name="name" pattern="[A-Za-z]" class="form-control" placeholder="Name" required="">
@@ -98,14 +102,95 @@ $degreelist1 = getdegreelists();
         </div>
         <div class="form-group">
           <select class="form-control" name="course" id="popupcourse" required="">
-            <option value="">Select Course</option>
-            <?php      while($row =mysqli_fetch_array($degreelist,MYSQLI_ASSOC))
+            
 
-{
-    echo "	 
-          <option value='".$row['degree_name']."'>".$row['degree_name']."</option>
-          ";
-        } ?> 
+          <optgroup label = "Papular Course"> 
+                    <option value ="BE/B.Tech - Bachelors (Technology)">BE/B.Tech - Bachelors (Technology)</option>
+                    <option value ="MBA/PGDM - Masters (Business Administration)">MBA/PGDM - Masters (Business Administration)</option>
+                    <option value ="BBA/BBM - Bachelors (Business Administration)">BBA/BBM - Bachelors (Business Administration)</option>
+                    <option value ="B.Com - Bachelors (Commerce)">B.Com - Bachelors (Commerce)</option>
+                    <option value ="BA - Bachelors (Arts)">BA - Bachelors (Arts)</option>
+                    <option value ="MA - Masters (Arts)">MA - Masters (Arts)</option>
+                    <option value ="MBBS - Bachelors (Medicince and Surgery)">MBBS - Bachelors (Medicince and Surgery)</option>
+                    <option value ="BCA - Bachelors (Computer Applications)">BCA - Bachelors (Computer Applications)</option>
+                    <option value ="MCA - Masters (Computer Applications)">MCA - Masters (Computer Applications)</option>
+                    <option value ="ME/M.Tech - Masters (Technology)">ME/M.Tech - Masters (Technology)</option>
+                    <option value ="B.Sc - Bachelors (Science)">B.Sc - Bachelors (Science)</option>
+                    <option value ="M.Sc - Masters (Science)">M.Sc - Masters (Science)</option>
+</optgroup>
+<optgroup label = "Bachelor"> 
+<option value ="MBBS - Bachelors (Medicince and Surgery)">MBBS - Bachelors (Medicince and Surgery)</option>
+<option value ="BS - Bachelor (Science)">BS - Bachelor (Science)</option>
+<option value ="BA LLB - Bachelor (Law)">BA LLB - Bachelor (Law)</option>
+<option value ="LLB - Bachelor (Law)">LLB - Bachelor (Law)</option>
+<option value ="Bachelor of Animation - Bachelor (Animation)">Bachelor of Animation - Bachelor (Animation)</option>
+<option value ="BSW - Bachelor (Arts)">BSW - Bachelor (Arts)</option>
+<option value ="BPH - Bachelor (Medical)">BPH - Bachelor (Medical)</option>
+<option value ="B.F.Sc - Bachelor (Science)">B.F.Sc - Bachelor (Science)</option>
+<option value ="Bachelors (Animation & Graphic Design) - Bachelor (Arts)">Bachelors (Animation & Graphic Design) - Bachelor (Arts)</option>
+<option value ="BBA (Aviation) - Bachelor (Aviation)">BBA (Aviation) - Bachelor (Aviation)</option>
+<option value ="B.P.Ed - Bachelor (Education)">B.P.Ed - Bachelor (Education)</option>
+<option value ="BFA - Bachelor (Arts)">BFA - Bachelor (Arts)</option>
+<option value ="BUMS - Bachelor (Medical)">BUMS - Bachelor (Medical)</option>
+<option value ="Bachelor of Physiotherapy(BPT) - Bachelor (Medical)">Bachelor of Physiotherapy(BPT) - Bachelor (Medical)</option>
+<option value ="B.Planning - Bachelor (Architecture)">B.Planning - Bachelor (Architecture)</option>
+<option value ="BHMS - Bachelor (Medical)">BHMS - Bachelor (Medical)</option>
+<option value ="BHM (Hospital) - Bachelor (Management)">BHM (Hospital) - Bachelor (Management)</option>
+<option value ="BVSc - Bachelor (Veterinary Sciences)">BVSc - Bachelor (Veterinary Sciences)</option>
+<option value ="BMM - Bachelor (Mass Communications)">BMM - Bachelor (Mass Communications)</option>
+<option value ="B.Sc (Medicine) - Bachelor (Medical)">B.Sc (Medicine) - Bachelor (Medical)</option>
+<option value ="B.Sc (Agriculture) - Bachelor (Agriculture)">B.Sc (Agriculture) - Bachelor (Agriculture)</option>
+<option value ="B.Sc - Bachelors (Science)">B.Sc - Bachelors (Science)</option>
+<option value ="B.Pharm - Bachelor (Pharmacy)">B.Pharm - Bachelor (Pharmacy)</option>
+<option value ="B.Ed - Bachelor (Education)">B.Ed - Bachelor (Education)</option>
+<option value ="B.Des - Bachelor (Design)">B.Des - Bachelor (Design)</option>
+<option value ="B.Com - Bachelors (Commerce)">B.Com - Bachelors (Commerce)</option>
+<option value ="B.Arch - Bachelor (Architecture)">B.Arch - Bachelor (Architecture)</option>
+<option value ="B.Sc (Nursing) - Bachelor (Paramedical)">B.Sc (Nursing) - Bachelor (Paramedical)</option>
+<option value ="BA - Bachelors (Arts)">BA - Bachelors (Arts)</option>
+<option value ="BHM - Bachelor (Hotel Management)">BHM - Bachelor (Hotel Management)</option>
+<option value ="BE/B.Tech - Bachelors (Technology)">BE/B.Tech - Bachelors (Technology)</option>
+<option value ="BDS - Bachelor (Dental)">BDS - Bachelor (Dental)</option>
+<option value ="BCA - Bachelors (Computer Applications)">BCA - Bachelors (Computer Applications)</option>
+<option value ="BBA/BBM - Bachelors (Business Administration)">BBA/BBM - Bachelors (Business Administration)</option>
+<option value ="BAMS - Bachelor (Medical)">BAMS - Bachelor (Medical)</option>
+<option value ="Bachelors in Vocational Courses - Bachelor (Vocational Courses)">Bachelors in Vocational Courses - Bachelor (Vocational Courses)</option>
+</optgroup>
+<optgroup label = "Masters"> 
+  
+<option value ="M.P.Ed - Masters (Education)">M.P.Ed - Masters (Education)</option>
+<option value ="MMS - Masters (Management)">MMS - Masters (Management)</option>
+<option value ="M.Pharm - Masters (Pharmacy)">M.Pharm - Masters (Pharmacy)</option>
+<option value ="M.Ed - Masters (Education)">M.Ed - Masters (Education)</option>
+<option value ="Executive MBA - Masters (Management)">Executive MBA - Masters (Management)</option>
+<option value ="M.Des - Masters (Design)">M.Des - Masters (Design)</option>
+<option value ="Master of Animation - Masters (Animation)">Master of Animation - Masters (Animation)</option>
+<option value ="M.Com - Masters (Commerce)">M.Com - Masters (Commerce)</option>
+<option value ="LLM - Masters (Law)">LLM - Masters (Law)</option>
+<option value ="M.F.Sc - Masters (Science)">M.F.Sc - Masters (Science)</option>
+<option value ="MPH - Masters (Medical)">MPH - Masters (Medical)</option>
+<option value ="M.Ch - Masters (Medical)">M.Ch - Masters (Medical)</option>
+<option value ="MSW - Masters (Arts)">MSW - Masters (Arts)</option>
+<option value ="M.Arch - Masters (Architecture)">M.Arch - Masters (Architecture)</option>
+<option value ="MHA - Masters (Management)">MHA - Masters (Management)</option>
+<option value ="ME/M.Tech - Masters (Technology)">ME/M.Tech - Masters (Technology)</option>
+<option value ="M.Sc - Masters (Science)">M.Sc - Masters (Science)</option>
+<option value ="M.Sc (Agriculture) - Masters (Agriculture)">M.Sc (Agriculture) - Masters (Agriculture)</option>
+<option value ="M.Sc (Aviation) - Masters (Aviation)">M.Sc (Aviation) - Masters (Aviation)</option>
+<option value ="M.Sc (Medicine) - Masters (Medical)">M.Sc (Medicine) - Masters (Medical)</option>
+<option value ="M.Sc (Nursing) - Masters (Paramedical)">M.Sc (Nursing) - Masters (Paramedical)</option>
+<option value ="MA - Masters (Arts)">MA - Masters (Arts)</option>
+<option value ="Master of Physiotherapy(MPT) - Masters (Medical)">Master of Physiotherapy(MPT) - Masters (Medical)</option>
+<option value ="Masters in Vocational Courses - Masters (Vocational Courses)">Masters in Vocational Courses - Masters (Vocational Courses)</option>
+<option value ="MBA/PGDM - Masters (Business Administration)">MBA/PGDM - Masters (Business Administration)</option>
+<option value ="MCA - Masters (Computer Applications)">MCA - Masters (Computer Applications)</option>
+<option value ="MDS - Masters (Dental)">MDS - Masters (Dental)</option>
+<option value ="MHM - Masters (Hotel Management)">MHM - Masters (Hotel Management)</option>
+<option value ="MMC - Masters (Mass Communications)">MMC - Masters (Mass Communications)</option>
+<option value ="MS - Masters (Medical)">MS - Masters (Medical)</option>
+<option value ="MVSc - Masters (Veterinary Sciences)">MVSc - Masters (Veterinary Sciences)</option>
+<option value ="M.Planning - Masters (Architecture)">M.Planning - Masters (Architecture)</option>
+</optgroup>
           </select>
         </div>
         <div class="form-group">
@@ -809,14 +894,96 @@ $degreelist1 = getdegreelists();
                   </div>
                   <div class="col-4">
                     <select class="form-control" name="course" id="popupcourse" required="">
-                      <option value="">Select course</option>
-                      <?php      while($row =mysqli_fetch_array($degreelist1,MYSQLI_ASSOC))
+                   
+                    
 
-{
-    echo "	 
-          <option value='".$row['degree_name']."'>".$row['degree_name']."</option>
-          ";
-        } ?> 
+                    <optgroup label = "Papular Course"> 
+                    <option value ="BE/B.Tech - Bachelors (Technology)">BE/B.Tech - Bachelors (Technology)</option>
+                    <option value ="MBA/PGDM - Masters (Business Administration)">MBA/PGDM - Masters (Business Administration)</option>
+                    <option value ="BBA/BBM - Bachelors (Business Administration)">BBA/BBM - Bachelors (Business Administration)</option>
+                    <option value ="B.Com - Bachelors (Commerce)">B.Com - Bachelors (Commerce)</option>
+                    <option value ="BA - Bachelors (Arts)">BA - Bachelors (Arts)</option>
+                    <option value ="MA - Masters (Arts)">MA - Masters (Arts)</option>
+                    <option value ="MBBS - Bachelors (Medicince and Surgery)">MBBS - Bachelors (Medicince and Surgery)</option>
+                    <option value ="BCA - Bachelors (Computer Applications)">BCA - Bachelors (Computer Applications)</option>
+                    <option value ="MCA - Masters (Computer Applications)">MCA - Masters (Computer Applications)</option>
+                    <option value ="ME/M.Tech - Masters (Technology)">ME/M.Tech - Masters (Technology)</option>
+                    <option value ="B.Sc - Bachelors (Science)">B.Sc - Bachelors (Science)</option>
+                    <option value ="M.Sc - Masters (Science)">M.Sc - Masters (Science)</option>
+</optgroup>
+<optgroup label = "Bachelor"> 
+<option value ="MBBS - Bachelors (Medicince and Surgery)">MBBS - Bachelors (Medicince and Surgery)</option>
+<option value ="BS - Bachelor (Science)">BS - Bachelor (Science)</option>
+<option value ="BA LLB - Bachelor (Law)">BA LLB - Bachelor (Law)</option>
+<option value ="LLB - Bachelor (Law)">LLB - Bachelor (Law)</option>
+<option value ="Bachelor of Animation - Bachelor (Animation)">Bachelor of Animation - Bachelor (Animation)</option>
+<option value ="BSW - Bachelor (Arts)">BSW - Bachelor (Arts)</option>
+<option value ="BPH - Bachelor (Medical)">BPH - Bachelor (Medical)</option>
+<option value ="B.F.Sc - Bachelor (Science)">B.F.Sc - Bachelor (Science)</option>
+<option value ="Bachelors (Animation & Graphic Design) - Bachelor (Arts)">Bachelors (Animation & Graphic Design) - Bachelor (Arts)</option>
+<option value ="BBA (Aviation) - Bachelor (Aviation)">BBA (Aviation) - Bachelor (Aviation)</option>
+<option value ="B.P.Ed - Bachelor (Education)">B.P.Ed - Bachelor (Education)</option>
+<option value ="BFA - Bachelor (Arts)">BFA - Bachelor (Arts)</option>
+<option value ="BUMS - Bachelor (Medical)">BUMS - Bachelor (Medical)</option>
+<option value ="Bachelor of Physiotherapy(BPT) - Bachelor (Medical)">Bachelor of Physiotherapy(BPT) - Bachelor (Medical)</option>
+<option value ="B.Planning - Bachelor (Architecture)">B.Planning - Bachelor (Architecture)</option>
+<option value ="BHMS - Bachelor (Medical)">BHMS - Bachelor (Medical)</option>
+<option value ="BHM (Hospital) - Bachelor (Management)">BHM (Hospital) - Bachelor (Management)</option>
+<option value ="BVSc - Bachelor (Veterinary Sciences)">BVSc - Bachelor (Veterinary Sciences)</option>
+<option value ="BMM - Bachelor (Mass Communications)">BMM - Bachelor (Mass Communications)</option>
+<option value ="B.Sc (Medicine) - Bachelor (Medical)">B.Sc (Medicine) - Bachelor (Medical)</option>
+<option value ="B.Sc (Agriculture) - Bachelor (Agriculture)">B.Sc (Agriculture) - Bachelor (Agriculture)</option>
+<option value ="B.Sc - Bachelors (Science)">B.Sc - Bachelors (Science)</option>
+<option value ="B.Pharm - Bachelor (Pharmacy)">B.Pharm - Bachelor (Pharmacy)</option>
+<option value ="B.Ed - Bachelor (Education)">B.Ed - Bachelor (Education)</option>
+<option value ="B.Des - Bachelor (Design)">B.Des - Bachelor (Design)</option>
+<option value ="B.Com - Bachelors (Commerce)">B.Com - Bachelors (Commerce)</option>
+<option value ="B.Arch - Bachelor (Architecture)">B.Arch - Bachelor (Architecture)</option>
+<option value ="B.Sc (Nursing) - Bachelor (Paramedical)">B.Sc (Nursing) - Bachelor (Paramedical)</option>
+<option value ="BA - Bachelors (Arts)">BA - Bachelors (Arts)</option>
+<option value ="BHM - Bachelor (Hotel Management)">BHM - Bachelor (Hotel Management)</option>
+<option value ="BE/B.Tech - Bachelors (Technology)">BE/B.Tech - Bachelors (Technology)</option>
+<option value ="BDS - Bachelor (Dental)">BDS - Bachelor (Dental)</option>
+<option value ="BCA - Bachelors (Computer Applications)">BCA - Bachelors (Computer Applications)</option>
+<option value ="BBA/BBM - Bachelors (Business Administration)">BBA/BBM - Bachelors (Business Administration)</option>
+<option value ="BAMS - Bachelor (Medical)">BAMS - Bachelor (Medical)</option>
+<option value ="Bachelors in Vocational Courses - Bachelor (Vocational Courses)">Bachelors in Vocational Courses - Bachelor (Vocational Courses)</option>
+</optgroup>
+<optgroup label = "Masters"> 
+  
+<option value ="M.P.Ed - Masters (Education)">M.P.Ed - Masters (Education)</option>
+<option value ="MMS - Masters (Management)">MMS - Masters (Management)</option>
+<option value ="M.Pharm - Masters (Pharmacy)">M.Pharm - Masters (Pharmacy)</option>
+<option value ="M.Ed - Masters (Education)">M.Ed - Masters (Education)</option>
+<option value ="Executive MBA - Masters (Management)">Executive MBA - Masters (Management)</option>
+<option value ="M.Des - Masters (Design)">M.Des - Masters (Design)</option>
+<option value ="Master of Animation - Masters (Animation)">Master of Animation - Masters (Animation)</option>
+<option value ="M.Com - Masters (Commerce)">M.Com - Masters (Commerce)</option>
+<option value ="LLM - Masters (Law)">LLM - Masters (Law)</option>
+<option value ="M.F.Sc - Masters (Science)">M.F.Sc - Masters (Science)</option>
+<option value ="MPH - Masters (Medical)">MPH - Masters (Medical)</option>
+<option value ="M.Ch - Masters (Medical)">M.Ch - Masters (Medical)</option>
+<option value ="MSW - Masters (Arts)">MSW - Masters (Arts)</option>
+<option value ="M.Arch - Masters (Architecture)">M.Arch - Masters (Architecture)</option>
+<option value ="MHA - Masters (Management)">MHA - Masters (Management)</option>
+<option value ="ME/M.Tech - Masters (Technology)">ME/M.Tech - Masters (Technology)</option>
+<option value ="M.Sc - Masters (Science)">M.Sc - Masters (Science)</option>
+<option value ="M.Sc (Agriculture) - Masters (Agriculture)">M.Sc (Agriculture) - Masters (Agriculture)</option>
+<option value ="M.Sc (Aviation) - Masters (Aviation)">M.Sc (Aviation) - Masters (Aviation)</option>
+<option value ="M.Sc (Medicine) - Masters (Medical)">M.Sc (Medicine) - Masters (Medical)</option>
+<option value ="M.Sc (Nursing) - Masters (Paramedical)">M.Sc (Nursing) - Masters (Paramedical)</option>
+<option value ="MA - Masters (Arts)">MA - Masters (Arts)</option>
+<option value ="Master of Physiotherapy(MPT) - Masters (Medical)">Master of Physiotherapy(MPT) - Masters (Medical)</option>
+<option value ="Masters in Vocational Courses - Masters (Vocational Courses)">Masters in Vocational Courses - Masters (Vocational Courses)</option>
+<option value ="MBA/PGDM - Masters (Business Administration)">MBA/PGDM - Masters (Business Administration)</option>
+<option value ="MCA - Masters (Computer Applications)">MCA - Masters (Computer Applications)</option>
+<option value ="MDS - Masters (Dental)">MDS - Masters (Dental)</option>
+<option value ="MHM - Masters (Hotel Management)">MHM - Masters (Hotel Management)</option>
+<option value ="MMC - Masters (Mass Communications)">MMC - Masters (Mass Communications)</option>
+<option value ="MS - Masters (Medical)">MS - Masters (Medical)</option>
+<option value ="MVSc - Masters (Veterinary Sciences)">MVSc - Masters (Veterinary Sciences)</option>
+<option value ="M.Planning - Masters (Architecture)">M.Planning - Masters (Architecture)</option>
+</optgroup>
                     </select>
                   </div>
                 </div>
@@ -946,33 +1113,37 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
     echo "      <div class='swiper-slide'>
             <div class='topUniCol'>
               <div class='colInfo'>
+              <a style='text-decoration:none; '  href='collegepage.php?id=".$row['id']."'> 
                 <div class='colimg'>
                   <img src='images/partner/images (10).png' alt=''>
                 </div>
                 <div class='colDitail'>
-                  <h4>".$row['collage_name']."</h4>
+              	  <h4>".$row['collage_name']."</h4>
                   <p>".$row['state_name'].", ".$row['city_name']."<span>| ".$row['approval_name']."</span> </p>
                 </div>
               </div>
               <div class='reviweRating'>
+              
                 <div class='courseDitail'>
-                  <h4>".$row['degree_name']."</h4>
-                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                     <h4>".$row['degree_name']."</h4>
+                  <p style='color: gray;'>2.5 lakhs <span>for 1st year</span> </p>
                 </div>
                 <div class='reting'>
                   <i class='fa fa-star'>".$row['rating']."/10</i>
                   <p>".$row['rv']." reviews</p>
                 </div>
+               
               </div>
               <div class='courseDownloadPart'>
                 <div class='couresFess'>
-                  <h4><a href='javascript:void(0);'> view course and fees</a></h4>
+                  <h4><a href='collegepage.php?id=".$row['id']."'> view course and fees</a></h4>
                   <i class='fa fa-angle-right'></i>
                 </div>
                 <div class='downlodPart'>
-                  <h4><a href='javascript:void(0);'>downlod bruchre</a></h4>
+                  <h4><a href='collegepage.php?id=".$row['id']."'>downlod bruchre</a></h4>
                   <i class='fa fa-angle-right'></i>
                 </div>
+                </a>
               </div>
             </div>
           </div>";

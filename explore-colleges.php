@@ -237,33 +237,37 @@ while($row = mysqli_fetch_array($collage ,MYSQLI_ASSOC))
     echo "      <div class='swiper-slide'>
             <div class='topUniCol'>
               <div class='colInfo'>
+              <a style='text-decoration:none; '  href='collegepage.php?id=".$row['id']."'> 
                 <div class='colimg'>
                   <img src='images/partner/images (10).png' alt=''>
                 </div>
                 <div class='colDitail'>
-                  <h4>".$row['collage_name']."</h4>
+              	  <h4>".$row['collage_name']."</h4>
                   <p>".$row['state_name'].", ".$row['city_name']."<span>| ".$row['approval_name']."</span> </p>
                 </div>
               </div>
               <div class='reviweRating'>
+              
                 <div class='courseDitail'>
-                  <h4>".$row['degree_name']."</h4>
-                  <p>2.5 lakhs <span>for 1st year</span> </p>
+                     <h4>".$row['degree_name']."</h4>
+                  <p style='color: gray;'>2.5 lakhs <span>for 1st year</span> </p>
                 </div>
                 <div class='reting'>
                   <i class='fa fa-star'>".$row['rating']."/10</i>
                   <p>".$row['rv']." reviews</p>
                 </div>
+               
               </div>
               <div class='courseDownloadPart'>
                 <div class='couresFess'>
-                  <h4><a href='javascript:void(0);'> view course and fees</a></h4>
+                  <h4><a href='collegepage.php?id=".$row['id']."'> view course and fees</a></h4>
                   <i class='fa fa-angle-right'></i>
                 </div>
                 <div class='downlodPart'>
-                  <h4><a href='javascript:void(0);'>downlod bruchre</a></h4>
+                  <h4><a href='collegepage.php?id=".$row['id']."'>downlod bruchre</a></h4>
                   <i class='fa fa-angle-right'></i>
                 </div>
+                </a>
               </div>
             </div>
           </div>";

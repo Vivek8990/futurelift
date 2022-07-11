@@ -145,12 +145,12 @@ print_r($data);
             <div class="balance1">
               <h3 class="text-center">Total Balance</h3>
               <h4 class="text-center"><?php echo $balance['total']; ?>/-</h4>
-              <a href="" class="btn">Recommendation</a>
+              <a href="" class="btn" style="align:center;"> View </a>
             </div>
             <div class="balance1">
               <h3 class="text-center">My Network</h3>
               <h4 class="text-center"><?php echo $totalrefer; ?></h4>
-              <a href="" class="btn">Refer a Friend</a>
+              <a href="" class="btn">View</a>
             </div>
           </div>
         </div>
@@ -178,20 +178,20 @@ elseif($kyc['status']=='approved') {
     <div class="container">
       <h4 class="heading text-center">share your code </h4>
       <div class="row g-2">
-        <div class="col-md">
+        <!-- <div class="col-md">
           <div class="form-group mb-3">
             <label class="form-label" for="inputGroupSelect01">select program</label>
             <select class="form-control p-4" id="inputGroupSelect01" >
               <option>program</option>
-              <option value="upi transfer" <?php if($data['salary']=='UPI'){ echo 'selected';} ?>>UPI transfer</option>
-              <option value="Credit Card"  <?php if($datar['salary']=='Credit Card'){echo 'selected';} ?>>Credit Card</option>
-              <option value="Bank Account"  <?php if($data['salary']=='Bank Account'){echo 'selected';} ?>>Bank Account</option>
-              <option value="Cheque"   <?php if($data['salary']=='Cheque'){echo 'selected';} ?>>Cheque</option>
-              <option value="NEFT"  <?php if($data['salary']=='NEFT'){echo 'selected';} ?>>NEFT</option>
-              <option value="Demand Draft"  <?php if($data['salary']=='Demand Draft'){echo 'selected';} ?>>Demand Draft</option>
+              <option value="upi transfer" <?php //if($data['salary']=='UPI'){ echo 'selected';} ?>>UPI transfer</option>
+              <option value="Credit Card"  <?php //if($datar['salary']=='Credit Card'){echo 'selected';} ?>>Credit Card</option>
+              <option value="Bank Account"  <?php //if($data['salary']=='Bank Account'){echo 'selected';} ?>>Bank Account</option>
+              <option value="Cheque"   <?php //if($data['salary']=='Cheque'){echo 'selected';} ?>>Cheque</option>
+              <option value="NEFT"  <?php //if($data['salary']=='NEFT'){echo 'selected';} ?>>NEFT</option>
+              <option value="Demand Draft"  <?php //if($data['salary']=='Demand Draft'){echo 'selected';} ?>>Demand Draft</option>
             </select>
           </div>
-        </div>
+        </div> -->
         <div class="col-md">
           <div class="form-group mb-3">
             <label for="" class="form-label">copy code</label>
