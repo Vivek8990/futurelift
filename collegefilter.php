@@ -14,7 +14,7 @@ $hostel = gethostel();
 $facility = getfacility();
 $degreelist = getdegreelists();
 $specilizationlist = getspecilizationlists();
- $colleges=searchcollegebyfilter();
+$colleges=searchcollegebyfilter();
 
 
  

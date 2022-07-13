@@ -1,31 +1,14 @@
 <?php
+require_once('functions.php');
+$login = $_SESSION['userIsLoggedIn'];
+$data=$_SESSION['userdata'];
+$id=$data['id'];
+$totalrefer = gettotalrefereduser($id);
+$balance = getcounselerBalance($id);
 
-if (isset($_GET['gtstate'])) {
-    print_r($_COOKIE["state"]);       
-   
+print_r($totalrefer);
+print_r($balance);
+
   
-  
-  }
-  
-  if (isset($_GET['gtcity'])) {
-    print_r($_COOKIE["city"]);       
-  
-  
-  
-  }
-  
-  if (isset($_GET['gtmode'])) {
-    print_r($_COOKIE["study"]);       
-   
-  
-  
-  }
-  
-  if (isset($_GET['gttype'])) {
-    print_r($_COOKIE["type"]);       
-   
-  
-  
-  }
 
 ?>

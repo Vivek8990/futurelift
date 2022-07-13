@@ -6,7 +6,7 @@ $id=$data['id'];
 $totalrefer = gettotalrefer($id);
 $balance = getBalance($id);
 $kyc = checkkyc($id);
-print_r($data);
+
 ?>
 
 <!DOCTYPE html>
@@ -145,12 +145,12 @@ print_r($data);
             <div class="balance1">
               <h3 class="text-center">Total Balance</h3>
               <h4 class="text-center"><?php echo $balance['total']; ?>/-</h4>
-              <a href="" class="btn" style="align:center;"> View </a>
+              <a href='abc.php?id=<?php echo $data['id'];?>' class="btn" style="align:center;"> View </a>
             </div>
             <div class="balance1">
               <h3 class="text-center">My Network</h3>
               <h4 class="text-center"><?php echo $totalrefer; ?></h4>
-              <a href="" class="btn">View</a>
+              <a href='abc.php?id=<?php echo $data['id'];?>'class="btn" style="align:center;"> view history</a>
             </div>
           </div>
         </div>
@@ -319,7 +319,7 @@ elseif($kyc['status']=='approved') {
   </section>
 
 
-  <section class="university_partner" id="univerPart">
+  <!-- <section class="university_partner" id="univerPart">
     <h1 class="heading text-center">our top university partners</h1>
     <div class="container">
       <div class="swiper referParnerSwiper">
@@ -341,8 +341,187 @@ elseif($kyc['status']=='approved') {
     </div>
     
 
-  </section>
+  </section> -->
+  <section id="partner" class="partner">
+    <div class="container">
+      <div class="row d-flex">
+        <h2 class="heading">our partners</h2>
+        <div class="swiper pertnerSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="images/patners/Ct_logo.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/channels4_profile.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/download.jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/ECE LOGO.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (1).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (1).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (10).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (2).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (2).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (3).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (3).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (4).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (4).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (5).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (5).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (7).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (8).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images (9).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images.jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/images.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/ISME-Logo.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/logo-au-web.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/logo-wide.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/medisky-ff.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/RRI-logo.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/patners/Short-Logo-Black new.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/b9034e_281dafa7977c40a69a4f94eaf73d71c8_mv2.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/Budge_Budge_Institute_of_Technology_Logo.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/download.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/Guru_Nanak_Institute_of_Dental_Sciences_and_Research_logo.png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (10).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (12).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (11).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (13).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (14).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (15).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (16).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (17).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (19).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (20).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (21).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (22).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (23).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (24).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (25).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (26).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (27).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (28).jpeg" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (6).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (7).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (8).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/images (9).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/logo (1).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/logo (2).png" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="images/partner/logo.png" alt="">
+            </div>
+            
+          </div>
+          <!-- <div class="swiper-button-next"></div> -->
+          <div class="swiper-pagination"></div>
 
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- share FAQs -->
 
   <section class="referfaQs" id="referfaQs">

@@ -1506,6 +1506,20 @@ function addcounseler($data)
     
  }
 
+ function gettotalrefereduser($id){
+    $db = $GLOBALS['db'];
+    $counselerid = $id;
+   
+    $query = "SELECT * FROM refer   WHERE counseler_id='$counselerid'";
+    $runQuery = mysqli_query($db, $query);
+    // $user = mysqli_fetch_array($runQuery, MYSQLI_ASSOC);
+    // $count = mysqli_num_rows($runQuery);
+    
+    
+    return  $runQuery;
+    
+ }
+
 function getBalance($id){
     $db = $GLOBALS['db'];
     $counselerid = $id;
@@ -1527,6 +1541,19 @@ function getBalance($id){
     $counseler['available']=$available;
     $counseler['total']=$total;
     return $counseler;
+    
+ }
+
+
+function getcounselerBalance($id){
+    $db = $GLOBALS['db'];
+    $counselerid = $id;
+    $querycredit = "select * from counseler_wallet where counseler_id='$counselerid'";
+    $runQuery = mysqli_query($db, $querycredit);
+    // $credit = mysqli_fetch_array($runQuerycredit, MYSQLI_ASSOC);
+
+    
+    return $runQuery ;
     
  }
 
@@ -1667,11 +1694,12 @@ function addkyc($data,$files)
     if(count($user['errors'])<1){
     
     
-   
+   echo "0000000";
     $query="INSERT INTO counsler_kyc(pan,pannumber,counslerid,created,status) ";
     $query.="VALUES('$panupload','$pannumber',' $cou','$created','processing')";
+    echo $query;
     $runQuery = mysqli_query($db,$query);
-
+    echo "11111";
     if($runQuery){
         $user['success']="KYC submitted successfully !";
 
