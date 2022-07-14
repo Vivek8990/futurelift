@@ -3,6 +3,38 @@ require_once('functions.php');
 $result=collegelist();
 $admin = $_SESSION['userdata']['role'];
 
+if(isset($_POST['searchbtn'])){
+  $search = $_POST['search'];
+ // echo $search;
+  $result = getcollegebysearch($search);
+ 
+}
+if(isset($_POST['reset'])){
+ 
+  $result = collegelist();
+ 
+}
+
+function getcollegebysearch($term){
+  
+  $db=$GLOBALS['db'];
+  $search = $term;
+
+  
+    $query="SELECT c.*,af.affiliation_name,ap.approval_name	,co.degree_name,s.state_name,ct.type FROM college c INNER JOIN affiliation af on af.id=c.affiliated_id
+  INNER JOIN   Approval ap on ap.id= c.approvel_id 
+  INNER JOIN college_degree cd on cd.college_id = c.id
+  INNER JOIN   Degree co on co.id= cd.degree_id
+  INNER JOIN State s on s.id=c.state_id 
+  INNER JOIN   Collage_type ct on ct.id=c.collage_type_id 
+  
+  where c.collage_name like ('%$search%') || co.degree_name like ('%$search%') ||s.state_name like ('%$search%') || ct.type like ('%$search%') || c.gender like ('%$search%')";
+  
+   $runQuery=mysqli_query($db,$query);
+  
+    return $runQuery;
+
+}
 ?>
 <html>
 <head>
@@ -89,8 +121,16 @@ body {
   <a href="functions.php?adminlogout">Signout</a>
 </div>
 <div class="main">
+<h1>college List</h1>
+<div class="search-container" style="float:left;">
+    <form action="" method="post">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit" name= "searchbtn">Submit</button>
+      <button type="submit" name= "reset">Reset</button>
+    </form>
+  </div>
 <table id="customers">
-<caption><h1>college List</h1></caption>
+
 <tr>
 <th>collage_name </th>
 <th>state </th>

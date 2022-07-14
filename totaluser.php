@@ -3,6 +3,31 @@ require_once('functions.php');
 $result=(getuserlist());
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
+
+if(isset($_POST['searchbtn'])){
+  $search = $_POST['search'];
+ // echo $search;
+  $result = getuserbysearch($search);
+ 
+}
+if(isset($_POST['reset'])){
+ 
+  $result = getuserlist();
+ 
+}
+
+function getuserbysearch($term){
+  
+  $db = $GLOBALS['db'];
+  $created = date("Y-m-d h:i:s");
+  $search = $term;
+
+  $query="SELECT * FROM  users  where full_name like ('%$search%') || email_id like ('%$search%') || mobile like ('%$search%') || created like ('%$search%') ";
+  
+  $runQuery=mysqli_query($db,$query);
+  return $runQuery;
+
+}
 ?>
 <html>
 <head>
@@ -87,9 +112,17 @@ body {
   <?php } ?>
   <a href="functions.php?adminlogout">Signout</a>
 </div>
-<div class="main">
+<div class="main"><h1>User List</h1>
+<div class="search-container" style="float:left;">
+    <form action="" method="post">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit" name= "searchbtn">Submit</button>
+      <button type="submit" name= "reset">Reset</button>
+    </form>
+  </div>
+
 <table id="customers">
-<caption><h1>User List</h1></caption>
+<caption></caption>
 <tr>
 <th>fullnname </th>
 <th>emailid </th>

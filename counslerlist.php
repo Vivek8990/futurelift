@@ -3,6 +3,31 @@ require_once('functions.php');
 $result=(counslerlist());
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
+
+if(isset($_POST['searchbtn'])){
+  $search = $_POST['search'];
+ // echo $search;
+  $result = getcounslerbysearch($search);
+ 
+}
+if(isset($_POST['reset'])){
+ 
+  $result = counslerlist();
+ 
+}
+
+function getcounslerbysearch($term){
+  
+  $db = $GLOBALS['db'];
+  $created = date("Y-m-d h:i:s");
+  $search = $term;
+
+  $query="SELECT * FROM  counsler  where fullname like ('%$search%') || 	email_id like ('%$search%') || gender like ('%$search%') || preferedlanguage like ('%$search%') || 	workschedule like ('%$search%') || salary like ('%$search%') || refercode like ('%$search%') ";
+  
+  $runQuery=mysqli_query($db,$query);
+  return $runQuery;
+
+}
 ?>
 <html>
 <head>
@@ -89,8 +114,16 @@ body {
   <a href="functions.php?adminlogout">Signout</a>
 </div>
 <div class="main">
+<h1>Counsler List</h1>
+<div class="search-container" style="float:left;">
+    <form action="" method="post">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit" name= "searchbtn">Submit</button>
+      <button type="submit" name= "reset">Reset</button>
+    </form>
+  </div>
 <table id="customers">
-<caption><h1>Counsler List</h1></caption>
+<caption></caption>
 <tr>
 <th>Full name </th>
 <th>Email </th>
@@ -113,7 +146,7 @@ body {
 
   echo "<td>" . $row['fullname'] . "</td>";
 
-  echo "<td>" . $row['email'] . "</td>";
+  echo "<td>" . $row['email_id'] . "</td>";
 
   echo "<td>" . $row['dob'] . "</td>";
 
