@@ -1089,9 +1089,7 @@ $degreelist1 = getdegreelists();
                 </li>
               </ul>
               <button class="btn django-button-config button django-form-submit apply_now_det_cd gtm-lead-click home-btn"
-              data-gsp-ripple="" data-toggle="modal" data-button_id="27" data-cta_id="206"
-              onclick="ga('send', 'event', 'enquiry', 'show', 'enquiry-brochure');"><a href="career.php"
-                class="creBtn">Talk to our Experts</a> </button>
+              data-gsp-ripple=""  data-bs-toggle="modal" data-bs-target="#exampleModal">Talk to our Experts </button>
             </div>
           </div>
         </div>

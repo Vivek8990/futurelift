@@ -3,6 +3,33 @@ require_once('functions.php');
 $result=scholershiplist();
 $admin = $_SESSION['userdata']['role'];
 if($admin != 'superadmin') {header('location:admin_dashboard.php'); }
+
+if(isset($_POST['searchbtn'])){
+  $search = $_POST['search'];
+ // echo $search;
+  $result = getscholershipbysearch($search);
+ 
+}
+if(isset($_POST['reset'])){
+ 
+  $result = scholershiplist();
+ 
+}
+
+function getscholershipbysearch($term){
+  
+  $db = $GLOBALS['db'];
+  $created = date("Y-m-d h:i:s");
+  $search = $term;
+
+  $query="SELECT * FROM  Scholorship  where fullname like ('%$search%') || 	email like ('%$search%') || mobile like ('%$search%') || collegename like ('%$search%') || 	coursename like ('%$search%') || created like ('%$search%') || hspersentage like ('%$search%')";
+
+ //echo $query;
+  
+  $runQuery=mysqli_query($db,$query);
+  return $runQuery;
+
+}
 ?>
 <html>
 <head>
@@ -90,6 +117,13 @@ body {
 </div>
 
 <div class="main">
+<div class="search-container" style="float:left;">
+    <form action="" method="post">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit" name= "searchbtn">Submit</button>
+      <button type="submit" name= "reset">Reset</button>
+    </form>
+  </div>
 <table id="customers">
 <caption><h1>User List</h1></caption>
 <tr>
