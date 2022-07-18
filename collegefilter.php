@@ -62,7 +62,7 @@ function searchcollegebyfilter(){
 	 }
 
 
-	 $query.= "where  Cont.country_name='India'";
+	 $query.= "  where  Cont.country_name='India'";
 
      if($state){ $query.=" and St.state_name='$state'"; }
      if($city){ $query.=" and Ct.city_name='$city'"; } 
@@ -100,7 +100,7 @@ function searchcollegebyfilter(){
 		 }
 		 
     $query.=" group by C.id";
-
+		
    
  		$runQuery=mysqli_query($db,$query);
  	//	print_r($runQuery);

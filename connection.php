@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "responsive";
+$db = "shokpixc_futurelift";
 
 // Create connection
 try{

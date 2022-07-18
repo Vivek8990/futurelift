@@ -61,7 +61,7 @@ function searchcollegebyfilter(){
 	 }
 
 
-	 $query.= "where  Cont.country_name='India'";
+	 $query.= "  where  Cont.country_name='India'";
 
      if($state){ $query.=" and St.state_name='$state'"; }
      if($city){ $query.=" and Ct.city_name='$city'"; } 

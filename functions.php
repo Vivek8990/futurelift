@@ -844,7 +844,8 @@ function getCollegeByCategoury($data){
     INNER JOIN Collage_type cty on cty.id = c.collage_type_id
     INNER JOIN City ct on ct.id = c.city_id
    
-    where  sm.stream ='$data' ";
+    where  sm.stream ='$data' 
+    group by c.id";
  //echo $query;
    $runQuery = mysqli_query($db,$query);
    
@@ -871,7 +872,9 @@ function getCollegeBystate($data){
     INNER JOIN Collage_type cty on cty.id = c.collage_type_id
     INNER JOIN City ct on ct.id = c.city_id
    
-    where  st.state_name ='$data' ";
+    where  st.state_name ='$data'
+    
+    group by c.id ";
 
    $runQuery = mysqli_query($db,$query);
    
@@ -898,7 +901,8 @@ function getCollegeBycity($data){
     INNER JOIN Collage_type cty on cty.id = c.collage_type_id
     INNER JOIN City ct on ct.id = c.city_id
    
-    where  ct.city_name ='$data' ";
+    where  ct.city_name ='$data' 
+    group by c.id";
 
    $runQuery = mysqli_query($db,$query);
    
@@ -1279,7 +1283,7 @@ function addnewCollege($data,$files)
     affiliated_id,gender,created,updated,city_id,rank,logo,bruchre,college_contact,address,cllege_details) ";
     $query.="VALUES('$collage_name','$state_id','$Collage_type','1',
     '$affiliated_id','$gender','$created','$created','$city_id','$rank','$logoupload','$brucherupload','$college_contact','$address','$cllege_details')";
-    
+    echo $query;
     $runQuery = mysqli_query($db,$query);
     
     $last_id = $db->insert_id;
@@ -1289,29 +1293,29 @@ function addnewCollege($data,$files)
                     //data entry in college_fee
                 $queryfee="INSERT INTO college_fee(college_id,course_id,course_fee) ";
                 $queryfee.="VALUES('$last_id','$course_id','$fees')";
-            
+                echo $queryfee;
                 $runQueryfee = mysqli_query($db,$queryfee);
                 //data entry in college_degree
                 $querydegree="INSERT INTO college_degree(college_id,degree_id) ";
                 $querydegree.="VALUES('$last_id','$course_id')";
-            
+                echo $querydegree;
                 $runQuerydegree = mysqli_query($db,$querydegree);
                 //data entry in college_specilization
                 $queryspec="INSERT INTO college_specilization(college_id,specilization_id) ";
                 $queryspec.="VALUES('$last_id','$specilization')";
-            
+                echo $queryspec;
                 $runQueryspec = mysqli_query($db,$queryspec);
                 //data entry in college_stream
                 $querystrem="INSERT INTO college_stream(college_id,stream_id) ";
                 $querystrem.="VALUES('$last_id','$stream')";
-
+                echo $querystrem;
                 $runQuerystrem = mysqli_query($db,$querystrem);
     
                 $user['success']="college added successfully !";
                 //data entry in rating
                 $queryrating="INSERT INTO rating(collage_id,rating,created) ";
                 $queryrating.="VALUES('$last_id','8','$created')";
-
+                echo $queryrating;
                 $runQueryrating = mysqli_query($db,$queryrating);
                // echo $queryrating;
                // echo '--------------------------';
@@ -1320,7 +1324,7 @@ function addnewCollege($data,$files)
                 //data entry in review
                 $queryreview="INSERT INTO Reviews(collage_id,review,created) ";
                 $queryreview.="VALUES('$last_id','Very good college for students.','$created')";
-               // echo $queryreview;
+                echo $queryreview;
                // echo '----------------------------';
                 $runQueryreview = mysqli_query($db,$queryreview);
 
@@ -1331,6 +1335,7 @@ function addnewCollege($data,$files)
                         //data entry in college_approvel
                     $querymode="INSERT INTO collage_mode(collage_id,study_mode_id	) ";
                     $querymode.="VALUES('$last_id','$modeid')";
+                    echo $querymode;
                     
                     $runQuerymode = mysqli_query($db,$querymode);
                 }
@@ -1358,7 +1363,7 @@ function addnewCollege($data,$files)
                         //data entry in college_approvel
                     $queryapproval="INSERT INTO college_approvel(college_id,approvel_id	) ";
                     $queryapproval.="VALUES('$last_id','$id')";
-
+                    echo $queryapproval;
                     $runQueryapproval = mysqli_query($db,$queryapproval);
                 }
 
@@ -1369,7 +1374,7 @@ function addnewCollege($data,$files)
                         //data entry in college_gallery
                     $querygallery="INSERT INTO college_gallery(name,url,college_id,created) ";
                     $querygallery.="VALUES('$filename','$galleryupload','$last_id','$created')";
-
+                    echo $querygallery;
                     $runQuerygallery = mysqli_query($db,$querygallery);
                 }
                 
@@ -1379,7 +1384,7 @@ function addnewCollege($data,$files)
                 $user['errors'][]="Something went wrong !";
             }
         
-           return $user;
+        //   return $user;
         
     
 }
@@ -1952,7 +1957,8 @@ INNER JOIN Approval ap on ap.id = c.approvel_id
 INNER JOIN Collage_type cty on cty.id = c.collage_type_id
 INNER JOIN City ct on ct.id = c.city_id
 
-where  c.id ='$id' ";
+where  c.id ='$id' 
+group by c.id";
 //print_r($runQuery1);
 $runQuery = mysqli_query($db,$query);
 //$runQuery1 = mysqli_fetch_array($runQuery,MYSQLI_ASSOC);
