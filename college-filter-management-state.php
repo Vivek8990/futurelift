@@ -635,14 +635,14 @@ $specilizationlist = getspecilizationlists();
       })
     })
 
-    let freerangeCheckBox = document.querySelectorAll('.freerange')
+    let freerangeCheckBox = document.querySelectorAll('.fee')
     var freerange= [];
     freerangeCheckBox.forEach((checkbox) => { 
       checkbox.addEventListener('change', (event) => {
         if (event.target.checked) {
             freerange.push(event.target.value)
           console.log(freerange);
-          document.cookie = "freerange="+freerange;
+          document.cookie = "fee="+freerange;
           window.location.href = "college-filter.php?gtfreerange";
         }
       })

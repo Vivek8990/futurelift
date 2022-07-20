@@ -363,42 +363,42 @@ $colleges = getCollegeByCategoury($term);
 								<div class="filterItems ">
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" class="form-check-input freerange">
 											<label for="" class="form-label">Less Than 1 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" class="form-check-input freerange">
 											<label for="" class="form-label">1 to 2 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" class="form-check-input freerange">
 											<label for="" class="form-label">2 to 3 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" class="form-check-input freerange">
 											<label for="" class="form-label">3 to 4 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" class="form-check-input freerange">
 											<label for="" class="form-label">4 to 5 Lakh</label>
 											<span>(1004)</span>
 										</div>
 									</div>
 									<div class="filterContent">
 										<div class="filterContentCheck d-flex">
-											<input type="checkbox" class="form-check-input">
+											<input type="checkbox" class="form-check-input freerange">
 											<label for="" class="form-label">Greater than 5 Lakh</label>
 											<span>(1004)</span>
 										</div>
@@ -624,7 +624,7 @@ $colleges = getCollegeByCategoury($term);
         if (event.target.checked) {
             freerange.push(event.target.value)
           console.log(freerange);
-          document.cookie = "freerange="+freerange;
+          document.cookie = "fee="+freerange;
           window.location.href = "college-filter-management.php?gtfreerange";
         }
       })

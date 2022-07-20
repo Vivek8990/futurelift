@@ -1046,7 +1046,7 @@ function searchcollegebyfilter(){
         if (event.target.checked) {
             freerange.push(event.target.value)
           console.log(freerange);
-          document.cookie = "freerange="+freerange;
+          document.cookie = "fee="+freerange;
           window.location.href = "college-filter.php?gtfreerange";
         }
       })
